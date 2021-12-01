@@ -1,6 +1,6 @@
 {
-  "name": "fixtr",
-  "description": "A flexible tool for generating customizable mock data",
+  "name": "@fixtr/core",
+  "description": "A flexible tool for generating customizable mock data (@core)",
   "version": "0.0.1",
   "license": "MIT",
   "homepage": "https://github.com/scokmen/fixtr",
@@ -14,12 +14,15 @@
     "type": "git",
     "url": "https://github.com/scokmen/fixtr"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/jest": "^27.0.3",
-    "jest": "^27.4.2",
-    "lerna": "^4.0.0",
-    "ts-jest": "^27.0.7",
-    "typescript": "^4.5.2"
-  }
+  "scripts": {
+    "test": "jest"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ]
 }
