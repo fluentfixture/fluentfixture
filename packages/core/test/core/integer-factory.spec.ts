@@ -74,17 +74,4 @@ describe('IntegerFactory', () => {
       verify(spyEngine.integer(min, max)).once()
     });
   });
-
-  describe('.between()', () => {
-
-    it('should create an instance with given min and max values', () => {
-      const min = 1;
-      const max = 10;
-
-      const factory = IntegerFactory.between(min, max);
-
-      expect(factory.getMin()).toBe(min);
-      expect(factory.getMax()).toBe(max);
-    });
-  });
 });

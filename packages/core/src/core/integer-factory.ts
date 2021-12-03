@@ -17,19 +17,7 @@ export class IntegerFactory extends AbstractFactory<number> {
     this.max = max;
   }
 
-  public static between(min: number, max: number): IntegerFactory {
-    return new IntegerFactory(min, max);
-  }
-
   public single(): number {
     return Random.integer(this.min, this.max);
-  }
-
-  public getMin(): number {
-    return this.min;
-  }
-
-  public getMax(): number {
-    return this.max;
   }
 }

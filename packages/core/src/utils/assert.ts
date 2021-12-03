@@ -7,8 +7,14 @@ export class Assert {
     }
   }
 
+  public static number(value: number): void {
+    if (check.not.number(value)) {
+      throw new Error('Parameter must be a number.');
+    }
+  }
+
   public static inRange(value: number, min: number, max: number): void {
-    if (check.not.between(value, min, max)) {
+    if (check.not.inRange(value, min, max)) {
       throw new Error(`Parameter must be between ${min} and ${max}.`);
     }
   }

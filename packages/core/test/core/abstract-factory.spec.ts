@@ -9,7 +9,7 @@ describe('AbstractFactory', () => {
 
   describe('.many()', () => {
 
-    describe('parameter assertions', () => {
+    describe('parameter assertions (count)', () => {
 
       test.each(NON_INTEGER_DATA_SET)('should throw an error when count is not an integer, given: %s', (count: any) => {
 
