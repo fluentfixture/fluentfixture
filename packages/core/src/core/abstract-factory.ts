@@ -3,6 +3,7 @@ import { Assert } from '../utils/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../constants/limits';
 
 export abstract class AbstractFactory<OUT = any> implements Factory<OUT> {
+
   public abstract single(): OUT;
 
   public many(count: number): ReadonlyArray<OUT> {

@@ -15,6 +15,7 @@
     "url": "https://github.com/scokmen/fixtr"
   },
   "scripts": {
+    "test": "lerna run test",
     "lint:packages": "eslint 'packages/**/**.ts'"
   },
   "dependencies": {},
