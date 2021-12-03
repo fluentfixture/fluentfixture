@@ -1,4 +1,4 @@
-import { AbstractFactory } from "./abstract-factory";
+import { AbstractFactory } from './abstract-factory';
 import { Assert } from '../utils/assert';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../constants/limits';
 import { Random } from './engine/random';

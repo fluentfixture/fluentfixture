@@ -46,7 +46,7 @@ describe('BooleanFactory', () => {
       const result = factory.single();
 
       expect(result).toBe(out);
-      verify(spyEngine.bool(percentage)).once()
+      verify(spyEngine.bool(percentage)).once();
     });
   });
 });

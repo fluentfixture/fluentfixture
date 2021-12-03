@@ -37,15 +37,15 @@ describe('AbstractFactory', () => {
 
       it('should create a array of generated data with given count', () => {
 
-        const data = { };
+        const out = { };
         const count = 3;
-        const factory = new MockFactory(data);
+        const factory = new MockFactory(out);
 
         const result = factory.many(count);
 
         expect(result).toHaveLength(count);
         expect(result).toBeInstanceOf(Array);
-        expect(result).toStrictEqual([data, data, data]);
+        expect(result).toStrictEqual([out, out, out]);
       });
     });
   });

@@ -18,4 +18,10 @@ export class Assert {
       throw new Error(`Parameter must be between ${min} and ${max}.`);
     }
   }
+
+  public static func(value: Function): void {
+    if (check.not.function(value)) {
+      throw new Error('Parameter must be a function.');
+    }
+  }
 }

@@ -71,7 +71,7 @@ describe('IntegerFactory', () => {
       const result = factory.single();
 
       expect(result).toBe(out);
-      verify(spyEngine.integer(min, max)).once()
+      verify(spyEngine.integer(min, max)).once();
     });
   });
 });
