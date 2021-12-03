@@ -17,7 +17,9 @@
   "scripts": {
     "lint:packages": "eslint 'packages/**/**.ts'"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ts-mockito": "^2.6.1"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
@@ -25,6 +27,7 @@
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-unicorn": "^39.0.0",
     "jest": "^27.4.2",
     "lerna": "^4.0.0",
     "prettier": "^2.5.0",
