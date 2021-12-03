@@ -19,6 +19,12 @@ export class Assert {
     }
   }
 
+  public static date(date: Date): void {
+    if (check.not.date(date)) {
+      throw new Error('Parameter must be a date.');
+    }
+  }
+
   public static func(value: Function): void {
     if (check.not.function(value)) {
       throw new Error('Parameter must be a function.');

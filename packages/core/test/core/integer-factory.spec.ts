@@ -19,14 +19,14 @@ describe('IntegerFactory', () => {
 
       it('should throw an error when min is less than the minimum integer', () => {
 
-        const thrown = () => new IntegerFactory(MIN_INTEGER - 1, 1);
+        const thrown = () => new IntegerFactory(MIN_INTEGER - 2, 1);
 
         expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
       });
 
       it('should throw an error when min is greater than the maximum integer', () => {
 
-        const thrown = () => new IntegerFactory(MAX_INTEGER + 1, 1);
+        const thrown = () => new IntegerFactory(MAX_INTEGER + 2, 1);
 
         expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
       });
@@ -43,14 +43,14 @@ describe('IntegerFactory', () => {
 
       it('should throw an error when max is less than the minimum integer', () => {
 
-        const thrown = () => new IntegerFactory(1, MIN_INTEGER - 1);
+        const thrown = () => new IntegerFactory(1, MIN_INTEGER - 2);
 
         expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
       });
 
       it('should throw an error when max is greater than the maximum integer', () => {
 
-        const thrown = () => new IntegerFactory(1, MAX_INTEGER + 1);
+        const thrown = () => new IntegerFactory(1, MAX_INTEGER + 2);
 
         expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
       });
