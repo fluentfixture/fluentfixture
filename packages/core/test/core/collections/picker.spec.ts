@@ -1,7 +1,7 @@
-import { NON_EMPTY_ARRAY_DATA_SET } from '../data/type-sets';
-import { Random } from '../../src/core/engine/random';
+import { NON_EMPTY_ARRAY_DATA_SET } from '../../data/type-sets';
+import { Random } from '../../../src/core/engine/random';
 import { spy, verify, when } from 'ts-mockito';
-import { Picker } from '../../src/core/collectios/picker';
+import { Picker } from '../../../src/core/collectios/picker';
 
 describe('Picker', () => {
 
