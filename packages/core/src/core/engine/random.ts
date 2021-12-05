@@ -1,7 +1,11 @@
-import { MersenneTwister19937, integer, bool, date, real} from 'random-js';
+import { MersenneTwister19937, integer, bool, date, real, picker} from 'random-js';
 
 export class Random {
   private static readonly engine = MersenneTwister19937.autoSeed();
+
+  public static pick<OUT>(list: ReadonlyArray<OUT>): OUT {
+    return picker(list)(this.engine);
+  }
 
   public static bool(percentage: number): boolean {
     return bool(percentage)(Random.engine);
