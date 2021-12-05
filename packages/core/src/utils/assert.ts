@@ -31,6 +31,12 @@ export class Assert {
     }
   }
 
+  public static object(value: Object): void {
+    if (check.not.object(value)) {
+      throw new Error('Parameter must be an object.');
+    }
+  }
+
   public static nonEmptyArray(list: ReadonlyArray<any>): void {
     if (check.not.nonEmptyArray(list as any[])) {
       throw new Error('Parameter must be a non-empty array.');
