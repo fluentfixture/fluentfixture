@@ -1,4 +1,5 @@
 import * as check from 'check-types';
+import { Factory } from '../core/factory';
 
 export class Assert {
   public static integer(value: number): void {
@@ -34,6 +35,12 @@ export class Assert {
   public static object(value: Object): void {
     if (check.not.object(value)) {
       throw new Error('Parameter must be an object.');
+    }
+  }
+
+  public static factoryLike(factory: Factory): void {
+    if (check.not.assigned(factory) || check.not.function(factory.single)) {
+      throw new Error('Parameter must be a factory-like.');
     }
   }
 
