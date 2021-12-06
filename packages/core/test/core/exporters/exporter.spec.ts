@@ -3,8 +3,9 @@ import { FactoryDecorator } from '../../../src/core/decorators/factory-decorator
 import { MockFactory } from '../../mocks/mock-factory';
 import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { AbstractFactory } from '../../../src/core/abstract-factory';
+import { Exporter } from '../../../src/core/exporters/exporter';
 
-describe('FactoryDecorator', () => {
+describe('Exporter', () => {
 
   describe('.constructor()', () => {
 
@@ -12,17 +13,17 @@ describe('FactoryDecorator', () => {
 
       test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when factory is not a factory-like, given: %s', (factory: any) => {
 
-        const thrown = () => new FactoryDecorator(factory, () => true);
+        const thrown = () => new Exporter(factory, () => true);
 
         expect(thrown).toThrow('Parameter must be a factory-like.');
       });
     });
 
-    describe('parameter assertions (decorator)', () => {
+    describe('parameter assertions (consumer)', () => {
 
-      test.each(NON_FUNCTION_DATA_SET)('should throw an error when decorator is not a function, given: %s', (decorator: any) => {
+      test.each(NON_FUNCTION_DATA_SET)('should throw an error when consumer is not a function, given: %s', (consumer: any) => {
 
-        const thrown = () => new FactoryDecorator(new MockFactory({}), decorator);
+        const thrown = () => new FactoryDecorator(new MockFactory({}), consumer);
 
         expect(thrown).toThrow('Parameter must be a function.');
       });
@@ -31,21 +32,20 @@ describe('FactoryDecorator', () => {
 
   describe('.single()', () => {
 
-    it('should map result of the given factory with given decorator function', () => {
+    it('should call given consumer with result of the given factory', () => {
       const mockFactory = mock(AbstractFactory);
-      const factoryOut = 1;
+      const consumer = { consume: (value: any) => console.log(value) };
+      const spyConsumer = spy(consumer);
       const out = 2;
-      const decorator = { decorate: (value: any) => out };
-      const spyDecorator = spy(decorator);
-      const factory = new FactoryDecorator(instance(mockFactory), decorator.decorate);
+      const factory = new Exporter(instance(mockFactory), consumer.consume)
 
-      when(mockFactory.single()).thenReturn(factoryOut);
+      when(mockFactory.single()).thenReturn(out);
 
       const result = factory.single();
 
       expect(result).toBe(out);
       verify(mockFactory.single()).once();
-      verify(spyDecorator.decorate(factoryOut)).once();
+      verify(spyConsumer.consume(out)).once();
     });
   });
 });
