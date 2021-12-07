@@ -2,9 +2,9 @@ import { Selector } from './selector';
 import { Factory } from '../factory';
 import { ValueAdapter } from '../adapters/value-adapter';
 
-export class Optional<OUT> extends Selector<OUT, undefined> {
+export class Optional<T> extends Selector<T, undefined> {
 
-  public constructor(factory: Factory<OUT>, percentage: number) {
+  public constructor(factory: Factory<T>, percentage: number) {
     super(factory, new ValueAdapter(undefined), percentage);
   }
 }

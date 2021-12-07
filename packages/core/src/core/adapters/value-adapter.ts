@@ -1,14 +1,14 @@
 import { AbstractFactory } from '../abstract-factory';
 
-export class ValueAdapter<OUT> extends AbstractFactory<OUT> {
-  private readonly value: OUT;
+export class ValueAdapter<T> extends AbstractFactory<T> {
+  private readonly value: T;
 
-  public constructor(value: OUT) {
+  public constructor(value: T) {
     super();
     this.value = value;
   }
 
-  public single(): OUT {
+  public single(): T {
     return this.value;
   }
 }

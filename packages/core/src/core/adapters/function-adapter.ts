@@ -2,16 +2,16 @@ import { ProducerFunction } from '../types/producer-function';
 import { AbstractFactory } from '../abstract-factory';
 import { Assert } from '../../utils/assert';
 
-export class FunctionAdapter<OUT> extends AbstractFactory<OUT> {
-  private readonly producer: ProducerFunction<OUT>;
+export class FunctionAdapter<T> extends AbstractFactory<T> {
+  private readonly producer: ProducerFunction<T>;
 
-  public constructor(producer: ProducerFunction<OUT>) {
+  public constructor(producer: ProducerFunction<T>) {
     Assert.func(producer);
     super();
     this.producer = producer;
   }
 
-  public single(): OUT {
+  public single(): T {
     return this.producer();
   }
 }

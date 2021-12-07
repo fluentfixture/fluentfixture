@@ -4,12 +4,12 @@ import { Random } from '../engine/random';
 import { Assert } from '../../utils/assert';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../constants/limits';
 
-export class Selector<OUT1, OUT2> extends AbstractFactory<OUT1 | OUT2> {
-  private readonly factory1: Factory<OUT1>;
-  private readonly factory2: Factory<OUT2>;
+export class Selector<T, K> extends AbstractFactory<T | K> {
+  private readonly factory1: Factory<T>;
+  private readonly factory2: Factory<K>;
   private readonly percentage: number;
 
-  public constructor(factory1: Factory<OUT1>, factory2: Factory<OUT2>, percentage: number) {
+  public constructor(factory1: Factory<T>, factory2: Factory<K>, percentage: number) {
     Assert.number(percentage);
     Assert.inRange(percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
     Assert.factoryLike(factory1);
@@ -20,7 +20,7 @@ export class Selector<OUT1, OUT2> extends AbstractFactory<OUT1 | OUT2> {
     this.percentage = percentage;
   }
 
-  public single(): OUT1 | OUT2 {
+  public single(): T | K {
     return Random.bool(this.percentage)
       ? this.factory1.single()
       : this.factory2.single();

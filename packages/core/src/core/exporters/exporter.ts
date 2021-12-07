@@ -3,11 +3,11 @@ import { Factory } from '../factory';
 import { Assert } from '../../utils/assert';
 import { ConsumerFunction } from '../types/consumer-function';
 
-export class Exporter<OUT = any> extends AbstractFactory<OUT> {
-  private readonly factory: Factory<OUT>;
-  private readonly consumer: ConsumerFunction<OUT>;
+export class Exporter<T = any> extends AbstractFactory<T> {
+  private readonly factory: Factory<T>;
+  private readonly consumer: ConsumerFunction<T>;
 
-  public constructor(factory: Factory<OUT>, consumer: ConsumerFunction<OUT>){
+  public constructor(factory: Factory<T>, consumer: ConsumerFunction<T>){
     Assert.factoryLike(factory);
     Assert.func(consumer);
     super();
@@ -15,7 +15,7 @@ export class Exporter<OUT = any> extends AbstractFactory<OUT> {
     this.consumer = consumer;
   }
 
-  public single(): OUT {
+  public single(): T {
     const value = this.factory.single();
     this.consumer(value);
     return value;

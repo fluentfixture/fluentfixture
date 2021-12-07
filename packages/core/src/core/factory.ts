@@ -1,6 +1,6 @@
-export interface Factory<OUT = any> {
+export interface Factory<T = any> {
 
-  single(): OUT;
+  single(): T;
 
-  many(count: number): ReadonlyArray<OUT>;
+  many(count: number): ReadonlyArray<T>;
 }

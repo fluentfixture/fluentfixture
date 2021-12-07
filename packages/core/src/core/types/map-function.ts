@@ -1,1 +1,1 @@
-export type MapFunction<IN = any, OUT = any> = (value: IN) => OUT;
+export type MapFunction<T = any, K = any> = (value: T) => K;

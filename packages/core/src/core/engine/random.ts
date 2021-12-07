@@ -3,11 +3,11 @@ import { MersenneTwister19937, integer, bool, date, real, picker, sample} from '
 export class Random {
   private static readonly engine = MersenneTwister19937.autoSeed();
 
-  public static pick<OUT>(list: ReadonlyArray<OUT>): OUT {
+  public static pick<T>(list: ReadonlyArray<T>): T {
     return picker(list)(this.engine);
   }
 
-  public static sample<OUT>(list: ReadonlyArray<OUT>, size: number): ReadonlyArray<OUT> {
+  public static sample<T>(list: ReadonlyArray<T>, size: number): ReadonlyArray<T> {
     return sample(this.engine, list, size);
   }
 

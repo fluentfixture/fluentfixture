@@ -1,1 +1,1 @@
-export type ConsumerFunction<OUT = any> = (value: OUT) => void;
+export type ConsumerFunction<T = any> = (value: T) => void;

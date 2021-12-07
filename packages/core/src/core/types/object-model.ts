@@ -1,5 +1,5 @@
 import { Factory } from '../factory';
 
-export type ObjectModel<OUT> = {
-  [K in keyof OUT]: Factory<OUT[K]>
+export type ObjectModel<T> = {
+  [K in keyof T]: Factory<T[K]>
 };
