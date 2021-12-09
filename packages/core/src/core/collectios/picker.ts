@@ -1,17 +1,18 @@
 import { AbstractFactory } from '../abstract-factory';
 import { Random } from '../engine/random';
 import { Assert } from '../../utils/assert';
+import { Factory } from '../factory';
 
 export class Picker<T> extends AbstractFactory<T> {
-  private readonly list: ReadonlyArray<T>;
+  private readonly factory: Factory<ReadonlyArray<T>>
 
-  public constructor(list: ReadonlyArray<T>) {
-    Assert.nonEmptyArray(list);
+  public constructor(factory: Factory<ReadonlyArray<T>>) {
+    Assert.factoryLike(factory);
     super();
-    this.list = list;
+    this.factory = factory;
   }
 
   public single(): T {
-    return Random.pick(this.list);
+    return Random.pick(this.factory.single());
   }
 }

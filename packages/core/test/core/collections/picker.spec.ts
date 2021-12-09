@@ -1,37 +1,41 @@
-import { NON_EMPTY_ARRAY_DATA_SET } from '../../data/type-sets';
+import { NON_FACTORY_LIKE_DATA_SET } from '../../data/type-sets';
 import { Random } from '../../../src/core/engine/random';
-import { spy, verify, when } from 'ts-mockito';
+import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { Picker } from '../../../src/core/collectios/picker';
+import { AbstractFactory } from '../../../src/core/abstract-factory';
 
 describe('Picker', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (list)', () => {
+    describe('parameter assertions (factory)', () => {
 
-      test.each(NON_EMPTY_ARRAY_DATA_SET)('should throw an error when list is not a non-empty-array, given: %s', (list: any) => {
+      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when factory is not a factory-like, given: %s', (factory: any) => {
 
-        const thrown = () => new Picker(list);
+        const thrown = () => new Picker(factory);
 
-        expect(thrown).toThrow('Parameter must be a non-empty array.');
+        expect(thrown).toThrow('Parameter must be a factory-like.');
       });
     });
   });
 
   describe('.single()', () => {
 
-    it('should select a value from given list by using engine', () => {
+    it('should select a value from the result of the given factory by using engine', () => {
       const spyEngine = spy(Random);
       const list = [1, 2, 3];
       const out = 1;
-      const factory = new Picker(list);
+      const mockFactory = mock(AbstractFactory);
+      const factory = new Picker(instance(mockFactory));
 
+      when(mockFactory.single()).thenReturn(list);
       when(spyEngine.pick(list)).thenReturn(out);
 
       const result = factory.single();
 
       expect(result).toBe(out);
       verify(spyEngine.pick(list)).once();
+      verify(mockFactory.single()).once();
     });
   });
 });
