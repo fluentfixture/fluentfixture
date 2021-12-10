@@ -1,6 +1,6 @@
 import { AbstractFactory } from '../abstract-factory';
 
-export class ValueAdapter<T> extends AbstractFactory<T> {
+export class ValueAdapter<T = any> extends AbstractFactory<T> {
   private readonly value: T;
 
   public constructor(value: T) {
@@ -9,6 +9,10 @@ export class ValueAdapter<T> extends AbstractFactory<T> {
   }
 
   public single(): T {
+    return this.value;
+  }
+
+  public getValue(): T {
     return this.value;
   }
 }

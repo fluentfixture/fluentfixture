@@ -43,10 +43,4 @@ export class Assert {
       throw new Error('Parameter must be a factory-like.');
     }
   }
-
-  public static nonEmptyArray(list: ReadonlyArray<any>): void {
-    if (check.not.nonEmptyArray(list as any[])) {
-      throw new Error('Parameter must be a non-empty array.');
-    }
-  }
 }

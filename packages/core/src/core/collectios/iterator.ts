@@ -19,4 +19,12 @@ export class Iterator<T = any> extends AbstractFactory<ReadonlyArray<T>> {
   public single(): ReadonlyArray<T> {
     return this.factory.many(this.count);
   }
+
+  public getFactory(): Factory<T> {
+    return this.factory;
+  }
+
+  public getCount(): number {
+    return this.count;
+  }
 }

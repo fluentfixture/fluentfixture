@@ -7,7 +7,7 @@ export class Exporter<T = any> extends AbstractFactory<T> {
   private readonly factory: Factory<T>;
   private readonly consumer: ConsumerFunction<T>;
 
-  public constructor(factory: Factory<T>, consumer: ConsumerFunction<T>){
+  public constructor(factory: Factory<T>, consumer: ConsumerFunction<T>) {
     Assert.factoryLike(factory);
     Assert.func(consumer);
     super();
@@ -19,5 +19,13 @@ export class Exporter<T = any> extends AbstractFactory<T> {
     const value = this.factory.single();
     this.consumer(value);
     return value;
+  }
+
+  public getFactory(): Factory<T> {
+    return this.factory;
+  }
+
+  public getConsumer(): ConsumerFunction<T> {
+    return this.consumer;
   }
 }

@@ -4,7 +4,7 @@ import { Random } from '../engine/random';
 import { Assert } from '../../utils/assert';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../constants/limits';
 
-export class Selector<T, K> extends AbstractFactory<T | K> {
+export class Selector<T = any, K = any> extends AbstractFactory<T | K> {
   private readonly factory1: Factory<T>;
   private readonly factory2: Factory<K>;
   private readonly percentage: number;
@@ -24,5 +24,17 @@ export class Selector<T, K> extends AbstractFactory<T | K> {
     return Random.bool(this.percentage)
       ? this.factory1.single()
       : this.factory2.single();
+  }
+
+  public getPercentage(): number {
+    return this.percentage;
+  }
+
+  public getFactory1(): Factory<T> {
+    return this.factory1;
+  }
+
+  public getFactory2(): Factory<K> {
+    return this.factory2;
   }
 }

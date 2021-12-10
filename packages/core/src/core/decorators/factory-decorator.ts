@@ -3,7 +3,7 @@ import { Factory } from '../factory';
 import { MapFunction } from '../types/map-function';
 import { Assert } from '../../utils/assert';
 
-export class FactoryDecorator<T, K> extends AbstractFactory<K> {
+export class FactoryDecorator<T = any, K = any> extends AbstractFactory<K> {
   private readonly factory: Factory<T>;
   private readonly decorator: MapFunction<T, K>;
 
@@ -17,5 +17,13 @@ export class FactoryDecorator<T, K> extends AbstractFactory<K> {
 
   public single(): K {
     return this.decorator(this.factory.single());
+  }
+
+  public getFactory(): Factory<T> {
+    return this.factory;
+  }
+
+  public getDecorator(): MapFunction<T, K> {
+    return this.decorator;
   }
 }
