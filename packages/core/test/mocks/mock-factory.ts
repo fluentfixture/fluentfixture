@@ -1,14 +1,14 @@
 import { AbstractFactory } from '../../src/core/abstract-factory';
 
-export class MockFactory extends AbstractFactory {
-  private readonly value: any;
+export class MockFactory<T = any> extends AbstractFactory<T> {
+  private readonly value: T;
 
-  public constructor(value: any) {
+  public constructor(value: T) {
     super();
     this.value = value;
   }
 
-  public single(): any {
+  public single(): T {
     return this.value;
   }
 }
