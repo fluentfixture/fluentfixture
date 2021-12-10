@@ -13,7 +13,7 @@
     "lib": ["es7"],
     "baseUrl": ".",
     "paths": {
-      "@fixtr/core": ["./packages/core"]
+      "@fluentfixture/core": ["./packages/core"]
     }
   },
   "include": ["packages/**/*", "integration/**/*"],
