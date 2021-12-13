@@ -4,6 +4,7 @@ import { Stream } from './stream';
 import { ValueStream } from './value-stream';
 import { Picker } from '../core/collectios/picker';
 import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
+import { Sampler } from '../core/collectios/sampler';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   public constructor(factory: Factory<ReadonlyArray<T>>) {
@@ -16,5 +17,9 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
 
   public pick(): ValueStream<T> {
     return ValueStream.from(new Picker(this));
+  }
+
+  public sample(size: number): ArrayStream<T> {
+    return new ArrayStream<T>(new Sampler(this, size));
   }
 }
