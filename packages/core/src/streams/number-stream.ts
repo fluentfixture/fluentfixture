@@ -28,7 +28,7 @@ export class NumberStream extends ValueStream<number> {
     return this.apply((i) => i / num);
   }
 
-  public apply(fn: MapFunction<number, number>): NumberStream {
+  private apply(fn: MapFunction<number, number>): NumberStream {
     return new NumberStream(new FactoryDecorator(this, fn));
   }
 }
