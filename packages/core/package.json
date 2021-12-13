@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "check-types": "^11.1.2",
+    "dayjs": "^1.10.7",
     "random-js": "^2.1.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { NumberStream } from '../../src/streams/number-stream';
-import { assertNumberSteamWithOperator } from '../assertions/number-stream-assertions';
+import { assertNumberStreamDecorator } from '../assertions/number-stream-assertions';
 
 describe('NumberStream', () => {
   const value = 10;
@@ -10,35 +10,35 @@ describe('NumberStream', () => {
   describe('.mode()', () => {
 
     it('should create a stream with function decorator (mode) that wraps itself', () => {
-      assertNumberSteamWithOperator(stream, stream.mode(operand), value, 0);
+      assertNumberStreamDecorator(stream, stream.mode(operand), value, 0);
     });
   });
 
   describe('.add()', () => {
 
     it('should create a stream with function decorator (add) that wraps itself', () => {
-      assertNumberSteamWithOperator(stream, stream.add(operand), value, 12);
+      assertNumberStreamDecorator(stream, stream.add(operand), value, 12);
     });
   });
 
   describe('.multiply()', () => {
 
     it('should create a stream with function decorator (multiply) that wraps itself', () => {
-      assertNumberSteamWithOperator(stream, stream.multiply(operand), value, 20);
+      assertNumberStreamDecorator(stream, stream.multiply(operand), value, 20);
     });
   });
 
   describe('.subtract()', () => {
 
     it('should create a stream with function decorator (subtract) that wraps itself', () => {
-      assertNumberSteamWithOperator(stream, stream.subtract(operand), value, 8);
+      assertNumberStreamDecorator(stream, stream.subtract(operand), value, 8);
     });
   });
 
   describe('.divide()', () => {
 
     it('should create a stream with function decorator (divide) that wraps itself', () => {
-      assertNumberSteamWithOperator(stream, stream.divide(operand), value, 5);
+      assertNumberStreamDecorator(stream, stream.divide(operand), value, 5);
     });
   });
 });
