@@ -1,14 +1,10 @@
 import { NumberStream } from '../../src/streams/number-stream';
-import { FactoryDecorator } from '../../src/core/decorators/factory-decorator';
+import { assertStreamOperations } from './factory-decorator-assertios';
 
 export const assertNumberStreamDecorator = (stream: NumberStream, result: NumberStream, value: number, output: number): void => {
   expect(result).toBeInstanceOf(NumberStream);
 
-  const factoryDecorator = result.getFactory() as FactoryDecorator;
-  expect(factoryDecorator).toBeInstanceOf(FactoryDecorator);
-  expect(factoryDecorator.getFactory()).toBe(stream);
-  expect(factoryDecorator.getDecorator()).toBeInstanceOf(Function);
+  const decoratorFunction = assertStreamOperations(stream, result);
 
-  const decoratorFunction = factoryDecorator.getDecorator();
   expect(decoratorFunction(value)).toBe(output);
 };
