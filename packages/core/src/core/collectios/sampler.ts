@@ -18,8 +18,7 @@ export class Sampler<T = any> extends AbstractFactory<ReadonlyArray<T>> {
   }
 
   public single(): ReadonlyArray<T> {
-    const value = this.factory.single();
-    return Random.sample(value, Math.min(this.size, value.length));
+    return Random.sample(this.factory.single(), this.size);
   }
 
   public getSize(): number {

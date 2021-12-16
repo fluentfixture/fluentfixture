@@ -8,6 +8,8 @@ import { Sampler } from '../core/collectios/sampler';
 import { MapFunction } from '../core/types/map-function';
 import { FactoryDecorator } from '../core/decorators/factory-decorator';
 import { FilterFunction } from '../core/types/filter-function';
+import { Shuffler } from '../core/collectios/shuffler';
+import { SortFunction } from '../core/types/sort-function';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   public constructor(factory: Factory<ReadonlyArray<T>>) {
@@ -24,6 +26,14 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
 
   public sample(size: number): ArrayStream<T> {
     return new ArrayStream(new Sampler(this, size));
+  }
+
+  public shuffle(): ArrayStream<T> {
+    return new ArrayStream(new Shuffler(this));
+  }
+
+  public sort(fn?: SortFunction<T>): ArrayStream<T> {
+    return new ArrayStream(new FactoryDecorator(this, (arr) => [...arr].sort(fn)));
   }
 
   public map<K>(fn: MapFunction<T, K>): ArrayStream<K> {

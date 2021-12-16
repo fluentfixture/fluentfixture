@@ -1,4 +1,4 @@
-import { MersenneTwister19937, integer, bool, date, real, picker, sample} from 'random-js';
+import { MersenneTwister19937, integer, bool, date, real, picker, sample, shuffle} from 'random-js';
 
 export class Random {
   private static readonly engine = MersenneTwister19937.autoSeed();
@@ -8,7 +8,13 @@ export class Random {
   }
 
   public static sample<T>(list: ReadonlyArray<T>, size: number): ReadonlyArray<T> {
-    return sample(this.engine, list, size);
+    return sample(this.engine, list, Math.min(size, list.length));
+  }
+
+  public static shuffle<T>(list: ReadonlyArray<T>): ReadonlyArray<T> {
+    const shadowCopyOfList = [...list];
+    shuffle(Random.engine, shadowCopyOfList);
+    return shadowCopyOfList;
   }
 
   public static bool(percentage: number): boolean {

@@ -64,23 +64,5 @@ describe('Sampler', () => {
       verify(spyEngine.sample(list, size)).once();
       verify(mockFactory.single()).once();
     });
-
-    it('should calculate a new size when size is greater than the result of the given factory', () => {
-      const spyEngine = spy(Random);
-      const list = [1, 2, 3];
-      const size = 6;
-      const out = [1, 2, 3];
-      const mockFactory = mock(AbstractFactory);
-      const factory = new Sampler(instance(mockFactory), size);
-
-      when(mockFactory.single()).thenReturn(list);
-      when(spyEngine.sample(list, list.length)).thenReturn(out);
-
-      const result = factory.single();
-
-      expect(result).toBe(out);
-      verify(spyEngine.sample(list, list.length)).once();
-      verify(mockFactory.single()).once();
-    });
   });
 });
