@@ -1,6 +1,6 @@
 import { ValueStream } from './value-stream';
 import { Factory } from '../core/factory';
-import { MapFunction } from '../core/types/map-function';
+import { ConvertFunction } from '../core/types/convert-function';
 import { FactoryDecorator } from '../core/decorators/factory-decorator';
 
 export class NumberStream extends ValueStream<number> {
@@ -28,7 +28,7 @@ export class NumberStream extends ValueStream<number> {
     return this.apply((i) => i / num);
   }
 
-  private apply(fn: MapFunction<number, number>): NumberStream {
+  private apply(fn: ConvertFunction<number, number>): NumberStream {
     return new NumberStream(new FactoryDecorator(this, fn));
   }
 }

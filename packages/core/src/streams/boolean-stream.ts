@@ -1,6 +1,6 @@
 import { ValueStream } from './value-stream';
 import { Factory } from '../core/factory';
-import { MapFunction } from '../core/types/map-function';
+import { ConvertFunction } from '../core/types/convert-function';
 import { FactoryDecorator } from '../core/decorators/factory-decorator';
 
 export class BooleanStream extends ValueStream<boolean> {
@@ -12,7 +12,7 @@ export class BooleanStream extends ValueStream<boolean> {
     return this.apply((i) => !i);
   }
 
-  private apply(fn: MapFunction<boolean, boolean>): BooleanStream {
+  private apply(fn: ConvertFunction<boolean, boolean>): BooleanStream {
     return new BooleanStream(new FactoryDecorator(this, fn));
   }
 }

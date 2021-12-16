@@ -1,8 +1,8 @@
 import { Stream } from '../../src/streams/stream';
-import { MapFunction } from '../../src/core/types/map-function';
+import { ConvertFunction } from '../../src/core/types/convert-function';
 import { FactoryDecorator } from '../../src/core/decorators/factory-decorator';
 
-export const assertStreamOperations = (stream: Stream, result: Stream): MapFunction => {
+export const assertStreamOperations = (stream: Stream, result: Stream): ConvertFunction => {
   const factoryDecorator = result.getFactory() as FactoryDecorator;
 
   expect(factoryDecorator).toBeInstanceOf(FactoryDecorator);

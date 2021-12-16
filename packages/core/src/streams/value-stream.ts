@@ -1,6 +1,6 @@
 import { Factory } from '../core/factory';
 import { Optional } from '../core/selectors/optional';
-import { MapFunction } from '../core/types/map-function';
+import { ConvertFunction } from '../core/types/convert-function';
 import { Exporter } from '../core/exporters/exporter';
 import { ConsumerFunction } from '../core/types/consumer-function';
 import { Nullable } from '../core/selectors/nullable';
@@ -22,7 +22,7 @@ export class ValueStream<T = any> extends Stream<T> {
     return ArrayStream.of(this, count);
   }
 
-  public map<K>(fn: MapFunction<T, K>): ValueStream<K> {
+  public convert<K>(fn: ConvertFunction<T, K>): ValueStream<K> {
     return ValueStream.from(new FactoryDecorator(this, fn));
   }
 

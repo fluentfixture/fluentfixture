@@ -31,7 +31,7 @@ describe('FactoryDecorator', () => {
 
   describe('.single()', () => {
 
-    it('should map result of the given factory with given decorator function', () => {
+    it('should convert result of the given factory with given decorator function', () => {
       const mockFactory = mock(AbstractFactory);
       const factoryOut = 1;
       const out = 2;

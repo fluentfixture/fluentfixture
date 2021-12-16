@@ -74,14 +74,14 @@ describe('ValueStream', () => {
     });
   });
 
-  describe('.map()', () => {
+  describe('.convert()', () => {
 
     it('should create a stream with function decorator that wraps itself', () => {
       const fn = () => true;
       const factory = new MockFactory({});
       const stream = ValueStream.from(factory);
 
-      const result = stream.map(fn);
+      const result = stream.convert(fn);
 
       expect(result).toBeInstanceOf(ValueStream);
 

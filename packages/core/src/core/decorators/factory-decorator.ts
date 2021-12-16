@@ -1,13 +1,13 @@
 import { AbstractFactory } from '../abstract-factory';
 import { Factory } from '../factory';
-import { MapFunction } from '../types/map-function';
+import { ConvertFunction } from '../types/convert-function';
 import { Assert } from '../../utils/assert';
 
 export class FactoryDecorator<T = any, K = any> extends AbstractFactory<K> {
   private readonly factory: Factory<T>;
-  private readonly decorator: MapFunction<T, K>;
+  private readonly decorator: ConvertFunction<T, K>;
 
-  public constructor(factory: Factory<T>, decorator: MapFunction<T, K>) {
+  public constructor(factory: Factory<T>, decorator: ConvertFunction<T, K>) {
     Assert.factoryLike(factory);
     Assert.func(decorator);
     super();
@@ -23,7 +23,7 @@ export class FactoryDecorator<T = any, K = any> extends AbstractFactory<K> {
     return this.factory;
   }
 
-  public getDecorator(): MapFunction<T, K> {
+  public getDecorator(): ConvertFunction<T, K> {
     return this.decorator;
   }
 }
