@@ -28,7 +28,8 @@
   "dependencies": {
     "check-types": "^11.1.2",
     "dayjs": "^1.10.7",
-    "random-js": "^2.1.0"
+    "random-js": "^2.1.0",
+    "randomstring": "^1.2.1"
   },
   "devDependencies": {
     "@types/check-types": "^7.3.3"

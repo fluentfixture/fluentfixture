@@ -6,3 +6,6 @@ export const DEFAULT_PERCENTAGE = 0.5;
 export const MAX_PERCENTAGE = 1;
 export const MIN_INTEGER = -0x20_00_00_00_00_00_00;
 export const MAX_INTEGER = 0x20_00_00_00_00_00_00;
+export const MIN_STRING_LENGTH = 0;
+export const DEFAULT_STRING_LENGTH = 10;
+export const MAX_STRING_LENGTH = 100;

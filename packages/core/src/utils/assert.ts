@@ -49,4 +49,10 @@ export class Assert {
       throw new Error('Parameter must be a key.');
     }
   }
+
+  public static nonEmptyString(value: string): void {
+    if (check.not.nonEmptyString(value as string)) {
+      throw new Error('Parameter must be a non-empty string.');
+    }
+  }
 }
