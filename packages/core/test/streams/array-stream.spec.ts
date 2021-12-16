@@ -8,6 +8,7 @@ import { assertArrayStreamDecorator } from '../assertions/array-stream-assertion
 import { Shuffler } from '../../src/core/collectios/shuffler';
 
 describe('ArrayStream', () => {
+
   describe('.pick()', () => {
 
     it('should create a stream with picker decorator that wraps itself', () => {

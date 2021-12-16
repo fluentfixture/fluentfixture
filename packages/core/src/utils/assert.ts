@@ -43,4 +43,10 @@ export class Assert {
       throw new Error('Parameter must be a factory-like.');
     }
   }
+
+  public static key(value: keyof any): void {
+    if (check.not.nonEmptyString(value as string) && check.not.number(value) && check.not.instance(value, Symbol)) {
+      throw new Error('Parameter must be a key.');
+    }
+  }
 }
