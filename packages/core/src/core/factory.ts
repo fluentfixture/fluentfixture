@@ -1,6 +1,14 @@
-export interface Factory<T = any> {
+import { Assert } from '../utils/assert';
+import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../constants/limits';
+import { IFactory } from './interfaces/factory';
 
-  single(): T;
+export abstract class Factory<T = any> implements IFactory<T> {
 
-  many(count: number): ReadonlyArray<T>;
+  public abstract single(): T;
+
+  public many(count: number): ReadonlyArray<T> {
+    Assert.integer(count);
+    Assert.inRange(count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
+    return Array.from({ length: count }, () => this.single());
+  }
 }

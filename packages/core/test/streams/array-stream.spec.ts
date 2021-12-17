@@ -1,11 +1,11 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { ValueStream } from '../../src/streams/value-stream';
 import { ArrayStream } from '../../src/streams/array-stream';
-import { Picker } from '../../src/core/collectios/picker';
-import { Sampler } from '../../src/core/collectios/sampler';
 import { ValueAdapter } from '../../src/core/adapters/value-adapter';
 import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
-import { Shuffler } from '../../src/core/collectios/shuffler';
+import { Picker } from '../../src/core/converters/picker';
+import { Sampler } from '../../src/core/converters/sampler';
+import { Shuffler } from '../../src/core/converters/shuffler';
 
 describe('ArrayStream', () => {
 

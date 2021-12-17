@@ -1,6 +1,6 @@
-import { AbstractFactory } from '../abstract-factory';
+import { Factory } from '../factory';
 
-export class ValueAdapter<T = any> extends AbstractFactory<T> {
+export class ValueAdapter<T = any> extends Factory<T> {
   private readonly value: T;
 
   public constructor(value: T) {

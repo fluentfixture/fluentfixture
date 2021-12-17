@@ -1,8 +1,8 @@
-import { AbstractFactory } from './abstract-factory';
 import { Assert } from '../utils/assert';
-import { Random } from './engine/random';
+import { Random } from '../engine/random';
+import { Factory } from './factory';
 
-export class DateFactory extends AbstractFactory<Date> {
+export class DateFactory extends Factory<Date> {
   private readonly min: Date;
   private readonly max: Date;
 

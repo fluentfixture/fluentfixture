@@ -1,10 +1,10 @@
+import { IFactory } from '../core/interfaces/factory';
+import { ConvertFunction } from '../types/convert-function';
+import { Functional } from '../core/converters/functional';
 import { ValueStream } from './value-stream';
-import { Factory } from '../core/factory';
-import { ConvertFunction } from '../core/types/convert-function';
-import { FactoryDecorator } from '../core/decorators/factory-decorator';
 
 export class BooleanStream extends ValueStream<boolean> {
-  public constructor(factory: Factory<boolean>) {
+  public constructor(factory: IFactory<boolean>) {
     super(factory);
   }
 
@@ -13,6 +13,6 @@ export class BooleanStream extends ValueStream<boolean> {
   }
 
   private apply(fn: ConvertFunction<boolean, boolean>): BooleanStream {
-    return new BooleanStream(new FactoryDecorator(this, fn));
+    return new BooleanStream(new Functional(this, fn));
   }
 }

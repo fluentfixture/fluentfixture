@@ -1,9 +1,9 @@
-import { AbstractFactory } from './abstract-factory';
-import { Random } from './engine/random';
+import { Random } from '../engine/random';
 import { Assert } from '../utils/assert';
 import { MAX_INTEGER, MIN_INTEGER } from '../constants/limits';
+import { Factory } from './factory';
 
-export class NumberFactory extends AbstractFactory<number> {
+export class NumberFactory extends Factory<number> {
   private readonly min: number;
   private readonly max: number;
 

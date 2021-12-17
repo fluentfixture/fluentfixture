@@ -1,9 +1,8 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { NON_INTEGER_DATA_SET } from '../data/type-sets';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../src/constants/limits';
-import { AbstractFactory } from '../../src/core/abstract-factory';
 
-describe('AbstractFactory', () => {
+describe('Factory', () => {
 
   const factory = new MockFactory({});
 
@@ -36,8 +35,7 @@ describe('AbstractFactory', () => {
     describe('iterations', () => {
 
       it('should create a array of generated data with given count', () => {
-
-        const out = { };
+        const out = {};
         const count = 3;
         const factory = new MockFactory(out);
 

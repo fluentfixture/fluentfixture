@@ -1,7 +1,7 @@
+import { spy, verify, when } from 'ts-mockito';
 import { NON_INTEGER_DATA_SET, NON_NON_EMPTY_STRING_DATA_SET } from '../data/type-sets';
 import { MAX_STRING_LENGTH, MIN_STRING_LENGTH } from '../../src/constants/limits';
-import { Random } from '../../src/core/engine/random';
-import { spy, verify, when } from 'ts-mockito';
+import { Random } from '../../src/engine/random';
 import { StringFactory } from '../../src/core/string-factory';
 
 describe('StringFactory', () => {

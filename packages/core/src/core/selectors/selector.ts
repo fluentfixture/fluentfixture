@@ -1,15 +1,15 @@
-import { AbstractFactory } from '../abstract-factory';
 import { Factory } from '../factory';
-import { Random } from '../engine/random';
+import { IFactory } from '../interfaces/factory';
+import { Random } from '../../engine/random';
 import { Assert } from '../../utils/assert';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../constants/limits';
 
-export class Selector<T = any, K = any> extends AbstractFactory<T | K> {
-  private readonly factory1: Factory<T>;
-  private readonly factory2: Factory<K>;
+export class Selector<T = any, K = any> extends Factory<T | K> {
+  private readonly factory1: IFactory<T>;
+  private readonly factory2: IFactory<K>;
   private readonly percentage: number;
 
-  public constructor(factory1: Factory<T>, factory2: Factory<K>, percentage: number) {
+  public constructor(factory1: IFactory<T>, factory2: IFactory<K>, percentage: number) {
     Assert.number(percentage);
     Assert.inRange(percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
     Assert.factoryLike(factory1);
@@ -30,11 +30,11 @@ export class Selector<T = any, K = any> extends AbstractFactory<T | K> {
     return this.percentage;
   }
 
-  public getFactory1(): Factory<T> {
+  public getFactory1(): IFactory<T> {
     return this.factory1;
   }
 
-  public getFactory2(): Factory<K> {
+  public getFactory2(): IFactory<K> {
     return this.factory2;
   }
 }

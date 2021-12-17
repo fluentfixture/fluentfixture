@@ -1,9 +1,9 @@
-import { AbstractFactory } from './abstract-factory';
-import { Factory } from './factory';
-import { ObjectModel } from './types/object-model';
+import { ObjectModel } from '../types/object-model';
 import { Assert } from '../utils/assert';
+import { Factory } from './factory';
+import { IFactory } from './interfaces/factory';
 
-export class ObjectFactory<T> extends AbstractFactory<T> {
+export class ObjectFactory<T> extends Factory<T> {
   private readonly model: ObjectModel<T>
 
   public constructor(model: ObjectModel<T>) {
@@ -13,6 +13,6 @@ export class ObjectFactory<T> extends AbstractFactory<T> {
   }
 
   public single() {
-    return Object.fromEntries(Object.entries(this.model as Record<string, Factory>).map(([k, v]) => [k, v.single()])) as T;
+    return Object.fromEntries(Object.entries(this.model as Record<string, IFactory>).map(([k, v]) => [k, v.single()])) as T;
   }
 }

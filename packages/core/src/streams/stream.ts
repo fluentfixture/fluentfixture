@@ -1,11 +1,11 @@
-import { Factory } from '../core/factory';
+import { IFactory } from '../core/interfaces/factory';
 import { Assert } from '../utils/assert';
-import { AbstractFactory } from '../core/abstract-factory';
+import { Factory } from '../core/factory';
 
-export class Stream<T = any> extends AbstractFactory<T> {
-  private readonly factory: Factory<T>;
+export class Stream<T = any> extends Factory<T> {
+  private readonly factory: IFactory<T>;
 
-  public constructor(factory: Factory<T>) {
+  public constructor(factory: IFactory<T>) {
     Assert.factoryLike(factory);
     super();
     this.factory = factory;
@@ -15,7 +15,7 @@ export class Stream<T = any> extends AbstractFactory<T> {
     return this.factory.single();
   }
 
-  public getFactory(): Factory<T> {
+  public getFactory(): IFactory<T> {
     return this.factory;
   }
 }

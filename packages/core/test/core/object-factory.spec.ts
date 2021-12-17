@@ -1,7 +1,7 @@
-import { NON_OBJECT_DATA_SET } from '../data/type-sets';
 import { instance, mock, verify, when } from 'ts-mockito';
+import { NON_OBJECT_DATA_SET } from '../data/type-sets';
 import { ObjectFactory } from '../../src/core/object-factory';
-import { AbstractFactory } from '../../src/core/abstract-factory';
+import { Factory } from '../../src/core/factory';
 
 describe('ObjectFactory', () => {
 
@@ -21,8 +21,8 @@ describe('ObjectFactory', () => {
   describe('.single()', () => {
 
     it('should create a object by using given model', () => {
-      const mockFactory1 = mock(AbstractFactory);
-      const mockFactory2 = mock(AbstractFactory);
+      const mockFactory1 = mock(Factory);
+      const mockFactory2 = mock(Factory);
       const out1 = 1;
       const out2 = 2;
       const factory = new ObjectFactory({

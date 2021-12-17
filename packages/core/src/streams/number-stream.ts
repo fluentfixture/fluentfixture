@@ -1,10 +1,10 @@
+import { IFactory } from '../core/interfaces/factory';
+import { ConvertFunction } from '../types/convert-function';
+import { Functional } from '../core/converters/functional';
 import { ValueStream } from './value-stream';
-import { Factory } from '../core/factory';
-import { ConvertFunction } from '../core/types/convert-function';
-import { FactoryDecorator } from '../core/decorators/factory-decorator';
 
 export class NumberStream extends ValueStream<number> {
-  public constructor(factory: Factory<number>) {
+  public constructor(factory: IFactory<number>) {
     super(factory);
   }
 
@@ -29,6 +29,6 @@ export class NumberStream extends ValueStream<number> {
   }
 
   private apply(fn: ConvertFunction<number, number>): NumberStream {
-    return new NumberStream(new FactoryDecorator(this, fn));
+    return new NumberStream(new Functional(this, fn));
   }
 }

@@ -1,12 +1,12 @@
-import { ValueStream } from './value-stream';
-import { Factory } from '../core/factory';
 import * as dayjs from 'dayjs';
-import { FactoryDecorator } from '../core/decorators/factory-decorator';
 import { UnitType } from 'dayjs';
+import { IFactory } from '../core/interfaces/factory';
+import { Functional } from '../core/converters/functional';
 import { NumberStream } from './number-stream';
+import { ValueStream } from './value-stream';
 
 export class DateStream extends ValueStream<Date> {
-  public constructor(factory: Factory<Date>) {
+  public constructor(factory: IFactory<Date>) {
     super(factory);
   }
 
@@ -131,18 +131,18 @@ export class DateStream extends ValueStream<Date> {
   }
 
   private add(value: number, unit: string): DateStream {
-    return new DateStream(new FactoryDecorator(this, (i) => dayjs(i).add(value, unit).toDate()));
+    return new DateStream(new Functional(this, (i) => dayjs(i).add(value, unit).toDate()));
   }
 
   private subtract(value: number, unit: string): DateStream {
-    return new DateStream(new FactoryDecorator(this, (i) => dayjs(i).subtract(value, unit).toDate()));
+    return new DateStream(new Functional(this, (i) => dayjs(i).subtract(value, unit).toDate()));
   }
 
   private set(value: number, unit: UnitType): DateStream {
-    return new DateStream(new FactoryDecorator(this, (i) => dayjs(i).set(unit, value).toDate()));
+    return new DateStream(new Functional(this, (i) => dayjs(i).set(unit, value).toDate()));
   }
 
   private get(unit: UnitType): NumberStream {
-    return new NumberStream(new FactoryDecorator(this, (i) => dayjs(i).get(unit)));
+    return new NumberStream(new Functional(this, (i) => dayjs(i).get(unit)));
   }
 }

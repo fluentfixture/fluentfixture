@@ -1,9 +1,9 @@
-import { AbstractFactory } from './abstract-factory';
 import { Assert } from '../utils/assert';
 import { MAX_STRING_LENGTH, MIN_STRING_LENGTH } from '../constants/limits';
-import { Random } from './engine/random';
+import { Random } from '../engine/random';
+import { Factory } from './factory';
 
-export class StringFactory extends AbstractFactory<string> {
+export class StringFactory extends Factory<string> {
   private readonly length: number;
   private readonly charset: string;
 

@@ -7,6 +7,7 @@ module.exports = {
     plugins: ['@typescript-eslint/eslint-plugin'],
     extends: [
         'plugin:unicorn/recommended',
+        'plugin:import/recommended',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier'
@@ -24,6 +25,11 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/ban-types': 'off',
         'unicorn/no-null': 'off',
-        'unicorn/prevent-abbreviations': 'off'
-    }
+        'unicorn/prevent-abbreviations': 'off',
+        'import/no-unresolved': 'off',
+        'import/order': ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}]
+    },
+    ignorePatterns: [
+        '.eslintrc.js'
+    ],
 };

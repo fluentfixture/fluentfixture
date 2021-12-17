@@ -1,22 +1,22 @@
-import { Factory } from '../core/factory';
-import { Iterator } from '../core/collectios/iterator';
+import { IFactory } from '../core/interfaces/factory';
+import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
+import { MapFunction } from '../types/map-function';
+import { FilterFunction } from '../types/filter-function';
+import { SortFunction } from '../types/sort-function';
+import { Iterator } from '../core/converters/iterator';
+import { Picker } from '../core/converters/picker';
+import { Functional } from '../core/converters/functional';
+import { Shuffler } from '../core/converters/shuffler';
+import { Sampler } from '../core/converters/sampler';
 import { Stream } from './stream';
 import { ValueStream } from './value-stream';
-import { Picker } from '../core/collectios/picker';
-import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
-import { Sampler } from '../core/collectios/sampler';
-import { MapFunction } from '../core/types/map-function';
-import { FactoryDecorator } from '../core/decorators/factory-decorator';
-import { FilterFunction } from '../core/types/filter-function';
-import { Shuffler } from '../core/collectios/shuffler';
-import { SortFunction } from '../core/types/sort-function';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
-  public constructor(factory: Factory<ReadonlyArray<T>>) {
+  public constructor(factory: IFactory<ReadonlyArray<T>>) {
     super(factory);
   }
 
-  public static of<T>(factory: Factory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
+  public static of<T>(factory: IFactory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
     return new ArrayStream(new Iterator(factory, count));
   }
 
@@ -33,14 +33,14 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   }
 
   public sort(fn?: SortFunction<T>): ArrayStream<T> {
-    return new ArrayStream(new FactoryDecorator(this, (arr) => [...arr].sort(fn)));
+    return new ArrayStream(new Functional(this, (arr) => [...arr].sort(fn)));
   }
 
   public map<K>(fn: MapFunction<T, K>): ArrayStream<K> {
-    return new ArrayStream(new FactoryDecorator(this, (arr) => arr.map((e, i, a) => fn(e, i ,a))));
+    return new ArrayStream(new Functional(this, (arr) => arr.map((e, i, a) => fn(e, i ,a))));
   }
 
   public filter(fn: FilterFunction<T>): ArrayStream<T> {
-    return new ArrayStream(new FactoryDecorator(this, (arr) => arr.filter((e, i, a) => fn(e, i ,a))));
+    return new ArrayStream(new Functional(this, (arr) => arr.filter((e, i, a) => fn(e, i ,a))));
   }
 }

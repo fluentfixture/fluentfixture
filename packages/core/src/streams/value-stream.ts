@@ -1,20 +1,20 @@
-import { Factory } from '../core/factory';
+import { IFactory } from '../core/interfaces/factory';
 import { Optional } from '../core/selectors/optional';
-import { ConvertFunction } from '../core/types/convert-function';
-import { Exporter } from '../core/exporters/exporter';
-import { ConsumerFunction } from '../core/types/consumer-function';
+import { ConvertFunction } from '../types/convert-function';
+import { ConsumerFunction } from '../types/consumer-function';
 import { Nullable } from '../core/selectors/nullable';
-import { ArrayStream } from './array-stream';
-import { Stream } from './stream';
-import { FactoryDecorator } from '../core/decorators/factory-decorator';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../constants/limits';
+import { Functional } from '../core/converters/functional';
+import { Exporter } from '../core/converters/exporter';
+import { Stream } from './stream';
+import { ArrayStream } from './array-stream';
 
 export class ValueStream<T = any> extends Stream<T> {
-  public constructor(factory: Factory<T>) {
+  public constructor(factory: IFactory<T>) {
     super(factory);
   }
 
-  public static from<T>(factory: Factory<T>): ValueStream<T> {
+  public static from<T>(factory: IFactory<T>): ValueStream<T> {
     return new ValueStream(factory);
   }
 
@@ -23,7 +23,7 @@ export class ValueStream<T = any> extends Stream<T> {
   }
 
   public convert<K>(fn: ConvertFunction<T, K>): ValueStream<K> {
-    return ValueStream.from(new FactoryDecorator(this, fn));
+    return ValueStream.from(new Functional(this, fn));
   }
 
   public dump(fn: ConsumerFunction<T>): ValueStream<T> {

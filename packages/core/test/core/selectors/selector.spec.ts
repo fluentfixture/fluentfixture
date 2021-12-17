@@ -1,10 +1,10 @@
+import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { NON_NUMBER_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Selector } from '../../../src/core/selectors/selector';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../../src/constants/limits';
-import { instance, mock, spy, verify, when } from 'ts-mockito';
-import { Random } from '../../../src/core/engine/random';
-import { AbstractFactory } from '../../../src/core/abstract-factory';
+import { Random } from '../../../src/engine/random';
+import { Factory } from '../../../src/core/factory';
 
 describe('Selector', () => {
 
@@ -69,8 +69,8 @@ describe('Selector', () => {
     it('should select a first factory when engine returns true', () => {
       const spyEngine = spy(Random);
       const percentage = 0.5;
-      const factory1 = mock(AbstractFactory);
-      const factory2 = mock(AbstractFactory);
+      const factory1 = mock(Factory);
+      const factory2 = mock(Factory);
       const out = 1;
       const factory = new Selector(instance(factory1), instance(factory2), percentage);
 
@@ -88,8 +88,8 @@ describe('Selector', () => {
     it('should select a second factory when engine returns false', () => {
       const spyEngine = spy(Random);
       const percentage = 0.5;
-      const factory1 = mock(AbstractFactory);
-      const factory2 = mock(AbstractFactory);
+      const factory1 = mock(Factory);
+      const factory2 = mock(Factory);
       const out = 2;
       const factory = new Selector(instance(factory1), instance(factory2), percentage);
 

@@ -1,6 +1,6 @@
+import * as dayjs from 'dayjs';
 import { MockFactory } from '../mocks/mock-factory';
 import { DateStream } from '../../src/streams/date-stream';
-import * as dayjs from 'dayjs';
 import {
   assertDateStreamAddOrSubtract,
   assertDateStreamGet,

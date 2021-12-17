@@ -1,7 +1,7 @@
 import { instance, mock, verify, when } from 'ts-mockito';
 import { Stream } from '../../src/streams/stream'
 import { NON_FACTORY_LIKE_DATA_SET } from '../data/type-sets';
-import { AbstractFactory } from '../../src/core/abstract-factory';
+import { Factory } from '../../src/core/factory';
 
 describe('Stream', () => {
 
@@ -21,7 +21,7 @@ describe('Stream', () => {
   describe('.single()', () => {
 
     it('should create a value by using given factory', () => {
-      const mockFactory = mock(AbstractFactory);
+      const mockFactory = mock(Factory);
       const out = 1;
       const factory = new Stream(instance(mockFactory));
 

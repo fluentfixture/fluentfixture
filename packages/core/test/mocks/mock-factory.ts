@@ -1,6 +1,6 @@
-import { AbstractFactory } from '../../src/core/abstract-factory';
+import { Factory } from '../../src/core/factory';
 
-export class MockFactory<T = any> extends AbstractFactory<T> {
+export class MockFactory<T = any> extends Factory<T> {
   private readonly value: T;
 
   public constructor(value: T) {

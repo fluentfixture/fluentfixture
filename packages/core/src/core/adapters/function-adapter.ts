@@ -1,8 +1,8 @@
-import { ProducerFunction } from '../types/producer-function';
-import { AbstractFactory } from '../abstract-factory';
+import { ProducerFunction } from '../../types/producer-function';
+import { Factory } from '../factory';
 import { Assert } from '../../utils/assert';
 
-export class FunctionAdapter<T> extends AbstractFactory<T> {
+export class FunctionAdapter<T> extends Factory<T> {
   private readonly producer: ProducerFunction<T>;
 
   public constructor(producer: ProducerFunction<T>) {

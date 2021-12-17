@@ -2,11 +2,11 @@ import { MockFactory } from '../mocks/mock-factory';
 import { ValueStream } from '../../src/streams/value-stream';
 import { Optional } from '../../src/core/selectors/optional';
 import { Nullable } from '../../src/core/selectors/nullable';
-import { FactoryDecorator } from '../../src/core/decorators/factory-decorator';
-import { Exporter } from '../../src/core/exporters/exporter';
-import { Iterator } from '../../src/core/collectios/iterator';
 import { ArrayStream } from '../../src/streams/array-stream';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../../src/constants/limits';
+import { Functional } from '../../src/core/converters/functional';
+import { Exporter } from '../../src/core/converters/exporter';
+import { Iterator } from '../../src/core/converters/iterator';
 
 describe('ValueStream', () => {
 
@@ -76,7 +76,7 @@ describe('ValueStream', () => {
 
   describe('.convert()', () => {
 
-    it('should create a stream with function decorator that wraps itself', () => {
+    it('should create a stream with functional converter that wraps itself', () => {
       const fn = () => true;
       const factory = new MockFactory({});
       const stream = ValueStream.from(factory);
@@ -85,10 +85,10 @@ describe('ValueStream', () => {
 
       expect(result).toBeInstanceOf(ValueStream);
 
-      const factoryDecorator = result.getFactory() as FactoryDecorator;
-      expect(factoryDecorator).toBeInstanceOf(FactoryDecorator);
-      expect(factoryDecorator.getFactory()).toBe(stream);
-      expect(factoryDecorator.getDecorator()).toBe(fn);
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+      expect(functional.getDecorator()).toBe(fn);
     });
   });
 

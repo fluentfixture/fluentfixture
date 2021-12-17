@@ -1,24 +1,14 @@
-import { NON_FACTORY_LIKE_DATA_SET, NON_INTEGER_DATA_SET } from '../../data/type-sets';
-import { Sampler } from '../../../src/core/collectios/sampler';
-import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../../src/constants/limits';
 import { instance, mock, spy, verify, when } from 'ts-mockito';
-import { Random } from '../../../src/core/engine/random';
-import { AbstractFactory } from '../../../src/core/abstract-factory';
+import { NON_INTEGER_DATA_SET } from '../../data/type-sets';
+import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../../src/constants/limits';
+import { Random } from '../../../src/engine/random';
+import { Factory } from '../../../src/core/factory';
 import { MockFactory } from '../../mocks/mock-factory';
+import { Sampler } from '../../../src/core/converters/sampler';
 
 describe('Sampler', () => {
 
   describe('.constructor()', () => {
-
-    describe('parameter assertions (factory)', () => {
-
-      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when factory is not a factory-like, given: %s', (factory: any) => {
-
-        const thrown = () => new Sampler(factory, 2);
-
-        expect(thrown).toThrow('Parameter must be a factory-like.');
-      });
-    });
 
     describe('parameter assertions (size)', () => {
 
@@ -52,7 +42,7 @@ describe('Sampler', () => {
       const list = [1, 2, 3];
       const size = 2;
       const out = [1];
-      const mockFactory = mock(AbstractFactory);
+      const mockFactory = mock(Factory);
       const factory = new Sampler(instance(mockFactory), size);
 
       when(mockFactory.single()).thenReturn(list);
