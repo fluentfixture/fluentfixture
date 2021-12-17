@@ -1,7 +1,7 @@
 import * as dayjs from 'dayjs';
 import { UnitType } from 'dayjs';
-import { IFactory } from '../core/interfaces/factory';
-import { Functional } from '../core/converters/functional';
+import { IFactory } from '../factories/interfaces/factory';
+import { Functional } from '../factories/converters/functional';
 import { NumberStream } from './number-stream';
 import { ValueStream } from './value-stream';
 

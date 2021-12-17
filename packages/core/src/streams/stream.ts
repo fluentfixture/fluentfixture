@@ -1,6 +1,6 @@
-import { IFactory } from '../core/interfaces/factory';
+import { IFactory } from '../factories/interfaces/factory';
 import { Assert } from '../utils/assert';
-import { Factory } from '../core/factory';
+import { Factory } from '../factories/factory';
 
 export class Stream<T = any> extends Factory<T> {
   private readonly factory: IFactory<T>;

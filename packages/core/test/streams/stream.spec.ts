@@ -1,7 +1,7 @@
 import { instance, mock, verify, when } from 'ts-mockito';
 import { Stream } from '../../src/streams/stream'
 import { NON_FACTORY_LIKE_DATA_SET } from '../data/type-sets';
-import { Factory } from '../../src/core/factory';
+import { Factory } from '../../src/factories/factory';
 
 describe('Stream', () => {
 

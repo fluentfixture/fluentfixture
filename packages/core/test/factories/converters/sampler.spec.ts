@@ -2,9 +2,9 @@ import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { NON_INTEGER_DATA_SET } from '../../data/type-sets';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../../src/constants/limits';
 import { Random } from '../../../src/engine/random';
-import { Factory } from '../../../src/core/factory';
+import { Factory } from '../../../src/factories/factory';
 import { MockFactory } from '../../mocks/mock-factory';
-import { Sampler } from '../../../src/core/converters/sampler';
+import { Sampler } from '../../../src/factories/converters/sampler';
 
 describe('Sampler', () => {
 

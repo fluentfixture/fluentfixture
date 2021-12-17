@@ -1,6 +1,6 @@
 import { MockFactory } from '../../mocks/mock-factory';
-import { Optional } from '../../../src/core/selectors/optional';
-import { ValueAdapter } from '../../../src/core/adapters/value-adapter';
+import { Optional } from '../../../src/factories/selectors/optional';
+import { ValueAdapter } from '../../../src/factories/adapters/value-adapter';
 
 describe('Optional', () => {
 

@@ -1,5 +1,5 @@
 import { NON_FUNCTION_DATA_SET } from '../../data/type-sets';
-import { FunctionAdapter } from '../../../src/core/adapters/function-adapter';
+import { FunctionAdapter } from '../../../src/factories/adapters/function-adapter';
 
 describe('FunctionAdapter', () => {
 

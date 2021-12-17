@@ -1,8 +1,8 @@
 import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { NON_FUNCTION_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
-import { Factory } from '../../../src/core/factory';
-import { Exporter } from '../../../src/core/converters/exporter';
+import { Factory } from '../../../src/factories/factory';
+import { Exporter } from '../../../src/factories/converters/exporter';
 
 describe('Exporter', () => {
 

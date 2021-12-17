@@ -1,7 +1,7 @@
 import { spy, verify, when } from 'ts-mockito';
 import { NON_DATE_DATA_SET } from '../data/type-sets';
 import { Random } from '../../src/engine/random';
-import { DateFactory } from '../../src/core/date-factory';
+import { DateFactory } from '../../src/factories/date-factory';
 
 describe('DateFactory', () => {
 

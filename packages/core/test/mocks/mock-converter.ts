@@ -1,5 +1,5 @@
-import { Converter } from '../../src/core/converters/converter';
-import { IFactory } from '../../src/core/interfaces/factory';
+import { Converter } from '../../src/factories/converters/converter';
+import { IFactory } from '../../src/factories/interfaces/factory';
 
 export class MockConverter<T = any, K = any> extends Converter<T, K> {
   private readonly value: K;

@@ -1,4 +1,4 @@
-import { ValueAdapter } from '../../../src/core/adapters/value-adapter';
+import { ValueAdapter } from '../../../src/factories/adapters/value-adapter';
 
 describe('ValueAdapter', () => {
 

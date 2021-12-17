@@ -1,6 +1,6 @@
-import { IFactory } from '../core/interfaces/factory';
+import { IFactory } from '../factories/interfaces/factory';
 import { ExtendedObjectModel } from '../types/extended-object-model';
-import { Property } from '../core/converters/property';
+import { Property } from '../factories/converters/property';
 import { ValueStream } from './value-stream';
 
 export class ObjectStream<T = any> extends ValueStream<T> {

@@ -1,26 +1,26 @@
 import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { Random } from '../../../src/engine/random';
-import { Factory } from '../../../src/core/factory';
-import { Picker } from '../../../src/core/converters/picker';
+import { Factory } from '../../../src/factories/factory';
+import { Shuffler } from '../../../src/factories/converters/shuffler';
 
-describe('Picker', () => {
+describe('Shuffler', () => {
 
   describe('.single()', () => {
 
-    it('should select a value from the result of the given factory by using engine', () => {
+    it('should shuffle the result of the given factory by using engine', () => {
       const spyEngine = spy(Random);
       const list = [1, 2, 3];
-      const out = 1;
+      const out = [3, 2, 1];
       const mockFactory = mock(Factory);
-      const factory = new Picker(instance(mockFactory));
+      const factory = new Shuffler(instance(mockFactory));
 
       when(mockFactory.single()).thenReturn(list);
-      when(spyEngine.pick(list)).thenReturn(out);
+      when(spyEngine.shuffle(list)).thenReturn(out);
 
       const result = factory.single();
 
       expect(result).toBe(out);
-      verify(spyEngine.pick(list)).once();
+      verify(spyEngine.shuffle(list)).once();
       verify(mockFactory.single()).once();
     });
   });

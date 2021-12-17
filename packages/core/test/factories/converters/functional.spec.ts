@@ -1,8 +1,8 @@
 import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { NON_FUNCTION_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
-import { Factory } from '../../../src/core/factory';
-import { Functional } from '../../../src/core/converters/functional';
+import { Factory } from '../../../src/factories/factory';
+import { Functional } from '../../../src/factories/converters/functional';
 
 describe('Functional', () => {
 

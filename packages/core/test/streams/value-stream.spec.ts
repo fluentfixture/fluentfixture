@@ -1,12 +1,12 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { ValueStream } from '../../src/streams/value-stream';
-import { Optional } from '../../src/core/selectors/optional';
-import { Nullable } from '../../src/core/selectors/nullable';
+import { Optional } from '../../src/factories/selectors/optional';
+import { Nullable } from '../../src/factories/selectors/nullable';
 import { ArrayStream } from '../../src/streams/array-stream';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../../src/constants/limits';
-import { Functional } from '../../src/core/converters/functional';
-import { Exporter } from '../../src/core/converters/exporter';
-import { Iterator } from '../../src/core/converters/iterator';
+import { Functional } from '../../src/factories/converters/functional';
+import { Exporter } from '../../src/factories/converters/exporter';
+import { Iterator } from '../../src/factories/converters/iterator';
 
 describe('ValueStream', () => {
 

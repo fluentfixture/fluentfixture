@@ -1,6 +1,6 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { ObjectStream } from '../../src/streams/object-stream';
-import { Property } from '../../src/core/converters/property';
+import { Property } from '../../src/factories/converters/property';
 
 describe('ObjectStream', () => {
 

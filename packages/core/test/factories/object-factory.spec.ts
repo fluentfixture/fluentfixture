@@ -1,7 +1,7 @@
 import { instance, mock, verify, when } from 'ts-mockito';
 import { NON_OBJECT_DATA_SET } from '../data/type-sets';
-import { ObjectFactory } from '../../src/core/object-factory';
-import { Factory } from '../../src/core/factory';
+import { ObjectFactory } from '../../src/factories/object-factory';
+import { Factory } from '../../src/factories/factory';
 
 describe('ObjectFactory', () => {
 

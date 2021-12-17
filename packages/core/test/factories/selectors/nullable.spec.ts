@@ -1,6 +1,6 @@
 import { MockFactory } from '../../mocks/mock-factory';
-import { ValueAdapter } from '../../../src/core/adapters/value-adapter';
-import { Nullable } from '../../../src/core/selectors/nullable';
+import { ValueAdapter } from '../../../src/factories/adapters/value-adapter';
+import { Nullable } from '../../../src/factories/selectors/nullable';
 
 describe('Nullable', () => {
 

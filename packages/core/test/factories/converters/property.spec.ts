@@ -1,8 +1,8 @@
 import { instance, mock, verify, when } from 'ts-mockito';
 import { NON_FACTORY_LIKE_DATA_SET, NON_PROPERTY_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
-import { Factory } from '../../../src/core/factory';
-import { Property } from '../../../src/core/converters/property';
+import { Factory } from '../../../src/factories/factory';
+import { Property } from '../../../src/factories/converters/property';
 
 describe('Property', () => {
 

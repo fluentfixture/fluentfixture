@@ -1,6 +1,6 @@
-import { IFactory } from '../core/interfaces/factory';
+import { IFactory } from '../factories/interfaces/factory';
 import { ConvertFunction } from '../types/convert-function';
-import { Functional } from '../core/converters/functional';
+import { Functional } from '../factories/converters/functional';
 import { ValueStream } from './value-stream';
 
 export class NumberStream extends ValueStream<number> {

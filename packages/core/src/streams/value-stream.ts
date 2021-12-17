@@ -1,11 +1,11 @@
-import { IFactory } from '../core/interfaces/factory';
-import { Optional } from '../core/selectors/optional';
+import { IFactory } from '../factories/interfaces/factory';
+import { Optional } from '../factories/selectors/optional';
 import { ConvertFunction } from '../types/convert-function';
 import { ConsumerFunction } from '../types/consumer-function';
-import { Nullable } from '../core/selectors/nullable';
+import { Nullable } from '../factories/selectors/nullable';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../constants/limits';
-import { Functional } from '../core/converters/functional';
-import { Exporter } from '../core/converters/exporter';
+import { Functional } from '../factories/converters/functional';
+import { Exporter } from '../factories/converters/exporter';
 import { Stream } from './stream';
 import { ArrayStream } from './array-stream';
 

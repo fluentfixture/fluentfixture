@@ -1,6 +1,6 @@
 import { Stream } from '../../src/streams/stream';
 import { ConvertFunction } from '../../src/types/convert-function';
-import { Functional } from '../../src/core/converters/functional';
+import { Functional } from '../../src/factories/converters/functional';
 
 export const assertStreamOperations = (stream: Stream, result: Stream): ConvertFunction => {
   const functional = result.getFactory() as Functional;

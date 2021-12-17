@@ -1,4 +1,4 @@
-import { Factory } from '../../src/core/factory';
+import { Factory } from '../../src/factories/factory';
 
 export class MockFactory<T = any> extends Factory<T> {
   private readonly value: T;

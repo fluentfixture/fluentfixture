@@ -1,13 +1,13 @@
-import { IFactory } from '../core/interfaces/factory';
+import { IFactory } from '../factories/interfaces/factory';
 import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
 import { MapFunction } from '../types/map-function';
 import { FilterFunction } from '../types/filter-function';
 import { SortFunction } from '../types/sort-function';
-import { Iterator } from '../core/converters/iterator';
-import { Picker } from '../core/converters/picker';
-import { Functional } from '../core/converters/functional';
-import { Shuffler } from '../core/converters/shuffler';
-import { Sampler } from '../core/converters/sampler';
+import { Iterator } from '../factories/converters/iterator';
+import { Picker } from '../factories/converters/picker';
+import { Functional } from '../factories/converters/functional';
+import { Shuffler } from '../factories/converters/shuffler';
+import { Sampler } from '../factories/converters/sampler';
 import { Stream } from './stream';
 import { ValueStream } from './value-stream';
 

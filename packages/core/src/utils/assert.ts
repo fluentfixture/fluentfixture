@@ -1,5 +1,5 @@
 import * as check from 'check-types';
-import { IFactory } from '../core/interfaces/factory';
+import { IFactory } from '../factories/interfaces/factory';
 
 export class Assert {
   public static integer(value: number): void {
