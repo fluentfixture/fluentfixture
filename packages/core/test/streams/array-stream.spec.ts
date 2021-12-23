@@ -1,6 +1,5 @@
 import { MockFactory } from '../mocks/mock-factory';
-import { ValueStream } from '../../src/streams/value-stream';
-import { ArrayStream } from '../../src/streams/array-stream';
+import { Stream, ArrayStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
 import { Picker } from '../../src/factories/converters/picker';
@@ -17,7 +16,7 @@ describe('ArrayStream', () => {
 
       const result = stream.pick();
 
-      expect(result).toBeInstanceOf(ValueStream);
+      expect(result).toBeInstanceOf(Stream);
 
       const picker = result.getFactory() as Picker;
       expect(picker).toBeInstanceOf(Picker);

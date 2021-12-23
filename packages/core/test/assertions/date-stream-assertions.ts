@@ -1,7 +1,6 @@
 import { UnitType } from 'dayjs';
 import * as dayjs from 'dayjs';
-import { DateStream } from '../../src/streams/date-stream';
-import { NumberStream } from '../../src/streams/number-stream';
+import { NumberStream, DateStream } from '../../src/streams/stream-loader';
 import { assertStreamOperations } from './functional-converter-assertions';
 
 export const assertDateStreamAddOrSubtract = (stream: DateStream, result: DateStream, value: Date, unit: UnitType, output: number): void => {

@@ -1,4 +1,4 @@
-import { ArrayStream } from '../../src/streams/array-stream';
+import { ArrayStream } from '../../src/streams/stream-loader';
 import { assertStreamOperations } from './functional-converter-assertions';
 
 export const assertArrayStreamDecorator = (stream: ArrayStream, result: ArrayStream, value: Array<any>, output: Array<any>): void => {

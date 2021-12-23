@@ -1,4 +1,4 @@
-import { NumberStream } from '../../src/streams/number-stream';
+import { NumberStream } from '../../src/streams/stream-loader';
 import { assertStreamOperations } from './functional-converter-assertions';
 
 export const assertNumberStreamDecorator = (stream: NumberStream, result: NumberStream, value: number, output: number): void => {

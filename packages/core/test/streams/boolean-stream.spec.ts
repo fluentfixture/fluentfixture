@@ -1,5 +1,5 @@
 import { MockFactory } from '../mocks/mock-factory';
-import { BooleanStream } from '../../src/streams/boolean-stream';
+import { BooleanStream } from '../../src/streams/stream-loader';
 import { assertBooleanStreamDecorator } from '../assertions/boolean-stream-assertions';
 
 describe('BooleanStream', () => {

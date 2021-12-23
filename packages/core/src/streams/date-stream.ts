@@ -2,10 +2,9 @@ import * as dayjs from 'dayjs';
 import { UnitType } from 'dayjs';
 import { IFactory } from '../factories/interfaces/factory';
 import { Functional } from '../factories/converters/functional';
-import { NumberStream } from './number-stream';
-import { ValueStream } from './value-stream';
+import { Stream, NumberStream } from './stream-loader';
 
-export class DateStream extends ValueStream<Date> {
+export class DateStream extends Stream<Date> {
   public constructor(factory: IFactory<Date>) {
     super(factory);
   }

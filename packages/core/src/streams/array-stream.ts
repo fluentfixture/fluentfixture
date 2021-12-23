@@ -8,8 +8,7 @@ import { Picker } from '../factories/converters/picker';
 import { Functional } from '../factories/converters/functional';
 import { Shuffler } from '../factories/converters/shuffler';
 import { Sampler } from '../factories/converters/sampler';
-import { Stream } from './stream';
-import { ValueStream } from './value-stream';
+import { Stream } from './stream-loader';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   public constructor(factory: IFactory<ReadonlyArray<T>>) {
@@ -20,8 +19,8 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
     return new ArrayStream(new Iterator(factory, count));
   }
 
-  public pick(): ValueStream<T> {
-    return ValueStream.from(new Picker(this));
+  public pick(): Stream<T> {
+    return Stream.from(new Picker(this));
   }
 
   public sample(size: number): ArrayStream<T> {

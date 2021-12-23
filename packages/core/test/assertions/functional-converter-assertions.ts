@@ -1,4 +1,4 @@
-import { Stream } from '../../src/streams/stream';
+import { Stream } from '../../src/streams/stream-loader';
 import { ConvertFunction } from '../../src/types/convert-function';
 import { Functional } from '../../src/factories/converters/functional';
 

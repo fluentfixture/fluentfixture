@@ -1,4 +1,4 @@
-import { BooleanStream } from '../../src/streams/boolean-stream';
+import { BooleanStream } from '../../src/streams/stream-loader';
 import { assertStreamOperations } from './functional-converter-assertions';
 
 export const assertBooleanStreamDecorator = (stream: BooleanStream, result: BooleanStream, value: boolean, output: boolean): void => {

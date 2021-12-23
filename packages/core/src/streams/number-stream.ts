@@ -1,9 +1,9 @@
 import { IFactory } from '../factories/interfaces/factory';
 import { ConvertFunction } from '../types/convert-function';
 import { Functional } from '../factories/converters/functional';
-import { ValueStream } from './value-stream';
+import { Stream } from './stream-loader';
 
-export class NumberStream extends ValueStream<number> {
+export class NumberStream extends Stream<number> {
   public constructor(factory: IFactory<number>) {
     super(factory);
   }

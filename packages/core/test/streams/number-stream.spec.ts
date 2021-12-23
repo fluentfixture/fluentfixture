@@ -1,5 +1,5 @@
 import { MockFactory } from '../mocks/mock-factory';
-import { NumberStream } from '../../src/streams/number-stream';
+import { NumberStream } from '../../src/streams/stream-loader';
 import { assertNumberStreamDecorator } from '../assertions/number-stream-assertions';
 
 describe('NumberStream', () => {

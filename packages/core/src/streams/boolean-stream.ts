@@ -1,9 +1,9 @@
 import { IFactory } from '../factories/interfaces/factory';
 import { ConvertFunction } from '../types/convert-function';
 import { Functional } from '../factories/converters/functional';
-import { ValueStream } from './value-stream';
+import { Stream } from './stream-loader';
 
-export class BooleanStream extends ValueStream<boolean> {
+export class BooleanStream extends Stream<boolean> {
   public constructor(factory: IFactory<boolean>) {
     super(factory);
   }
