@@ -16,6 +16,7 @@
   },
   "scripts": {
     "test": "jest",
+    "build": "tsc",
     "lint:tests": "eslint 'packages/**/**.spec.ts' -c '.eslintrc.spec.js'",
     "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'"
   },
