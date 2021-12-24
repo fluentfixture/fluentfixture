@@ -3,7 +3,7 @@
     "collectCoverage": true,
     "coverageReporters": ["lcov", "json"],
     "collectCoverageFrom": [
-        "./src/**"
+        "./packages/**/src/**"
     ],
     "transform": {
         "^.+\\.tsx?$": "ts-jest"
@@ -19,7 +19,10 @@
     ],
     "globals": {
         "ts-jest": {
-            "tsconfig": "../../tsconfig.json"
+            "tsconfig": "tsconfig.json"
         }
-    }
+    },
+    "testPathIgnorePatterns" : [
+        "<rootDir>/.eslintrc.spec.js"
+    ]
 }
