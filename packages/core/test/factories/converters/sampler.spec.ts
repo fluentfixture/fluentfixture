@@ -5,6 +5,7 @@ import { Random } from '../../../src/engine/random';
 import { Factory } from '../../../src/factories/factory';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Sampler } from '../../../src/factories/converters/sampler';
+import { IFactory } from '../../../src/factories/interfaces/factory';
 
 describe('Sampler', () => {
 
@@ -42,7 +43,7 @@ describe('Sampler', () => {
       const list = [1, 2, 3];
       const size = 2;
       const out = [1];
-      const mockFactory = mock(Factory);
+      const mockFactory = mock<IFactory<ReadonlyArray<any>>>(Factory);
       const factory = new Sampler(instance(mockFactory), size);
 
       when(mockFactory.single()).thenReturn(list);
