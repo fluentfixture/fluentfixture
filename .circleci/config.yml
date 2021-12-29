@@ -110,7 +110,7 @@ jobs:
       - *install-deps
       - *lerna-bootstrap
       - snyk/scan:
-        - additional-arguments: --all-projects
+          additional-arguments: --all-projects
 
 workflows:
   version: 2
