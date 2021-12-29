@@ -55,14 +55,11 @@ jobs:
       - *install-deps
       - *lerna-bootstrap
       - *build-packages
-      - *run-unit-tests
 
   test_node_10:
     docker:
       - image: circleci/node:10
     <<: *unit-tests-template
-    steps:
-      - coveralls/upload
 
   test_node_12:
     docker:
@@ -78,6 +75,18 @@ jobs:
     docker:
       - image: circleci/node:16
     <<: *unit-tests-template
+
+  coverage:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - *build-packages
+      - *run-unit-tests
+      - coveralls/upload
 
   lint:
     working_directory: ~/fluentfixture
@@ -110,3 +119,9 @@ workflows:
       - lint:
           requires:
             - build
+      - coverage:
+          requires:
+            - test_node_10
+            - test_node_12
+            - test_node_14
+            - test_node_16
