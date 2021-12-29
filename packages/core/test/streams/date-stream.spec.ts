@@ -8,7 +8,7 @@ import {
 } from '../assertions/date-stream-assertions';
 
 describe('DateStream', () => {
-  const value = dayjs('2018-04-14T16:17:18.019+03:00').toDate();
+  const value = dayjs('2018-04-14T16:17:18.019').toDate();
   const operand = 1;
   const modifier = 5;
   const stream = new DateStream(new MockFactory(value));
