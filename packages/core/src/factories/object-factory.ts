@@ -1,7 +1,6 @@
 import { ObjectModel } from '../types/object-model';
 import { Assert } from '../utils/assert';
 import { Factory } from './factory';
-import { IFactory } from './interfaces/factory';
 
 export class ObjectFactory<T> extends Factory<T> {
   private readonly model: ObjectModel<T>
@@ -12,7 +11,11 @@ export class ObjectFactory<T> extends Factory<T> {
     this.model = model;
   }
 
-  public single() {
-    return Object.fromEntries(Object.entries(this.model as Record<string, IFactory>).map(([k, v]) => [k, v.single()])) as T;
+  public single(): T {
+    const result = { } as T;
+    for (const key of Object.keys(this.model)) {
+      result[key] = this.model[key].single();
+    }
+    return result;
   }
 }
