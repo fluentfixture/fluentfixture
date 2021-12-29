@@ -6,32 +6,32 @@ orbs:
 aliases:
   - &restore-cache
     restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+      key: dependency-cache-{{ checksum "package.json" }}
   - &save-cache
     save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
+      key: dependency-cache-{{ checksum "package.json" }}
+      paths:
+        - ./node_modules
   - &install-deps
     run:
-        name: Install dependencies
-        command: npm ci
+      name: Install dependencies
+      command: npm ci
   - &lerna-bootstrap
     run:
-        name: Lerna bootstrap
-        command: npm run bootstrap
+      name: Lerna bootstrap
+      command: npm run bootstrap
   - &build-packages
     run:
-        name: Build
-        command: npm run build
+      name: Build
+      command: npm run build
   - &run-unit-tests
     run:
-        name: Test
-        command: npm run test
+      name: Test
+      command: npm run test
   - &run-lint
     run:
-        name: Lint
-        command: npm run lint
+      name: Lint
+      command: npm run lint
 
 unit-tests-template: &unit-tests-template
   working_directory: ~/fluentfixture
