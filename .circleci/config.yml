@@ -109,7 +109,8 @@ jobs:
       - *restore-cache
       - *install-deps
       - *lerna-bootstrap
-      - snyk/scan
+      - snyk/scan:
+        - additional-arguments: --all-projects
 
 workflows:
   version: 2
