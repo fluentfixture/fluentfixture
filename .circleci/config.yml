@@ -1,34 +1,37 @@
 version: 2.1
 
+orbs:
+  coveralls: coveralls/coveralls@1.0.4
+
 aliases:
   - &restore-cache
     restore_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
+      key: dependency-cache-{{ checksum "package.json" }}
   - &save-cache
     save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
+      key: dependency-cache-{{ checksum "package.json" }}
+      paths:
+        - ./node_modules
   - &install-deps
     run:
-        name: Install dependencies
-        command: npm ci
+      name: Install dependencies
+      command: npm ci
   - &lerna-bootstrap
     run:
-        name: Lerna bootstrap
-        command: npm run bootstrap
+      name: Lerna bootstrap
+      command: npm run bootstrap
   - &build-packages
     run:
-        name: Build
-        command: npm run build
+      name: Build
+      command: npm run build
   - &run-unit-tests
     run:
-        name: Test
-        command: npm run test
+      name: Test
+      command: npm run test
   - &run-lint
     run:
-        name: Lint
-        command: npm run lint
+      name: Lint
+      command: npm run lint
 
 unit-tests-template: &unit-tests-template
   working_directory: ~/fluentfixture
@@ -52,27 +55,38 @@ jobs:
       - *install-deps
       - *lerna-bootstrap
       - *build-packages
-      - *run-unit-tests
 
   test_node_10:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:10
+    <<: *unit-tests-template
 
   test_node_12:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:12
+    <<: *unit-tests-template
 
   test_node_14:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:14
+    <<: *unit-tests-template
 
   test_node_16:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:16
+    <<: *unit-tests-template
+
+  coverage:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - *build-packages
+      - *run-unit-tests
+      - coveralls/upload
 
   lint:
     working_directory: ~/fluentfixture
@@ -105,3 +119,9 @@ workflows:
       - lint:
           requires:
             - build
+      - coverage:
+          requires:
+            - test_node_10
+            - test_node_12
+            - test_node_14
+            - test_node_16
