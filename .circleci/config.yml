@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  snyk: snyk/snyk@1.1.2
   coveralls: coveralls/coveralls@1.0.4
 
 aliases:
@@ -51,9 +52,9 @@ jobs:
     steps:
       - checkout
       - *restore-cache
-      - *save-cache
       - *install-deps
       - *lerna-bootstrap
+      - *save-cache
       - *build-packages
 
   test_node_10:
@@ -99,26 +100,41 @@ jobs:
       - *lerna-bootstrap
       - *run-lint
 
+  security:
+    working_directory: ~/fluentfixture
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - snyk/scan:
+          additional-arguments: --all-projects
+
 workflows:
   version: 2
   build-and-test:
     jobs:
       - build
+      - security:
+          requires:
+            - build
       - test_node_10:
           requires:
-            - build
+            - security
       - test_node_12:
           requires:
-            - build
+            - security
       - test_node_14:
           requires:
-            - build
+            - security
       - test_node_16:
           requires:
-            - build
+            - security
       - lint:
           requires:
-            - build
+            - security
       - coverage:
           requires:
             - test_node_10
