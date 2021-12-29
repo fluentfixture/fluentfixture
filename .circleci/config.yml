@@ -13,6 +13,10 @@ aliases:
     run:
         name: Install dependencies
         command: npm ci
+  - &install-lerna
+    run:
+        name: Install lerna
+        command: npm install --global lerna
   - &lerna-bootstrap
     run:
         name: Lerna bootstrap
@@ -36,6 +40,7 @@ unit-tests-template: &unit-tests-template
     - checkout
     - *restore-cache
     - *install-deps
+    - *install-lerna
     - *lerna-bootstrap
     - *build-packages
     - *run-unit-tests
@@ -50,6 +55,7 @@ jobs:
       - *restore-cache
       - *save-cache
       - *install-deps
+      - *install-lerna
       - *lerna-bootstrap
       - *build-packages
       - *run-unit-tests
