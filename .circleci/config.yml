@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  coveralls: coveralls/coveralls@1.0.4
+
 aliases:
   - &restore-cache
     restore_cache:
@@ -55,24 +58,26 @@ jobs:
       - *run-unit-tests
 
   test_node_10:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:10
+    <<: *unit-tests-template
+    steps:
+      - coveralls/upload
 
   test_node_12:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:12
+    <<: *unit-tests-template
 
   test_node_14:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:14
+    <<: *unit-tests-template
 
   test_node_16:
-    <<: *unit-tests-template
     docker:
       - image: circleci/node:16
+    <<: *unit-tests-template
 
   lint:
     working_directory: ~/fluentfixture
