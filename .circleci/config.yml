@@ -1,0 +1,107 @@
+version: 2.1
+
+aliases:
+  - &restore-cache
+    restore_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+  - &save-cache
+    save_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+        paths:
+          - ./node_modules
+  - &install-deps
+    run:
+        name: Install dependencies
+        command: npm ci
+  - &lerna-bootstrap
+    run:
+        name: Lerna bootstrap
+        command: lerna bootstrap
+  - &build-packages
+    run:
+        name: Build
+        command: npm run build
+  - &run-unit-tests
+    run:
+        name: Test
+        command: npm run test
+  - &run-lint
+    run:
+        name: Lint
+        command: npm run lint
+
+unit-tests-template: &unit-tests-template
+  working_directory: ~/fluentfixture
+  steps:
+    - checkout
+    - *restore-cache
+    - *install-deps
+    - *lerna-bootstrap
+    - *build-packages
+    - *run-unit-tests
+
+jobs:
+  build:
+    working_directory: ~/fluentfixture
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *save-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - *build-packages
+      - *run-unit-tests
+        
+  test_node_10:
+    <<: *unit-tests-template
+    docker:
+      - image: circleci/node:10
+
+  test_node_12:
+    <<: *unit-tests-template
+    docker:
+      - image: circleci/node:12
+
+  test_node_14:
+    <<: *unit-tests-template
+    docker:
+      - image: circleci/node:14
+    
+  test_node_16:
+    <<: *unit-tests-template
+    docker:
+      - image: circleci/node:16
+
+  lint:
+    working_directory: ~/fluentfixture
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - *run-lint
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+      - test_node_10:
+          requires:
+            - build
+      - test_node_12:
+          requires:
+            - build
+      - test_node_14:
+          requires:
+            - build
+      - test_node_16:
+          requires:
+            - build
+      - lint:
+          requires:
+            - build
