@@ -18,4 +18,8 @@ export class ObjectFactory<T> extends Factory<T> {
     }
     return result;
   }
+
+  public getModel(): ObjectModel<T> {
+    return this.model;
+  }
 }

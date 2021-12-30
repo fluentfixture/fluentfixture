@@ -14,4 +14,8 @@ export class FunctionAdapter<T> extends Factory<T> {
   public single(): T {
     return this.producer();
   }
+
+  public getFunction(): ProducerFunction<T> {
+    return this.producer;
+  }
 }

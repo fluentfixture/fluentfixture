@@ -16,4 +16,8 @@ export class BooleanFactory extends Factory<boolean> {
   public single(): boolean {
     return Random.bool(this.percentage);
   }
+
+  public getPercentage(): number {
+    return this.percentage;
+  }
 }

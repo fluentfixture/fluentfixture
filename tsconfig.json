@@ -16,6 +16,6 @@
       "@fluentfixture/core": ["./packages/core"]
     }
   },
-  "include": ["packages/**/*", "integration/**/*"],
+  "include": ["packages/**/*", "integration/**/*", "sample/**/*"],
   "exclude": ["node_modules"]
 }
