@@ -30,6 +30,8 @@ module.exports = {
         'import/order': ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}]
     },
     ignorePatterns: [
-        '.eslintrc.js'
-    ],
+        '.eslintrc.js',
+        '.eslintrc.spec.js',
+        'commitlint.config.js'
+    ]
 };

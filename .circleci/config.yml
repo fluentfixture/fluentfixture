@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   snyk: snyk/snyk@1.1.2
   coveralls: coveralls/coveralls@1.0.4
+  commitlint: conventional-changelog/commitlint@1.0.0
 
 aliases:
   - &restore-cache
@@ -116,25 +117,36 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build
+      - commitlint/lint
+      - build:
+          requires:
+            - commitlint/lint
       - security:
           requires:
-            - build
-      - test_node_10:
-          requires:
-            - security
-      - test_node_12:
-          requires:
-            - security
-      - test_node_14:
-          requires:
-            - security
-      - test_node_16:
-          requires:
-            - security
+            - commitlint/lint
       - lint:
           requires:
+            - commitlint/lint
+      - test_node_10:
+          requires:
+            - build
             - security
+            - lint
+      - test_node_12:
+          requires:
+            - build
+            - security
+            - lint
+      - test_node_14:
+          requires:
+            - build
+            - security
+            - lint
+      - test_node_16:
+          requires:
+            - build
+            - security
+            - lint
       - coverage:
           requires:
             - test_node_10
