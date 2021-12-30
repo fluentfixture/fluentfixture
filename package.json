@@ -20,7 +20,8 @@
     "bootstrap": "./node_modules/.bin/lerna bootstrap",
     "lint": "npm run lint:tests && npm run lint:packages",
     "lint:tests": "eslint 'packages/**/**.spec.ts' -c '.eslintrc.spec.js'",
-    "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'"
+    "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'",
+    "prepare": "husky install"
   },
   "dependencies": {},
   "devDependencies": {
@@ -32,6 +33,7 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-unicorn": "^39.0.0",
+    "husky": "^7.0.4",
     "jest": "^27.4.2",
     "lerna": "^4.0.0",
     "prettier": "^2.5.0",
