@@ -1,6 +1,7 @@
 export const MIN_ARRAY_SIZE = 0;
 export const DEFAULT_ARRAY_SIZE = 10;
 export const MAX_ARRAY_SIZE = 10_000;
+export const DEFAULT_SAMPLE_COUNT = 3;
 export const MIN_PERCENTAGE = 0;
 export const DEFAULT_PERCENTAGE = 0.5;
 export const MAX_PERCENTAGE = 1;

@@ -8,6 +8,9 @@ import { ConsumerFunction } from '../types/consumer-function';
 import { Exporter } from '../factories/converters/exporter';
 import { Optional } from '../factories/selectors/optional';
 import { Nullable } from '../factories/selectors/nullable';
+import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { ProducerFunction } from '../types/producer-function';
+import { FunctionAdapter } from '../factories/adapters/function-adapter';
 import { ArrayStream } from './stream-loader';
 
 export class Stream<T = any> extends Factory<T> {
@@ -23,12 +26,20 @@ export class Stream<T = any> extends Factory<T> {
     return this.factory.single();
   }
 
-  public static from<T>(factory: IFactory<T>): Stream<T> {
+  public static from<T = any>(factory: IFactory<T>): Stream<T> {
     return new Stream(factory);
   }
 
+  public static fromValue<T = any>(value: T): Stream<T> {
+    return Stream.from(new ValueAdapter(value));
+  }
+
+  public static fromResult<T = any>(value: ProducerFunction<T>): Stream<T> {
+    return Stream.from(new FunctionAdapter(value));
+  }
+
   public array(count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
-    return ArrayStream.of(this, count);
+    return ArrayStream.iterate(this, count);
   }
 
   public convert<K>(fn: ConvertFunction<T, K>): Stream<K> {

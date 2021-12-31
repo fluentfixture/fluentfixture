@@ -8,6 +8,7 @@ import { Picker } from '../factories/converters/picker';
 import { Functional } from '../factories/converters/functional';
 import { Shuffler } from '../factories/converters/shuffler';
 import { Sampler } from '../factories/converters/sampler';
+import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
@@ -15,8 +16,12 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
     super(factory);
   }
 
-  public static of<T>(factory: IFactory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
+  public static iterate<T = any>(factory: IFactory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
     return new ArrayStream(new Iterator(factory, count));
+  }
+
+  public static fromList<T = any>(arr: ReadonlyArray<T>): ArrayStream<T> {
+    return new ArrayStream(new ValueAdapter(arr));
   }
 
   public pick(): Stream<T> {

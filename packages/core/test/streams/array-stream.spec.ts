@@ -12,7 +12,7 @@ describe('ArrayStream', () => {
 
     it('should create a stream with picker decorator that wraps itself', () => {
       const factory = new MockFactory([]);
-      const stream = ArrayStream.of(factory, 10);
+      const stream = ArrayStream.iterate(factory, 10);
 
       const result = stream.pick();
 
@@ -29,7 +29,7 @@ describe('ArrayStream', () => {
     it('should create a stream with sampler decorator that wraps itself', () => {
       const size = 5;
       const factory = new MockFactory([]);
-      const stream = ArrayStream.of(factory, 10);
+      const stream = ArrayStream.iterate(factory, 10);
 
       const result = stream.sample(size);
 
@@ -46,7 +46,7 @@ describe('ArrayStream', () => {
 
     it('should create a stream with shuffle decorator that wraps itself', () => {
       const factory = new MockFactory([]);
-      const stream = ArrayStream.of(factory, 10);
+      const stream = ArrayStream.iterate(factory, 10);
 
       const result = stream.shuffle();
 
