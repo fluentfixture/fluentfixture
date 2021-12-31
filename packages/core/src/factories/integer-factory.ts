@@ -20,4 +20,12 @@ export class IntegerFactory extends Factory<number> {
   public single(): number {
     return Random.integer(this.min, this.max);
   }
+
+  public getMin(): number {
+    return this.min;
+  }
+
+  public getMax(): number {
+    return  this.max;
+  }
 }

@@ -20,4 +20,12 @@ export class NumberFactory extends Factory<number> {
   public single(): number {
     return Random.float(this.min, this.max);
   }
+
+  public getMin(): number {
+    return this.min;
+  }
+
+  public getMax(): number {
+    return  this.max;
+  }
 }
