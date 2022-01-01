@@ -15,4 +15,3 @@ export const pick = <T = any>(arr: ReadonlyArray<T>): Stream<T> => ArrayStream.f
 export const take = <T = any>(arr: ReadonlyArray<T>, count: number = DEFAULT_SAMPLE_COUNT): ArrayStream<T> => ArrayStream.fromList(arr).sample(count);
 
 export const shuffle = <T = any>(arr: ReadonlyArray<T>): ArrayStream<T> => ArrayStream.fromList(arr).shuffle();
-

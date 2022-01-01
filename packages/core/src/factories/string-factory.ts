@@ -19,4 +19,12 @@ export class StringFactory extends Factory<string> {
   public single(): string {
     return Random.string(this.charset, this.length);
   }
+
+  public getCharset(): string {
+    return this.charset;
+  }
+
+  public getLength(): number {
+    return this.length;
+  }
 }
