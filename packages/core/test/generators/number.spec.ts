@@ -12,7 +12,9 @@ describe('number', () => {
     it('should create a number stream with number factory with given min and max values', () => {
       const min = 1;
       const max = 2;
+
       const result = num(min, max);
+
       const numberFactory = result.getFactory() as NumberFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -23,7 +25,9 @@ describe('number', () => {
 
     it('should use default max value when max is not provided', () => {
       const min = 1;
+
       const result = num(min);
+
       const numberFactory = result.getFactory() as NumberFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -34,6 +38,7 @@ describe('number', () => {
 
     it('should use default min and max value when min and max are not provided', () => {
       const result = num();
+
       const numberFactory = result.getFactory() as NumberFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -48,7 +53,9 @@ describe('number', () => {
     it('should create a number stream with integer factory with given min and max values', () => {
       const min = 1;
       const max = 2;
+
       const result = int(min, max);
+
       const integerFactory = result.getFactory() as IntegerFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -59,7 +66,9 @@ describe('number', () => {
 
     it('should use default max value when max is not provided', () => {
       const min = 1;
+
       const result = int(min);
+
       const integerFactory = result.getFactory() as IntegerFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -70,6 +79,7 @@ describe('number', () => {
 
     it('should use default min and max value when min and max are not provided', () => {
       const result = int();
+
       const integerFactory = result.getFactory() as IntegerFactory;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -83,6 +93,7 @@ describe('number', () => {
 
     it('should create a number stream with given zero', () => {
       const result = zero();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(NumberStream);
@@ -95,6 +106,7 @@ describe('number', () => {
 
     it('should create a number stream with given zero', () => {
       const result = one();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(NumberStream);

@@ -10,6 +10,7 @@ describe('boolean', () => {
 
     it('should create a boolean stream with true', () => {
       const result = truthy();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(BooleanStream);
@@ -22,6 +23,7 @@ describe('boolean', () => {
 
     it('should create a boolean stream with false', () => {
       const result = falsy();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(BooleanStream);
@@ -34,7 +36,9 @@ describe('boolean', () => {
 
     it('should create a boolean stream with boolean factory with given percentage', () => {
       const percentage = 0.2;
+
       const result = bool(percentage);
+
       const booleanFactory = result.getFactory() as BooleanFactory;
 
       expect(result).toBeInstanceOf(BooleanStream);
@@ -44,6 +48,7 @@ describe('boolean', () => {
 
     it('should use default percentage when percentage is not provided', () => {
       const result = bool();
+
       const booleanFactory = result.getFactory() as BooleanFactory;
 
       expect(result).toBeInstanceOf(BooleanStream);

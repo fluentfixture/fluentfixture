@@ -17,4 +17,12 @@ export class DateFactory extends Factory<Date> {
   public single(): Date {
     return Random.date(this.min, this.max);
   }
+
+  public getMin(): Date {
+    return this.min;
+  }
+
+  public getMax(): Date {
+    return  this.max;
+  }
 }

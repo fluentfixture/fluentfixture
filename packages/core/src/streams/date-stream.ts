@@ -2,11 +2,21 @@ import * as dayjs from 'dayjs';
 import { UnitType } from 'dayjs';
 import { IFactory } from '../factories/interfaces/factory';
 import { Functional } from '../factories/converters/functional';
+import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { DateFactory } from '../factories/date-factory';
 import { Stream, NumberStream } from './stream-loader';
 
 export class DateStream extends Stream<Date> {
   public constructor(factory: IFactory<Date>) {
     super(factory);
+  }
+
+  public static between(min: Date, max: Date): DateStream {
+    return new DateStream(new DateFactory(min, max));
+  }
+
+  public static fromDate(date: Date): DateStream {
+    return new DateStream(new ValueAdapter(date));
   }
 
   public addMilliseconds(value: number): DateStream {

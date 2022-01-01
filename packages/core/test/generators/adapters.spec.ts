@@ -13,7 +13,9 @@ describe('adapters', () => {
 
     it('should create a value stream with given value', () => {
       const value = {};
+
       const result = val(value);
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(Stream);
@@ -26,6 +28,7 @@ describe('adapters', () => {
 
     it('should create a value stream with null', () => {
       const result = nil();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(Stream);
@@ -38,6 +41,7 @@ describe('adapters', () => {
 
     it('should create a value stream with undefined', () => {
       const result = undef();
+
       const valueAdapter = result.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(Stream);
@@ -50,7 +54,9 @@ describe('adapters', () => {
 
     it('should create a value stream with a function adapter with given function', () => {
       const fn = () => true;
+
       const result = from(fn);
+
       const functionAdapter = result.getFactory() as FunctionAdapter<any>;
 
       expect(result).toBeInstanceOf(Stream);
@@ -63,6 +69,7 @@ describe('adapters', () => {
 
     it('should create an array stream with a picker with given array', () => {
       const arr = [1, 2, 3];
+
       const result = pick(arr);
 
       const picker = result.getFactory() as Picker;
@@ -82,6 +89,7 @@ describe('adapters', () => {
     it('should create an array stream with a sampler with given array', () => {
       const arr = [1, 2, 3];
       const size = 2;
+
       const result = take(arr, size);
 
       const sampler = result.getFactory() as Sampler;
@@ -98,6 +106,7 @@ describe('adapters', () => {
 
     it('should use default sample size when size is not provided', () => {
       const arr = [1, 2, 3];
+
       const result = take(arr);
 
       const sampler = result.getFactory() as Sampler;
@@ -117,6 +126,7 @@ describe('adapters', () => {
 
     it('should create an array stream with a suffler with given array', () => {
       const arr = [1, 2, 3];
+
       const result = shuffle(arr);
 
       const shuffler = result.getFactory() as Shuffler;
