@@ -10,6 +10,7 @@ import {
 } from 'change-case';
 import { ExpressionModifier } from '../types/expression-modifier';
 import { ModifierFactory } from '../types/modifier-factory';
+import { isFunction, isNonBlankString, isNonEmptyString } from '../utils/type-checks';
 
 export const createModifierFactory = (): ModifierFactory => {
   const modifiers = new Map<string, ExpressionModifier>([
@@ -37,10 +38,10 @@ export const createModifierFactory = (): ModifierFactory => {
   };
 
   const setModifier = (name: string, modifier: ExpressionModifier): void => {
-    if (!name || typeof name !== 'string') {
+    if (!isNonBlankString(name)) {
       throw new Error(`Cannot register modifier with name: ${name}!`);
     }
-    if (!modifier || typeof modifier !== 'function') {
+    if (!isFunction(modifier)) {
       throw new Error('Modifier must be a function!');
     }
     if (modifiers.has(name)) {

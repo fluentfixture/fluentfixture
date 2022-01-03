@@ -3,13 +3,14 @@ import { INTERPOLATION_REGEXP } from './constants/constants';
 import { buildExpressionEvaluator } from './evaluators/expression-evaluator-builder';
 import { parseTokenMetadata } from './tokens/metadata-parser';
 import { ModifierFactory } from './types/modifier-factory';
+import { isNonEmptyString } from './utils/type-checks';
 
 const getExpressionEvaluator = (expression: string, factory: ModifierFactory): ExpressionEvaluator => {
   return buildExpressionEvaluator(parseTokenMetadata(expression), factory);
 }
 
 export const parseTemplate = (template: string, factory: ModifierFactory): ReadonlyArray<ExpressionEvaluator> => {
-  if (!template || typeof template !== 'string') {
+  if (!isNonEmptyString(template)) {
     return [];
   }
 

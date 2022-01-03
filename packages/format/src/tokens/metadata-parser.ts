@@ -60,7 +60,6 @@ const parseDynamicTokenMetadata = (expression: string): TokenMetadata => {
   const rawExpression = stripTemplateTags(expression);
   const metadata = {
     expression: null,
-    modifier: null,
     modifiers: [],
     fallback: null,
     dynamic: true
