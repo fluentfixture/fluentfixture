@@ -8,7 +8,7 @@ describe('Picker', () => {
 
   describe('.single()', () => {
 
-    it('should select a value from the result of the given factory by using engine', () => {
+    it('should select a value from the result of the given tokenEvaluatorFactory by using engine', () => {
       const spyEngine = spy(Random);
       const list = [1, 2, 3];
       const out = 1;

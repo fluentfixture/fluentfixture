@@ -14,13 +14,13 @@ describe('Stream', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (factory)', () => {
+    describe('parameter assertions (tokenEvaluatorFactory)', () => {
 
-      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when factory is not a factory-like, given: %s', (factory: any) => {
+      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when tokenEvaluatorFactory is not a tokenEvaluatorFactory-like, given: %s', (factory: any) => {
 
         const thrown = () => new Stream(factory);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('Parameter must be a tokenEvaluatorFactory-like.');
       });
     });
   });
@@ -159,7 +159,7 @@ describe('Stream', () => {
 
   describe('.single()', () => {
 
-    it('should create a value by using given factory', () => {
+    it('should create a value by using given tokenEvaluatorFactory', () => {
       const mockFactory = mock(Factory);
       const out = 1;
       const factory = new Stream(instance(mockFactory));

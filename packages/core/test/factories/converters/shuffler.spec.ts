@@ -8,7 +8,7 @@ describe('Shuffler', () => {
 
   describe('.single()', () => {
 
-    it('should shuffle the result of the given factory by using engine', () => {
+    it('should shuffle the result of the given tokenEvaluatorFactory by using engine', () => {
       const spyEngine = spy(Random);
       const list = [1, 2, 3];
       const out = [3, 2, 1];

@@ -60,7 +60,7 @@ describe('ArrayStream', () => {
 
   describe('.map()', () => {
 
-    it('should create a stream with factory decorator that wraps itself', () => {
+    it('should create a stream with tokenEvaluatorFactory decorator that wraps itself', () => {
       const value = [1, 2, 3];
       const stream = new ArrayStream(new ValueAdapter(value));
 
@@ -70,7 +70,7 @@ describe('ArrayStream', () => {
 
   describe('.filter()', () => {
 
-    it('should create a stream with factory decorator that wraps itself', () => {
+    it('should create a stream with tokenEvaluatorFactory decorator that wraps itself', () => {
       const value = [1, 2, 3];
       const stream = new ArrayStream(new ValueAdapter(value));
 
@@ -80,7 +80,7 @@ describe('ArrayStream', () => {
 
   describe('.sort()', () => {
 
-    it('should create a stream with factory decorator that wraps itself', () => {
+    it('should create a stream with tokenEvaluatorFactory decorator that wraps itself', () => {
       const value = [3, 2, 1, 4, 5];
       const stream = new ArrayStream(new ValueAdapter(value));
 

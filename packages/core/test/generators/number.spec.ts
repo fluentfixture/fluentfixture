@@ -9,7 +9,7 @@ describe('number', () => {
 
   describe('num()', () => {
 
-    it('should create a number stream with number factory with given min and max values', () => {
+    it('should create a number stream with number tokenEvaluatorFactory with given min and max values', () => {
       const min = 1;
       const max = 2;
 
@@ -50,7 +50,7 @@ describe('number', () => {
 
   describe('int()', () => {
 
-    it('should create a number stream with integer factory with given min and max values', () => {
+    it('should create a number stream with integer tokenEvaluatorFactory with given min and max values', () => {
       const min = 1;
       const max = 2;
 

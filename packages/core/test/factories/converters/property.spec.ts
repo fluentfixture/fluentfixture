@@ -10,11 +10,11 @@ describe('Property', () => {
 
     describe('parameter assertions (decorator)', () => {
 
-      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when decorator is not a factory-like, given: %s', (decorator: any) => {
+      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when decorator is not a tokenEvaluatorFactory-like, given: %s', (decorator: any) => {
 
         const thrown = () => new Property(new MockFactory({}), decorator, 'key');
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('Parameter must be a tokenEvaluatorFactory-like.');
       });
     });
 
@@ -31,7 +31,7 @@ describe('Property', () => {
 
   describe('.single()', () => {
 
-    it('should extend created object with given property and the result of the given factory', () => {
+    it('should extend created object with given property and the result of the given tokenEvaluatorFactory', () => {
       const mockFactory = mock(Factory);
       const mockDecoratorFactory = mock(Factory);
       const source = { a: 1, b: 'str' };

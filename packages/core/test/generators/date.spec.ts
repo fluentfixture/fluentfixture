@@ -9,7 +9,7 @@ describe('date', () => {
 
   describe('date()', () => {
 
-    it('should create a date stream with date factory with given min and max dates', () => {
+    it('should create a date stream with date tokenEvaluatorFactory with given min and max dates', () => {
       const min = new Date();
       const max = new Date();
 

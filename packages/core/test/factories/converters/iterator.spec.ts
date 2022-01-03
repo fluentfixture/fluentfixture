@@ -36,7 +36,7 @@ describe('Iterator', () => {
 
   describe('.single()', () => {
 
-    it('should create an array by using given factory and count', () => {
+    it('should create an array by using given tokenEvaluatorFactory and count', () => {
       const count = 10;
       const out = ['out-1', 'out-2', 'out-3'];
       const mockFactory = mock(Factory);

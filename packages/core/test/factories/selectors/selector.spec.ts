@@ -37,36 +37,36 @@ describe('Selector', () => {
       });
     });
 
-    describe('parameter assertions (factory-1)', () => {
+    describe('parameter assertions (tokenEvaluatorFactory-1)', () => {
 
       const percentage = 0.5;
       const factory = new MockFactory({});
 
-      test.each(NON_NUMBER_DATA_SET)('should throw an error when factory-1 is not a factory-like, given: %s', (factory1: any) => {
+      test.each(NON_NUMBER_DATA_SET)('should throw an error when tokenEvaluatorFactory-1 is not a tokenEvaluatorFactory-like, given: %s', (factory1: any) => {
 
         const thrown = () => new Selector(factory1, factory, percentage);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('Parameter must be a tokenEvaluatorFactory-like.');
       });
     });
 
-    describe('parameter assertions (factory-2)', () => {
+    describe('parameter assertions (tokenEvaluatorFactory-2)', () => {
 
       const percentage = 0.5;
       const factory = new MockFactory({});
 
-      test.each(NON_NUMBER_DATA_SET)('should throw an error when factory-2 is not a factory-like, given: %s', (factory2: any) => {
+      test.each(NON_NUMBER_DATA_SET)('should throw an error when tokenEvaluatorFactory-2 is not a tokenEvaluatorFactory-like, given: %s', (factory2: any) => {
 
         const thrown = () => new Selector(factory, factory2, percentage);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('Parameter must be a tokenEvaluatorFactory-like.');
       });
     });
   });
 
   describe('.single()', () => {
 
-    it('should select a first factory when engine returns true', () => {
+    it('should select a first tokenEvaluatorFactory when engine returns true', () => {
       const spyEngine = spy(Random);
       const percentage = 0.5;
       const factory1 = mock(Factory);
@@ -85,7 +85,7 @@ describe('Selector', () => {
       verify(factory2.single()).never();
     });
 
-    it('should select a second factory when engine returns false', () => {
+    it('should select a second tokenEvaluatorFactory when engine returns false', () => {
       const spyEngine = spy(Random);
       const percentage = 0.5;
       const factory1 = mock(Factory);
