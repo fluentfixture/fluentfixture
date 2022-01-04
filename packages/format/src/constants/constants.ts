@@ -1,5 +1,5 @@
 export const INTERPOLATION_REGEXP = /([{}])\1|{(.*?)(?:!(.+?))?}/g;
-export const TOKEN_START_CHAR = '{';
-export const TOKEN_END_CHAR = '}';
-export const TOKEN_DEFAULT_DELIMITER = ':';
-export const TOKEN_OPERATOR_DELIMITER = '|';
+export const EXPRESSION_START_CHAR = '{';
+export const EXPRESSION_END_CHAR = '}';
+export const FALLBACK_DELIMITER = ':';
+export const TRANSFORMER_DELIMITER = '|';

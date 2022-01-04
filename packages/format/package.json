@@ -24,5 +24,8 @@
   "dependencies": {
     "change-case": "^4.1.2",
     "object-path": "^0.11.8"
+  },
+  "devDependencies": {
+    "@types/object-path": "^0.11.1"
   }
 }

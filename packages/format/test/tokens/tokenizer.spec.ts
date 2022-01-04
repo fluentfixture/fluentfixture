@@ -1,10 +1,10 @@
-import { parseTokenMetadata } from '../../src/tokens/metadata-parser';
+import { tokenize } from '../../src/tokens/tokenizer';
 
-describe('metadata-parser', () => {
+describe('tokenizer', () => {
 
-  describe('parseTokenMetadata()', () => {
+  describe('tokenize()', () => {
 
-    const cases = [
+    const expressions = [
       ['{}', '', null, [], true],
       ['{|}', '', null, [], true],
       ['{:}', '', '', [], true],
@@ -32,12 +32,12 @@ describe('metadata-parser', () => {
       ['}', '}', null, [], false],
     ];
 
-    test.each(cases)('should parse expression: %p', (token, expression, def, modifiers, dynamic) => {
-        const metadata = parseTokenMetadata(token as string);
+    test.each(expressions)('should parse expression: %p', (token: any, expression: string, def: string, transformers: string[], dynamic: boolean) => {
+        const metadata = tokenize(token);
 
-        expect(metadata.expression).toBe(expression);
+        expect(metadata.body).toBe(expression);
         expect(metadata.fallback).toBe(def);
-        expect(metadata.modifiers).toStrictEqual(modifiers)
+        expect(metadata.transformers).toStrictEqual(transformers)
         expect(metadata.dynamic).toBe(dynamic);
       }
     );

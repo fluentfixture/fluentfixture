@@ -1,12 +1,11 @@
-import { compile } from '../src/compiler';
+import { format } from '../src/formatter';
 
-describe('compiler', () => {
+describe('formatter', () => {
 
-  describe('compile()', () => {
+  describe('format()', () => {
 
     describe('simple types', () => {
       const template = 'My name is {name:no-name|trim|upper-case}. I am {age}.';
-      const compiled = compile(template);
 
       const cases = [
         [{ name: 'name' }, 'My name is NAME. I am .'],
@@ -15,10 +14,10 @@ describe('compiler', () => {
       ];
 
       test.each(cases)('should render template with given source', (source: any, output: any) => {
-          expect(compiled(source)).toBe(output);
+          expect(format(template, source)).toBe(output);
         }
       );
-    });
+    })
 
     describe('nested types', () => {
 
@@ -39,11 +38,11 @@ describe('compiler', () => {
         ['is-in-stock={isInStock:false}, amount={price.amount:0}, primary-category={categories.0|upper-case}',
           'is-in-stock=false, amount=9.99, primary-category=FASHION'],
         ['is-in-stock={isInStock:false}, amount={price.amount:0}, updated-at={updateDate|iso-date}',
-          'is-in-stock=false, amount=9.99, updated-at=2022-01-04T14:35:27.000Z'],
+          'is-in-stock=false, amount=9.99, updated-at=2022-01-04T14:35:27.000Z']
       ];
 
       test.each(cases)('should render template with given source', (template: any, output: any) => {
-          expect(compile(template)(source)).toBe(output);
+          expect(format(template, source)).toBe(output);
         }
       );
     });

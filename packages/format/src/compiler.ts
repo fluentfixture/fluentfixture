@@ -1,9 +1,9 @@
-import { ExpressionEvaluator } from './types/expression-evaluator';
-import { parseTemplate } from './template-parser';
-import { modifiers } from './modifiers/modifier-factory';
+import { CompiledFormatter} from './types/compiled-formatter';
+import { compileToTransformers } from './template-parser';
+import { transformers } from './transformers/factory/build-in-transformer';
 
-export const compile = (template: string): ExpressionEvaluator => {
-  const evaluators = parseTemplate(template, modifiers);
+export const compile = (template: string): CompiledFormatter => {
+  const evaluators = compileToTransformers(template, transformers);
   return (source: any) => {
     let result = '';
     for (const evaluator of evaluators) {

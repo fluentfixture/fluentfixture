@@ -1,34 +1,51 @@
-import { ExpressionEvaluator } from './types/expression-evaluator';
 import { INTERPOLATION_REGEXP } from './constants/constants';
-import { buildExpressionEvaluator } from './evaluators/expression-evaluator-builder';
-import { parseTokenMetadata } from './tokens/metadata-parser';
-import { ModifierFactory } from './types/modifier-factory';
+import { TransformerFactory } from './types/transformer-factory';
 import { isNonEmptyString } from './utils/type-checks';
+import { build } from './transformers/builders/transformer-builder';
+import { Transformer } from './types/transformer';
 
-const getExpressionEvaluator = (expression: string, factory: ModifierFactory): ExpressionEvaluator => {
-  return buildExpressionEvaluator(parseTokenMetadata(expression), factory);
+type ParsingRule<T> = {
+  defaultValue: T,
+  staticTransformer: (expression: string, previous: T) => T;
+  dynamicTransformer: (expression: string, previous: T) => T;
 }
 
-export const parseTemplate = (template: string, factory: ModifierFactory): ReadonlyArray<ExpressionEvaluator> => {
+const parsingAlgorithm = <T>(template: string, rules: ParsingRule<T>): T => {
   if (!isNonEmptyString(template)) {
-    return [];
+    return rules.defaultValue;
   }
 
   let cursor = 0;
-  const evaluators = [];
+  let result = rules.defaultValue;
   const matches = template.matchAll(INTERPOLATION_REGEXP);
 
   for (const match of matches) {
     if (match.index > cursor) {
-      evaluators.push(getExpressionEvaluator(template.slice(cursor, match.index), factory));
+      result = rules.staticTransformer(template.slice(cursor, match.index), result);
     }
-    evaluators.push(getExpressionEvaluator(match[0], factory));
+    result = rules.dynamicTransformer(match[0], result);
     cursor = match.index + match[0].length;
   }
 
   if (cursor < template.length ) {
-    evaluators.push(getExpressionEvaluator(template.slice(cursor), factory));
+    result = rules.staticTransformer(template.slice(cursor), result);
   }
 
-  return evaluators;
+  return result;
+}
+
+export const compileToString = (template: string, source: any, factory: TransformerFactory): string => {
+  return parsingAlgorithm(template, {
+    defaultValue: '',
+    staticTransformer: (expression, previous) => previous + expression,
+    dynamicTransformer: (expression, previous) => previous + build(expression, factory)(source)
+  });
+}
+
+export const compileToTransformers = (template: string, factory: TransformerFactory): Array<Transformer> => {
+  return parsingAlgorithm(template, {
+    defaultValue: [],
+    staticTransformer: (expression,previous) => { previous.push(build(expression, factory)); return previous; },
+    dynamicTransformer: (expression,previous) => { previous.push(build(expression, factory)); return previous; }
+  });
 }
