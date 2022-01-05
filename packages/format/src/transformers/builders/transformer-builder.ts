@@ -14,22 +14,15 @@ const isStaticToken = (token: Token): boolean => !token.dynamic;
 
 const isIdentityToken = (token: Token): boolean => isString(token.body) && token.body.length === 0;
 
-const getInitialTransformer = (token: Token): Transformer => {
-  if (!isStaticToken(token)) {
-    return isIdentityToken(token)
-      ? getNoopTransformer()
-      : getDynamicTransformer(token.body);
-  }
-  return getStaticTransformer(token.body);
-};
+const getTransformersForStaticToken = (token : Token): Transformer => getStaticTransformer(token.body);
 
-export const build = (expression: string, factory: TransformerFactory): Transformer => {
-  const token = tokenize(expression);
+const getTransformersForDynamicToken = (token : Token, factory: TransformerFactory): Transformer => {
   const transformers = [
-    getInitialTransformer(token),
+    isIdentityToken(token) ? getNoopTransformer() : getDynamicTransformer(token.body),
     getFallbackTransformer(isAssigned(token.fallback) ? token.fallback : undefined),
     ...token.transformers.map(i => factory.getTransformer(i)),
-    asString(getNoopTransformer())];
+    asString(getNoopTransformer())
+  ];
 
   return errorBoundary((input: any) => {
     let result = input;
@@ -38,4 +31,12 @@ export const build = (expression: string, factory: TransformerFactory): Transfor
     }
     return result;
   });
+}
+
+export const build = (expression: string, factory: TransformerFactory): Transformer => {
+  const token = tokenize(expression);
+
+  return isStaticToken(token)
+    ? getTransformersForStaticToken(token)
+    : getTransformersForDynamicToken(token, factory);
 };
