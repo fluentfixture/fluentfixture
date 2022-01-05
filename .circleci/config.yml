@@ -58,11 +58,6 @@ jobs:
       - *save-cache
       - *build-packages
 
-  test_node_10:
-    docker:
-      - image: circleci/node:10
-    <<: *unit-tests-template
-
   test_node_12:
     docker:
       - image: circleci/node:12
