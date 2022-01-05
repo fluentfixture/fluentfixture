@@ -123,11 +123,6 @@ workflows:
       - lint:
           requires:
             - commitlint/lint
-      - test_node_10:
-          requires:
-            - build
-            - security
-            - lint
       - test_node_12:
           requires:
             - build
@@ -145,7 +140,6 @@ workflows:
             - lint
       - coverage:
           requires:
-            - test_node_10
             - test_node_12
             - test_node_14
             - test_node_16
