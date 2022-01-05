@@ -2,6 +2,7 @@ import * as check from 'check-types';
 import { IFactory } from '../factories/interfaces/factory';
 
 export class Assert {
+
   public static integer(value: number): void {
     if (check.not.integer(value)) {
       throw new Error('Parameter must be an integer.');

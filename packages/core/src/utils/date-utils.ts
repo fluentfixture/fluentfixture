@@ -1,6 +1,7 @@
 import * as dayjs from 'dayjs';
 
 export class DateUtils {
+
   public static now(): Date {
     return dayjs().toDate();
   }

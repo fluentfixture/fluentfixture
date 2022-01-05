@@ -11,7 +11,8 @@ import { Nullable } from '../factories/selectors/nullable';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ProducerFunction } from '../types/producer-function';
 import { FunctionAdapter } from '../factories/adapters/function-adapter';
-import { ArrayStream } from './stream-loader';
+import { Formatter } from '../factories/converters/formatter';
+import { ArrayStream, StringStream } from './stream-loader';
 
 export class Stream<T = any> extends Factory<T> {
   private readonly factory: IFactory<T>;
@@ -40,6 +41,10 @@ export class Stream<T = any> extends Factory<T> {
 
   public array(count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
     return ArrayStream.iterate(this, count);
+  }
+
+  public format(template: string): StringStream {
+    return new StringStream(new Formatter(this, template));
   }
 
   public convert<K>(fn: ConvertFunction<T, K>): Stream<K> {

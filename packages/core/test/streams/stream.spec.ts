@@ -7,8 +7,9 @@ import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../../src/constants/limi
 import { Nullable } from '../../src/factories/selectors/nullable';
 import { Functional } from '../../src/factories/converters/functional';
 import { Exporter } from '../../src/factories/converters/exporter';
-import { Stream, ArrayStream } from '../../src/streams/stream-loader';
+import { Stream, ArrayStream, StringStream } from '../../src/streams/stream-loader';
 import { Iterator } from '../../src/factories/converters/iterator';
+import { Formatter } from '../../src/factories/converters/formatter';
 
 describe('Stream', () => {
 
@@ -27,7 +28,7 @@ describe('Stream', () => {
 
   describe('.optional()', () => {
 
-    it('should create a stream with optional decorator that wraps itself', () => {
+    it('should create a stream with optional converter that wraps itself', () => {
       const percentage = 0.2;
       const factory = new MockFactory({});
       const stream = Stream.from(factory);
@@ -59,7 +60,7 @@ describe('Stream', () => {
 
   describe('.nullable()', () => {
 
-    it('should create a stream with nullable decorator that wraps itself', () => {
+    it('should create a stream with nullable converter that wraps itself', () => {
       const percentage = 0.2;
       const factory = new MockFactory({});
       const stream = Stream.from(factory);
@@ -109,7 +110,7 @@ describe('Stream', () => {
 
   describe('.dump()', () => {
 
-    it('should create a stream with exporter decorator that wraps itself', () => {
+    it('should create a stream with exporter converter that wraps itself', () => {
       const fn = () => true;
       const factory = new MockFactory({});
       const stream = Stream.from(factory);
@@ -122,6 +123,24 @@ describe('Stream', () => {
       expect(exporter).toBeInstanceOf(Exporter);
       expect(exporter.getFactory()).toBe(stream);
       expect(exporter.getConsumer()).toBe(fn);
+    });
+  });
+
+  describe('.format()', () => {
+
+    it('should create a string stream with formatter converter that wraps itself', () => {
+      const template = '{}';
+      const factory = new MockFactory({});
+      const stream = Stream.from(factory);
+
+      const result = stream.format(template);
+
+      expect(result).toBeInstanceOf(StringStream);
+
+      const formatter = result.getFactory() as Formatter;
+      expect(formatter).toBeInstanceOf(Formatter);
+      expect(formatter.getFactory()).toBe(stream);
+      expect(formatter.getTemplate()).toBe(template);
     });
   });
 
