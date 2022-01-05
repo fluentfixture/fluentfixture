@@ -79,6 +79,15 @@ After the calculation and default value checks, the given transforms are execute
 | **trim-end**      | trim string from end     | [source][1]   |
 | **iso-date**      | ISO date conversion      | [source][4]   |
 
+## Compile vs Format
+
+Benchmarks show that ```compile()``` is much faster than ```format()``` method for repeating operations.
+
+| Input Length | Format                    | Compile                  |
+|--------------|---------------------------|--------------------------|
+| 100          | x 48,454 ops/sec ±29.97%  | x 160,238 ops/sec ±6.53% |
+| 500          | x 22,094 ops/sec ±2.72%   | x 33,938 ops/sec ±6.30%  | 
+| 1000         | x 8,392 ops/sec ±13.74%   | x 20,805 ops/sec ±3.55%  |
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [2]: https://github.com/blakeembrey/change-case
