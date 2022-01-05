@@ -1,1 +1,1 @@
-export type CompiledFormatter = (source: object) => string;
+export type CompiledFormatter = (source: any) => string;
