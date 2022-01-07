@@ -51,8 +51,8 @@ export class Stream<T = any> extends Factory<T> {
     return Stream.from(new Functional(this, fn));
   }
 
-  public dump(fn: ConsumerFunction<T>): Stream<T> {
-    return Stream.from(new Exporter(this, fn));
+  public dump(fn: ConsumerFunction<T>): this {
+    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Exporter(this, fn));
   }
 
   public optional(percentage: number = DEFAULT_PERCENTAGE): Stream<T | undefined> {
