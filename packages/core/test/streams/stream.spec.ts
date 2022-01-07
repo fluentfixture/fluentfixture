@@ -10,6 +10,7 @@ import { Exporter } from '../../src/factories/converters/exporter';
 import { Stream, ArrayStream, StringStream } from '../../src/streams/stream-loader';
 import { Iterator } from '../../src/factories/converters/iterator';
 import { Formatter } from '../../src/factories/converters/formatter';
+import { Memo } from '../../src/factories/converters/memo';
 
 describe('Stream', () => {
 
@@ -123,6 +124,22 @@ describe('Stream', () => {
       expect(exporter).toBeInstanceOf(Exporter);
       expect(exporter.getFactory()).toBe(stream);
       expect(exporter.getConsumer()).toBe(fn);
+    });
+  });
+
+  describe('.memo()', () => {
+
+    it('should create a stream with memo converter that wraps itself', () => {
+      const factory = new MockFactory({});
+      const stream = Stream.from(factory);
+
+      const result = stream.memo();
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const memo = result.getFactory() as Memo;
+      expect(memo).toBeInstanceOf(Memo);
+      expect(memo.getFactory()).toBe(stream);
     });
   });
 

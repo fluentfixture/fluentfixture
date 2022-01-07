@@ -12,6 +12,7 @@ import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ProducerFunction } from '../types/producer-function';
 import { FunctionAdapter } from '../factories/adapters/function-adapter';
 import { Formatter } from '../factories/converters/formatter';
+import { Memo } from '../factories/converters/memo';
 import { ArrayStream, StringStream } from './stream-loader';
 
 export class Stream<T = any> extends Factory<T> {
@@ -49,6 +50,10 @@ export class Stream<T = any> extends Factory<T> {
 
   public convert<K>(fn: ConvertFunction<T, K>): Stream<K> {
     return Stream.from(new Functional(this, fn));
+  }
+
+  public memo(): this {
+    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Memo(this));
   }
 
   public dump(fn: ConsumerFunction<T>): this {
