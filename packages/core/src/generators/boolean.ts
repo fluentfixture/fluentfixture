@@ -1,5 +1,5 @@
 import { DEFAULT_PERCENTAGE } from '../constants/limits';
-import { BooleanStream } from '../streams/boolean-stream';
+import { BooleanStream } from '../streams/stream-loader';
 
 export const falsy = (): BooleanStream => BooleanStream.falsy();
 
