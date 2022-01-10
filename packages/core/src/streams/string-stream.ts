@@ -35,6 +35,14 @@ export class StringStream extends Stream<string> {
     return this.apply((i) => i.trimEnd());
   }
 
+  public padStart(length: number, char?: string): StringStream {
+    return this.apply((i) => i.padStart(length, char));
+  }
+
+  public padEnd(length: number, char?: string): StringStream {
+    return this.apply((i) => i.padEnd(length, char));
+  }
+
   public lowerCase(): StringStream {
     return this.apply((i) => i.toLowerCase());
   }

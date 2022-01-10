@@ -27,6 +27,20 @@ describe('StringStream', () => {
     });
   });
 
+  describe('.padStart()', () => {
+
+    it('should create a stream with function decorator (pad-start) that wraps itself', () => {
+      assertStringStreamDecorator(stream, stream.padStart(20, '*'), value, '******* Lorem Ipsum ');
+    });
+  });
+
+  describe('.padEnd()', () => {
+
+    it('should create a stream with function decorator (pad-end) that wraps itself', () => {
+      assertStringStreamDecorator(stream, stream.padEnd(20, '*'), value, ' Lorem Ipsum *******');
+    });
+  });
+
   describe('.lowerCase()', () => {
 
     it('should create a stream with function decorator (lower-case) that wraps itself', () => {
