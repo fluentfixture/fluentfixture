@@ -3,6 +3,9 @@ import { ExtendedObjectModel } from '../types/extended-object-model';
 import { Property } from '../factories/converters/property';
 import { ObjectFactory } from '../factories/object-factory';
 import { ObjectModel } from '../types/object-model';
+import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { ConvertFunction } from '../types/convert-function';
+import { Lazy } from '../factories/converters/lazy';
 import { Stream } from './stream-loader';
 
 export class ObjectStream<T = any> extends Stream<T> {
@@ -14,7 +17,15 @@ export class ObjectStream<T = any> extends Stream<T> {
     return new ObjectStream(new ObjectFactory(model));
   }
 
-  public with<S extends keyof any, K>(property: S, factory: IFactory<K>): ObjectStream<ExtendedObjectModel<S, T, K>> {
+  public dynamic<S extends keyof any, K>(property: S, factory: IFactory<K>): ObjectStream<ExtendedObjectModel<S, T, K>> {
     return new ObjectStream(new Property(this, factory, property));
+  }
+
+  public static<S extends keyof any, K>(property: S, value: K): ObjectStream<ExtendedObjectModel<S, T, K>> {
+    return new ObjectStream(new Property(this, new ValueAdapter(value), property));
+  }
+
+  public lazy<S extends keyof any, K>(property: S, converter: ConvertFunction<T, K>): ObjectStream<ExtendedObjectModel<S, T, K>> {
+    return new ObjectStream(new Lazy(this, converter, property));
   }
 }
