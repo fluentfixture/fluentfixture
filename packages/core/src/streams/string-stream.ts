@@ -12,11 +12,16 @@ import { IFactory } from '../factories/interfaces/factory';
 import { ConvertFunction } from '../types/convert-function';
 import { Functional } from '../factories/converters/functional';
 import { StringFactory } from '../factories/string-factory';
+import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
 
 export class StringStream extends Stream<string> {
   public constructor(factory: IFactory<string>) {
     super(factory);
+  }
+
+  public static fromText(text: string): StringStream {
+    return new StringStream(new ValueAdapter(text));
   }
 
   public static fromPatternAndLength(pattern: string, length: number): StringStream {

@@ -3,6 +3,8 @@ import { StringStream } from '../streams/stream-loader';
 
 const generateStringStream = (charset: string, length: number): StringStream => StringStream.fromPatternAndLength(charset, length);
 
+export const text = (str: string): StringStream => StringStream.fromText(str);
+
 export const str = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphanumeric', length);
 
 export const hex = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('hex', length);

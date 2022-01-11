@@ -1,9 +1,36 @@
-import { str, hex, octal, numeric, alphanumeric, alphabetic } from '../../src/generators/generators';
+import { str, hex, octal, numeric, alphanumeric, alphabetic, text } from '../../src/generators/generators';
 import { StringStream } from '../../src/streams/stream-loader';
 import { StringFactory } from '../../src/factories/string-factory';
 import { DEFAULT_STRING_LENGTH } from '../../src/constants/limits';
+import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 
 describe('string', () => {
+
+  describe('text()', () => {
+
+    it('should create a string stream with constant text', () => {
+      const str = 'str';
+
+      const result = text(str);
+
+      const valueAdapter = result.getFactory() as ValueAdapter;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(valueAdapter).toBeInstanceOf(ValueAdapter);
+      expect(valueAdapter.getValue()).toBe(str);
+    });
+
+    it('should use default length when length is not provided', () => {
+      const result = str();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+  });
 
   describe('str()', () => {
 
