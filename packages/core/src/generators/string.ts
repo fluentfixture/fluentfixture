@@ -16,5 +16,3 @@ export const numeric = (length: number = DEFAULT_STRING_LENGTH): StringStream =>
 export const alphabetic = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphabetic', length);
 
 export const alphanumeric = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphanumeric', length);
-
-export const charset = (charset: string, length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream(charset, length);
