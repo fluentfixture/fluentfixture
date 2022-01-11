@@ -106,7 +106,7 @@ jobs:
       - *install-deps
       - *lerna-bootstrap
       - snyk/scan:
-          additional-arguments: --all-projects
+          additional-arguments: --all-projects --strict-out-of-sync=false
 
 workflows:
   version: 2
