@@ -1,9 +1,8 @@
-import * as dayjs from 'dayjs';
-import { UnitType } from 'dayjs';
 import { IFactory } from '../factories/interfaces/factory';
 import { Functional } from '../factories/converters/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { DateFactory } from '../factories/date-factory';
+import { DateUtils } from '../utils/date-utils';
 import { Stream, NumberStream } from './stream-loader';
 
 export class DateStream extends Stream<Date> {
@@ -20,138 +19,122 @@ export class DateStream extends Stream<Date> {
   }
 
   public addMilliseconds(value: number): DateStream {
-    return this.add(value, 'ms');
+    return this.apply((i) => DateUtils.addMilliseconds(i, value));
   }
 
   public subtractMilliseconds(value: number): DateStream {
-    return this.subtract(value, 'ms');
+    return this.apply((i) => DateUtils.subtractMilliseconds(i, value));
   }
 
   public setMilliseconds(value: number): DateStream {
-    return this.set(value, 'ms');
+    return this.apply((i) => DateUtils.setMilliseconds(i, value));
   }
 
   public getMilliseconds(): NumberStream {
-    return this.get('ms');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMilliseconds(i)));
   }
 
   public addSeconds(value: number): DateStream {
-    return this.add(value, 's');
+    return this.apply((i) => DateUtils.addSeconds(i, value));
   }
 
   public subtractSeconds(value: number): DateStream {
-    return this.subtract(value, 's');
+    return this.apply((i) => DateUtils.subtractSeconds(i, value));
   }
 
   public setSeconds(value: number): DateStream {
-    return this.set(value, 's');
+    return this.apply((i) => DateUtils.setSeconds(i, value));
   }
 
   public getSeconds(): NumberStream {
-    return this.get('s');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getSeconds(i)));
   }
 
   public addMinutes(value: number): DateStream {
-    return this.add(value, 'm');
+    return this.apply((i) => DateUtils.addMinutes(i, value));
   }
 
   public subtractMinutes(value: number): DateStream {
-    return this.subtract(value, 'm');
+    return this.apply((i) => DateUtils.subtractMinutes(i, value));
   }
 
   public setMinutes(value: number): DateStream {
-    return this.set(value, 'm');
+    return this.apply((i) => DateUtils.setMinutes(i, value));
   }
 
   public getMinutes(): NumberStream {
-    return this.get('m');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMinutes(i)));
   }
 
   public addHours(value: number): DateStream {
-    return this.add(value, 'h');
+    return this.apply((i) => DateUtils.addHours(i, value));
   }
 
   public subtractHours(value: number): DateStream {
-    return this.subtract(value, 'h');
+    return this.apply((i) => DateUtils.subtractHours(i, value));
   }
 
   public setHours(value: number): DateStream {
-    return this.set(value, 'h');
+    return this.apply((i) => DateUtils.setHours(i, value));
   }
 
   public getHours(): NumberStream {
-    return this.get('h');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getHours(i)));
   }
 
   public addDays(value: number): DateStream {
-    return this.add(value, 'd');
+    return this.apply((i) => DateUtils.addDays(i, value));
   }
 
   public subtractDays(value: number): DateStream {
-    return this.subtract(value, 'd');
+    return this.apply((i) => DateUtils.subtractDays(i, value));
   }
 
   public setDaysOfWeek(value: number): DateStream {
-    return this.set(value, 'day');
+    return this.apply((i) => DateUtils.setDaysOfWeek(i, value));
   }
 
   public setDaysOfMonth(value: number): DateStream {
-    return this.set(value, 'date');
+    return this.apply((i) => DateUtils.setDaysOfMonth(i, value));
   }
 
   public getDaysOfWeek(): NumberStream {
-    return this.get('day');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getDaysOfWeek(i)));
   }
 
   public getDaysOfMonth(): NumberStream {
-    return this.get('date');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getDaysOfMonth(i)));
   }
 
   public addMonths(value: number): DateStream {
-    return this.add(value, 'M');
+    return this.apply((i) => DateUtils.addMonths(i, value));
   }
 
   public subtractMonths(value: number): DateStream {
-    return this.subtract(value, 'M');
+    return this.apply((i) => DateUtils.subtractMonths(i, value));
   }
 
   public setMonths(value: number): DateStream {
-    return this.set(value, 'M');
+    return this.apply((i) => DateUtils.setMonths(i, value));
   }
 
   public getMonths(): NumberStream {
-    return this.get('M');
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMonths(i)));
   }
 
   public addYears(value: number): DateStream {
-    return this.add(value, 'y');
+    return this.apply((i) => DateUtils.addYears(i, value));
   }
 
   public subtractYears(value: number): DateStream {
-    return this.subtract(value, 'y');
+    return this.apply((i) => DateUtils.subtractYears(i, value));
   }
 
   public setYears(value: number): DateStream {
-    return this.set(value, 'y');
+    return this.apply((i) => DateUtils.setYears(i, value));
   }
 
   public getYears(): NumberStream {
-    return this.get('y');
-  }
-
-  private add(value: number, unit: string): DateStream {
-    return new DateStream(new Functional(this, (i) => dayjs(i).add(value, unit).toDate()));
-  }
-
-  private subtract(value: number, unit: string): DateStream {
-    return new DateStream(new Functional(this, (i) => dayjs(i).subtract(value, unit).toDate()));
-  }
-
-  private set(value: number, unit: UnitType): DateStream {
-    return new DateStream(new Functional(this, (i) => dayjs(i).set(unit, value).toDate()));
-  }
-
-  private get(unit: UnitType): NumberStream {
-    return new NumberStream(new Functional(this, (i) => dayjs(i).get(unit)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getYears(i)));
   }
 }
