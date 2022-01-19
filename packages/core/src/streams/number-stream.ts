@@ -1,6 +1,4 @@
 import { IFactory } from '../factories/interfaces/factory';
-import { ConvertFunction } from '../types/convert-function';
-import { Functional } from '../factories/converters/functional';
 import { NumberFactory } from '../factories/number-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
@@ -36,9 +34,5 @@ export class NumberStream extends Stream<number> {
 
   public divide(num: number): NumberStream {
     return this.apply((i) => i / num);
-  }
-
-  private apply(fn: ConvertFunction<number, number>): NumberStream {
-    return new NumberStream(new Functional(this, fn));
   }
 }

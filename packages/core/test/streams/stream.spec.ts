@@ -109,6 +109,24 @@ describe('Stream', () => {
     });
   });
 
+  describe('.apply()', () => {
+
+    it('should create a stream with functional converter that wraps itself', () => {
+      const fn = () => 2;
+      const factory = new MockFactory(1);
+      const stream = Stream.from(factory);
+
+      const result = stream.apply(fn);
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+      expect(functional.getDecorator()).toBe(fn);
+    });
+  });
+
   describe('.dump()', () => {
 
     it('should create a stream with exporter converter that wraps itself', () => {

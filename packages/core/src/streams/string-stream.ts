@@ -9,8 +9,6 @@ import {
   snakeCase,
 } from 'change-case';
 import { IFactory } from '../factories/interfaces/factory';
-import { ConvertFunction } from '../types/convert-function';
-import { Functional } from '../factories/converters/functional';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
@@ -86,9 +84,5 @@ export class StringStream extends Stream<string> {
 
   public snakeCase(): StringStream {
     return this.apply((i) => snakeCase(i));
-  }
-
-  private apply(fn: ConvertFunction<string, string>): StringStream {
-    return new StringStream(new Functional(this, fn));
   }
 }

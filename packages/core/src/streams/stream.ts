@@ -52,6 +52,10 @@ export class Stream<T = any> extends Factory<T> {
     return Stream.from(new Functional(this, fn));
   }
 
+  public apply(fn: ConvertFunction<T, T>): this {
+    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Functional(this, fn));
+  }
+
   public memo(): this {
     return new (this.constructor as (new (factory: IFactory<T>) => any))(new Memo(this));
   }
