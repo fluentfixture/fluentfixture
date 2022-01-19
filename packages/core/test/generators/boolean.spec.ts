@@ -34,7 +34,7 @@ describe('boolean', () => {
 
   describe('bool()', () => {
 
-    it('should create a boolean stream with boolean tokenEvaluatorFactory with given percentage', () => {
+    it('should create a boolean stream with boolean factory with given percentage', () => {
       const percentage = 0.2;
 
       const result = bool(percentage);

@@ -41,7 +41,7 @@ export class Assert {
 
   public static factoryLike(factory: IFactory): void {
     if (check.not.assigned(factory) || check.not.function(factory.single)) {
-      throw new Error('Parameter must be a tokenEvaluatorFactory-like.');
+      throw new Error('Parameter must be a factory-like.');
     }
   }
 

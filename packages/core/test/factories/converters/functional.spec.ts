@@ -21,7 +21,7 @@ describe('Functional', () => {
 
   describe('.single()', () => {
 
-    it('should convert result of the given tokenEvaluatorFactory with given decorator function', () => {
+    it('should convert result of the given factory with given decorator function', () => {
       const mockFactory = mock(Factory);
       const factoryOut = 1;
       const out = 2;

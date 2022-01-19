@@ -21,7 +21,7 @@ describe('Exporter', () => {
 
   describe('.single()', () => {
 
-    it('should call given consumer with result of the given tokenEvaluatorFactory', () => {
+    it('should call given consumer with result of the given factory', () => {
       const mockFactory = mock(Factory);
       const consumer = { consume: (value: any) => console.log(value) };
       const spyConsumer = spy(consumer);

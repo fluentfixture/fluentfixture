@@ -38,7 +38,7 @@ describe('Sampler', () => {
 
   describe('.single()', () => {
 
-    it('should select a sample from the result of the given tokenEvaluatorFactory with given size by using engine', () => {
+    it('should select a sample from the result of the given factory with given size by using engine', () => {
       const spyEngine = spy(Random);
       const list = [1, 2, 3];
       const size = 2;

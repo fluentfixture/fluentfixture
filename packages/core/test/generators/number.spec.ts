@@ -1,4 +1,4 @@
-import { zero, one, num, int } from '../../src/generators/generators';
+import { zero, one, real, int, num } from '../../src/generators/generators';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { NumberStream } from '../../src/streams/stream-loader';
 import { NumberFactory } from '../../src/factories/number-factory';
@@ -7,13 +7,13 @@ import { DEFAULT_MAX_NUMBER, DEFAULT_MIN_NUMBER } from '../../src/constants/limi
 
 describe('number', () => {
 
-  describe('num()', () => {
+  describe('real()', () => {
 
-    it('should create a number stream with number tokenEvaluatorFactory with given min and max values', () => {
+    it('should create a number stream with number factory with given min and max values', () => {
       const min = 1;
       const max = 2;
 
-      const result = num(min, max);
+      const result = real(min, max);
 
       const numberFactory = result.getFactory() as NumberFactory;
 
@@ -26,7 +26,7 @@ describe('number', () => {
     it('should use default max value when max is not provided', () => {
       const min = 1;
 
-      const result = num(min);
+      const result = real(min);
 
       const numberFactory = result.getFactory() as NumberFactory;
 
@@ -37,7 +37,7 @@ describe('number', () => {
     });
 
     it('should use default min and max value when min and max are not provided', () => {
-      const result = num();
+      const result = real();
 
       const numberFactory = result.getFactory() as NumberFactory;
 
@@ -50,7 +50,7 @@ describe('number', () => {
 
   describe('int()', () => {
 
-    it('should create a number stream with integer tokenEvaluatorFactory with given min and max values', () => {
+    it('should create a number stream with integer factory with given min and max values', () => {
       const min = 1;
       const max = 2;
 
@@ -89,9 +89,23 @@ describe('number', () => {
     });
   });
 
+  describe('num()', () => {
+
+    it('should create a number stream with given number', () => {
+      const val = 10;
+      const result = num(val);
+
+      const valueAdapter = result.getFactory() as ValueAdapter;
+
+      expect(result).toBeInstanceOf(NumberStream);
+      expect(valueAdapter).toBeInstanceOf(ValueAdapter);
+      expect(valueAdapter.getValue()).toBe(val);
+    });
+  });
+
   describe('zero()', () => {
 
-    it('should create a number stream with given zero', () => {
+    it('should create a number stream with zero', () => {
       const result = zero();
 
       const valueAdapter = result.getFactory() as ValueAdapter;
@@ -104,7 +118,7 @@ describe('number', () => {
 
   describe('one()', () => {
 
-    it('should create a number stream with given zero', () => {
+    it('should create a number stream with one', () => {
       const result = one();
 
       const valueAdapter = result.getFactory() as ValueAdapter;

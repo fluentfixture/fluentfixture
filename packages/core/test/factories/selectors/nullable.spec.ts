@@ -6,7 +6,7 @@ describe('Nullable', () => {
 
   describe('.constructor()', () => {
 
-    it('should create a selector with given tokenEvaluatorFactory and value adapter with null', () => {
+    it('should create a selector with given factory and value adapter with null', () => {
       const percentage = 0.5;
       const factory = new MockFactory({});
       const nullable = new Nullable(factory, percentage);
