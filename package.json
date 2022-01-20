@@ -17,13 +17,13 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
+    "changelog": "./node_modules/.bin/lerna-changelog",
     "bootstrap": "./node_modules/.bin/lerna bootstrap",
     "lint": "concurrently 'npm run lint:tests' 'npm run lint:packages'",
     "lint:tests": "eslint 'packages/**/**.spec.ts' -c '.eslintrc.spec.js'",
     "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'",
     "prepare": "husky install"
   },
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "16.0.2",
     "@commitlint/config-conventional": "16.0.0",
@@ -39,7 +39,8 @@
     "eslint-plugin-unicorn": "40.1.0",
     "husky": "7.0.4",
     "jest": "27.4.7",
-    "lerna": "4.0.0",
+    "lerna": "^4.0.0",
+    "lerna-changelog": "^2.2.0",
     "prettier": "2.5.1",
     "ts-jest": "27.1.2",
     "ts-mockito": "2.6.1",
