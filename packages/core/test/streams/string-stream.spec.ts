@@ -76,6 +76,13 @@ describe('StringStream', () => {
     });
   });
 
+  describe('.pathCase()', () => {
+
+    it('should create a stream with function decorator (path-case) that wraps itself', () => {
+      assertStringStreamDecorator(stream, stream.pathCase(), value, 'lorem/ipsum');
+    });
+  });
+
   describe('.dotCase()', () => {
 
     it('should create a stream with function decorator (dot-case) that wraps itself', () => {

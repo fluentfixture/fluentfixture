@@ -1,16 +1,7 @@
-import {
-  capitalCase,
-  camelCase,
-  constantCase,
-  dotCase,
-  headerCase,
-  paramCase,
-  pascalCase,
-  snakeCase,
-} from 'change-case';
 import { IFactory } from '../factories/interfaces/factory';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { StringUtils } from '../utils/string-utils';
 import { Stream } from './stream-loader';
 
 export class StringStream extends Stream<string> {
@@ -55,34 +46,38 @@ export class StringStream extends Stream<string> {
   }
 
   public camelCase(): StringStream {
-    return this.apply((i) => camelCase(i));
+    return this.apply((i) => StringUtils.camelCase(i));
   }
 
   public capitalCase(): StringStream {
-    return this.apply((i) => capitalCase(i));
+    return this.apply((i) => StringUtils.capitalCase(i));
   }
 
   public constantCase(): StringStream {
-    return this.apply((i) => constantCase(i));
+    return this.apply((i) => StringUtils.constantCase(i));
+  }
+
+  public pathCase(): StringStream {
+    return this.apply((i) => StringUtils.pathCase(i));
   }
 
   public dotCase(): StringStream {
-    return this.apply((i) => dotCase(i));
+    return this.apply((i) => StringUtils.dotCase(i));
   }
 
   public headerCase(): StringStream {
-    return this.apply((i) => headerCase(i));
+    return this.apply((i) => StringUtils.headerCase(i));
   }
 
   public paramCase(): StringStream {
-    return this.apply((i) => paramCase(i));
+    return this.apply((i) => StringUtils.paramCase(i));
   }
 
   public pascalCase(): StringStream {
-    return this.apply((i) => pascalCase(i));
+    return this.apply((i) => StringUtils.pascalCase(i));
   }
 
   public snakeCase(): StringStream {
-    return this.apply((i) => snakeCase(i));
+    return this.apply((i) => StringUtils.snakeCase(i));
   }
 }
