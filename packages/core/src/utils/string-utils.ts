@@ -10,6 +10,11 @@ import {
   pathCase,
 } from 'change-case';
 
+/**
+ * @todo Support all unicode letters.
+ * @body change-case not support all unicode letters by default.
+ */
+
 export class StringUtils {
 
   public static pathCase(str: string): string {

@@ -1,6 +1,11 @@
 import * as check from 'check-types';
 import { IFactory } from '../factories/interfaces/factory';
 
+/**
+ * @todo Make errors more readable
+ * @body Make errors more readable, add class and parameter names and value of the given parameter.
+ */
+
 export class Assert {
 
   public static integer(value: number): void {

@@ -9,6 +9,11 @@ import { Lazy } from '../factories/converters/lazy';
 import { Stream } from './stream-loader';
 
 /**
+ * @todo Make JSDOC comments more type-safe.
+ * @body `dynamic`, `static` and `lazy` method's JSDOC comments are not type-safe.
+ */
+
+/**
  * `ObjectStream` extends the `Stream.<object>` class for object operations.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream|Docs}
  * @see Stream
