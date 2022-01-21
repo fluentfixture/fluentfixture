@@ -26,7 +26,7 @@ export const int = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_
  * Creates a `NumberStream` that generates always the given number.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#num-val|Docs}
  * @see NumberStream
- * @param {number} [val] - the number to be generated.
+ * @param {number} [val] - the number to be generated
  * @returns {NumberStream}
  */
 export const num = (val: number): NumberStream => NumberStream.constant(val);

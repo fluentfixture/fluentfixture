@@ -28,7 +28,7 @@ export class Stream<T = any> extends Factory<T> {
   private readonly factory: IFactory<T>;
 
   /**
-   * Creates an instance of `Stream.<T>`
+   * Creates an instance of `Stream.<T>`.
    * @constructor
    * @param {IFactory.<T>} [factory] - the factory to be decorated
    */
