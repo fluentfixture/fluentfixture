@@ -15,6 +15,15 @@ import { Formatter } from '../factories/converters/formatter';
 import { Memo } from '../factories/converters/memo';
 import { ArrayStream, StringStream } from './stream-loader';
 
+/**
+ * `Stream` is the superclass of all stream types.
+ * `Stream` is a factory wrapper (streams are also factories) that provides a fluent interface by decorating factories.
+ * All methods of streams create other streams that wrap themselves.
+ * Like any factory, streams are also immutable and reusable.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream|Docs}
+ * @class
+ * @template T
+ */
 export class Stream<T = any> extends Factory<T> {
   private readonly factory: IFactory<T>;
 

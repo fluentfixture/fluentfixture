@@ -3,6 +3,13 @@ import { NumberFactory } from '../factories/number-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
 
+/**
+ * `NumberStream` extends the `Stream.<number>` class for numeric operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream|Docs}
+ * @see Stream
+ * @class
+ * @extends Stream.<number>
+ */
 export class NumberStream extends Stream<number> {
   public constructor(factory: IFactory<number>) {
     super(factory);

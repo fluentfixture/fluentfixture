@@ -11,6 +11,14 @@ import { Sampler } from '../factories/converters/sampler';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
 
+/**
+ * `ArrayStream` extends the `Stream.<T[]>` class for array operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream|Docs}
+ * @see Stream
+ * @class
+ * @template T
+ * @extends Stream.<T[]>
+ */
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   public constructor(factory: IFactory<ReadonlyArray<T>>) {
     super(factory);

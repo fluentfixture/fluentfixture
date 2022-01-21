@@ -5,6 +5,13 @@ import { DateFactory } from '../factories/date-factory';
 import { DateUtils } from '../utils/date-utils';
 import { Stream, NumberStream } from './stream-loader';
 
+/**
+ * `DateStream` extends the `Stream.<Date>` class for date operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream|Docs}
+ * @see Stream
+ * @class
+ * @extends Stream.<Date>
+ */
 export class DateStream extends Stream<Date> {
   public constructor(factory: IFactory<Date>) {
     super(factory);

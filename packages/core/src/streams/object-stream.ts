@@ -8,6 +8,13 @@ import { ConvertFunction } from '../types/convert-function';
 import { Lazy } from '../factories/converters/lazy';
 import { Stream } from './stream-loader';
 
+/**
+ * `ObjectStream` extends the `Stream.<object>` class for object operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream|Docs}
+ * @see Stream
+ * @class
+ * @extends Stream.<object>
+ */
 export class ObjectStream<T = any> extends Stream<T> {
   public constructor(factory: IFactory<T>) {
     super(factory);

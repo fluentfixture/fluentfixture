@@ -4,6 +4,13 @@ import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { StringUtils } from '../utils/string-utils';
 import { Stream } from './stream-loader';
 
+/**
+ * `StringStream` extends the `Stream.<string>` class for object operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream|Docs}
+ * @see Stream
+ * @class
+ * @extends Stream.<string>
+ */
 export class StringStream extends Stream<string> {
   public constructor(factory: IFactory<string>) {
     super(factory);

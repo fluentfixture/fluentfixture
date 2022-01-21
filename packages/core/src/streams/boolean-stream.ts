@@ -4,6 +4,13 @@ import { BooleanFactory } from '../factories/boolean-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Stream } from './stream-loader';
 
+/**
+ * `BooleanStream` extends the `Stream.<boolean>` class for boolean operations.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/boolean-stream|Docs}
+ * @see Stream
+ * @class
+ * @extends Stream.<boolean>
+ */
 export class BooleanStream extends Stream<boolean> {
   public constructor(factory: IFactory<boolean>) {
     super(factory);
