@@ -38,16 +38,34 @@ export class Stream<T = any> extends Factory<T> {
     this.factory = factory;
   }
 
+  /**
+   * Creates an instance of `Stream.<T>`
+   * @static
+   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @return {Stream.<T>}
+   */
   public static from<T = any>(factory: IFactory<T>): Stream<T> {
     return new Stream(factory);
   }
 
+  /**
+   * Creates a `Stream.<T>` that generates always the given value.
+   * @static
+   * @param {T} [value] - the value to be generated
+   * @returns {Stream.<T>}
+   */
   public static fromValue<T = any>(value: T): Stream<T> {
     return Stream.from(new ValueAdapter(value));
   }
 
-  public static fromResult<T = any>(value: ProducerFunction<T>): Stream<T> {
-    return Stream.from(new FunctionAdapter(value));
+  /**
+   * Creates a `Stream.<T>` that generates always the result of the given function.
+   * @static
+   * @param {function():T} [fn] - the function to be invoked for generating data
+   * @returns {Stream.<T>}
+   */
+  public static fromResult<T = any>(fn: ProducerFunction<T>): Stream<T> {
+    return Stream.from(new FunctionAdapter(fn));
   }
 
   /**
@@ -90,7 +108,6 @@ export class Stream<T = any> extends Factory<T> {
    * Creates a `Stream` with a `Functional` decorator.
    * The underlying type of the new stream is the same as the return type of the given function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#convert-fn|Docs}
-   * @see Stream
    * @see Functional
    * @template T, K
    * @param {function(T):K} [fn] - the converter function
