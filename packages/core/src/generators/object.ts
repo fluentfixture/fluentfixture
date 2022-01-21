@@ -6,7 +6,7 @@ import { ObjectStream } from '../streams/stream-loader';
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/object-generators#obj-model|Docs}
  * @see ObjectStream
  * @template T
- * @param {Object.<string, Stream.<T>>} [model] - a key-value object model that all keys are an instance of a factory
+ * @param {Object.<string, IFactory.<T>>} [model] - a key-value object model that all keys are an instance of a factory
  * @returns {ObjectStream.<T>}
  */
 export const obj = <T = any>(model: ObjectModel<T>): ObjectStream<T> => ObjectStream.of(model);
