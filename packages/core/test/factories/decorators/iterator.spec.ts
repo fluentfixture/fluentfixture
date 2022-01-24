@@ -15,7 +15,7 @@ describe('Iterator', () => {
 
         const thrown = () => new Iterator(new MockFactory({}), count);
 
-        expect(thrown).toThrow('Parameter must be an integer.');
+        expect(thrown).toThrow('[Iterator.constructor(factory, count)].[count]: Parameter must be an integer!');
       });
 
       it('should throw an error when count is less than the minimum array length', () => {

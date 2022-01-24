@@ -24,7 +24,7 @@ describe('StringFactory', () => {
 
         const thrown = () => new StringFactory('hex', length);
 
-        expect(thrown).toThrow('Parameter must be an integer.');
+        expect(thrown).toThrow('[StringFactory.constructor(charset, length)].[length]: Parameter must be an integer!');
       });
 
       it('should throw an error when length is less than the minimum string length', () => {

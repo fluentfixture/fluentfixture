@@ -14,7 +14,7 @@ describe('IntegerFactory', () => {
 
         const thrown = () => new IntegerFactory(min, 1);
 
-        expect(thrown).toThrow('Parameter must be an integer.');
+        expect(thrown).toThrow('[IntegerFactory.constructor(min, max)].[min]: Parameter must be an integer!');
       });
 
       it('should throw an error when min is less than the minimum integer', () => {
@@ -36,9 +36,9 @@ describe('IntegerFactory', () => {
 
       test.each(NON_INTEGER_DATA_SET)('should throw an error when max is not an integer, given: %s', (max: any) => {
 
-        const thrown = () => new IntegerFactory(max, 1);
+        const thrown = () => new IntegerFactory(1, max);
 
-        expect(thrown).toThrow('Parameter must be an integer.');
+        expect(thrown).toThrow('[IntegerFactory.constructor(min, max)].[max]: Parameter must be an integer!');
       });
 
       it('should throw an error when max is less than the minimum integer', () => {

@@ -8,9 +8,9 @@ import { IFactory } from '../factories/interfaces/factory';
 
 export class Assert {
 
-  public static integer(value: number): void {
+  public static isInteger(context: string, name: string, value: number): void {
     if (check.not.integer(value)) {
-      throw new Error('Parameter must be an integer.');
+      Assert.throwError(context, name, 'Parameter must be an integer!');
     }
   }
 
@@ -60,5 +60,9 @@ export class Assert {
     if (check.not.nonEmptyString(value as string)) {
       throw new Error('Parameter must be a non-empty string.');
     }
+  }
+
+  private static throwError(context: string, name: string, message: string): never {
+    throw new Error(`[${context}].[${name}]: ${message}`)
   }
 }

@@ -14,7 +14,7 @@ describe('Factory', () => {
 
         const thrown = () => factory.many(count);
 
-        expect(thrown).toThrow('Parameter must be an integer.');
+        expect(thrown).toThrow('[Factory.many(count)].[count]: Parameter must be an integer!');
       });
 
       it('should throw an error when count is less than the minimum array length', () => {

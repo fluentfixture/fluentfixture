@@ -8,7 +8,7 @@ export class StringFactory extends Factory<string> {
   private readonly charset: string;
 
   public constructor(charset: string, length: number) {
-    Assert.integer(length);
+    Assert.isInteger('StringFactory.constructor(charset, length)', 'length', length);
     Assert.inRange(length, MIN_STRING_LENGTH, MAX_STRING_LENGTH);
     Assert.nonEmptyString(charset);
     super();

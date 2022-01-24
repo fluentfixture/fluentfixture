@@ -7,7 +7,7 @@ export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
   private readonly count: number;
 
   public constructor(factory: IFactory<T>, count: number) {
-    Assert.integer(count);
+    Assert.isInteger('Iterator.constructor(factory, count)', 'count', count);
     Assert.inRange(count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
     super(factory);
     this.count = count;
