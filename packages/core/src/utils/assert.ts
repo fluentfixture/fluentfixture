@@ -32,9 +32,9 @@ export class Assert {
     }
   }
 
-  public static func(value: Function): void {
+  public static isFunction(context: string, name: string, value: Function): void {
     if (check.not.function(value)) {
-      throw new Error('Parameter must be a function.');
+      Assert.throwError(context, name, 'Parameter must be a function!');
     }
   }
 
@@ -44,9 +44,9 @@ export class Assert {
     }
   }
 
-  public static factoryLike(factory: IFactory): void {
+  public static isFactoryLike(context: string, name: string, factory: IFactory): void {
     if (check.not.assigned(factory) || check.not.function(factory.single)) {
-      throw new Error('Parameter must be a factory-like.');
+      Assert.throwError(context, name, 'Parameter must be a factory-like!');
     }
   }
 

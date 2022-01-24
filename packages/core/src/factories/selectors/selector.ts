@@ -12,8 +12,8 @@ export class Selector<T = any, K = any> extends Factory<T | K> {
   public constructor(factory1: IFactory<T>, factory2: IFactory<K>, percentage: number) {
     Assert.isNumber('Selector.constructor(factory1, factory2, percentage)', 'percentage', percentage);
     Assert.isInRange('Selector.constructor(factory1, factory2, percentage)', 'percentage', percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
-    Assert.factoryLike(factory1);
-    Assert.factoryLike(factory2);
+    Assert.isFactoryLike('Selector.constructor(factory1, factory2, percentage)', 'factory1', factory1);
+    Assert.isFactoryLike('Selector.constructor(factory1, factory2, percentage)', 'factory2', factory2);
     super();
     this.factory1 = factory1;
     this.factory2 = factory2;

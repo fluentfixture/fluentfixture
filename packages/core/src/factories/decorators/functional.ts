@@ -4,19 +4,19 @@ import { Assert } from '../../utils/assert';
 import { Decorator } from './decorator';
 
 export class Functional<T = any, K = any> extends Decorator<T, K> {
-  private readonly decorator: ConvertFunction<T, K>;
+  private readonly fn: ConvertFunction<T, K>;
 
-  public constructor(factory: IFactory<T>, decorator: ConvertFunction<T, K>) {
-    Assert.func(decorator);
+  public constructor(factory: IFactory<T>, fn: ConvertFunction<T, K>) {
+    Assert.isFunction('Functional.constructor(factory, fn)', 'fn', fn);
     super(factory);
-    this.decorator = decorator;
+    this.fn = fn;
   }
 
   public single(): K {
-    return this.decorator(this.factory.single());
+    return this.fn(this.factory.single());
   }
 
-  public getDecorator(): ConvertFunction<T, K> {
-    return this.decorator;
+  public getFunction(): ConvertFunction<T, K> {
+    return this.fn;
   }
 }

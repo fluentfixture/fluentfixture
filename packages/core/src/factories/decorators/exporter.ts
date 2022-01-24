@@ -4,21 +4,21 @@ import { ConsumerFunction } from '../../types/consumer-function';
 import { Decorator } from './decorator';
 
 export class Exporter<T = any> extends Decorator<T, T> {
-  private readonly consumer: ConsumerFunction<T>;
+  private readonly fn: ConsumerFunction<T>;
 
-  public constructor(factory: IFactory<T>, consumer: ConsumerFunction<T>) {
-    Assert.func(consumer);
+  public constructor(factory: IFactory<T>, fn: ConsumerFunction<T>) {
+    Assert.isFunction('Exporter.constructor(factory, fn)', 'fn', fn);
     super(factory);
-    this.consumer = consumer;
+    this.fn = fn;
   }
 
   public single(): T {
     const value = this.factory.single();
-    this.consumer(value);
+    this.fn(value);
     return value;
   }
 
-  public getConsumer(): ConsumerFunction<T> {
-    return this.consumer;
+  public getFunction(): ConsumerFunction<T> {
+    return this.fn;
   }
 }

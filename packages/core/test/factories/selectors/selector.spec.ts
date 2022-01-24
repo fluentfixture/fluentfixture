@@ -46,7 +46,7 @@ describe('Selector', () => {
 
         const thrown = () => new Selector(factory1, factory, percentage);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('[Selector.constructor(factory1, factory2, percentage)].[factory1]: Parameter must be a factory-like!');
       });
     });
 
@@ -59,7 +59,7 @@ describe('Selector', () => {
 
         const thrown = () => new Selector(factory, factory2, percentage);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('[Selector.constructor(factory1, factory2, percentage)].[factory2]: Parameter must be a factory-like!');
       });
     });
   });

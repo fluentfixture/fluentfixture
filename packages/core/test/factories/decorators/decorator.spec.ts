@@ -1,8 +1,8 @@
 import { NON_FACTORY_LIKE_DATA_SET } from '../../data/type-sets';
 import { Decorator } from '../../../src/factories/decorators/decorator';
-import { MockConverter } from '../../mocks/mock-converter';
+import { MockDecorator } from '../../mocks/mock-decorator';
 
-describe('Converter', () => {
+describe('Decorator', () => {
 
   describe('.constructor()', () => {
 
@@ -10,9 +10,9 @@ describe('Converter', () => {
 
       test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when factory is not a factory-like, given: %s', (factory: any) => {
 
-        const thrown = () => new MockConverter(factory, 10);
+        const thrown = () => new MockDecorator(factory, 10);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('[Decorator.constructor(factory)].[factory]: Parameter must be a factory-like!');
       });
     });
   });

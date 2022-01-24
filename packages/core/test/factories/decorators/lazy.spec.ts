@@ -8,13 +8,13 @@ describe('Lazy', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (converter)', () => {
+    describe('parameter assertions (fn)', () => {
 
-      test.each(NON_FUNCTION_DATA_SET)('should throw an error when converter is not a function, given: %s', (converter: any) => {
+      test.each(NON_FUNCTION_DATA_SET)('should throw an error when converter is not a function, given: %s', (fn: any) => {
 
-        const thrown = () => new Lazy(new MockFactory({}), converter, 'key');
+        const thrown = () => new Lazy(new MockFactory({}), fn, 'key');
 
-        expect(thrown).toThrow('Parameter must be a function.');
+        expect(thrown).toThrow('[Lazy.constructor(factory, fn, property)].[fn]: Parameter must be a function!');
       });
     });
 

@@ -33,7 +33,7 @@ export class Stream<T = any> extends Factory<T> {
    * @param {IFactory.<T>} [factory] - the factory to be decorated
    */
   public constructor(factory: IFactory<T>) {
-    Assert.factoryLike(factory);
+    Assert.isFactoryLike('Stream.constructor(factory)', 'factory', factory);
     super();
     this.factory = factory;
   }

@@ -8,13 +8,13 @@ describe('Exporter', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (consumer)', () => {
+    describe('parameter assertions (fn)', () => {
 
-      test.each(NON_FUNCTION_DATA_SET)('should throw an error when consumer is not a function, given: %s', (consumer: any) => {
+      test.each(NON_FUNCTION_DATA_SET)('should throw an error when consumer is not a function, given: %s', (fn: any) => {
 
-        const thrown = () => new Exporter(new MockFactory({}), consumer);
+        const thrown = () => new Exporter(new MockFactory({}), fn);
 
-        expect(thrown).toThrow('Parameter must be a function.');
+        expect(thrown).toThrow('[Exporter.constructor(factory, fn)].[fn]: Parameter must be a function!');
       });
     });
   });

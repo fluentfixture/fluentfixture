@@ -7,7 +7,7 @@ export const assertStreamOperations = (stream: Stream, result: Stream): ConvertF
 
   expect(functional).toBeInstanceOf(Functional);
   expect(functional.getFactory()).toBe(stream);
-  expect(functional.getDecorator()).toBeInstanceOf(Function);
+  expect(functional.getFunction()).toBeInstanceOf(Function);
 
-  return functional.getDecorator();
+  return functional.getFunction();
 };

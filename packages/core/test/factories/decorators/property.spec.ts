@@ -14,7 +14,7 @@ describe('Property', () => {
 
         const thrown = () => new Property(new MockFactory({}), decorator, 'key');
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('[Property.constructor(factory, decorator, property)].[decorator]: Parameter must be a factory-like!');
       });
     });
 

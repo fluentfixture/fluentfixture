@@ -22,7 +22,7 @@ describe('Stream', () => {
 
         const thrown = () => new Stream(factory);
 
-        expect(thrown).toThrow('Parameter must be a factory-like.');
+        expect(thrown).toThrow('[Stream.constructor(factory)].[factory]: Parameter must be a factory-like!');
       });
     });
   });
@@ -105,7 +105,7 @@ describe('Stream', () => {
       const functional = result.getFactory() as Functional;
       expect(functional).toBeInstanceOf(Functional);
       expect(functional.getFactory()).toBe(stream);
-      expect(functional.getDecorator()).toBe(fn);
+      expect(functional.getFunction()).toBe(fn);
     });
   });
 
@@ -123,7 +123,7 @@ describe('Stream', () => {
       const functional = result.getFactory() as Functional;
       expect(functional).toBeInstanceOf(Functional);
       expect(functional.getFactory()).toBe(stream);
-      expect(functional.getDecorator()).toBe(fn);
+      expect(functional.getFunction()).toBe(fn);
     });
   });
 
@@ -141,7 +141,7 @@ describe('Stream', () => {
       const exporter = result.getFactory() as Exporter;
       expect(exporter).toBeInstanceOf(Exporter);
       expect(exporter.getFactory()).toBe(stream);
-      expect(exporter.getConsumer()).toBe(fn);
+      expect(exporter.getFunction()).toBe(fn);
     });
   });
 

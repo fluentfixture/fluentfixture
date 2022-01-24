@@ -8,7 +8,7 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
   private readonly property: S;
 
   public constructor(factory: IFactory<T>, decorator: IFactory<K>, property: S) {
-    Assert.factoryLike(decorator);
+    Assert.isFactoryLike('Property.constructor(factory, decorator, property)', 'decorator', decorator);
     Assert.key(property);
     super(factory);
     this.property = property;

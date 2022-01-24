@@ -3,19 +3,19 @@ import { Factory } from '../factory';
 import { Assert } from '../../utils/assert';
 
 export class FunctionAdapter<T> extends Factory<T> {
-  private readonly producer: ProducerFunction<T>;
+  private readonly fn: ProducerFunction<T>;
 
-  public constructor(producer: ProducerFunction<T>) {
-    Assert.func(producer);
+  public constructor(fn: ProducerFunction<T>) {
+    Assert.isFunction('FunctionAdapter.constructor(fn)', 'fn', fn);
     super();
-    this.producer = producer;
+    this.fn = fn;
   }
 
   public single(): T {
-    return this.producer();
+    return this.fn();
   }
 
   public getFunction(): ProducerFunction<T> {
-    return this.producer;
+    return this.fn;
   }
 }

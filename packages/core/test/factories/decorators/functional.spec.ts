@@ -8,13 +8,13 @@ describe('Functional', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (decorator)', () => {
+    describe('parameter assertions (fn)', () => {
 
-      test.each(NON_FUNCTION_DATA_SET)('should throw an error when decorator is not a function, given: %s', (decorator: any) => {
+      test.each(NON_FUNCTION_DATA_SET)('should throw an error when decorator is not a function, given: %s', (fn: any) => {
 
-        const thrown = () => new Functional(new MockFactory({}), decorator);
+        const thrown = () => new Functional(new MockFactory({}), fn);
 
-        expect(thrown).toThrow('Parameter must be a function.');
+        expect(thrown).toThrow('[Functional.constructor(factory, fn)].[fn]: Parameter must be a function!');
       });
     });
   });

@@ -5,13 +5,13 @@ describe('FunctionAdapter', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (producer)', () => {
+    describe('parameter assertions (fn)', () => {
 
-      test.each(NON_FUNCTION_DATA_SET)('should throw an error when producer is not a function, given: %s', (producer: any) => {
+      test.each(NON_FUNCTION_DATA_SET)('should throw an error when producer is not a function, given: %s', (fn: any) => {
 
-        const thrown = () => new FunctionAdapter(producer);
+        const thrown = () => new FunctionAdapter(fn);
 
-        expect(thrown).toThrow('Parameter must be a function.');
+        expect(thrown).toThrow('[FunctionAdapter.constructor(fn)].[fn]: Parameter must be a function!');
       });
     });
   });

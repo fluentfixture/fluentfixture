@@ -63,7 +63,7 @@ describe('ObjectStream', () => {
       expect(lazy).toBeInstanceOf(Lazy);
       expect(lazy.getFactory()).toBe(stream);
       expect(lazy.getProperty()).toBe(propertyName);
-      expect(lazy.getConverter()).toBe(converter);
+      expect(lazy.getFunction()).toBe(converter);
     });
   });
 });
