@@ -1,4 +1,4 @@
-import { str, hex, octal, numeric, alphanumeric, alphabetic, text } from '../../src/generators/generators';
+import { str, hex, octal, numeric, alphanumeric, alphabetic, text, binary } from '../../src/generators/generators';
 import { StringStream } from '../../src/streams/stream-loader';
 import { StringFactory } from '../../src/factories/string-factory';
 import { DEFAULT_STRING_LENGTH } from '../../src/constants/limits';
@@ -82,6 +82,33 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('hex');
+      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+  });
+
+  describe('binary()', () => {
+
+    it('should create a string stream with binary charset with given length', () => {
+      const length = 5;
+
+      const result = binary(length);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getLength()).toBe(length);
+    });
+
+    it('should use default length when length is not provided', () => {
+      const result = binary();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('binary');
       expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
     });
   });
