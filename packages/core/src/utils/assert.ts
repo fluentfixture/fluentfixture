@@ -1,11 +1,6 @@
 import * as check from 'check-types';
 import { IFactory } from '../factories/interfaces/factory';
 
-/**
- * @todo Make errors more readable
- * @body Make errors more readable, add class and parameter names and value of the given parameter.
- */
-
 export class Assert {
 
   public static isInteger(context: string, name: string, value: number): void {
@@ -44,6 +39,17 @@ export class Assert {
     }
   }
 
+  public static isObjectModel(context: string, name: string, obj: Record<string, IFactory>): void {
+    if (check.not.object(obj)) {
+      Assert.throwError(context, name, 'Parameter must be a key-value object that all keys are an instance of a factory-like!');
+    }
+    for (const key of Object.keys(obj)) {
+      if (check.not.assigned(obj[key]) || check.not.function((obj[key] as IFactory).single)) {
+        Assert.throwError(context, name, 'Parameter must be a key-value object that all keys are an instance of a factory-like!');
+      }
+    }
+  }
+
   public static isFactoryLike(context: string, name: string, factory: IFactory): void {
     if (check.not.assigned(factory) || check.not.function(factory.single)) {
       Assert.throwError(context, name, 'Parameter must be a factory-like!');
@@ -53,12 +59,6 @@ export class Assert {
   public static isKey(context: string, name: string, value: keyof any): void {
     if (check.not.nonEmptyString(value as string) && check.not.number(value) && check.not.instance(value, Symbol)) {
       Assert.throwError(context, name, 'Parameter must be a string, number or symbol!');
-    }
-  }
-
-  public static nonEmptyString(value: string): void {
-    if (check.not.nonEmptyString(value as string)) {
-      throw new Error('Parameter must be a non-empty string.');
     }
   }
 

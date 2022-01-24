@@ -1,5 +1,5 @@
 import { instance, mock, verify, when } from 'ts-mockito';
-import { NON_OBJECT_DATA_SET } from '../data/type-sets';
+import { NON_FACTORY_LIKE_DATA_SET, NON_OBJECT_DATA_SET } from '../data/type-sets';
 import { ObjectFactory } from '../../src/factories/object-factory';
 import { Factory } from '../../src/factories/factory';
 
@@ -13,7 +13,14 @@ describe('ObjectFactory', () => {
 
         const thrown = () => new ObjectFactory(model);
 
-        expect(thrown).toThrow('Parameter must be an object.');
+        expect(thrown).toThrow('[ObjectFactory.constructor(model)].[model]: Parameter must be a key-value object that all keys are an instance of a factory-like!');
+      });
+
+      test.each(NON_FACTORY_LIKE_DATA_SET)('should throw an error when a key of model is not a factory-like, given: %s', (value: any) => {
+
+        const thrown = () => new ObjectFactory({ key: value });
+
+        expect(thrown).toThrow('[ObjectFactory.constructor(model)].[model]: Parameter must be a key-value object that all keys are an instance of a factory-like!');
       });
     });
   });

@@ -6,7 +6,7 @@ export class ObjectFactory<T> extends Factory<T> {
   private readonly model: ObjectModel<T>
 
   public constructor(model: ObjectModel<T>) {
-    Assert.object(model);
+    Assert.isObjectModel('ObjectFactory.constructor(model)', 'model', model);
     super();
     this.model = model;
   }
