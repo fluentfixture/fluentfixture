@@ -3,7 +3,7 @@ import { NON_NON_EMPTY_STRING_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Factory } from '../../../src/factories/factory';
 import { Formatter } from '../../../src/factories/converters/formatter';
-import { FormatUtils } from '../../../src/utils/format-utils';
+import { FormatHelper } from '../../../src/helpers/format-helper';
 
 describe('Formatter', () => {
 
@@ -28,7 +28,7 @@ describe('Formatter', () => {
       const factoryOut = { 'key': 'value' };
       const mockFactory = mock(Factory);
       const compiledFormatter = { format: (source: any) => null };
-      const spyFormatUtils = spy(FormatUtils);
+      const spyFormatUtils = spy(FormatHelper);
       const spyCompiledFormatter = spy(compiledFormatter);
 
       when(mockFactory.single()).thenReturn(factoryOut);

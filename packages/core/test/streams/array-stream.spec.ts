@@ -1,26 +1,33 @@
+import { spy, verify, when } from 'ts-mockito';
 import { MockFactory } from '../mocks/mock-factory';
 import { Stream, ArrayStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
-import { Picker } from '../../src/factories/converters/picker';
 import { Sampler } from '../../src/factories/converters/sampler';
-import { Shuffler } from '../../src/factories/converters/shuffler';
+import { Functional } from '../../src/factories/converters/functional';
+import { ArrayHelper } from '../../src/helpers/array-helper';
 
 describe('ArrayStream', () => {
 
   describe('.pick()', () => {
 
-    it('should create a stream with picker decorator that wraps itself', () => {
-      const factory = new MockFactory([]);
-      const stream = ArrayStream.iterate(factory, 10);
+    it('should create a stream with functional decorator and the pick operation that wrap itself', () => {
+      const array = [1, 2, 3];
+      const out = 2;
+      const stream = ArrayStream.fromList(array);
+      const spyArrayHelper = spy(ArrayHelper);
+
+      when(spyArrayHelper.pick(array)).thenReturn(out);
 
       const result = stream.pick();
 
       expect(result).toBeInstanceOf(Stream);
 
-      const picker = result.getFactory() as Picker;
-      expect(picker).toBeInstanceOf(Picker);
-      expect(picker.getFactory()).toBe(stream);
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+      expect(result.single()).toBe(out);
+      verify(spyArrayHelper.pick(array)).once();
     });
   });
 
@@ -44,17 +51,23 @@ describe('ArrayStream', () => {
 
   describe('.shuffle()', () => {
 
-    it('should create a stream with shuffle decorator that wraps itself', () => {
-      const factory = new MockFactory([]);
-      const stream = ArrayStream.iterate(factory, 10);
+    it('should create a stream with functional decorator and the shuffle operation that wraps itself', () => {
+      const arr = [1, 2, 3];
+      const out = [1, 3, 2];
+      const stream = ArrayStream.fromList(arr);
+      const spyArrayHelper = spy(ArrayHelper);
+
+      when(spyArrayHelper.shuffle(arr)).thenReturn(out);
 
       const result = stream.shuffle();
 
       expect(result).toBeInstanceOf(ArrayStream);
 
-      const shuffler = result.getFactory() as Shuffler;
-      expect(shuffler).toBeInstanceOf(Shuffler);
-      expect(shuffler.getFactory()).toBe(stream);
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+      expect(result.single()).toBe(out);
+      verify(spyArrayHelper.shuffle(arr)).once();
     });
   });
 

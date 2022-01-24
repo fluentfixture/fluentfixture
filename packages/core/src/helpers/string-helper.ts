@@ -15,7 +15,7 @@ import {
  * @body change-case not support all unicode letters by default.
  */
 
-export class StringUtils {
+export class StringHelper {
 
   public static pathCase(str: string): string {
     return pathCase(str);

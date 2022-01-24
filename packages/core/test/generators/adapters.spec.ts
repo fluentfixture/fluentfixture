@@ -1,11 +1,12 @@
+import { spy, verify, when } from 'ts-mockito';
 import { val, nil, undef, from, pick, take, shuffle } from '../../src/generators/generators';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { FunctionAdapter } from '../../src/factories/adapters/function-adapter';
 import { ArrayStream, Stream } from '../../src/streams/stream-loader';
-import { Picker } from '../../src/factories/converters/picker';
 import { Sampler } from '../../src/factories/converters/sampler';
-import { Shuffler } from '../../src/factories/converters/shuffler';
 import { DEFAULT_SAMPLE_COUNT } from '../../src/constants/limits';
+import { Functional } from '../../src/factories/converters/functional';
+import { ArrayHelper } from '../../src/helpers/array-helper';
 
 describe('adapters', () => {
 
@@ -67,20 +68,26 @@ describe('adapters', () => {
 
   describe('pick()', () => {
 
-    it('should create an array stream with a picker with given array', () => {
+    it('should create an array stream with a functional and the pick operation', () => {
       const arr = [1, 2, 3];
+      const out = 2;
+      const spyArrayHelper = spy(ArrayHelper);
+
+      when(spyArrayHelper.pick(arr)).thenReturn(out);
 
       const result = pick(arr);
 
-      const picker = result.getFactory() as Picker;
-      const arrayStream = picker.getFactory() as ArrayStream;
+      const functional = result.getFactory() as Functional;
+      const arrayStream = functional.getFactory() as ArrayStream;
       const valueAdapter = arrayStream.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(Stream);
-      expect(picker).toBeInstanceOf(Picker);
+      expect(functional).toBeInstanceOf(Functional);
       expect(arrayStream).toBeInstanceOf(ArrayStream);
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(arr);
+      expect(result.single()).toBe(out);
+      verify(spyArrayHelper.pick(arr)).once();
     });
   });
 
@@ -124,20 +131,26 @@ describe('adapters', () => {
 
   describe('shuffle()', () => {
 
-    it('should create an array stream with a suffler with given array', () => {
+    it('should create an array stream with functional and the shuffle operation', () => {
       const arr = [1, 2, 3];
+      const out = [4, 3, 2];
+      const spyArrayHelper = spy(ArrayHelper);
+
+      when(spyArrayHelper.shuffle(arr)).thenReturn(out);
 
       const result = shuffle(arr);
 
-      const shuffler = result.getFactory() as Shuffler;
-      const arrayStream = shuffler.getFactory() as ArrayStream;
+      const functional = result.getFactory() as Functional;
+      const arrayStream = functional.getFactory() as ArrayStream;
       const valueAdapter = arrayStream.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(ArrayStream);
-      expect(shuffler).toBeInstanceOf(Shuffler);
+      expect(functional).toBeInstanceOf(Functional);
       expect(arrayStream).toBeInstanceOf(ArrayStream);
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(arr);
+      expect(result.single()).toBe(out);
+      verify(spyArrayHelper.shuffle(arr)).once();
     });
   });
 });

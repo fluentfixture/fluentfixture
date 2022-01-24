@@ -1,7 +1,7 @@
 import { CompiledFormatter } from '@fluentfixture/format';
 import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
-import { FormatUtils } from '../../utils/format-utils';
+import { FormatHelper } from '../../helpers/format-helper';
 import { Converter } from './converter';
 
 export class Formatter<T = any> extends Converter<T, string> {
@@ -12,7 +12,7 @@ export class Formatter<T = any> extends Converter<T, string> {
     Assert.nonEmptyString(template);
     super(factory);
     this.template = template;
-    this.formatter = FormatUtils.compile(template);
+    this.formatter = FormatHelper.compile(template);
   }
 
   public single(): string {

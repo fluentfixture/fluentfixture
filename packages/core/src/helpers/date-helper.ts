@@ -6,7 +6,7 @@ import { UnitType } from 'dayjs';
  * @body DateUtils not support week operations for now.
  */
 
-export class DateUtils {
+export class DateHelper {
 
   public static now(): Date {
     return dayjs().toDate();
@@ -25,123 +25,123 @@ export class DateUtils {
   }
 
   public static addMilliseconds(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'ms', value);
+    return DateHelper.addTimeUnit(date, 'ms', value);
   }
 
   public static subtractMilliseconds(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'ms', value);
+    return DateHelper.subtractTimeUnit(date, 'ms', value);
   }
 
   public static setMilliseconds(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'ms', value);
+    return DateHelper.setTimeUnit(date, 'ms', value);
   }
 
   public static getMilliseconds(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'ms');
+    return DateHelper.getTimeUnit(date, 'ms');
   }
 
   public static addSeconds(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 's', value);
+    return DateHelper.addTimeUnit(date, 's', value);
   }
 
   public static subtractSeconds(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 's', value);
+    return DateHelper.subtractTimeUnit(date, 's', value);
   }
 
   public static setSeconds(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 's', value);
+    return DateHelper.setTimeUnit(date, 's', value);
   }
 
   public static getSeconds(date: Date): number {
-    return DateUtils.getTimeUnit(date, 's');
+    return DateHelper.getTimeUnit(date, 's');
   }
 
   public static addMinutes(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'm', value);
+    return DateHelper.addTimeUnit(date, 'm', value);
   }
 
   public static subtractMinutes(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'm', value);
+    return DateHelper.subtractTimeUnit(date, 'm', value);
   }
 
   public static setMinutes(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'm', value);
+    return DateHelper.setTimeUnit(date, 'm', value);
   }
 
   public static getMinutes(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'm');
+    return DateHelper.getTimeUnit(date, 'm');
   }
 
   public static addHours(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'h', value);
+    return DateHelper.addTimeUnit(date, 'h', value);
   }
 
   public static subtractHours(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'h', value);
+    return DateHelper.subtractTimeUnit(date, 'h', value);
   }
 
   public static setHours(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'h', value);
+    return DateHelper.setTimeUnit(date, 'h', value);
   }
 
   public static getHours(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'h');
+    return DateHelper.getTimeUnit(date, 'h');
   }
 
   public static addDays(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'd', value);
+    return DateHelper.addTimeUnit(date, 'd', value);
   }
 
   public static subtractDays(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'd', value);
+    return DateHelper.subtractTimeUnit(date, 'd', value);
   }
 
   public static setDaysOfWeek(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'day', value);
+    return DateHelper.setTimeUnit(date, 'day', value);
   }
 
   public static setDaysOfMonth(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'date', value);
+    return DateHelper.setTimeUnit(date, 'date', value);
   }
 
   public static getDaysOfWeek(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'day');
+    return DateHelper.getTimeUnit(date, 'day');
   }
 
   public static getDaysOfMonth(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'date');
+    return DateHelper.getTimeUnit(date, 'date');
   }
 
   public static addMonths(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'M', value);
+    return DateHelper.addTimeUnit(date, 'M', value);
   }
 
   public static subtractMonths(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'M', value);
+    return DateHelper.subtractTimeUnit(date, 'M', value);
   }
 
   public static setMonths(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'M', value);
+    return DateHelper.setTimeUnit(date, 'M', value);
   }
 
   public static getMonths(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'M');
+    return DateHelper.getTimeUnit(date, 'M');
   }
 
   public static addYears(date: Date, value: number): Date {
-    return DateUtils.addTimeUnit(date, 'y', value);
+    return DateHelper.addTimeUnit(date, 'y', value);
   }
 
   public static subtractYears(date: Date, value: number): Date {
-    return DateUtils.subtractTimeUnit(date, 'y', value);
+    return DateHelper.subtractTimeUnit(date, 'y', value);
   }
 
   public static setYears(date: Date, value: number): Date {
-    return DateUtils.setTimeUnit(date, 'y', value);
+    return DateHelper.setTimeUnit(date, 'y', value);
   }
 
   public static getYears(date: Date): number {
-    return DateUtils.getTimeUnit(date, 'y');
+    return DateHelper.getTimeUnit(date, 'y');
   }
 
   private static addTimeUnit(date: Date, unit: UnitType, value: number): Date {

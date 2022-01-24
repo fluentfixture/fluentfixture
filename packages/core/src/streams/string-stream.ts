@@ -1,7 +1,7 @@
 import { IFactory } from '../factories/interfaces/factory';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
-import { StringUtils } from '../utils/string-utils';
+import { StringHelper } from '../helpers/string-helper';
 import { Stream } from './stream-loader';
 
 /**
@@ -124,7 +124,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public camelCase(): StringStream {
-    return this.apply((i) => StringUtils.camelCase(i));
+    return this.apply((i) => StringHelper.camelCase(i));
   }
 
   /**
@@ -134,7 +134,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public capitalCase(): StringStream {
-    return this.apply((i) => StringUtils.capitalCase(i));
+    return this.apply((i) => StringHelper.capitalCase(i));
   }
 
   /**
@@ -144,7 +144,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public constantCase(): StringStream {
-    return this.apply((i) => StringUtils.constantCase(i));
+    return this.apply((i) => StringHelper.constantCase(i));
   }
 
   /**
@@ -154,7 +154,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public pathCase(): StringStream {
-    return this.apply((i) => StringUtils.pathCase(i));
+    return this.apply((i) => StringHelper.pathCase(i));
   }
 
   /**
@@ -164,7 +164,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public dotCase(): StringStream {
-    return this.apply((i) => StringUtils.dotCase(i));
+    return this.apply((i) => StringHelper.dotCase(i));
   }
 
   /**
@@ -174,7 +174,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public headerCase(): StringStream {
-    return this.apply((i) => StringUtils.headerCase(i));
+    return this.apply((i) => StringHelper.headerCase(i));
   }
 
   /**
@@ -184,7 +184,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public paramCase(): StringStream {
-    return this.apply((i) => StringUtils.paramCase(i));
+    return this.apply((i) => StringHelper.paramCase(i));
   }
 
   /**
@@ -194,7 +194,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public pascalCase(): StringStream {
-    return this.apply((i) => StringUtils.pascalCase(i));
+    return this.apply((i) => StringHelper.pascalCase(i));
   }
 
   /**
@@ -204,6 +204,6 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public snakeCase(): StringStream {
-    return this.apply((i) => StringUtils.snakeCase(i));
+    return this.apply((i) => StringHelper.snakeCase(i));
   }
 }

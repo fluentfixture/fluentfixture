@@ -4,11 +4,10 @@ import { MapFunction } from '../types/map-function';
 import { FilterFunction } from '../types/filter-function';
 import { SortFunction } from '../types/sort-function';
 import { Iterator } from '../factories/converters/iterator';
-import { Picker } from '../factories/converters/picker';
 import { Functional } from '../factories/converters/functional';
-import { Shuffler } from '../factories/converters/shuffler';
 import { Sampler } from '../factories/converters/sampler';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { ArrayHelper } from '../helpers/array-helper';
 import { Stream } from './stream-loader';
 
 /**
@@ -59,7 +58,7 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * @returns {Stream.<T>}
    */
   public pick(): Stream<T> {
-    return Stream.from(new Picker(this));
+    return Stream.from(new Functional(this, (i) => ArrayHelper.pick(i)));
   }
 
   /**
@@ -82,7 +81,7 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * @returns {ArrayStream.<T>}
    */
   public shuffle(): ArrayStream<T> {
-    return new ArrayStream(new Shuffler(this));
+    return new ArrayStream(new Functional(this, (i) => ArrayHelper.shuffle(i)));
   }
 
   /**
