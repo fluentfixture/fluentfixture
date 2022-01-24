@@ -9,7 +9,7 @@ export class StringFactory extends Factory<string> {
 
   public constructor(charset: string, length: number) {
     Assert.isInteger('StringFactory.constructor(charset, length)', 'length', length);
-    Assert.inRange(length, MIN_STRING_LENGTH, MAX_STRING_LENGTH);
+    Assert.isInRange('StringFactory.constructor(charset, length)', 'length', length, MIN_STRING_LENGTH, MAX_STRING_LENGTH);
     Assert.nonEmptyString(charset);
     super();
     this.length = length;

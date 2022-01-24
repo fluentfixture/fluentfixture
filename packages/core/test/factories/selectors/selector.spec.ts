@@ -26,14 +26,14 @@ describe('Selector', () => {
 
         const thrown = () => new Selector(factory1, factory2, MIN_PERCENTAGE - 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_PERCENTAGE} and ${MAX_PERCENTAGE}.`);
+        expect(thrown).toThrow(`[Selector.constructor(factory1, factory2, percentage)].[percentage]: Parameter must be between ${MIN_PERCENTAGE} and ${MAX_PERCENTAGE}!`);
       });
 
       it('should throw an error when percentage is greater than the maximum percentage', () => {
 
         const thrown = () => new Selector(factory1, factory2, MAX_PERCENTAGE + 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_PERCENTAGE} and ${MAX_PERCENTAGE}.`);
+        expect(thrown).toThrow(`[Selector.constructor(factory1, factory2, percentage)].[percentage]: Parameter must be between ${MIN_PERCENTAGE} and ${MAX_PERCENTAGE}!`);
       });
     });
 

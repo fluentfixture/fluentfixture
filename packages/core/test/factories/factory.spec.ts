@@ -21,14 +21,14 @@ describe('Factory', () => {
 
         const thrown = () => factory.many(MIN_ARRAY_SIZE - 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}.`);
+        expect(thrown).toThrow(`[Factory.many(count)].[count]: Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}!`);
       });
 
       it('should throw an error when count is greater than the maximum array length', () => {
 
         const thrown = () => factory.many(MAX_ARRAY_SIZE + 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}.`);
+        expect(thrown).toThrow(`[Factory.many(count)].[count]: Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}!`);
       });
     });
 

@@ -9,9 +9,9 @@ export class NumberFactory extends Factory<number> {
 
   public constructor(min: number, max: number) {
     Assert.isNumber('NumberFactory.constructor(min, max)', 'min', min);
-    Assert.inRange(min, MIN_INTEGER, MAX_INTEGER);
+    Assert.isInRange('NumberFactory.constructor(min, max)', 'min', min, MIN_INTEGER, MAX_INTEGER);
     Assert.isNumber('NumberFactory.constructor(min, max)', 'max', max);
-    Assert.inRange(max, MIN_INTEGER, MAX_INTEGER);
+    Assert.isInRange('NumberFactory.constructor(min, max)', 'max', max, MIN_INTEGER, MAX_INTEGER);
     super();
     this.min = min;
     this.max = max;

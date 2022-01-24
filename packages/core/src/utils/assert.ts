@@ -20,9 +20,9 @@ export class Assert {
     }
   }
 
-  public static inRange(value: number, min: number, max: number): void {
+  public static isInRange(context: string, name: string, value: number, min: number, max: number): void {
     if (check.not.inRange(value, min, max)) {
-      throw new Error(`Parameter must be between ${min} and ${max}.`);
+      Assert.throwError(context, name, `Parameter must be between ${min} and ${max}!`);
     }
   }
 

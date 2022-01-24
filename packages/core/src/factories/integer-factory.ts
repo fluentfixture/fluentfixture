@@ -9,9 +9,9 @@ export class IntegerFactory extends Factory<number> {
 
   public constructor(min: number, max: number) {
     Assert.isInteger('IntegerFactory.constructor(min, max)', 'min', min);
-    Assert.inRange(min, MIN_INTEGER, MAX_INTEGER);
+    Assert.isInRange('IntegerFactory.constructor(min, max)', 'min', min, MIN_INTEGER, MAX_INTEGER);
     Assert.isInteger('IntegerFactory.constructor(min, max)', 'max', max);
-    Assert.inRange(max, MIN_INTEGER, MAX_INTEGER);
+    Assert.isInRange('IntegerFactory.constructor(min, max)', 'max', max, MIN_INTEGER, MAX_INTEGER);
     super();
     this.min = min;
     this.max = max;

@@ -31,14 +31,14 @@ describe('StringFactory', () => {
 
         const thrown = () => new StringFactory('hex', MIN_STRING_LENGTH - 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}.`);
+        expect(thrown).toThrow(`[StringFactory.constructor(charset, length)].[length]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
 
       it('should throw an error when length is greater than the maximum string length', () => {
 
         const thrown = () => new StringFactory('hex', MAX_STRING_LENGTH + 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}.`);
+        expect(thrown).toThrow(`[StringFactory.constructor(charset, length)].[length]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
     });
   });

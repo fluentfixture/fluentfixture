@@ -21,14 +21,14 @@ describe('NumberFactory', () => {
 
         const thrown = () => new NumberFactory(MIN_INTEGER - 2, 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
+        expect(thrown).toThrow(`[NumberFactory.constructor(min, max)].[min]: Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}!`);
       });
 
       it('should throw an error when min is greater than the maximum integer', () => {
 
         const thrown = () => new NumberFactory(MAX_INTEGER + 2, 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
+        expect(thrown).toThrow(`[NumberFactory.constructor(min, max)].[min]: Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}!`);
       });
     });
 
@@ -45,14 +45,14 @@ describe('NumberFactory', () => {
 
         const thrown = () => new NumberFactory(1, MIN_INTEGER - 2);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
+        expect(thrown).toThrow(`[NumberFactory.constructor(min, max)].[max]: Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}!`);
       });
 
       it('should throw an error when max is greater than the maximum integer', () => {
 
         const thrown = () => new NumberFactory(1, MAX_INTEGER + 2);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}.`);
+        expect(thrown).toThrow(`[NumberFactory.constructor(min, max)].[max]: Parameter must be between ${MIN_INTEGER} and ${MAX_INTEGER}!`);
       });
     });
   });

@@ -22,14 +22,14 @@ describe('Iterator', () => {
 
         const thrown = () => new Iterator(new MockFactory({}), MIN_ARRAY_SIZE - 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}.`);
+        expect(thrown).toThrow(`[Iterator.constructor(factory, count)].[count]: Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}!`);
       });
 
       it('should throw an error when count is greater than the maximum array length', () => {
 
         const thrown = () => new Iterator(new MockFactory({}), MAX_ARRAY_SIZE + 1);
 
-        expect(thrown).toThrow(`Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}.`);
+        expect(thrown).toThrow(`[Iterator.constructor(factory, count)].[count]: Parameter must be between ${MIN_ARRAY_SIZE} and ${MAX_ARRAY_SIZE}!`);
       });
     });
   });

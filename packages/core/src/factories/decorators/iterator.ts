@@ -8,7 +8,8 @@ export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
 
   public constructor(factory: IFactory<T>, count: number) {
     Assert.isInteger('Iterator.constructor(factory, count)', 'count', count);
-    Assert.inRange(count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
+    Assert.isInRange('Iterator.constructor(factory, count)', 'count', count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
+
     super(factory);
     this.count = count;
   }

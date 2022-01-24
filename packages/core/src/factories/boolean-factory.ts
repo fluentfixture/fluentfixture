@@ -8,7 +8,7 @@ export class BooleanFactory extends Factory<boolean> {
 
   public constructor(percentage: number) {
     Assert.isNumber('BooleanFactory.constructor(percentage)', 'percentage', percentage);
-    Assert.inRange(percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
+    Assert.isInRange('BooleanFactory.constructor(percentage)', 'percentage', percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
     super();
     this.percentage = percentage;
   }

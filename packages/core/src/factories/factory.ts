@@ -8,7 +8,7 @@ export abstract class Factory<T = any> implements IFactory<T> {
 
   public many(count: number): ReadonlyArray<T> {
     Assert.isInteger('Factory.many(count)', 'count', count);
-    Assert.inRange(count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
+    Assert.isInRange('Factory.many(count)', 'count', count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
     return Array.from({ length: count }, () => this.single());
   }
 }
