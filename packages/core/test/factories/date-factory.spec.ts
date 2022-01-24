@@ -13,7 +13,7 @@ describe('DateFactory', () => {
 
         const thrown = () => new DateFactory(min, new Date());
 
-        expect(thrown).toThrow('Parameter must be a date.');
+        expect(thrown).toThrow('[DateFactory.constructor(min, max)].[min]: Parameter must be a date!');
       });
     });
 
@@ -23,7 +23,7 @@ describe('DateFactory', () => {
 
         const thrown = () => new DateFactory(new Date(), max)
 
-        expect(thrown).toThrow('Parameter must be a date.');
+        expect(thrown).toThrow('[DateFactory.constructor(min, max)].[max]: Parameter must be a date!');
       });
     });
   });

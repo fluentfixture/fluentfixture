@@ -26,9 +26,9 @@ export class Assert {
     }
   }
 
-  public static date(date: Date): void {
+  public static isDate(context: string, name: string, date: Date): void {
     if (check.not.date(date)) {
-      throw new Error('Parameter must be a date.');
+      Assert.throwError(context, name, 'Parameter must be a date!');
     }
   }
 
