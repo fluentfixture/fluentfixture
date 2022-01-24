@@ -1,5 +1,5 @@
 import { NON_FACTORY_LIKE_DATA_SET } from '../../data/type-sets';
-import { Converter } from '../../../src/factories/converters/converter';
+import { Decorator } from '../../../src/factories/decorators/decorator';
 import { MockConverter } from '../../mocks/mock-converter';
 
 describe('Converter', () => {

@@ -1,9 +1,9 @@
 import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../constants/limits';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Iterator<T = any> extends Converter<T, ReadonlyArray<T>> {
+export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
   private readonly count: number;
 
   public constructor(factory: IFactory<T>, count: number) {

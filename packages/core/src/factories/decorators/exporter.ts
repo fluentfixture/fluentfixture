@@ -1,9 +1,9 @@
 import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ConsumerFunction } from '../../types/consumer-function';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Exporter<T = any> extends Converter<T, T> {
+export class Exporter<T = any> extends Decorator<T, T> {
   private readonly consumer: ConsumerFunction<T>;
 
   public constructor(factory: IFactory<T>, consumer: ConsumerFunction<T>) {

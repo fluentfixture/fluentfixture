@@ -3,9 +3,8 @@ import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
 import { MapFunction } from '../types/map-function';
 import { FilterFunction } from '../types/filter-function';
 import { SortFunction } from '../types/sort-function';
-import { Iterator } from '../factories/converters/iterator';
-import { Functional } from '../factories/converters/functional';
-import { Sampler } from '../factories/converters/sampler';
+import { Iterator } from '../factories/decorators/iterator';
+import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ArrayHelper } from '../helpers/array-helper';
 import { Stream } from './stream-loader';
@@ -70,7 +69,7 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * @returns {ArrayStream.<T>}
    */
   public sample(size: number): ArrayStream<T> {
-    return new ArrayStream(new Sampler(this, size));
+    return new ArrayStream(new Functional(this, (i) => ArrayHelper.sample(i, size)));
   }
 
   /**

@@ -5,12 +5,12 @@ import { MockFactory } from '../mocks/mock-factory';
 import { Optional } from '../../src/factories/selectors/optional';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../../src/constants/limits';
 import { Nullable } from '../../src/factories/selectors/nullable';
-import { Functional } from '../../src/factories/converters/functional';
-import { Exporter } from '../../src/factories/converters/exporter';
+import { Functional } from '../../src/factories/decorators/functional';
+import { Exporter } from '../../src/factories/decorators/exporter';
 import { Stream, ArrayStream, StringStream } from '../../src/streams/stream-loader';
-import { Iterator } from '../../src/factories/converters/iterator';
-import { Formatter } from '../../src/factories/converters/formatter';
-import { Memo } from '../../src/factories/converters/memo';
+import { Iterator } from '../../src/factories/decorators/iterator';
+import { Formatter } from '../../src/factories/decorators/formatter';
+import { Memo } from '../../src/factories/decorators/memo';
 
 describe('Stream', () => {
 

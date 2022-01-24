@@ -3,7 +3,7 @@ import { NON_INTEGER_DATA_SET } from '../../data/type-sets';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../../src/constants/limits';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Factory } from '../../../src/factories/factory';
-import { Iterator } from '../../../src/factories/converters/iterator';
+import { Iterator } from '../../../src/factories/decorators/iterator';
 
 describe('Iterator', () => {
 

@@ -1,10 +1,8 @@
 import { spy, verify, when } from 'ts-mockito';
-import { MockFactory } from '../mocks/mock-factory';
 import { Stream, ArrayStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
-import { Sampler } from '../../src/factories/converters/sampler';
-import { Functional } from '../../src/factories/converters/functional';
+import { Functional } from '../../src/factories/decorators/functional';
 import { ArrayHelper } from '../../src/helpers/array-helper';
 
 describe('ArrayStream', () => {
@@ -33,19 +31,24 @@ describe('ArrayStream', () => {
 
   describe('.sample()', () => {
 
-    it('should create a stream with sampler decorator that wraps itself', () => {
-      const size = 5;
-      const factory = new MockFactory([]);
-      const stream = ArrayStream.iterate(factory, 10);
+    it('should create a stream with functional decorator and sample operation that wraps itself', () => {
+      const arr = [1, 2, 3];
+      const size = 2;
+      const out = [1, 2];
+      const spyArrayHelper = spy(ArrayHelper);
+      const stream = ArrayStream.fromList(arr);
+
+      when(spyArrayHelper.sample(arr, size)).thenReturn(out);
 
       const result = stream.sample(size);
 
       expect(result).toBeInstanceOf(ArrayStream);
 
-      const sampler = result.getFactory() as Sampler;
-      expect(sampler).toBeInstanceOf(Sampler);
-      expect(sampler.getFactory()).toBe(stream);
-      expect(sampler.getSize()).toBe(size);
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+      expect(result.single()).toBe(out);
+      verify(spyArrayHelper.sample(arr, size)).once();
     });
   });
 

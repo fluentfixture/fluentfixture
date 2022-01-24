@@ -1,5 +1,5 @@
 import { IFactory } from '../factories/interfaces/factory';
-import { Functional } from '../factories/converters/functional';
+import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { DateFactory } from '../factories/date-factory';
 import { DateHelper } from '../helpers/date-helper';

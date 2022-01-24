@@ -1,9 +1,9 @@
 import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ExtendedObjectModel } from '../../types/extended-object-model';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Property<S extends keyof any, T = any, K = any> extends Converter<T, ExtendedObjectModel<S, T, K>> {
+export class Property<S extends keyof any, T = any, K = any> extends Decorator<T, ExtendedObjectModel<S, T, K>> {
   private readonly decorator: IFactory<K>;
   private readonly property: S;
 

@@ -2,7 +2,7 @@ import { instance, mock, spy, verify, when } from 'ts-mockito';
 import { NON_NON_EMPTY_STRING_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Factory } from '../../../src/factories/factory';
-import { Formatter } from '../../../src/factories/converters/formatter';
+import { Formatter } from '../../../src/factories/decorators/formatter';
 import { FormatHelper } from '../../../src/helpers/format-helper';
 
 describe('Formatter', () => {

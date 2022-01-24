@@ -3,16 +3,16 @@ import { Assert } from '../utils/assert';
 import { Factory } from '../factories/factory';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../constants/limits';
 import { ConvertFunction } from '../types/convert-function';
-import { Functional } from '../factories/converters/functional';
+import { Functional } from '../factories/decorators/functional';
 import { ConsumerFunction } from '../types/consumer-function';
-import { Exporter } from '../factories/converters/exporter';
+import { Exporter } from '../factories/decorators/exporter';
 import { Optional } from '../factories/selectors/optional';
 import { Nullable } from '../factories/selectors/nullable';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ProducerFunction } from '../types/producer-function';
 import { FunctionAdapter } from '../factories/adapters/function-adapter';
-import { Formatter } from '../factories/converters/formatter';
-import { Memo } from '../factories/converters/memo';
+import { Formatter } from '../factories/decorators/formatter';
+import { Memo } from '../factories/decorators/memo';
 import { ArrayStream, StringStream } from './stream-loader';
 
 /**

@@ -1,8 +1,8 @@
 import { MockFactory } from '../mocks/mock-factory';
 import { ObjectStream } from '../../src/streams/stream-loader';
-import { Property } from '../../src/factories/converters/property';
+import { Property } from '../../src/factories/decorators/property';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
-import { Lazy } from '../../src/factories/converters/lazy';
+import { Lazy } from '../../src/factories/decorators/lazy';
 
 describe('ObjectStream', () => {
 

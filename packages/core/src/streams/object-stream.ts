@@ -1,11 +1,11 @@
 import { IFactory } from '../factories/interfaces/factory';
 import { ExtendedObjectModel } from '../types/extended-object-model';
-import { Property } from '../factories/converters/property';
+import { Property } from '../factories/decorators/property';
 import { ObjectFactory } from '../factories/object-factory';
 import { ObjectModel } from '../types/object-model';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ConvertFunction } from '../types/convert-function';
-import { Lazy } from '../factories/converters/lazy';
+import { Lazy } from '../factories/decorators/lazy';
 import { Stream } from './stream-loader';
 
 /**

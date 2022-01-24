@@ -1,9 +1,9 @@
 import { IFactory } from '../interfaces/factory';
 import { ProducerFunction } from '../../types/producer-function';
 import { memo } from '../../utils/memo';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Memo<T = any> extends Converter<T, T> {
+export class Memo<T = any> extends Decorator<T, T> {
   private readonly memoized: ProducerFunction<T>;
 
   public constructor(factory: IFactory<T>) {

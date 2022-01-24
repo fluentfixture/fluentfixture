@@ -1,6 +1,6 @@
 import { instance, mock, verify, when } from 'ts-mockito';
 import { IFactory } from '../../../src/factories/interfaces/factory';
-import { Memo } from '../../../src/factories/converters/memo';
+import { Memo } from '../../../src/factories/decorators/memo';
 
 describe('Memo', () => {
 

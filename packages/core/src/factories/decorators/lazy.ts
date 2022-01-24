@@ -2,9 +2,9 @@ import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ExtendedObjectModel } from '../../types/extended-object-model';
 import { ConvertFunction } from '../../types/convert-function';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Lazy<S extends keyof any, T = any, K = any> extends Converter<T, ExtendedObjectModel<S, T, K>> {
+export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, ExtendedObjectModel<S, T, K>> {
   private readonly converter: ConvertFunction<T, K>;
   private readonly property: S;
 

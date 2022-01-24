@@ -2,9 +2,9 @@ import { CompiledFormatter } from '@fluentfixture/format';
 import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { FormatHelper } from '../../helpers/format-helper';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Formatter<T = any> extends Converter<T, string> {
+export class Formatter<T = any> extends Decorator<T, string> {
   private readonly template: string;
   private readonly formatter: CompiledFormatter;
 

@@ -1,9 +1,9 @@
 import { IFactory } from '../interfaces/factory';
 import { ConvertFunction } from '../../types/convert-function';
 import { Assert } from '../../utils/assert';
-import { Converter } from './converter';
+import { Decorator } from './decorator';
 
-export class Functional<T = any, K = any> extends Converter<T, K> {
+export class Functional<T = any, K = any> extends Decorator<T, K> {
   private readonly decorator: ConvertFunction<T, K>;
 
   public constructor(factory: IFactory<T>, decorator: ConvertFunction<T, K>) {
