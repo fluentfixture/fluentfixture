@@ -10,7 +10,7 @@ export class Selector<T = any, K = any> extends Factory<T | K> {
   private readonly percentage: number;
 
   public constructor(factory1: IFactory<T>, factory2: IFactory<K>, percentage: number) {
-    Assert.number(percentage);
+    Assert.isNumber('Selector.constructor(factory1, factory2, percentage)', 'percentage', percentage);
     Assert.inRange(percentage, MIN_PERCENTAGE, MAX_PERCENTAGE);
     Assert.factoryLike(factory1);
     Assert.factoryLike(factory2);

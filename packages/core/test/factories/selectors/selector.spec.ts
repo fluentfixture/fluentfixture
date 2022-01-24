@@ -19,7 +19,7 @@ describe('Selector', () => {
 
         const thrown = () => new Selector(factory1, factory2, percentage);
 
-        expect(thrown).toThrow('Parameter must be a number.');
+        expect(thrown).toThrow('[Selector.constructor(factory1, factory2, percentage)].[percentage]: Parameter must be a number!');
       });
 
       it('should throw an error when percentage is less than the minimum percentage', () => {

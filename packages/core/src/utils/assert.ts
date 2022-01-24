@@ -14,9 +14,9 @@ export class Assert {
     }
   }
 
-  public static number(value: number): void {
+  public static isNumber(context: string, name: string, value: number): void {
     if (check.not.number(value)) {
-      throw new Error('Parameter must be a number.');
+      Assert.throwError(context, name, 'Parameter must be a number!');
     }
   }
 

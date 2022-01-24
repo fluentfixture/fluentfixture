@@ -14,7 +14,7 @@ describe('NumberFactory', () => {
 
         const thrown = () => new NumberFactory(min, 1);
 
-        expect(thrown).toThrow('Parameter must be a number.');
+        expect(thrown).toThrow('[NumberFactory.constructor(min, max)].[min]: Parameter must be a number!');
       });
 
       it('should throw an error when min is less than the minimum integer', () => {
@@ -36,9 +36,9 @@ describe('NumberFactory', () => {
 
       test.each(NON_NUMBER_DATA_SET)('should throw an error when max is not a number, given: %s', (max: any) => {
 
-        const thrown = () => new NumberFactory(max, 1);
+        const thrown = () => new NumberFactory(1, max);
 
-        expect(thrown).toThrow('Parameter must be a number.');
+        expect(thrown).toThrow('[NumberFactory.constructor(min, max)].[max]: Parameter must be a number!');
       });
 
       it('should throw an error when max is less than the minimum integer', () => {

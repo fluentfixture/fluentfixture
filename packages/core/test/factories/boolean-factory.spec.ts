@@ -14,7 +14,7 @@ describe('BooleanFactory', () => {
 
         const thrown = () => new BooleanFactory(percentage);
 
-        expect(thrown).toThrow('Parameter must be a number.');
+        expect(thrown).toThrow('[BooleanFactory.constructor(percentage)].[percentage]: Parameter must be a number!');
       });
 
       it('should throw an error when percentage is less than the minimum percentage', () => {
