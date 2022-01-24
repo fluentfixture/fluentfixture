@@ -14,7 +14,7 @@ describe('StringFactory', () => {
 
         const thrown = () => new StringFactory(charset, 1);
 
-        expect(thrown).toThrow('Parameter must be a non-empty string.');
+        expect(thrown).toThrow('[StringFactory.constructor(charset, length)].[charset]: Parameter must be a non-empty string!');
       });
     });
 

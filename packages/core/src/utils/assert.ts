@@ -62,6 +62,12 @@ export class Assert {
     }
   }
 
+  public static isNonEmptyString(context: string, name: string, value: string): void {
+    if (check.not.nonEmptyString(value as string)) {
+      Assert.throwError(context, name, 'Parameter must be a non-empty string!');
+    }
+  }
+
   private static throwError(context: string, name: string, message: string): never {
     throw new Error(`[${context}].[${name}]: ${message}`)
   }

@@ -9,7 +9,7 @@ export class Formatter<T = any> extends Decorator<T, string> {
   private readonly formatter: CompiledFormatter;
 
   public constructor(factory: IFactory<T>, template: string) {
-    Assert.nonEmptyString(template);
+    Assert.isNonEmptyString('Formatter.constructor(factory, template)', 'template', template);
     super(factory);
     this.template = template;
     this.formatter = FormatHelper.compile(template);

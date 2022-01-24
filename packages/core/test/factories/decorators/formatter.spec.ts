@@ -15,7 +15,7 @@ describe('Formatter', () => {
 
         const thrown = () => new Formatter(new MockFactory({}), template);
 
-        expect(thrown).toThrow('Parameter must be a non-empty string.');
+        expect(thrown).toThrow('[Formatter.constructor(factory, template)].[template]: Parameter must be a non-empty string!');
       });
     });
   });
