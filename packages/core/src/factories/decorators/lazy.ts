@@ -10,7 +10,7 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
 
   public constructor(factory: IFactory<T>, fn: ConvertFunction<T, K>, property: S) {
     Assert.isFunction('Lazy.constructor(factory, fn, property)', 'fn', fn);
-    Assert.key(property);
+    Assert.isKey('Lazy.constructor(factory, fn, property)', 'property', property);
     super(factory);
     this.property = property;
     this.fn = fn;

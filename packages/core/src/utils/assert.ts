@@ -50,9 +50,9 @@ export class Assert {
     }
   }
 
-  public static key(value: keyof any): void {
+  public static isKey(context: string, name: string, value: keyof any): void {
     if (check.not.nonEmptyString(value as string) && check.not.number(value) && check.not.instance(value, Symbol)) {
-      throw new Error('Parameter must be a key.');
+      Assert.throwError(context, name, 'Parameter must be a string, number or symbol!');
     }
   }
 

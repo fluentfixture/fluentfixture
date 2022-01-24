@@ -24,7 +24,7 @@ describe('Lazy', () => {
 
         const thrown = () => new Lazy(new MockFactory({}), () => true, property);
 
-        expect(thrown).toThrow('Parameter must be a key.');
+        expect(thrown).toThrow('[Lazy.constructor(factory, fn, property)].[property]: Parameter must be a string, number or symbol!');
       });
     });
   });

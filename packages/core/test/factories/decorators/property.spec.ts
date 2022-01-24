@@ -24,7 +24,7 @@ describe('Property', () => {
 
         const thrown = () => new Property(new MockFactory({}), new MockFactory({}), property);
 
-        expect(thrown).toThrow('Parameter must be a key.');
+        expect(thrown).toThrow('[Property.constructor(factory, decorator, property)].[property]: Parameter must be a string, number or symbol!');
       });
     });
   });
