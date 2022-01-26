@@ -4,10 +4,8 @@ import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../constants/limits';
 import { Decorator } from './decorator';
 
 /**
- * The `Iterator` decorator is a utility decorator that iterates the underlying factory.
- * It takes a factory and a count. The count parameter is an integer.
- * It is useful for creating arrays from factories.
- * The `Iterator` decorator does not store a state and does not alter the result of the given factory.
+ * `Iterator` decorator decorates a factory with the given count.
+ * When the `single()` method is invoked, it generates data using the decorated factory many times.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/iterator|Docs}
  * @class
@@ -31,7 +29,7 @@ export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates array of data by using the decorated factory with the given count.
    * @see IFactory
    * @returns {T[]}
    */

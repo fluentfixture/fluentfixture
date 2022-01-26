@@ -5,9 +5,9 @@ import { FormatHelper } from '../../helpers/format-helper';
 import { Decorator } from './decorator';
 
 /**
- * The `Formatter` decorator is a utility decorator that formats the result of the underlying factory with the given template.
- * The syntax of the template is covered in the Templates section.
- * The `Formatter` decorator does not store a state and does not alter the result of the given factory.
+ * `Formatter` decorator decorates a factory with the given template.
+ * When the `single()` method is invoked, it generates data using the decorated factory
+ * produces a string using the template engine with the given template and the output.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/formatter|Docs}
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/templates|Templates}
@@ -32,8 +32,10 @@ export class Formatter<T = any> extends Decorator<T, string> {
     this.formatter = FormatHelper.compile(template);
   }
   /**
-   * Generates a data by using the decorated `Factory`.
+   *
+   * Generates single data by using the decorated factory and the given template.
    * @see IFactory
+   * @public
    * @returns {string}
    */
   public single(): string {
@@ -41,7 +43,8 @@ export class Formatter<T = any> extends Decorator<T, string> {
   }
 
   /**
-   * Returns the template expression
+   * Returns the template expression.
+   * @public
    * @returns {string}
    */
   public getTemplate(): string {

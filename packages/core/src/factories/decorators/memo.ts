@@ -30,6 +30,7 @@ export class Memo<T = any> extends Decorator<T, T> {
   /**
    * Generates a data by using the decorated factory.
    * @see IFactory
+   * @public
    * @returns {T}
    */
   public single(): T {
