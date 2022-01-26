@@ -4,11 +4,10 @@ import { ExtendedObjectModel } from '../../types/extended-object-model';
 import { Decorator } from './decorator';
 
 /**
- * The `Property` decorator is an object decorator that extends the underlying object model.
- * It takes a factory, a property and a factory according to the given key.
- * It is useful for generating conditional mock data.
- * The `Property` decorator does not store a state and does not alter the result of the given factory.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
+ * `Property` decorator decorates a property of an object factory with the given factory and property.
+ * When the `single()` method is invoked, it generates data using the decorated factory and changes the property with the result of the decorator factory.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/property|Docs}
  * @class
  * @template T
  * @extends Decorator.<T,T>
@@ -33,9 +32,10 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates single data by using the decorated factory, property and decorator factory.
    * @see IFactory
-   * @returns {T}
+   * @public
+   * @returns {Object.<string, IFactory.<*>>}
    */
   public single(): ExtendedObjectModel<S, T, K> {
     const value = this.factory.single() as { [P in S]: K } & T;
@@ -45,6 +45,7 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
 
   /**
    * Returns the source factory of the property.
+   * @public
    * @returns {IFactory.<*>}
    */
   public getDecorator(): IFactory<K> {
@@ -52,7 +53,8 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
   }
 
   /**
-   * Returns the property name
+   * Returns the property name.
+   * @public
    * @returns {string}
    */
   public getProperty(): S {

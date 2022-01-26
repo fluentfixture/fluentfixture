@@ -5,11 +5,10 @@ import { ConvertFunction } from '../../types/convert-function';
 import { Decorator } from './decorator';
 
 /**
- * The `Lazy` decorator is an object decorator that extends the underlying object model.
- * It takes a factory, a property and a function that takes the previous state of the mock data according to the given key.
- * It is useful for generating conditional mock data.
- * The `Lazy` decorator does not store a state and does not alter the result of the given factory.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
+ * `Lazy` decorator decorates a property of an object factory with the given function and property.
+ * When the `single()` method is invoked, it generates data using the decorated factory and changes the property with the result of the function.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/lazy|Docs}
  * @class
  * @template T
  * @extends Decorator.<T,T>
@@ -34,9 +33,10 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates single data by using the decorated factory, property and function.
    * @see IFactory
-   * @returns {T}
+   * @public
+   * @returns {Object.<string, IFactory.<*>>}
    */
   public single(): ExtendedObjectModel<S, T, K> {
     const value = this.factory.single() as { [P in S]: K } & T;
@@ -46,14 +46,16 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
 
   /**
    * Returns the source function of the property.
-   * @returns {function(T):*}
+   * @public
+   * @returns {IFactory.<*>}
    */
   public getFunction(): ConvertFunction<T, K> {
     return this.fn;
   }
 
   /**
-   * Returns the property name
+   * Returns the property name.
+   * @public
    * @returns {string}
    */
   public getProperty(): S {
