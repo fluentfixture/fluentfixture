@@ -23,8 +23,10 @@ export class BooleanStream extends Stream<boolean> {
   }
 
   /**
-   * Creates a `BooleanStream` that generates always true.
+   * Creates a `BooleanStream` with `ValueAdapter` adapter and `true`, which means it always generates `true`.
+   * @see ValueAdapter
    * @static
+   * @public
    * @returns {BooleanStream}
    */
   public static truthy(): BooleanStream {
@@ -32,8 +34,10 @@ export class BooleanStream extends Stream<boolean> {
   }
 
   /**
-   * Creates a `BooleanStream` that generates always false.
+   * Creates a `BooleanStream` with `ValueAdapter` adapter and `false`, which means it always generates `false`.
+   * @see ValueAdapter
    * @static
+   * @public
    * @returns {BooleanStream}
    */
   public static falsy(): BooleanStream {
@@ -41,8 +45,10 @@ export class BooleanStream extends Stream<boolean> {
   }
 
   /**
-   * Creates a `BooleanStream` that generates a boolean with the given percentage.
+   * Creates a `BooleanStream` with `BooleanFactory` with the given percentage.
+   * @see BooleanFactory
    * @static
+   * @public
    * @param {number} [percentage=0.5] - a number within [0, 1] of how often the result should be true
    * @returns {BooleanStream}
    */
@@ -51,9 +57,10 @@ export class BooleanStream extends Stream<boolean> {
   }
 
   /**
-   * Creates a `BooleanStream` with a `Functional` decorator and the not operator.
+   * Creates a `BooleanStream` with `Functional` decorator and the `not` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/boolean-stream#not|Docs}
    * @see Functional
+   * @public
    * @returns {BooleanStream}
    */
   public not(): BooleanStream {

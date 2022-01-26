@@ -9,7 +9,7 @@ import { Stream } from './stream-loader';
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream|Docs}
  * @see Stream
  * @class
- * @extends Stream.<string>
+ * @extends Stream.<string>`
  */
 export class StringStream extends Stream<string> {
 
@@ -23,8 +23,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` that generates always the given string.
+   * Creates a `StringStream` with `ValueAdapter` adapter and the given string, which means it always generates the given string.
+   * @see ValueAdapter
    * @static
+   * @public
    * @param {string} [str] - the string to be generated
    * @returns {StringStream}
    */
@@ -33,8 +35,9 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` that generates a stream with the given pattern and length.
+   * Creates a `StringStream` with `StringFactory`, the given pattern and length.
    * @static
+   * @public
    * @param {string} [pattern] - the pattern of the string to be generated
    * @param {number} [length] - the length of the string to be generated
    * @returns {StringStream}
@@ -44,9 +47,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the trim operator.
+   * Creates a `StringStream` with `Functional` decorator and the `trim` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#trim|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public trim(): StringStream {
@@ -54,9 +58,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the trim-start operator.
+   * Creates a `StringStream` with `Functional` decorator and the `trim-start` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#trimstart|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public trimStart(): StringStream {
@@ -64,9 +69,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the trim-end operator.
+   * Creates a `StringStream` with `Functional` decorator and the `trim-end` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#trimend|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public trimEnd(): StringStream {
@@ -74,9 +80,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the pad-start operator.
+   * Creates a `StringStream` with `Functional` decorator and the `pad-start` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#padstart-length-str|Docs}
    * @see Functional
+   * @public
    * @param {number} [length] - the target length of the string
    * @param {string} [str=space] - the pad string
    * @returns {StringStream}
@@ -86,9 +93,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the pad-end operator.
+   * Creates a `StringStream` with `Functional` decorator and the `pad-end` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#padend-length-str|Docs}
    * @see Functional
+   * @public
    * @param {number} [length] - the target length of the string
    * @param {string} [str=space] - the pad string
    * @returns {StringStream}
@@ -98,9 +106,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the lower-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `lower-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#lowercase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public lowerCase(): StringStream {
@@ -108,9 +117,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the upper-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `upper-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#uppercase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public upperCase(): StringStream {
@@ -118,9 +128,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the camel-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `camel-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#camelcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public camelCase(): StringStream {
@@ -128,9 +139,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the capital-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `capital-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#capitalcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public capitalCase(): StringStream {
@@ -138,9 +150,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the constant-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `constant-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#constantcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public constantCase(): StringStream {
@@ -148,9 +161,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the path-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `path-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#pathcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public pathCase(): StringStream {
@@ -158,9 +172,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the dot-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `dot-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#dotcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public dotCase(): StringStream {
@@ -168,9 +183,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the header-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `header-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#headercase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public headerCase(): StringStream {
@@ -178,9 +194,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the param-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `param-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#paramcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public paramCase(): StringStream {
@@ -188,9 +205,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the pascal-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `pascal-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#pascalcase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public pascalCase(): StringStream {
@@ -198,9 +216,10 @@ export class StringStream extends Stream<string> {
   }
 
   /**
-   * Creates a `StringStream` with a `Functional` decorator and the snake-case operator.
+   * Creates a `StringStream` with `Functional` decorator and the `snake-case` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/string-stream#snakecase|Docs}
    * @see Functional
+   * @public
    * @returns {StringStream}
    */
   public snakeCase(): StringStream {

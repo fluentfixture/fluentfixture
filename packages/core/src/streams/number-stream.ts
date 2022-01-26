@@ -22,8 +22,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` that generates a float number with the given boundaries.
+   * Creates a `NumberStream` with `NumberFactory` and the given boundary.
+   * @see NumberFactory
    * @static
+   * @public
    * @param {number} [min=0] - the minimum of the boundary
    * @param {number} [max=1000] - the maximum of the boundary
    * @returns {NumberStream}
@@ -33,8 +35,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` that generates always the given number.
+   * Creates a `NumberStream` with `ValueAdapter` adapter and the given number, which means it always generates the given number.
+   * @see ValueAdapter
    * @static
+   * @public
    * @param {number} [num] - the number to be generated
    * @returns {NumberStream}
    */
@@ -43,9 +47,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` with a `Functional` decorator and the mode operator.
+   * Creates a `NumberStream` with `Functional` decorator and the `mode` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#mode-num|Docs}
    * @see Functional
+   * @public
    * @param {number} [num] - the number to be divisor
    * @returns {NumberStream}
    */
@@ -54,9 +59,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` with a `Functional` decorator and the add operator.
+   * Creates a `NumberStream` with `Functional` decorator and the `add` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#add-num|Docs}
    * @see Functional
+   * @public
    * @param {number} [num] - the number to be added
    * @returns {NumberStream}
    */
@@ -65,9 +71,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` with a `Functional` decorator and the subtract operator.
+   * Creates a `NumberStream` with `Functional` decorator and the `subtract` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#subtract-num|Docs}
    * @see Functional
+   * @public
    * @param {number} [num] - the number to be subtracted
    * @returns {NumberStream}
    */
@@ -76,9 +83,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` with a `Functional` decorator and the multiply operator.
+   * Creates a `NumberStream` with `Functional` decorator and the `multiply` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#multiply-num|Docs}
    * @see Functional
+   * @public
    * @param {number} [num] - the number to be multiplied
    * @returns {NumberStream}
    */
@@ -87,9 +95,10 @@ export class NumberStream extends Stream<number> {
   }
 
   /**
-   * Creates a `NumberStream` with a `Functional` decorator and the divide operator.
+   * Creates a `NumberStream` with `Functional` decorator and the `divide` operator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#divide-num|Docs}
    * @see Functional
+   * @public
    * @param {number} [num] - the number to be divisor
    * @returns {NumberStream}
    */

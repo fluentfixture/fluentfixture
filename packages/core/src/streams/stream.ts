@@ -17,12 +17,10 @@ import { ArrayStream, StringStream } from './stream-loader';
 
 /**
  * `Stream` is the superclass of all stream types.
- * `Stream` is a factory wrapper (streams are also factories) that provides a fluent interface by decorating factories.
- * All methods of streams create other streams that wrap themselves.
- * Like any factory, streams are also immutable and reusable.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream|Docs}
  * @class
  * @template T
+ * @extends {Factory.<T>}
  */
 export class Stream<T = any> extends Factory<T> {
   private readonly factory: IFactory<T>;
@@ -41,6 +39,7 @@ export class Stream<T = any> extends Factory<T> {
   /**
    * Creates an instance of `Stream.<T>`
    * @static
+   * @public
    * @param {IFactory.<T>} [factory] - the factory to be decorated
    * @return {Stream.<T>}
    */
@@ -49,9 +48,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream.<T>` that generates always the given value.
+   * Creates a `Stream.<T>` with `ValueAdapter` adapter and the given value.
+   * @see ValueAdapter
    * @static
-   * @param {T} [value] - the value to be generated
+   * @public
+   * @param {T} [value] - the value to be returned
    * @returns {Stream.<T>}
    */
   public static fromValue<T = any>(value: T): Stream<T> {
@@ -59,9 +60,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream.<T>` that generates always the result of the given function.
+   * Creates a `Stream.<T>` with `FunctionAdapter` adapter and the given function.
+   * @see FunctionAdapter
    * @static
-   * @param {function():T} [fn] - the function to be invoked for generating data
+   * @public
+   * @param {function():T} [fn] - the producer function
    * @returns {Stream.<T>}
    */
   public static fromResult<T = any>(fn: ProducerFunction<T>): Stream<T> {
@@ -69,7 +72,7 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates single data by using the decorated factory.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#single|Docs}
    * @see IFactory
    * @returns {T}
@@ -79,11 +82,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates an `ArrayStream` with an `Iterator` decorator.
-   * The underlying type of the new stream is a read-only array.
+   * Creates an `ArrayStream` with `Iterator` decorator and the given length.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#array-length|Docs}
    * @see ArrayStream
    * @see Iterator
+   * @public
    * @param {number} [length=10] - the length of the array
    * @returns {ArrayStream.<T>}
    */
@@ -92,11 +95,12 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `StringStream` with a `Formatter` decorator and the given template.
+   * Creates a `StringStream` with `Formatter` decorator and the given template.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#format-template|Docs}
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/templates|Templates}
    * @see StringStream
    * @see Formatter
+   * @public
    * @param {string} [template] - the template expression
    * @returns {StringStream}
    */
@@ -105,10 +109,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream` with a `Functional` decorator.
+   * Creates a `Stream` with `Functional` decorator and the given function.
    * The underlying type of the new stream is the same as the return type of the given function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#convert-fn|Docs}
    * @see Functional
+   * @public
    * @template T, K
    * @param {function(T):K} [fn] - the converter function
    * @returns {Stream.<K>}
@@ -118,10 +123,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates the same sub-type of the `Stream` with a `Functional` decorator.
+   * Creates a `Stream` with `Functional` decorator and the given function.
    * The underlying type of the new stream is the same as the return type of the given function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#apply-fn|Docs}
    * @see Functional
+   * @public
    * @param {function(T):T} [fn] - the converter function
    * @returns {Stream.<T>}
    */
@@ -130,10 +136,11 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream` with a `Memo` decorator.
+   * Creates a `Stream` with `Memo` decorator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#memo|Docs}
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/optimization|Optimization}
    * @see Memo
+   * @public
    * @returns {Stream.<T>}
    */
   public memo(): this {
@@ -141,11 +148,12 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream` with an `Exporter` decorator and the given function.
+   * Creates a `Stream` with `Exporter` decorator and the given function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#dump-fn|Docs}
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/debugging|Debugging}
    * @see Exporter
-   * @param {function(T):void} [fn] - the function that receives the latest version of mock data
+   * @public
+   * @param {function(T):void} [fn] - the function that receives the result
    * @returns {Stream.<T>}
    */
   public dump(fn: ConsumerFunction<T>): this {
@@ -153,9 +161,10 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream` with an `Optional` decorator, which means It may generate a value or be undefined.
+   * Creates a `Stream` with `Optional` decorator, which means it may generate a value or undefined.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#optional-percentage|Docs}
    * @see Optional
+   * @public
    * @param {number} [percentage=0.5] - a number within [0, 1] of how often the result should be defined
    * @returns {Stream.<T | undefined>}
    */
@@ -164,9 +173,10 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates a `Stream` with an `Nullable` decorator, which means It may generate a value or be null.
+   * Creates a `Stream` with `Nullable` decorator, which means it may generate a value or null.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#nullable-percentage|Docs}
    * @see Nullable
+   * @public
    * @param {number} [percentage=0.5] - a number within [0, 1] of how often the result should be defined
    * @returns {Stream.<T | null>}
    */
@@ -175,9 +185,10 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Returns the decorated `Factory`.
+   * Returns the decorated factory.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#getfactory|Docs}
    * @see IFactory
+   * @public
    * @returns {IFactory.<T>}
    */
   public getFactory(): IFactory<T> {

@@ -33,8 +33,10 @@ export class ObjectStream<T = any> extends Stream<T> {
   }
 
   /**
-   * Creates an `ObjectStream.<T>` that generates an object with the given model.
+   * Creates an `ObjectStream.<T>` with `ObjectFactory` and the given model.
+   * @see ObjectFactory
    * @static
+   * @public
    * @param {Object.<string, IFactory.<T>>} [model] - a key-value object model that all keys are an instance of a factory
    * @returns {ObjectStream.<T>}
    */
@@ -43,8 +45,10 @@ export class ObjectStream<T = any> extends Stream<T> {
   }
 
   /**
-   * Creates a `ObjectStream.<T>` with a new or overwritten property with the given factory according to the given key.
+   * Creates a `ObjectStream.<T>` with `Property` decorator, the given property and factory.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#dynamic-property-factory|Docs}
+   * @see Property
+   * @public
    * @param {string} [property] - the property name
    * @param {IFactory.<*>} [factory] - the source factory of the property
    * @returns {ObjectStream.<T>}
@@ -54,8 +58,10 @@ export class ObjectStream<T = any> extends Stream<T> {
   }
 
   /**
-   * Creates a `ObjectStream.<T>` with a new or overwritten property with the given value according to the given key.
+   * Creates a `ObjectStream.<T>` with `Property` decorator, the given property and value.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#static-property-value|Docs}
+   * @see Property
+   * @public
    * @param {string} [property] - the property name
    * @param {*} [value] - the value of the property
    * @returns {ObjectStream.<T>}
@@ -65,9 +71,10 @@ export class ObjectStream<T = any> extends Stream<T> {
   }
 
   /**
-   * Creates a `ObjectStream.<T>` with a new or overwritten property with a function that takes the previous state of the mock data according to the given key.
-   * It is handy for generating conditional mock data.
+   * Creates a `ObjectStream.<T>` with `Lazy` decorator and the given function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#lazy-property-fn|Docs}
+   * @see Lazy
+   * @public
    * @param {string} [property] - the property name
    * @param {function(T):*} [converter] - the source function of the property
    * @returns {ObjectStream.<T>}
