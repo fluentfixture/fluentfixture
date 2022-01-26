@@ -4,12 +4,12 @@ import { memo } from '../../utils/memo';
 import { Decorator } from './decorator';
 
 /**
- * The `Memo` decorator is a utility decorator that invokes the underlying factory only once.
- * It is useful for optimization. More about this decorator is covered in the Optimization section.
- * The `Memo` decorator does store a state and does not alter the result of the given factory.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/memo|Docs}
+ * `Memo` decorator decorates a factory with the memoization function.
+ * When the `single()` method is invoked, it generates data and stores it in the memoization function; after that, always return the stored result.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/memo|Docs}
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/optimization|Optimization}
+ * @see {@link https://en.wikipedia.org/wiki/Memoization|Memoization}
  * @class
  * @template T
  * @extends Decorator.<T,T>
@@ -28,7 +28,7 @@ export class Memo<T = any> extends Decorator<T, T> {
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates a data by using the decorated factory.
    * @see IFactory
    * @returns {T}
    */

@@ -4,11 +4,11 @@ import { Assert } from '../../utils/assert';
 import { Decorator } from './decorator';
 
 /**
- * The `Functional` decorator is one of the most commonly used decorator types in the FluentFixture.
- * It takes a factory and a function. When decorator is invoked, invokes the factory and passes the result to the function as input, returns the result of the function.
- * The `Functional` decorator does not store a state and, by design, shouldn't alter the result of the given factory.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/functional|Docs}
+ * `Functional` decorator decorates a factory with the given function.
+ * When the `single()` method is invoked, it generates data by using the decorated factory and passes the result into the given function as input,
+ * then returns the output of the function.
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/functional|Docs}
  * @class
  * @template T, K
  * @extends Decorator.<T,K>
@@ -29,8 +29,9 @@ export class Functional<T = any, K = any> extends Decorator<T, K> {
   }
 
   /**
-   * Generates a data by using the decorated `Factory`.
+   * Generates single data by using the decorated factory and the given function.
    * @see IFactory
+   * @public
    * @returns {K}
    */
   public single(): K {
@@ -39,6 +40,7 @@ export class Functional<T = any, K = any> extends Decorator<T, K> {
 
   /**
    * Returns the converter function.
+   * @public
    * @returns {function(T):K}
    */
   public getFunction(): ConvertFunction<T, K> {

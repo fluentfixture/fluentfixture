@@ -1,4 +1,9 @@
 /**
+ * @todo It is useless
+ * @body we should use Factory class directly.
+ */
+
+/**
  * `IFactory` is base interface for all factory-like types.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories|Docs}
  * @interface

@@ -4,10 +4,11 @@ import { Assert } from '../../utils/assert';
 
 /**
  * Decorator is base class of all decorators.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
+ * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
  * @class
  * @abstract
  * @template T, K
+ * @extends {Factory.<K>}
  */
 export abstract class Decorator<T = any, K = any> extends Factory<K> {
   protected readonly factory: IFactory<T>;
@@ -24,8 +25,9 @@ export abstract class Decorator<T = any, K = any> extends Factory<K> {
   }
 
   /**
-   * Returns the decorated `Factory`.
+   * Returns the decorated factory.
    * @see IFactory
+   * @public
    * @returns {IFactory.<T>}
    */
   public getFactory(): IFactory<T> {
