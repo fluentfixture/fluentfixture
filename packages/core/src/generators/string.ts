@@ -7,6 +7,7 @@ const generateStringStream = (charset: string, length: number): StringStream => 
  * Creates a `StringStream` that generates always the given string.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#text-str|Docs}
  * @see StringStream
+ * @public
  * @param {string} [str] - the string to be generated
  * @returns {StringStream}
  */
@@ -16,6 +17,7 @@ export const text = (str: string): StringStream => StringStream.fromText(str);
  * Creates a `StringStream` that generates an alphanumeric string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#str-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -25,6 +27,7 @@ export const str = (length: number = DEFAULT_STRING_LENGTH): StringStream => gen
  * Creates a `StringStream` that generates a hexadecimal string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#hex-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -34,6 +37,7 @@ export const hex = (length: number = DEFAULT_STRING_LENGTH): StringStream => gen
  * Creates a `StringStream` that generates a binary string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#binary-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -43,6 +47,7 @@ export const binary = (length: number = DEFAULT_STRING_LENGTH): StringStream => 
  * Creates a `StringStream` that generates an octal string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#octal-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -52,6 +57,7 @@ export const octal = (length: number = DEFAULT_STRING_LENGTH): StringStream => g
  * Creates a `StringStream` that generates a numeric string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#numeric-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -61,6 +67,7 @@ export const numeric = (length: number = DEFAULT_STRING_LENGTH): StringStream =>
  * Creates a `StringStream` that generates an alphabetic string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#alphabetic-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */
@@ -70,6 +77,7 @@ export const alphabetic = (length: number = DEFAULT_STRING_LENGTH): StringStream
  * Creates a `StringStream` that generates an alphanumeric string with the given length.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/string-generators#alphanumeric-length|Docs}
  * @see StringStream
+ * @public
  * @param {number} [length=10] - the length of the string to be generated
  * @returns {StringStream}
  */

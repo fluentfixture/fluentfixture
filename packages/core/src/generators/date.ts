@@ -2,9 +2,10 @@ import { DateStream } from '../streams/stream-loader';
 import { DateHelper } from '../helpers/date-helper';
 
 /**
- * Creates a `DateStream` that generates a date with the given boundaries.
+ * Creates a `DateStream` that generates a date within the given boundary.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/date-generators#date-min-max|Docs}
  * @see DateStream
+ * @public
  * @param {Date} [min=now] - the minimum of the boundary
  * @param {Date} [max=tomorrow] - the maximum of the boundary
  * @returns {DateStream}
@@ -15,6 +16,7 @@ export const date = (min: Date = DateHelper.getToday(), max: Date = DateHelper.g
  * Creates a `DateStream` that generates a date that is the date of now.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/date-generators#now|Docs}
  * @see DateStream
+ * @public
  * @returns {DateStream}
  */
 export const now = (): DateStream => DateStream.fromDate(DateHelper.now());
@@ -23,6 +25,7 @@ export const now = (): DateStream => DateStream.fromDate(DateHelper.now());
  * Creates a `DateStream` that generates a date that is the date of tomorrow.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/date-generators#tomorrow|Docs}
  * @see DateStream
+ * @public
  * @returns {DateStream}
  */
 export const tomorrow = (): DateStream => DateStream.fromDate(DateHelper.getTomorrow());
@@ -31,6 +34,7 @@ export const tomorrow = (): DateStream => DateStream.fromDate(DateHelper.getTomo
  * Creates a `DateStream` that generates a date that is the date of yesterday.
  * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/date-generators#yesterday|Docs}
  * @see DateStream
+ * @public
  * @returns {DateStream}
  */
 export const yesterday = (): DateStream => DateStream.fromDate(DateHelper.getYesterday());

@@ -71,7 +71,7 @@ export class ObjectStream<T = any> extends Stream<T> {
   }
 
   /**
-   * Creates a `ObjectStream.<T>` with `Lazy` decorator and the given function.
+   * Creates a `ObjectStream.<T>` with `Lazy` decorator, the given property and function.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#lazy-property-fn|Docs}
    * @see Lazy
    * @public
