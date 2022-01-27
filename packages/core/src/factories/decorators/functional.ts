@@ -1,6 +1,6 @@
-import { IFactory } from '../interfaces/factory';
 import { ConvertFunction } from '../../types/convert-function';
 import { Assert } from '../../utils/assert';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -19,10 +19,10 @@ export class Functional<T = any, K = any> extends Decorator<T, K> {
   /**
    * Creates an instance of `Functional`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {function(T):K} [fn] - the converter function
    */
-  public constructor(factory: IFactory<T>, fn: ConvertFunction<T, K>) {
+  public constructor(factory: Factory<T>, fn: ConvertFunction<T, K>) {
     Assert.isFunction('Functional.constructor(factory, fn)', 'fn', fn);
     super(factory);
     this.fn = fn;
@@ -30,7 +30,7 @@ export class Functional<T = any, K = any> extends Decorator<T, K> {
 
   /**
    * Generates single data by using the decorated factory and the given function.
-   * @see IFactory
+   * @see Factory
    * @public
    * @returns {K}
    */

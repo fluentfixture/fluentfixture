@@ -1,6 +1,6 @@
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ExtendedObjectModel } from '../../types/extended-object-model';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -13,17 +13,17 @@ import { Decorator } from './decorator';
  * @extends Decorator.<T,T>
  */
 export class Property<S extends keyof any, T = any, K = any> extends Decorator<T, ExtendedObjectModel<S, T, K>> {
-  private readonly decorator: IFactory<K>;
+  private readonly decorator: Factory<K>;
   private readonly property: S;
 
   /**
    * Creates an instance of `Property`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
-   * @param {IFactory.<*>} [decorator] - the source factory of the property
+   * @param {Factory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<*>} [decorator] - the source factory of the property
    * @param {string} [property] - the property name
    */
-  public constructor(factory: IFactory<T>, decorator: IFactory<K>, property: S) {
+  public constructor(factory: Factory<T>, decorator: Factory<K>, property: S) {
     Assert.isFactoryLike('Property.constructor(factory, decorator, property)', 'decorator', decorator);
     Assert.isKey('Property.constructor(factory, decorator, property)', 'property', property);
     super(factory);
@@ -33,9 +33,9 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
 
   /**
    * Generates single data by using the decorated factory, property and decorator factory.
-   * @see IFactory
+   * @see Factory
    * @public
-   * @returns {Object.<string, IFactory.<*>>}
+   * @returns {Object.<string, Factory.<*>>}
    */
   public single(): ExtendedObjectModel<S, T, K> {
     const value = this.factory.single() as { [P in S]: K } & T;
@@ -46,9 +46,9 @@ export class Property<S extends keyof any, T = any, K = any> extends Decorator<T
   /**
    * Returns the source factory of the property.
    * @public
-   * @returns {IFactory.<*>}
+   * @returns {Factory.<*>}
    */
-  public getDecorator(): IFactory<K> {
+  public getDecorator(): Factory<K> {
     return this.decorator;
   }
 

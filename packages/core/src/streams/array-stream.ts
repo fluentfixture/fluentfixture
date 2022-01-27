@@ -1,4 +1,3 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
 import { MapFunction } from '../types/map-function';
 import { FilterFunction } from '../types/filter-function';
@@ -7,6 +6,7 @@ import { Iterator } from '../factories/decorators/iterator';
 import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ArrayHelper } from '../helpers/array-helper';
+import { Factory } from '../factories/factory';
 import { Stream } from './stream-loader';
 
 /**
@@ -22,9 +22,9 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   /**
    * Creates an instance of `ArrayStream.<T[]>`.
    * @constructor
-   * @param {IFactory.<T[]>} [factory] - the factory to be decorated
+   * @param {Factory.<T[]>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<ReadonlyArray<T>>) {
+  public constructor(factory: Factory<ReadonlyArray<T>>) {
     super(factory);
   }
 
@@ -33,11 +33,11 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * <T>` with the given factory and count.
    * @static
    * @public
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {number} [count=10] - the length of the array
    * @returns {ArrayStream.<T>}
    */
-  public static iterate<T = any>(factory: IFactory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
+  public static iterate<T = any>(factory: Factory<T>, count: number = DEFAULT_ARRAY_SIZE): ArrayStream<T> {
     return new ArrayStream(new Iterator(factory, count));
   }
 

@@ -1,6 +1,6 @@
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../constants/limits';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -18,10 +18,10 @@ export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
   /**
    * Creates an instance of `Iterator`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {number} [count] - the length of the array
    */
-  public constructor(factory: IFactory<T>, count: number) {
+  public constructor(factory: Factory<T>, count: number) {
     Assert.isInteger('Iterator.constructor(factory, count)', 'count', count);
     Assert.isInRange('Iterator.constructor(factory, count)', 'count', count, MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
     super(factory);
@@ -30,7 +30,7 @@ export class Iterator<T = any> extends Decorator<T, ReadonlyArray<T>> {
 
   /**
    * Generates array of data by using the decorated factory with the given count.
-   * @see IFactory
+   * @see Factory
    * @returns {T[]}
    */
   public single(): ReadonlyArray<T> {

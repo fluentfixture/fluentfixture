@@ -1,7 +1,7 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { DEFAULT_PERCENTAGE } from '../constants/limits';
 import { BooleanFactory } from '../factories/boolean-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { Factory } from '../factories/factory';
 import { Stream } from './stream-loader';
 
 /**
@@ -16,9 +16,9 @@ export class BooleanStream extends Stream<boolean> {
   /**
    * Creates an instance of `BooleanStream`.
    * @constructor
-   * @param {IFactory.<boolean>} [factory] - the factory to be decorated
+   * @param {Factory.<boolean>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<boolean>) {
+  public constructor(factory: Factory<boolean>) {
     super(factory);
   }
 

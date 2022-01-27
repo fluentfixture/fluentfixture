@@ -7,7 +7,7 @@ import { ObjectStream } from '../streams/stream-loader';
  * @see ObjectStream
  * @public
  * @template T
- * @param {Object.<string, IFactory.<T>>} [model] - a key-value object model that all keys are an instance of a factory
+ * @param {Object.<string, Factory.<T>>} [model] - a key-value object model that all keys are an instance of a factory
  * @returns {ObjectStream.<T>}
  */
 export const obj = <T = any>(model: ObjectModel<T>): ObjectStream<T> => ObjectStream.of(model);

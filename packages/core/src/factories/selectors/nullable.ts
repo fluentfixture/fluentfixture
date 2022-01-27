@@ -1,5 +1,5 @@
-import { IFactory } from '../interfaces/factory';
 import { ValueAdapter } from '../adapters/value-adapter';
+import { Factory } from '../factory';
 import { Selector } from './selector';
 
 /**
@@ -16,10 +16,10 @@ export class Nullable<T = any> extends Selector<T, null> {
   /**
    * Creates an instance of `Nullable`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {number} [percentage] - a number within [0, 1] of how often the result should be true
    */
-  public constructor(factory: IFactory<T>, percentage: number) {
+  public constructor(factory: Factory<T>, percentage: number) {
     super(factory, new ValueAdapter(null), percentage);
   }
 }

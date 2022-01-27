@@ -1,4 +1,3 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { Assert } from '../utils/assert';
 import { Factory } from '../factories/factory';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../constants/limits';
@@ -23,14 +22,14 @@ import { ArrayStream, StringStream } from './stream-loader';
  * @extends {Factory.<T>}
  */
 export class Stream<T = any> extends Factory<T> {
-  private readonly factory: IFactory<T>;
+  private readonly factory: Factory<T>;
 
   /**
    * Creates an instance of `Stream.<T>`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<T>) {
+  public constructor(factory: Factory<T>) {
     Assert.isFactoryLike('Stream.constructor(factory)', 'factory', factory);
     super();
     this.factory = factory;
@@ -40,10 +39,10 @@ export class Stream<T = any> extends Factory<T> {
    * Creates an instance of `Stream.<T>`
    * @static
    * @public
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @return {Stream.<T>}
    */
-  public static from<T = any>(factory: IFactory<T>): Stream<T> {
+  public static from<T = any>(factory: Factory<T>): Stream<T> {
     return new Stream(factory);
   }
 
@@ -74,7 +73,7 @@ export class Stream<T = any> extends Factory<T> {
   /**
    * Generates single data by using the decorated factory.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#single|Docs}
-   * @see IFactory
+   * @see Factory
    * @returns {T}
    */
   public single(): T {
@@ -132,7 +131,7 @@ export class Stream<T = any> extends Factory<T> {
    * @returns {Stream.<T>}
    */
   public apply(fn: ConvertFunction<T, T>): this {
-    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Functional(this, fn));
+    return new (this.constructor as (new (factory: Factory<T>) => any))(new Functional(this, fn));
   }
 
   /**
@@ -144,7 +143,7 @@ export class Stream<T = any> extends Factory<T> {
    * @returns {Stream.<T>}
    */
   public memo(): this {
-    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Memo(this));
+    return new (this.constructor as (new (factory: Factory<T>) => any))(new Memo(this));
   }
 
   /**
@@ -157,7 +156,7 @@ export class Stream<T = any> extends Factory<T> {
    * @returns {Stream.<T>}
    */
   public dump(fn: ConsumerFunction<T>): this {
-    return new (this.constructor as (new (factory: IFactory<T>) => any))(new Exporter(this, fn));
+    return new (this.constructor as (new (factory: Factory<T>) => any))(new Exporter(this, fn));
   }
 
   /**
@@ -187,11 +186,11 @@ export class Stream<T = any> extends Factory<T> {
   /**
    * Returns the decorated factory.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#getfactory|Docs}
-   * @see IFactory
+   * @see Factory
    * @public
-   * @returns {IFactory.<T>}
+   * @returns {Factory.<T>}
    */
-  public getFactory(): IFactory<T> {
+  public getFactory(): Factory<T> {
     return this.factory;
   }
 }

@@ -1,10 +1,10 @@
 import { Decorator } from '../../src/factories/decorators/decorator';
-import { IFactory } from '../../src/factories/interfaces/factory';
+import { Factory } from '../../src/factories/factory';
 
 export class MockDecorator<T = any, K = any> extends Decorator<T, K> {
   private readonly value: K;
 
-  public constructor(factory: IFactory<T>, value: K) {
+  public constructor(factory: Factory<T>, value: K) {
     super(factory);
     this.value = value;
   }

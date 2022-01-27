@@ -1,6 +1,6 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { NumberFactory } from '../factories/number-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
+import { Factory } from '../factories/factory';
 import { Stream } from './stream-loader';
 
 /**
@@ -15,9 +15,9 @@ export class NumberStream extends Stream<number> {
   /**
    * Creates an instance of `NumberStream`.
    * @constructor
-   * @param {IFactory.<number>} [factory] - the factory to be decorated
+   * @param {Factory.<number>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<number>) {
+  public constructor(factory: Factory<number>) {
     super(factory);
   }
 

@@ -15,7 +15,7 @@ export class ObjectFactory<T> extends Factory<T> {
   /**
    * Creates an instance of `ObjectFactory`.
    * @constructor
-   * @param {Object.<string, IFactory.<*>>} [model] - a key-value object that values are factory
+   * @param {Object.<string, Factory.<*>>} [model] - a key-value object that values are factory
    */
   public constructor(model: ObjectModel<T>) {
     Assert.isObjectModel('ObjectFactory.constructor(model)', 'model', model);
@@ -39,7 +39,7 @@ export class ObjectFactory<T> extends Factory<T> {
   /**
    * Returns the model.
    * @public
-   * @returns {Object.<string, IFactory.<*>>}
+   * @returns {Object.<string, Factory.<*>>}
    */
   public getModel(): ObjectModel<T> {
     return this.model;

@@ -1,8 +1,8 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { DateFactory } from '../factories/date-factory';
 import { DateHelper } from '../helpers/date-helper';
+import { Factory } from '../factories/factory';
 import { Stream, NumberStream } from './stream-loader';
 
 /**
@@ -17,9 +17,9 @@ export class DateStream extends Stream<Date> {
   /**
    * Creates an instance of `DateStream`.
    * @constructor
-   * @param {IFactory.<Date>} [factory] - the factory to be decorated
+   * @param {Factory.<Date>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<Date>) {
+  public constructor(factory: Factory<Date>) {
     super(factory);
   }
 

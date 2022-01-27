@@ -1,6 +1,5 @@
 import { Assert } from '../utils/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../constants/limits';
-import { IFactory } from './interfaces/factory';
 
 /**
  * `Factory` is base class for all factory-like types.
@@ -8,9 +7,8 @@ import { IFactory } from './interfaces/factory';
  * @class
  * @abstract
  * @template T
- * @implements {IFactory.<T>}
  */
-export abstract class Factory<T = any> implements IFactory<T> {
+export abstract class Factory<T = any> {
 
   /**
    * Generates single mock data.

@@ -1,6 +1,6 @@
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ConsumerFunction } from '../../types/consumer-function';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -20,10 +20,10 @@ export class Exporter<T = any> extends Decorator<T, T> {
   /**
    * Creates an instance of `Exporter`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {function(T):void} [fn] - the function that receives the result
    */
-  public constructor(factory: IFactory<T>, fn: ConsumerFunction<T>) {
+  public constructor(factory: Factory<T>, fn: ConsumerFunction<T>) {
     Assert.isFunction('Exporter.constructor(factory, fn)', 'fn', fn);
     super(factory);
     this.fn = fn;
@@ -31,7 +31,7 @@ export class Exporter<T = any> extends Decorator<T, T> {
 
   /**
    * Generates a data by using the decorated factory
-   * @see IFactory
+   * @see Factory
    * @public
    * @returns {T}
    */

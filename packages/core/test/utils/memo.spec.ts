@@ -1,6 +1,6 @@
 import { instance, mock, verify, when } from 'ts-mockito';
-import { IFactory } from '../../src/factories/interfaces/factory';
 import { memo } from '../../src/utils/memo';
+import { Factory } from '../../src/factories/factory';
 
 describe('memo', () => {
 
@@ -8,7 +8,7 @@ describe('memo', () => {
 
     it('should memoize of given factory', () => {
       const out = 'value';
-      const mockFactory = mock<IFactory>();
+      const mockFactory = mock<Factory>();
 
       when(mockFactory.single()).thenReturn(out);
 

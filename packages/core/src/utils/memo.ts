@@ -1,7 +1,7 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { ProducerFunction } from '../types/producer-function';
+import { Factory } from '../factories/factory';
 
-export const memo = <T>(factory: IFactory<T>): ProducerFunction<T> => {
+export const memo = <T>(factory: Factory<T>): ProducerFunction<T> => {
   let value: T;
   let done = false;
   return (): T => {

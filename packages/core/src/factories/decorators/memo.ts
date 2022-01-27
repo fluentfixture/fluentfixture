@@ -1,6 +1,6 @@
-import { IFactory } from '../interfaces/factory';
 import { ProducerFunction } from '../../types/producer-function';
 import { memo } from '../../utils/memo';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -20,16 +20,16 @@ export class Memo<T = any> extends Decorator<T, T> {
   /**
    * Creates an instance of `Memo`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<T>) {
+  public constructor(factory: Factory<T>) {
     super(factory);
     this.memoized = memo(factory);
   }
 
   /**
    * Generates a data by using the decorated factory.
-   * @see IFactory
+   * @see Factory
    * @public
    * @returns {T}
    */

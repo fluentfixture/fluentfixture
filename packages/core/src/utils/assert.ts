@@ -1,4 +1,4 @@
-import { IFactory } from '../factories/interfaces/factory';
+import { Factory } from '../factories/factory';
 
 export class Assert {
 
@@ -32,18 +32,18 @@ export class Assert {
     }
   }
 
-  public static isObjectModel(context: string, name: string, obj: Record<string, IFactory>): void {
+  public static isObjectModel(context: string, name: string, obj: Record<string, Factory>): void {
     if (!Assert.checkIsObject(obj)) {
       Assert.throwError(context, name, 'Parameter must be a key-value object that all keys are an instance of a factory-like!');
     }
     for (const key of Object.keys(obj)) {
-      if (!Assert.checkIsAssigned(obj[key]) || !Assert.checkIsFunction((obj[key] as IFactory).single)) {
+      if (!Assert.checkIsAssigned(obj[key]) || !Assert.checkIsFunction((obj[key] as Factory).single)) {
         Assert.throwError(context, name, 'Parameter must be a key-value object that all keys are an instance of a factory-like!');
       }
     }
   }
 
-  public static isFactoryLike(context: string, name: string, factory: IFactory): void {
+  public static isFactoryLike(context: string, name: string, factory: Factory): void {
     if (!Assert.checkIsAssigned(factory) || !Assert.checkIsFunction(factory.single)) {
       Assert.throwError(context, name, 'Parameter must be a factory-like!');
     }

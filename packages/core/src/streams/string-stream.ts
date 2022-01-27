@@ -1,7 +1,7 @@
-import { IFactory } from '../factories/interfaces/factory';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { StringHelper } from '../helpers/string-helper';
+import { Factory } from '../factories/factory';
 import { Stream } from './stream-loader';
 
 /**
@@ -16,9 +16,9 @@ export class StringStream extends Stream<string> {
   /**
    * Creates an instance of `StringStream`.
    * @constructor
-   * @param {IFactory.<string>} [factory] - the factory to be decorated
+   * @param {Factory.<string>} [factory] - the factory to be decorated
    */
-  public constructor(factory: IFactory<string>) {
+  public constructor(factory: Factory<string>) {
     super(factory);
   }
 

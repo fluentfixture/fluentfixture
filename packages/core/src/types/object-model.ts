@@ -1,5 +1,5 @@
-import { IFactory } from '../factories/interfaces/factory';
+import { Factory } from '../factories/factory';
 
 export type ObjectModel<T> = {
-  [K in keyof T]: IFactory<T[K]>
+  [K in keyof T]: Factory<T[K]>
 };

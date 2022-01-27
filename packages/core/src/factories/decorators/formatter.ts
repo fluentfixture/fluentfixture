@@ -1,7 +1,7 @@
 import { CompiledFormatter } from '@fluentfixture/format';
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { FormatHelper } from '../../helpers/format-helper';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -22,10 +22,10 @@ export class Formatter<T = any> extends Decorator<T, string> {
   /**
    * Creates an instance of `Formatter`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {string} [template] - the template expression
    */
-  public constructor(factory: IFactory<T>, template: string) {
+  public constructor(factory: Factory<T>, template: string) {
     Assert.isNonEmptyString('Formatter.constructor(factory, template)', 'template', template);
     super(factory);
     this.template = template;
@@ -34,7 +34,7 @@ export class Formatter<T = any> extends Decorator<T, string> {
   /**
    *
    * Generates single data by using the decorated factory and the given template.
-   * @see IFactory
+   * @see Factory
    * @public
    * @returns {string}
    */

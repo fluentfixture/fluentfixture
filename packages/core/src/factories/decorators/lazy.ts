@@ -1,7 +1,7 @@
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 import { ExtendedObjectModel } from '../../types/extended-object-model';
 import { ConvertFunction } from '../../types/convert-function';
+import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
@@ -20,11 +20,11 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
   /**
    * Creates an instance of `Lazy`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    * @param {function(T):*} [fn] - the source function of the property
    * @param {string} [property] - the property name
    */
-  public constructor(factory: IFactory<T>, fn: ConvertFunction<T, K>, property: S) {
+  public constructor(factory: Factory<T>, fn: ConvertFunction<T, K>, property: S) {
     Assert.isFunction('Lazy.constructor(factory, fn, property)', 'fn', fn);
     Assert.isKey('Lazy.constructor(factory, fn, property)', 'property', property);
     super(factory);
@@ -34,9 +34,9 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
 
   /**
    * Generates single data by using the decorated factory, property and function.
-   * @see IFactory
+   * @see Factory
    * @public
-   * @returns {Object.<string, IFactory.<*>>}
+   * @returns {Object.<string, Factory.<*>>}
    */
   public single(): ExtendedObjectModel<S, T, K> {
     const value = this.factory.single() as { [P in S]: K } & T;
@@ -47,7 +47,7 @@ export class Lazy<S extends keyof any, T = any, K = any> extends Decorator<T, Ex
   /**
    * Returns the source function of the property.
    * @public
-   * @returns {IFactory.<*>}
+   * @returns {Factory.<*>}
    */
   public getFunction(): ConvertFunction<T, K> {
     return this.fn;

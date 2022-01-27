@@ -1,5 +1,4 @@
 import { Factory } from '../factory';
-import { IFactory } from '../interfaces/factory';
 import { Assert } from '../../utils/assert';
 
 /**
@@ -11,14 +10,14 @@ import { Assert } from '../../utils/assert';
  * @extends {Factory.<K>}
  */
 export abstract class Decorator<T = any, K = any> extends Factory<K> {
-  protected readonly factory: IFactory<T>;
+  protected readonly factory: Factory<T>;
 
   /**
    * Creates an instance of `Decorator`.
    * @constructor
-   * @param {IFactory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T>} [factory] - the factory to be decorated
    */
-  protected constructor(factory: IFactory<T>) {
+  protected constructor(factory: Factory<T>) {
     Assert.isFactoryLike('Decorator.constructor(factory)', 'factory', factory);
     super();
     this.factory = factory;
@@ -26,11 +25,11 @@ export abstract class Decorator<T = any, K = any> extends Factory<K> {
 
   /**
    * Returns the decorated factory.
-   * @see IFactory
+   * @see Factory
    * @public
-   * @returns {IFactory.<T>}
+   * @returns {Factory.<T>}
    */
-  public getFactory(): IFactory<T> {
+  public getFactory(): Factory<T> {
     return this.factory;
   }
 }
