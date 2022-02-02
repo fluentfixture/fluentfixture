@@ -6,12 +6,13 @@ import { ArrayStream, Stream } from '../../src/streams/stream-loader';
 import { DEFAULT_SAMPLE_COUNT } from '../../src/constants/limits';
 import { Functional } from '../../src/factories/decorators/functional';
 import { ArrayHelper } from '../../src/helpers/array-helper';
+import { Picker } from '../../src/factories/decorators/picker';
 
 describe('adapters', () => {
 
   describe('val()', () => {
 
-    it('should create a value stream with given value', () => {
+    it('should create a stream with value adapter', () => {
       const value = {};
 
       const result = val(value);
@@ -52,7 +53,7 @@ describe('adapters', () => {
 
   describe('from()', () => {
 
-    it('should create a value stream with a function adapter with given function', () => {
+    it('should create a stream with a function adapter with given function', () => {
       const fn = () => true;
 
       const result = from(fn);
@@ -67,26 +68,20 @@ describe('adapters', () => {
 
   describe('pick()', () => {
 
-    it('should create an array stream with a functional and the pick operation', () => {
+    it('should create an stream with picker decorator', () => {
       const arr = [1, 2, 3];
-      const out = 2;
-      const spyArrayHelper = spy(ArrayHelper);
-
-      when(spyArrayHelper.pick(arr)).thenReturn(out);
 
       const result = pick(arr);
 
-      const functional = result.getFactory() as Functional;
-      const arrayStream = functional.getFactory() as ArrayStream;
+      const picker = result.getFactory() as Picker;
+      const arrayStream = picker.getFactory() as ArrayStream;
       const valueAdapter = arrayStream.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(Stream);
-      expect(functional).toBeInstanceOf(Functional);
+      expect(picker).toBeInstanceOf(Picker);
       expect(arrayStream).toBeInstanceOf(ArrayStream);
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(arr);
-      expect(result.single()).toBe(out);
-      verify(spyArrayHelper.pick(arr)).once();
     });
   });
 

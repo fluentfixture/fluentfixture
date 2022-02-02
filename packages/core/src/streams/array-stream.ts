@@ -7,6 +7,7 @@ import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ArrayHelper } from '../helpers/array-helper';
 import { Factory } from '../factories/factory';
+import { Picker } from '../factories/decorators/picker';
 import { Stream } from './stream-loader';
 
 /**
@@ -53,15 +54,15 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   }
 
   /**
-   * Creates an `Stream.<T>` with `Functional` decorator and the `pick` operator.
+   * Creates an `Stream.<T>` with `Picker` decorator.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#pick|Docs}
    * @see Stream
-   * @see Functional
+   * @see Picker
    * @public
    * @returns {Stream.<T>}
    */
   public pick(): Stream<T> {
-    return Stream.from(new Functional(this, (i) => ArrayHelper.pick(i)));
+    return Stream.from(new Picker(this));
   }
 
   /**

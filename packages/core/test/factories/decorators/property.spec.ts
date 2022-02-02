@@ -37,12 +37,12 @@ describe('Property', () => {
       const source = { a: 1, b: 'str' };
       const property = 'c';
       const value = [];
-      const decorator = new Property(instance(mockFactory), instance(mockDecoratorFactory), property);
+      const factory = new Property(instance(mockFactory), instance(mockDecoratorFactory), property);
 
       when(mockFactory.single()).thenReturn(source);
       when(mockDecoratorFactory.single()).thenReturn(value);
 
-      const result = decorator.single();
+      const result = factory.single();
 
       expect(result).toStrictEqual({ a: 1, b: 'str', c: [] });
       verify(mockFactory.single()).once();

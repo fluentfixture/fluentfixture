@@ -37,11 +37,11 @@ describe('Lazy', () => {
       const value = 'value';
       const mockFactory = mock(Factory);
       const converter = () => value;
-      const decorator = new Lazy(instance(mockFactory), converter, property);
+      const factory = new Lazy(instance(mockFactory), converter, property);
 
       when(mockFactory.single()).thenReturn(source);
 
-      const result = decorator.single();
+      const result = factory.single();
 
       expect(result).toStrictEqual({ a: 1, b: 'str', c: 'value' });
       verify(mockFactory.single()).once();

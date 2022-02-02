@@ -28,7 +28,7 @@ export class Memo<T = any> extends Decorator<T, T> {
   }
 
   /**
-   * Generates a data by using the decorated factory.
+   * Generates single data by using the decorated factory.
    * @see Factory
    * @public
    * @returns {T}

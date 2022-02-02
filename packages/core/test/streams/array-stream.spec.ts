@@ -4,28 +4,22 @@ import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
 import { Functional } from '../../src/factories/decorators/functional';
 import { ArrayHelper } from '../../src/helpers/array-helper';
+import { Picker } from '../../src/factories/decorators/picker';
 
 describe('ArrayStream', () => {
 
   describe('.pick()', () => {
 
-    it('should create a stream with functional decorator and the pick operation that wrap itself', () => {
-      const array = [1, 2, 3];
-      const out = 2;
-      const stream = ArrayStream.fromList(array);
-      const spyArrayHelper = spy(ArrayHelper);
-
-      when(spyArrayHelper.pick(array)).thenReturn(out);
+    it('should create a stream with picker decorator that wrap itself', () => {
+      const stream = ArrayStream.fromList([1, 2, 3]);
 
       const result = stream.pick();
 
       expect(result).toBeInstanceOf(Stream);
 
-      const functional = result.getFactory() as Functional;
-      expect(functional).toBeInstanceOf(Functional);
-      expect(functional.getFactory()).toBe(stream);
-      expect(result.single()).toBe(out);
-      verify(spyArrayHelper.pick(array)).once();
+      const picker = result.getFactory() as Picker;
+      expect(picker).toBeInstanceOf(Picker);
+      expect(picker.getFactory()).toBe(stream);
     });
   });
 
