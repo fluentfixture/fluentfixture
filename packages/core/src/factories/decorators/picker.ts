@@ -16,7 +16,7 @@ export class Picker<T = any> extends Decorator<ReadonlyArray<T>, T> {
   /**
    * Creates an instance of `Picker`.
    * @constructor
-   * @param {Factory.<T>} [factory] - the factory to be decorated
+   * @param {Factory.<T[]>} [factory] - the factory to be decorated
    */
   public constructor(factory: Factory<ReadonlyArray<T>>) {
     super(factory);
@@ -25,7 +25,7 @@ export class Picker<T = any> extends Decorator<ReadonlyArray<T>, T> {
   /**
    * Generates single data by using the decorated factory.
    * @see Factory
-   * @returns {T[]}
+   * @returns {T}
    */
   public single(): T {
     return Random.pick(this.factory.single());

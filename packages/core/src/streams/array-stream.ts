@@ -1,4 +1,4 @@
-import { DEFAULT_ARRAY_SIZE } from '../constants/limits';
+import { DEFAULT_ARRAY_SIZE, DEFAULT_SAMPLE_COUNT } from '../constants/limits';
 import { MapFunction } from '../types/map-function';
 import { FilterFunction } from '../types/filter-function';
 import { SortFunction } from '../types/sort-function';
@@ -8,6 +8,7 @@ import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { ArrayHelper } from '../helpers/array-helper';
 import { Factory } from '../factories/factory';
 import { Picker } from '../factories/decorators/picker';
+import { Sampler } from '../factories/decorators/sampler';
 import { Stream } from './stream-loader';
 
 /**
@@ -66,16 +67,16 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   }
 
   /**
-   * Creates an `ArrayStream.<T>` with `Functional` decorator and the `sample` operator.
+   * Creates an `ArrayStream.<T>` with `Sampler` decorator and the given size.
    * The result is the subset of the initial array.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#sample-size|Docs}
-   * @see Functional
+   * @see Sampler
    * @public
    * @param {number} [size=10] - the sample size
    * @returns {ArrayStream.<T>}
    */
-  public sample(size: number): ArrayStream<T> {
-    return new ArrayStream(new Functional(this, (i) => ArrayHelper.sample(i, size)));
+  public sample(size: number = DEFAULT_SAMPLE_COUNT): ArrayStream<T> {
+    return new ArrayStream(new Sampler(this, size));
   }
 
   /**

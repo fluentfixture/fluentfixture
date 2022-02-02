@@ -7,6 +7,7 @@ import { DEFAULT_SAMPLE_COUNT } from '../../src/constants/limits';
 import { Functional } from '../../src/factories/decorators/functional';
 import { ArrayHelper } from '../../src/helpers/array-helper';
 import { Picker } from '../../src/factories/decorators/picker';
+import { Sampler } from '../../src/factories/decorators/sampler';
 
 describe('adapters', () => {
 
@@ -87,49 +88,39 @@ describe('adapters', () => {
 
   describe('take()', () => {
 
-    it('should create an array stream with a functional and the sample operation', () => {
+    it('should create an array stream with sampler decorator and the given size', () => {
       const arr = [1, 2, 3];
       const size = 2;
-      const out = [1, 2];
-      const spyArrayHelper = spy(ArrayHelper);
-
-      when(spyArrayHelper.sample(arr, size)).thenReturn(out);
 
       const result = take(arr, size);
 
-      const functional = result.getFactory() as Functional;
-      const arrayStream = functional.getFactory() as ArrayStream;
+      const sampler = result.getFactory() as Sampler;
+      const arrayStream = sampler.getFactory() as ArrayStream;
       const valueAdapter = arrayStream.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(ArrayStream);
-      expect(functional).toBeInstanceOf(Functional);
+      expect(sampler).toBeInstanceOf(Sampler);
+      expect(sampler.getSize()).toBe(size);
       expect(arrayStream).toBeInstanceOf(ArrayStream);
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(arr);
-      expect(result.single()).toBe(out);
-      verify(spyArrayHelper.sample(arr, size)).once();
     });
 
     it('should use default sample size when size is not provided', () => {
       const arr = [1, 2, 3];
-      const out = [1, 2];
-      const spyArrayHelper = spy(ArrayHelper);
-
-      when(spyArrayHelper.sample(arr, DEFAULT_SAMPLE_COUNT)).thenReturn(out);
 
       const result = take(arr);
 
-      const functional = result.getFactory() as Functional;
-      const arrayStream = functional.getFactory() as ArrayStream;
+      const sampler = result.getFactory() as Sampler;
+      const arrayStream = sampler.getFactory() as ArrayStream;
       const valueAdapter = arrayStream.getFactory() as ValueAdapter;
 
       expect(result).toBeInstanceOf(ArrayStream);
-      expect(functional).toBeInstanceOf(Functional);
+      expect(sampler).toBeInstanceOf(Sampler);
+      expect(sampler.getSize()).toBe(DEFAULT_SAMPLE_COUNT);
       expect(arrayStream).toBeInstanceOf(ArrayStream);
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(arr);
-      expect(result.single()).toBe(out);
-      verify(spyArrayHelper.sample(arr, DEFAULT_SAMPLE_COUNT)).once();
     });
   });
 

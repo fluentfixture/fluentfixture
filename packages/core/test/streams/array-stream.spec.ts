@@ -5,6 +5,7 @@ import { assertArrayStreamDecorator } from '../assertions/array-stream-assertion
 import { Functional } from '../../src/factories/decorators/functional';
 import { ArrayHelper } from '../../src/helpers/array-helper';
 import { Picker } from '../../src/factories/decorators/picker';
+import { Sampler } from '../../src/factories/decorators/sampler';
 
 describe('ArrayStream', () => {
 
@@ -25,24 +26,18 @@ describe('ArrayStream', () => {
 
   describe('.sample()', () => {
 
-    it('should create a stream with functional decorator and sample operation that wraps itself', () => {
-      const arr = [1, 2, 3];
+    it('should create an array stream with sampler that wraps itself', () => {
       const size = 2;
-      const out = [1, 2];
-      const spyArrayHelper = spy(ArrayHelper);
-      const stream = ArrayStream.fromList(arr);
-
-      when(spyArrayHelper.sample(arr, size)).thenReturn(out);
+      const stream = ArrayStream.fromList([1, 2, 3]);
 
       const result = stream.sample(size);
 
       expect(result).toBeInstanceOf(ArrayStream);
 
-      const functional = result.getFactory() as Functional;
-      expect(functional).toBeInstanceOf(Functional);
-      expect(functional.getFactory()).toBe(stream);
-      expect(result.single()).toBe(out);
-      verify(spyArrayHelper.sample(arr, size)).once();
+      const sampler = result.getFactory() as Sampler;
+      expect(sampler).toBeInstanceOf(Sampler);
+      expect(sampler.getFactory()).toBe(stream);
+      expect(sampler.getSize()).toBe(size);
     });
   });
 
