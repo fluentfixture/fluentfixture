@@ -1,4 +1,4 @@
-import { instance, mock, spy, verify, when } from 'ts-mockito';
+import { instance, mock, verify, when } from 'ts-mockito';
 import { NON_FUNCTION_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Factory } from '../../../src/factories/factory';
@@ -25,9 +25,8 @@ describe('Functional', () => {
       const mockFactory = mock(Factory);
       const factoryOut = 1;
       const out = 2;
-      const decorator = { decorate: (value: any) => out };
-      const spyDecorator = spy(decorator);
-      const factory = new Functional(instance(mockFactory), decorator.decorate);
+      const decorator = (input: number): number => input * 2;
+      const factory = new Functional(instance(mockFactory), decorator);
 
       when(mockFactory.single()).thenReturn(factoryOut);
 
@@ -35,7 +34,6 @@ describe('Functional', () => {
 
       expect(result).toBe(out);
       verify(mockFactory.single()).once();
-      verify(spyDecorator.decorate(factoryOut)).once();
     });
   });
 });

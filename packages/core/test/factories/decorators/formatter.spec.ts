@@ -27,13 +27,11 @@ describe('Formatter', () => {
       const template = 'KEY={key}';
       const factoryOut = { 'key': 'value' };
       const mockFactory = mock(Factory);
-      const compiledFormatter = { format: (source: any) => null };
+      const compiledTemplate = (): string => out;
       const spyFormatUtils = spy(FormatHelper);
-      const spyCompiledFormatter = spy(compiledFormatter);
 
       when(mockFactory.single()).thenReturn(factoryOut);
-      when(spyFormatUtils.compile(template)).thenReturn(compiledFormatter.format);
-      when(spyCompiledFormatter.format(factoryOut)).thenReturn(out);
+      when(spyFormatUtils.compile(template)).thenReturn(compiledTemplate);
 
       const factory = new Formatter(instance(mockFactory), template);
 
@@ -42,7 +40,6 @@ describe('Formatter', () => {
       expect(result).toBe(out);
       verify(mockFactory.single()).once();
       verify(spyFormatUtils.compile(template)).once();
-      verify(spyCompiledFormatter.format(factoryOut)).once();
     });
   });
 });

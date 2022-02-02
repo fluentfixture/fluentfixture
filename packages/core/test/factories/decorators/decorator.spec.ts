@@ -1,5 +1,4 @@
 import { NON_FACTORY_LIKE_DATA_SET } from '../../data/type-sets';
-import { Decorator } from '../../../src/factories/decorators/decorator';
 import { MockDecorator } from '../../mocks/mock-decorator';
 
 describe('Decorator', () => {
