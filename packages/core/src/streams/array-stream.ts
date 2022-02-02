@@ -5,10 +5,10 @@ import { SortFunction } from '../types/sort-function';
 import { Iterator } from '../factories/decorators/iterator';
 import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
-import { ArrayHelper } from '../helpers/array-helper';
 import { Factory } from '../factories/factory';
 import { Picker } from '../factories/decorators/picker';
 import { Sampler } from '../factories/decorators/sampler';
+import { Shuffler } from '../factories/decorators/shuffler';
 import { Stream } from './stream-loader';
 
 /**
@@ -80,15 +80,15 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   }
 
   /**
-   * Creates an `ArrayStream.<T>` with `Functional` decorator and the `shuffle` operator.
+   * Creates an `ArrayStream.<T>` with `Shuffler` decorator.
    * The result array contains the same elements with the initial array but different order.
    * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#shuffle|Docs}
-   * @see Functional
+   * @see Shuffler
    * @public
    * @returns {ArrayStream.<T>}
    */
   public shuffle(): ArrayStream<T> {
-    return new ArrayStream(new Functional(this, (i) => ArrayHelper.shuffle(i)));
+    return new ArrayStream(new Shuffler(this));
   }
 
   /**
