@@ -39,7 +39,7 @@
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-unicorn": "40.1.0",
     "husky": "7.0.4",
-    "jest": "27.5.0",
+    "jest": "27.5.1",
     "lerna": "4.0.0",
     "lerna-changelog": "2.2.0",
     "lerna-dependency-graph": "1.1.0",
