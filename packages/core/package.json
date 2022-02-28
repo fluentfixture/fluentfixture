@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentfixture/format": "^0.0.1",
     "change-case": "4.1.2",
-    "dayjs": "1.10.7",
+    "dayjs": "1.10.8",
     "random-js": "2.1.0",
     "randomstring": "1.2.2"
   }
