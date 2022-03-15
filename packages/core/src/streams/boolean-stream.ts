@@ -6,7 +6,6 @@ import { Stream } from './stream-loader';
 
 /**
  * `BooleanStream` extends the `Stream.<boolean>` class for boolean operations.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/boolean-stream|Docs}
  * @see Stream
  * @class
  * @extends Stream.<boolean>
@@ -58,7 +57,6 @@ export class BooleanStream extends Stream<boolean> {
 
   /**
    * Creates a `BooleanStream` with `Functional` decorator and the `not` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/boolean-stream#not|Docs}
    * @see Functional
    * @public
    * @returns {BooleanStream}

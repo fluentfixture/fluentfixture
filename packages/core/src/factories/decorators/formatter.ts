@@ -8,9 +8,6 @@ import { Decorator } from './decorator';
  * `Formatter` decorator decorates a factory with the given template.
  * When the `single()` method is invoked, it generates data using the decorated factory
  * produces a string using the template engine with the given template and the output.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/formatter|Docs}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/templates|Templates}
  * @class
  * @template T
  * @extends Decorator.<T,string>

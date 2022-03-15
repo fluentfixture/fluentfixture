@@ -3,7 +3,6 @@ import { ObjectStream } from '../streams/stream-loader';
 
 /**
  * Creates an `ObjectStream` that generates an object with the given model.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/object-generators#obj-model|Docs}
  * @see ObjectStream
  * @public
  * @template T

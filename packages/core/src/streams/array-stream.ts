@@ -13,7 +13,6 @@ import { Stream } from './stream-loader';
 
 /**
  * `ArrayStream` extends the `Stream.<T[]>` class for array operations.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream|Docs}
  * @see Stream
  * @class
  * @template T
@@ -31,8 +30,7 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   }
 
   /**
-   * Creates an `ArrayStream.
-   * <T>` with the given factory and count.
+   * Creates an `ArrayStream.<T>` with the given factory and count.
    * @static
    * @public
    * @param {Factory.<T>} [factory] - the factory to be decorated
@@ -56,7 +54,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
 
   /**
    * Creates an `Stream.<T>` with `Picker` decorator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#pick|Docs}
    * @see Stream
    * @see Picker
    * @public
@@ -69,7 +66,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   /**
    * Creates an `ArrayStream.<T>` with `Sampler` decorator and the given size.
    * The result is the subset of the initial array.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#sample-size|Docs}
    * @see Sampler
    * @public
    * @param {number} [size=10] - the sample size
@@ -82,7 +78,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
   /**
    * Creates an `ArrayStream.<T>` with `Shuffler` decorator.
    * The result array contains the same elements with the initial array but different order.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#shuffle|Docs}
    * @see Shuffler
    * @public
    * @returns {ArrayStream.<T>}
@@ -95,8 +90,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * Creates an `ArrayStream.<T>` with `Functional` decorator and the `sort` operator.
    * This method works the same as how `Array#sort()` works.
    * The underlying type of the new stream is the same as the initial stream.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#sort-fn|Docs}
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map|Sort}
    * @see Functional
    * @public
    * @param {function(T, T):number} [fn=default-sorting-algorithm] - the sort function
@@ -110,8 +103,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * Creates an `ArrayStream.<T>` with `Functional` decorator and the `map` operator.
    * This method works the same as how Array#map() works.
    * The underlying type of the new stream is the same as the return type of the given map function.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#map-fn|Docs}
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map|Map}
    * @see Functional
    * @public
    * @template T, K
@@ -126,8 +117,6 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
    * Creates an `ArrayStream.<T>` with `Functional` decorator and the `filter` operator.
    * This method works the same as how Array#filter() works.
    * The underlying type of the new stream is the same as the initial stream.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/array-stream#filter-fn|Docs}
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter|Filter}
    * @see Functional
    * @public
    * @param {function(T, number, T[]):boolean} [fn] - the filter function

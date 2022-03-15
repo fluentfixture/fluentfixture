@@ -5,7 +5,6 @@ import { Factory } from './factory';
 
 /**
  * `StringFactory` generates a `string` by using the given charset and length.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/string-factory|Docs}
  * @see Factory
  * @class
  * @extends {Factory.<string>}

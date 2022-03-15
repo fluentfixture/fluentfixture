@@ -3,8 +3,6 @@ import { Factory } from '../factory';
 /**
  * `ValueAdapter` adapter accepts any value.
  * When the `single()` method is invoked, it returns the given value.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/adapters|Adapters}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/adapters/value-adapter|Docs}
  * @class
  * @template T
  * @extends Factory.<T>

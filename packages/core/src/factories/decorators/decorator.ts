@@ -3,7 +3,6 @@ import { Assert } from '../../utils/assert';
 
 /**
  * Decorator is base class of all decorators.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
  * @class
  * @abstract
  * @template T, K

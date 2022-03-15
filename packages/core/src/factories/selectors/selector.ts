@@ -6,7 +6,6 @@ import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../constants/limits';
 /**
  * `Selector` decorator decorates two factories and selects one of them by using the given percentage.
  * When the `single()` method is invoked, it generates data by using the selected factory.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
  * @class
  * @template T, K
  * @extends Factory.<T|K>

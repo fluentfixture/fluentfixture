@@ -7,9 +7,6 @@ import { Decorator } from './decorator';
  * `Exporter` decorator decorates a factory with the exporter function.
  * When the `single()` method is invoked, it generates data using the decorated factory and passes the result into the given function as input,
  * then returns the same result.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/exporter|Docs}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/debugging|Debugging}
  * @class
  * @template T
  * @extends Decorator.<T,T>
@@ -30,7 +27,7 @@ export class Exporter<T = any> extends Decorator<T, T> {
   }
 
   /**
-   * Generates single data by using the decorated factory
+   * Generates single data by using the decorated factory.
    * @see Factory
    * @public
    * @returns {T}

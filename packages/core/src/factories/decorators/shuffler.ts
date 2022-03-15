@@ -5,8 +5,6 @@ import { Decorator } from './decorator';
 /**
  * `Shuffler` decorator decorates an array factory.
  * When the `single()` method is invoked, it generates data using the decorated factory and shuffles it.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/shuffler|Docs}
  * @class
  * @template T
  * @extends Decorator.<T[],T[]>

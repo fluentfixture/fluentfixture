@@ -4,10 +4,9 @@ import { Factory } from './factory';
 
 /**
  * `ObjectFactory` generates an `object` by using the given model.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/object-factory|Docs}
  * @see Factory
  * @class
- * @extends {Factory.<Object>}
+ * @extends {Factory.<Object.<string, *>>}
  */
 export class ObjectFactory<T> extends Factory<T> {
   private readonly model: ObjectModel<T>
@@ -26,7 +25,7 @@ export class ObjectFactory<T> extends Factory<T> {
   /**
    * Generates single object.
    * @public
-   * @returns {Object}
+   * @returns {Object.<string, *>}
    */
   public single(): T {
     const result = { } as T;

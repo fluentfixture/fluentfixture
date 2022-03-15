@@ -16,7 +16,6 @@ import { ArrayStream, StringStream } from './stream-loader';
 
 /**
  * `Stream` is the superclass of all stream types.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream|Docs}
  * @class
  * @template T
  * @extends {Factory.<T>}
@@ -72,7 +71,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Generates single data by using the decorated factory.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#single|Docs}
    * @see Factory
    * @returns {T}
    */
@@ -81,8 +79,7 @@ export class Stream<T = any> extends Factory<T> {
   }
 
   /**
-   * Creates an `ArrayStream` with `Iterator` decorator and the given length.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#array-length|Docs}
+   * Creates an `ArrayStream` with `Iterator` decorator and the given length
    * @see ArrayStream
    * @see Iterator
    * @public
@@ -95,8 +92,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Creates a `StringStream` with `Formatter` decorator and the given template.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#format-template|Docs}
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/templates|Templates}
    * @see StringStream
    * @see Formatter
    * @public
@@ -110,7 +105,6 @@ export class Stream<T = any> extends Factory<T> {
   /**
    * Creates a `Stream` with `Functional` decorator and the given function.
    * The underlying type of the new stream is the same as the return type of the given function.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#convert-fn|Docs}
    * @see Functional
    * @public
    * @template T, K
@@ -124,7 +118,6 @@ export class Stream<T = any> extends Factory<T> {
   /**
    * Creates a `Stream` with `Functional` decorator and the given function.
    * The underlying type of the new stream is the same as the return type of the given function.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#apply-fn|Docs}
    * @see Functional
    * @public
    * @param {function(T):T} [fn] - the converter function
@@ -136,8 +129,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Creates a `Stream` with `Memo` decorator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#memo|Docs}
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/optimization|Optimization}
    * @see Memo
    * @public
    * @returns {Stream.<T>}
@@ -148,8 +139,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Creates a `Stream` with `Exporter` decorator and the given function.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#dump-fn|Docs}
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/debugging|Debugging}
    * @see Exporter
    * @public
    * @param {function(T):void} [fn] - the function that receives the result
@@ -161,7 +150,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Creates a `Stream` with `Optional` decorator, which means it may generate a value or undefined.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#optional-percentage|Docs}
    * @see Optional
    * @public
    * @param {number} [percentage=0.5] - a number within [0, 1] of how often the result should be defined
@@ -173,7 +161,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Creates a `Stream` with `Nullable` decorator, which means it may generate a value or null.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#nullable-percentage|Docs}
    * @see Nullable
    * @public
    * @param {number} [percentage=0.5] - a number within [0, 1] of how often the result should be defined
@@ -185,7 +172,6 @@ export class Stream<T = any> extends Factory<T> {
 
   /**
    * Returns the decorated factory.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/stream#getfactory|Docs}
    * @see Factory
    * @public
    * @returns {Factory.<T>}

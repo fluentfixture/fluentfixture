@@ -7,8 +7,6 @@ import { Decorator } from './decorator';
 /**
  * `Lazy` decorator decorates a property of an object factory with the given function and property.
  * When the `single()` method is invoked, it generates data using the decorated factory and changes the property with the result of the function.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/lazy|Docs}
  * @class
  * @template T
  * @extends Decorator.<T,T>

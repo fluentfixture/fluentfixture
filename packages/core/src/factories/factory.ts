@@ -3,7 +3,6 @@ import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../constants/limits';
 
 /**
  * `Factory` is base class for all factory-like types.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories|Docs}
  * @class
  * @abstract
  * @template T

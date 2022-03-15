@@ -4,7 +4,6 @@ import { IntegerFactory } from '../factories/integer-factory';
 
 /**
  * Creates a `NumberStream` that generates a float number within the given boundary.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#real-min-max|Docs}
  * @see NumberStream
  * @public
  * @param {number} [min=0] - the minimum of the boundary
@@ -15,7 +14,6 @@ export const real = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX
 
 /**
  * Creates a `NumberStream` that generates an integer number within the given boundary.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#int-min-max|Docs}
  * @see NumberStream
  * @public
  * @param {number} [min=0] - the minimum of the boundary
@@ -26,7 +24,6 @@ export const int = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_
 
 /**
  * Creates a `NumberStream` that generates always the given number.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#num-val|Docs}
  * @see NumberStream
  * @public
  * @param {number} [val] - the number to be generated
@@ -36,7 +33,6 @@ export const num = (val: number): NumberStream => NumberStream.constant(val);
 
 /**
  * Creates a `NumberStream` that generates always zero.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#zero|Docs}
  * @see NumberStream
  * @public
  * @returns {NumberStream}
@@ -45,7 +41,6 @@ export const zero = (): NumberStream => NumberStream.constant(0);
 
 /**
  * Creates a `NumberStream` that generates always one.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/generators/number-generators#one|Docs}
  * @see NumberStream
  * @public
  * @returns {NumberStream}

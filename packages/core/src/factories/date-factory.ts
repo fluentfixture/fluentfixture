@@ -4,7 +4,6 @@ import { Factory } from './factory';
 
 /**
  * `DateFactory` generates a `date` within the given boundary.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/date-factory|Docs}
  * @see Factory
  * @class
  * @extends {Factory.<Date>}

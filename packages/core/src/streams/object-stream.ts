@@ -15,7 +15,6 @@ import { Stream } from './stream-loader';
 
 /**
  * `ObjectStream` extends the `Stream.<object>` class for object operations.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream|Docs}
  * @see Stream
  * @class
  * @template T
@@ -46,7 +45,6 @@ export class ObjectStream<T = any> extends Stream<T> {
 
   /**
    * Creates a `ObjectStream.<T>` with `Property` decorator, the given property and factory.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#dynamic-property-factory|Docs}
    * @see Property
    * @public
    * @param {string} [property] - the property name
@@ -59,7 +57,6 @@ export class ObjectStream<T = any> extends Stream<T> {
 
   /**
    * Creates a `ObjectStream.<T>` with `Property` decorator, the given property and value.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#static-property-value|Docs}
    * @see Property
    * @public
    * @param {string} [property] - the property name
@@ -72,7 +69,6 @@ export class ObjectStream<T = any> extends Stream<T> {
 
   /**
    * Creates a `ObjectStream.<T>` with `Lazy` decorator, the given property and function.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/object-stream#lazy-property-fn|Docs}
    * @see Lazy
    * @public
    * @param {string} [property] - the property name

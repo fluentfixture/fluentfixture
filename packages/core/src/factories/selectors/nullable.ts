@@ -5,8 +5,6 @@ import { Selector } from './selector';
 /**
  * `Nullable` decorator decorates a factory with the given percentage.
  * When the `single()` method is invoked, it generates data using the selected factory or returns `null` using the given percentage.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/nullable|Docs}
  * @class
  * @template T
  * @extends Selector.<T,null>

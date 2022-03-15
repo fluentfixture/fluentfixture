@@ -6,10 +6,6 @@ import { Decorator } from './decorator';
 /**
  * `Memo` decorator decorates a factory with the memoization function.
  * When the `single()` method is invoked, it generates data and stores it in the memoization function; after that, always return the stored result.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/decorators/memo|Docs}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/fundamentals/optimization|Optimization}
- * @see {@link https://en.wikipedia.org/wiki/Memoization|Memoization}
  * @class
  * @template T
  * @extends Decorator.<T,T>

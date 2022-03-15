@@ -7,7 +7,6 @@ import { Stream, NumberStream } from './stream-loader';
 
 /**
  * `DateStream` extends the `Stream.<Date>` class for date operations.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream|Docs}
  * @see Stream
  * @class
  * @extends Stream.<Date>
@@ -49,8 +48,7 @@ export class DateStream extends Stream<Date> {
   }
 
   /**
-   * Creates a `DateStream` with `Functional` decorator and the `add-milliseconds`` operator`.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addmilliseconds-value|Docs}
+   * Creates a `DateStream` with `Functional` decorator and the `add-milliseconds` operator`.
    * @see Functional
    * @public
    * @param {number} [value] - the count of the milliseconds to be added
@@ -62,7 +60,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-milliseconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractmilliseconds-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the milliseconds to be subtracted
@@ -74,7 +71,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-milliseconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setmilliseconds-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the milliseconds to be set
@@ -86,7 +82,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-milliseconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getmilliseconds|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -98,7 +93,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-seconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addseconds-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the seconds to be added
@@ -110,7 +104,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-seconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractseconds-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the seconds to be subtracted
@@ -122,7 +115,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-seconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setseconds-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the seconds to be set
@@ -134,7 +126,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-seconds` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getseconds|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -146,7 +137,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-minutes` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addminutes-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the minutes to be added
@@ -158,7 +148,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-minutes` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractminutes-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the minutes to be subtracted
@@ -170,7 +159,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-minutes` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setminutes-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the minutes to be set
@@ -182,7 +170,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-minutes` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getminutes|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -194,7 +181,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-hours` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addhours-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the hours to be added
@@ -206,7 +192,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-hours` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtracthours-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the hours to be subtracted
@@ -218,7 +203,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-hours` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#sethours-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the hours to be set
@@ -230,7 +214,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-hours` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#gethours|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -242,7 +225,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-days` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#adddays-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the days to be added
@@ -254,7 +236,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-days` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractdays-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the days to be subtracted
@@ -266,7 +247,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-days-of-week` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setdaysofweek-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the days of week to be set
@@ -278,7 +258,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-days-of-month` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setdaysofmonth-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the days of month to be set
@@ -290,7 +269,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-days-of-week` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getdaysofweek|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -302,7 +280,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-days-of-month` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getdaysofmonth|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -314,7 +291,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-months` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addmonths-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the months to be added
@@ -326,7 +302,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-months` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractmonths-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the months to be subtracted
@@ -338,7 +313,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-months` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setmonths-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the months to be set
@@ -350,7 +324,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-months` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getmonths|Docs}
    * @see NumberStream
    * @see Functional
    * @public
@@ -362,7 +335,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `add-years` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#addyears-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the years to be added
@@ -374,7 +346,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `subtract-years` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#subtractyears-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the count of the years to be subtracted
@@ -386,7 +357,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `DateStream` with `Functional` decorator and the `set-years` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#setyears-value|Docs}
    * @see Functional
    * @public
    * @param {number} [value] - the value of the years to be set
@@ -398,7 +368,6 @@ export class DateStream extends Stream<Date> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `get-years` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/date-stream#getyears|Docs}
    * @see NumberStream
    * @see Functional
    * @public

@@ -5,7 +5,6 @@ import { Factory } from './factory';
 
 /**
  * `NumberFactory` generates a `float` within the given boundary.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/number-factory|Docs}
  * @see Factory
  * @class
  * @extends {Factory.<number>}

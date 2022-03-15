@@ -5,7 +5,6 @@ import { Stream } from './stream-loader';
 
 /**
  * `NumberStream` extends the `Stream.<number>` class for numeric operations.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream|Docs}
  * @see Stream
  * @class
  * @extends Stream.<number>
@@ -48,7 +47,6 @@ export class NumberStream extends Stream<number> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `mode` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#mode-num|Docs}
    * @see Functional
    * @public
    * @param {number} [num] - the number to be divisor
@@ -60,7 +58,6 @@ export class NumberStream extends Stream<number> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `add` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#add-num|Docs}
    * @see Functional
    * @public
    * @param {number} [num] - the number to be added
@@ -72,7 +69,6 @@ export class NumberStream extends Stream<number> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `subtract` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#subtract-num|Docs}
    * @see Functional
    * @public
    * @param {number} [num] - the number to be subtracted
@@ -84,7 +80,6 @@ export class NumberStream extends Stream<number> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `multiply` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#multiply-num|Docs}
    * @see Functional
    * @public
    * @param {number} [num] - the number to be multiplied
@@ -96,7 +91,6 @@ export class NumberStream extends Stream<number> {
 
   /**
    * Creates a `NumberStream` with `Functional` decorator and the `divide` operator.
-   * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/streams/number-stream#divide-num|Docs}
    * @see Functional
    * @public
    * @param {number} [num] - the number to be divisor

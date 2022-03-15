@@ -7,8 +7,6 @@ import { Decorator } from './decorator';
 /**
  * `Sampler` decorator decorates an array factory with the give count.
  * When the `single()` method is invoked, it generates data using the decorated factory and takes a sample from it.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators|Decorators}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/decorators/sampler|Docs}
  * @class
  * @template T
  * @extends Decorator.<T[],T[]>

@@ -5,8 +5,6 @@ import { Assert } from '../../utils/assert';
 /**
  * `FunctionAdapter` adapter accepts a function.
  * When the `single()` method is invoked, it invokes the given function and returns the result.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/adapters|Adapters}
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/adapters/function-adapter|Docs}
  * @class
  * @template T
  * @extends Factory.<T>

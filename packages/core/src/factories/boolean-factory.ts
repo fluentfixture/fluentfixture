@@ -5,7 +5,6 @@ import { Factory } from './factory';
 
 /**
  * `BooleanFactory` generates a `boolean` by using the given percentage.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/boolean-factory|Docs}
  * @see Factory
  * @class
  * @extends {Factory.<boolean>}

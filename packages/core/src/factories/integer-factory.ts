@@ -5,7 +5,6 @@ import { Factory } from './factory';
 
 /**
  * `IntegerFactory` generates an `integer` within the given boundary.
- * @see {@link https://scokmen.gitbook.io/fluent-fixture/concepts/factories/creators/integer-factory|Docs}
  * @see Factory
  * @class
  * @extends {Factory.<number>}
