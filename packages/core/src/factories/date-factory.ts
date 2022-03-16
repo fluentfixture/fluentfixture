@@ -1,4 +1,4 @@
-import { Assert } from '../utils/assert';
+import { Assert } from '../assertions/assert';
 import { Random } from '../engine/random';
 import { Factory } from './factory';
 

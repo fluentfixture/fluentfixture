@@ -1,5 +1,5 @@
 import { CompiledFormatter } from '@fluentfixture/format';
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 import { FormatHelper } from '../../helpers/format-helper';
 import { Factory } from '../factory';
 import { Decorator } from './decorator';

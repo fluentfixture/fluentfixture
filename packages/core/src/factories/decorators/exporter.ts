@@ -1,4 +1,4 @@
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 import { ConsumerFunction } from '../../types/consumer-function';
 import { Factory } from '../factory';
 import { Decorator } from './decorator';

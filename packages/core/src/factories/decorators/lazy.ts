@@ -1,4 +1,4 @@
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 import { ExtendedObjectModel } from '../../types/extended-object-model';
 import { ConvertFunction } from '../../types/convert-function';
 import { Factory } from '../factory';

@@ -1,3 +1,4 @@
+import { TypeUtils } from '@fluentfixture/shared';
 import {
   FALLBACK_DELIMITER,
   EXPRESSION_END_CHAR,
@@ -5,10 +6,9 @@ import {
   EXPRESSION_START_CHAR,
 } from '../constants/constants';
 import { Token } from '../types/token';
-import { isNonEmptyString } from '../utils/type-checks';
 
 const stripTemplateLiterals = (str: string): string => {
-  return isNonEmptyString(str) && str.trim().length > 2
+  return TypeUtils.isNonEmptyString(str) && str.trim().length > 2
     ? str.trim().slice(1, -1).trim()
     : '';
 };

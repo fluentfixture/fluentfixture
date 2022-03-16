@@ -10,12 +10,35 @@ import {
   pathCase,
 } from 'change-case';
 
-/**
- * @todo Support all unicode letters.
- * @body change-case not support all unicode letters by default.
- */
+export class StringUtils {
 
-export class StringHelper {
+  public static upperCase(str: string): string {
+    return str.toUpperCase();
+  }
+
+  public static lowerCase(str: string): string {
+    return str.toLowerCase();
+  }
+
+  public static trim(str: string): string {
+    return str.trim();
+  }
+
+  public static trimStart(str: string): string {
+    return str.trimStart();
+  }
+
+  public static trimEnd(str: string): string {
+    return str.trimEnd();
+  }
+
+  public static padStart(str: string, length: number, fill?: string): string {
+    return str.padStart(length, fill);
+  }
+
+  public static padEnd(str: string, length: number, fill?: string): string {
+    return str.padEnd(length, fill);
+  }
 
   public static pathCase(str: string): string {
     return pathCase(str);

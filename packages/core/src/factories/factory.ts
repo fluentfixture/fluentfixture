@@ -1,4 +1,4 @@
-import { Assert } from '../utils/assert';
+import { Assert } from '../assertions/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../constants/limits';
 
 /**

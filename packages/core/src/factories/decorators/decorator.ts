@@ -1,5 +1,5 @@
 import { Factory } from '../factory';
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 
 /**
  * Decorator is base class of all decorators.

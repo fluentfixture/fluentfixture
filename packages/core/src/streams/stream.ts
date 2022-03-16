@@ -1,4 +1,4 @@
-import { Assert } from '../utils/assert';
+import { Assert } from '../assertions/assert';
 import { Factory } from '../factories/factory';
 import { DEFAULT_ARRAY_SIZE, DEFAULT_PERCENTAGE } from '../constants/limits';
 import { ConvertFunction } from '../types/convert-function';

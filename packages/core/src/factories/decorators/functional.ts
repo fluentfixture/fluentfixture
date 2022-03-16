@@ -1,5 +1,5 @@
 import { ConvertFunction } from '../../types/convert-function';
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 import { Factory } from '../factory';
 import { Decorator } from './decorator';
 

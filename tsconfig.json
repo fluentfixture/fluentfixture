@@ -16,6 +16,7 @@
     "paths": {
       "@fluentfixture/core": ["./packages/core"],
       "@fluentfixture/format": ["./packages/format"],
+      "@fluentfixture/shared": ["./packages/shared"],
     }
   },
   "include": ["packages/**/*", "integration/**/*", "sample/**/*"],

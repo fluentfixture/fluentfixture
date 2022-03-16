@@ -1,5 +1,5 @@
 import { ObjectModel } from '../types/object-model';
-import { Assert } from '../utils/assert';
+import { Assert } from '../assertions/assert';
 import { Factory } from './factory';
 
 /**

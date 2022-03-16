@@ -1,6 +1,6 @@
+import { StringUtils } from '@fluentfixture/shared';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
-import { StringHelper } from '../helpers/string-helper';
 import { Factory } from '../factories/factory';
 import { Stream } from './stream-loader';
 
@@ -52,7 +52,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public trim(): StringStream {
-    return this.apply((i) => i.trim());
+    return this.apply((i) => StringUtils.trim(i));
   }
 
   /**
@@ -62,7 +62,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public trimStart(): StringStream {
-    return this.apply((i) => i.trimStart());
+    return this.apply((i) => StringUtils.trimStart(i));
   }
 
   /**
@@ -72,7 +72,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public trimEnd(): StringStream {
-    return this.apply((i) => i.trimEnd());
+    return this.apply((i) => StringUtils.trimEnd(i));
   }
 
   /**
@@ -84,7 +84,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public padStart(length: number, str?: string): StringStream {
-    return this.apply((i) => i.padStart(length, str));
+    return this.apply((i) => StringUtils.padStart(i, length, str));
   }
 
   /**
@@ -96,7 +96,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public padEnd(length: number, str?: string): StringStream {
-    return this.apply((i) => i.padEnd(length, str));
+    return this.apply((i) => StringUtils.padEnd(i, length, str));
   }
 
   /**
@@ -106,7 +106,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public lowerCase(): StringStream {
-    return this.apply((i) => i.toLowerCase());
+    return this.apply((i) => StringUtils.lowerCase(i));
   }
 
   /**
@@ -116,7 +116,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public upperCase(): StringStream {
-    return this.apply((i) => i.toUpperCase());
+    return this.apply((i) => StringUtils.upperCase(i));
   }
 
   /**
@@ -126,7 +126,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public camelCase(): StringStream {
-    return this.apply((i) => StringHelper.camelCase(i));
+    return this.apply((i) => StringUtils.camelCase(i));
   }
 
   /**
@@ -136,7 +136,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public capitalCase(): StringStream {
-    return this.apply((i) => StringHelper.capitalCase(i));
+    return this.apply((i) => StringUtils.capitalCase(i));
   }
 
   /**
@@ -146,7 +146,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public constantCase(): StringStream {
-    return this.apply((i) => StringHelper.constantCase(i));
+    return this.apply((i) => StringUtils.constantCase(i));
   }
 
   /**
@@ -156,7 +156,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public pathCase(): StringStream {
-    return this.apply((i) => StringHelper.pathCase(i));
+    return this.apply((i) => StringUtils.pathCase(i));
   }
 
   /**
@@ -166,7 +166,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public dotCase(): StringStream {
-    return this.apply((i) => StringHelper.dotCase(i));
+    return this.apply((i) => StringUtils.dotCase(i));
   }
 
   /**
@@ -176,7 +176,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public headerCase(): StringStream {
-    return this.apply((i) => StringHelper.headerCase(i));
+    return this.apply((i) => StringUtils.headerCase(i));
   }
 
   /**
@@ -186,7 +186,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public paramCase(): StringStream {
-    return this.apply((i) => StringHelper.paramCase(i));
+    return this.apply((i) => StringUtils.paramCase(i));
   }
 
   /**
@@ -196,7 +196,7 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public pascalCase(): StringStream {
-    return this.apply((i) => StringHelper.pascalCase(i));
+    return this.apply((i) => StringUtils.pascalCase(i));
   }
 
   /**
@@ -206,6 +206,6 @@ export class StringStream extends Stream<string> {
    * @returns {StringStream}
    */
   public snakeCase(): StringStream {
-    return this.apply((i) => StringHelper.snakeCase(i));
+    return this.apply((i) => StringUtils.snakeCase(i));
   }
 }

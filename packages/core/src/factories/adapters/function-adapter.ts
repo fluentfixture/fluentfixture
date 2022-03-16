@@ -1,6 +1,6 @@
 import { ProducerFunction } from '../../types/producer-function';
 import { Factory } from '../factory';
-import { Assert } from '../../utils/assert';
+import { Assert } from '../../assertions/assert';
 
 /**
  * `FunctionAdapter` adapter accepts a function.

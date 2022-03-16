@@ -1,6 +1,6 @@
+import { TypeUtils } from '@fluentfixture/shared';
 import { INTERPOLATION_REGEXP } from './constants/constants';
 import { TransformerFactory } from './types/transformer-factory';
-import { isNonEmptyString } from './utils/type-checks';
 import { build } from './transformers/builders/transformer-builder';
 import { Transformer } from './types/transformer';
 
@@ -11,7 +11,7 @@ type ParsingRule<T> = {
 }
 
 const parsingAlgorithm = <T>(template: string, rules: ParsingRule<T>): T => {
-  if (!isNonEmptyString(template)) {
+  if (!TypeUtils.isNonEmptyString(template)) {
     return rules.defaultValue;
   }
 
