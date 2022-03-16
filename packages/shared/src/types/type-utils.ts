@@ -1,46 +1,46 @@
 export class TypeUtils {
 
-  public static isInRange(value: number, min: number, max: number): boolean {
-    return value >= min && value <= max;
-  }
-
-  public static isString(str: string): boolean {
+  public static isString(str: unknown): str is string {
     return typeof str === 'string';
   }
 
-  public static isNonEmptyString(str: string): boolean {
-    return TypeUtils.isString(str) && str !== '';
-  }
-
-  public static isNonBlankString(str: string): boolean {
-    return TypeUtils.isString(str) && str.trim() != '';
-  }
-
-  public static isDate(date: Date): boolean {
+  public static isDate(date: unknown): date is Date {
     return date instanceof Date && TypeUtils.isInteger(date.getTime());
   }
 
-  public static isObject(obj: Object): boolean {
+  public static isObject(obj: unknown): obj is Object {
     return Object.prototype.toString.call(obj) === '[object Object]';
   }
 
-  public static isInteger(num: number): boolean {
-    return typeof num === 'number' && Number.isInteger(num);
-  }
-
-  public static isNumber(num: number): boolean {
+  public static isNumber(num: unknown): num is number {
     return typeof num === 'number' && num > Number.NEGATIVE_INFINITY && num < Number.POSITIVE_INFINITY;
   }
 
-  public static isAssigned(val: any): boolean {
-    return val !== undefined && val !== null;
-  }
-
-  public static isFunction(fn: Function): boolean {
+  public static isFunction(fn: unknown): fn is Function {
     return typeof fn === 'function';
   }
 
-  public static isSymbol(symbol: Symbol): boolean {
+  public static isSymbol(symbol: unknown): symbol is Symbol {
     return typeof symbol === 'symbol' || (typeof symbol === 'object' && Object.prototype.toString.call(symbol) === '[object Symbol]');
+  }
+
+  public static isNonEmptyString(str: unknown): str is string {
+    return TypeUtils.isString(str) && str !== '';
+  }
+
+  public static isNonBlankString(str: unknown): str is string {
+    return TypeUtils.isString(str) && str.trim() != '';
+  }
+
+  public static isInteger(num: unknown): num is number {
+    return TypeUtils.isNumber(num) && Number.isInteger(num);
+  }
+
+  public static isAssigned(val: unknown): boolean {
+    return val !== undefined && val !== null;
+  }
+
+  public static isInRange(value: number, min: number, max: number): boolean {
+    return value >= min && value <= max;
   }
 }
