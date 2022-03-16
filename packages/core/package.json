@@ -24,7 +24,7 @@
   "dependencies": {
     "@fluentfixture/format": "^0.0.1",
     "@fluentfixture/shared": "^0.0.1",
-    "dayjs": "1.10.8",
+    "dayjs": "1.11.0",
     "random-js": "2.1.0",
     "randomstring": "1.2.2"
   }
