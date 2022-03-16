@@ -32,6 +32,8 @@ module.exports = {
     ignorePatterns: [
         '.eslintrc.js',
         '.eslintrc.spec.js',
-        'commitlint.config.js'
+        '.dependency-cruiser.js',
+        'commitlint.config.js',
+        'tools/**/*.js'
     ]
 };

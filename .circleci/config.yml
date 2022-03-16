@@ -34,6 +34,10 @@ aliases:
     run:
       name: Lint
       command: npm run lint
+  - &run-depcruise
+    run:
+      name: Depcruise
+      command: npm run depcruise
 
 unit-tests-template: &unit-tests-template
   working_directory: ~/fluentfixture
@@ -49,7 +53,7 @@ jobs:
   build:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
     steps:
       - checkout
       - *restore-cache
@@ -75,7 +79,7 @@ jobs:
 
   coverage:
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
     steps:
       - checkout
       - *restore-cache
@@ -88,7 +92,7 @@ jobs:
   lint:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
     steps:
       - checkout
       - *restore-cache
@@ -96,10 +100,21 @@ jobs:
       - *lerna-bootstrap
       - *run-lint
 
+  depcruise:
+    working_directory: ~/fluentfixture
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - *lerna-bootstrap
+      - *run-depcruise
+
   security:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
     steps:
       - checkout
       - *restore-cache
@@ -123,21 +138,27 @@ workflows:
       - lint:
           requires:
             - commitlint/lint
+      - depcruise:
+          requires:
+            - commitlint/lint
       - test_node_12:
           requires:
             - build
             - security
             - lint
+            - depcruise
       - test_node_14:
           requires:
             - build
             - security
             - lint
+            - depcruise
       - test_node_16:
           requires:
             - build
             - security
             - lint
+            - depcruise
       - coverage:
           requires:
             - test_node_12
