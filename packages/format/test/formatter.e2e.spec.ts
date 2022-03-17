@@ -15,9 +15,9 @@ describe('formatter', () => {
 
       test.each(cases)('should render template with given source', (source: any, output: any) => {
           expect(format(template, source)).toBe(output);
-        }
+        },
       );
-    })
+    });
 
     describe('nested types', () => {
 
@@ -25,10 +25,10 @@ describe('formatter', () => {
         id: 1,
         price: {
           amount: 9.99,
-          currency: 'USD'
+          currency: 'USD',
         },
         categories: ['fashion', 'book'],
-        updateDate: new Date(1_641_306_927_000)
+        updateDate: new Date(1_641_306_927_000),
       };
 
       const cases = [
@@ -38,13 +38,12 @@ describe('formatter', () => {
         ['is-in-stock={isInStock:false}, amount={price.amount:0}, primary-category={categories.0|upper-case}',
           'is-in-stock=false, amount=9.99, primary-category=FASHION'],
         ['is-in-stock={isInStock:false}, amount={price.amount:0}, updated-at={updateDate|iso-date}',
-          'is-in-stock=false, amount=9.99, updated-at=2022-01-04T14:35:27.000Z']
+          'is-in-stock=false, amount=9.99, updated-at=2022-01-04T14:35:27.000Z'],
       ];
 
-      test.each(cases)('should render template with given source', (template: any, output: any) => {
-          expect(format(template, source)).toBe(output);
-        }
-      );
+      test.each(cases)('should render template with given source', (template: string, output: any) => {
+        expect(format(template, source)).toBe(output);
+      });
     });
   });
 });

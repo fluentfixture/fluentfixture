@@ -25,6 +25,8 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/ban-types': 'off',
         'unicorn/no-null': 'off',
+        'unicorn/prefer-type-error': 'off',
+        'unicorn/no-array-reduce': 'off',
         'unicorn/prevent-abbreviations': 'off',
         'import/no-unresolved': 'off',
         'import/order': ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}]

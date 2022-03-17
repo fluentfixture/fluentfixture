@@ -1,8 +1,12 @@
-import { CompiledFormatter } from '@fluentfixture/format';
+import { CompiledTemplate } from '@fluentfixture/format';
 import { Assert } from '../../assertions/assert';
 import { FormatHelper } from '../../helpers/format-helper';
 import { Factory } from '../factory';
 import { Decorator } from './decorator';
+
+/**
+ * @todo: change sign of compiled template
+ */
 
 /**
  * `Formatter` decorator decorates a factory with the given template.
@@ -14,7 +18,7 @@ import { Decorator } from './decorator';
  */
 export class Formatter<T = any> extends Decorator<T, string> {
   private readonly template: string;
-  private readonly formatter: CompiledFormatter;
+  private readonly compiled: CompiledTemplate;
 
   /**
    * Creates an instance of `Formatter`.
@@ -26,8 +30,9 @@ export class Formatter<T = any> extends Decorator<T, string> {
     Assert.isNonEmptyString('Formatter.constructor(factory, template)', 'template', template);
     super(factory);
     this.template = template;
-    this.formatter = FormatHelper.compile(template);
+    this.compiled = FormatHelper.compileTemplate(template);
   }
+
   /**
    *
    * Generates single data by using the decorated factory and the given template.
@@ -36,7 +41,7 @@ export class Formatter<T = any> extends Decorator<T, string> {
    * @returns {string}
    */
   public single(): string {
-    return this.formatter(this.factory.single());
+    return this.compiled.format(this.factory.single() as any);
   }
 
   /**

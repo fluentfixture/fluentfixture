@@ -1,8 +1,8 @@
-import { compile, CompiledFormatter } from '@fluentfixture/format';
+import { compile, CompiledTemplate } from '@fluentfixture/format';
 
 export class FormatHelper {
 
-  public static compile(template: string): CompiledFormatter {
+  public static compileTemplate(template: string): CompiledTemplate {
     return compile(template);
   }
 }
