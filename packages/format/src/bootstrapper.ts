@@ -6,7 +6,12 @@ import { GeneratorFactory } from './generators/factory/generator-factory';
 import { asGenerator } from './helpers/generators';
 import { Options } from './parsers/types/options';
 import { extendOptions } from './parsers/options';
+import { CompiledTemplate } from './parsers/compiled-template';
 
+/**
+ * Creates a generator factory with pre-defined functions.
+ * @returns {GeneratorFactory}
+ */
 const createGeneratorFactory = (): GeneratorFactory => {
   const generatorFactory = new GeneratorFactory();
 
@@ -28,7 +33,9 @@ const createGeneratorFactory = (): GeneratorFactory => {
   return generatorFactory;
 };
 
-const tokenParser = new TokenParser();
+/**
+ * The singleton generator factory.
+ */
 const generatorFactory = createGeneratorFactory();
 
 /**
@@ -37,7 +44,39 @@ const generatorFactory = createGeneratorFactory();
  * @param {Options=} [options] - options
  * @returns {TemplateParser}
  */
-export const createParser = (options?: Options): TemplateParser => {
-  return new TemplateParser(new GeneratorBuilder(tokenParser, generatorFactory, extendOptions(options)));
+const createParser = (options?: Options): TemplateParser => {
+  return new TemplateParser(new GeneratorBuilder(new TokenParser(), generatorFactory, extendOptions(options)));
 };
 
+/**
+ * Register a generator with the given name.
+ * @public
+ * @param {string} [name] - generator name
+ * @param {function(*):*} [fn] - generator function.
+ */
+export const register = (name: string, fn: GeneratorFunction): void => {
+  generatorFactory.set(name, asGenerator(fn));
+};
+
+/**
+ * Formats the given source object with the give template directly.
+ * @public
+ * @param {string} [template] - template literal
+ * @param {*} [source] - source object
+ * @param {Options=} [options] - options
+ * @returns {string}
+ */
+export const format = (template: string, source: any, options?: Options): string => {
+  return new CompiledTemplate(createParser(options).parse(template)).format(source);
+};
+
+/**
+ * Creates a compiled template by using the given template.
+ * @public
+ * @param {string} [template] - template literal
+ * @param {Options=} [options] - template options
+ * @returns {CompiledTemplate}
+ */
+export const compile = (template: string, options?: Options): CompiledTemplate => {
+  return new CompiledTemplate(createParser(options).parse(template));
+};

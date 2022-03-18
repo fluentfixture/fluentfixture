@@ -1,4 +1,4 @@
-import { compile } from '../src/compiler';
+import { compile } from '../src/bootstrapper';
 
 describe('compiler', () => {
 

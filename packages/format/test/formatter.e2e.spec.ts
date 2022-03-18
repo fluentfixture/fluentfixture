@@ -1,4 +1,4 @@
-import { format } from '../src/formatter';
+import { format } from '../src/bootstrapper';
 
 describe('formatter', () => {
 
