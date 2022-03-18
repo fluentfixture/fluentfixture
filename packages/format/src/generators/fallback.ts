@@ -8,16 +8,16 @@ import { Generator } from './generator';
  * @extends Generator.<T,T>
  */
 export class Fallback<T = any> extends Generator<T> {
-  private readonly value: T;
+  private readonly fallback: T;
 
   /**
    * Creates an instance of `Fallback`.
    * @constructor
-   * @param {T} [value] - value
+   * @param {T} [fallback] - fallback
    */
-  public constructor(value: T) {
+  public constructor(fallback: T) {
     super();
-    this.value = value;
+    this.fallback = fallback;
   }
 
   /**
@@ -27,6 +27,15 @@ export class Fallback<T = any> extends Generator<T> {
    * @returns {T}
    */
   public process(input?: T): T {
-    return TypeUtils.isAssigned(input) ? input : this.value;
+    return TypeUtils.isAssigned(input) ? input : this.fallback;
+  }
+
+  /**
+   * Returns the given fallback.
+   * @public
+   * @returns {T}
+   */
+  public getFallback(): T {
+    return this.fallback;
   }
 }

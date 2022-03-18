@@ -20,6 +20,10 @@ export class TypeUtils {
     return typeof fn === 'function';
   }
 
+  public static isBoolean(bool: unknown): bool is boolean {
+    return typeof bool === 'boolean';
+  }
+
   public static isSymbol(symbol: unknown): symbol is Symbol {
     return typeof symbol === 'symbol' || (typeof symbol === 'object' && Object.prototype.toString.call(symbol) === '[object Symbol]');
   }

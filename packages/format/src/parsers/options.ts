@@ -7,8 +7,8 @@ const getDefaultOptions = (): Options => {
   };
 };
 
-const getOrDefault = <T>(option: T, fallback: T): T => {
-  return TypeUtils.isAssigned(option) ? option : fallback;
+const checkBoolean = (option: boolean, fallback: boolean): boolean => {
+  return TypeUtils.isBoolean(option) ? option : fallback;
 };
 
 /**
@@ -18,6 +18,6 @@ const getOrDefault = <T>(option: T, fallback: T): T => {
  */
 export const extendOptions = (options?: Options): Options => {
   const normalized = options || getDefaultOptions();
-  normalized.ignoreErrors = getOrDefault(normalized.ignoreErrors, true);
+  normalized.ignoreErrors = checkBoolean(normalized.ignoreErrors, true);
   return normalized;
 };

@@ -29,4 +29,13 @@ export class Extractor<T = any> extends Generator<any, T> {
   public process(input: any): T {
     return path.get(input, this.path);
   }
+
+  /**
+   * Returns the given path.
+   * @public
+   * @returns {string}
+   */
+  public getPath(): string {
+    return this.path;
+  }
 }

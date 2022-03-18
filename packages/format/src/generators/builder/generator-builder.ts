@@ -39,7 +39,7 @@ export class GeneratorBuilder {
    * @param {string} [token] - token
    * @returns {Generator.<*,string>}
    */
-  public buildStatic(token: string): Generator<any, string> {
+  public fixed(token: string): Generator<any, string> {
     return new Fixed(token);
   }
 
@@ -49,11 +49,9 @@ export class GeneratorBuilder {
    * @param {string} [token] - token
    * @returns {Generator.<*,string>}
    */
-  public buildDynamic(token: string): Generator<any, string> {
+  public flow(token: string): Generator<any, string> {
     const metadata = this.parser.parse(token);
-    const generators = [
-      this.getSafeGenerator(GeneratorBuilder.getInitialGenerator(metadata))
-    ];
+    const generators = [GeneratorBuilder.getInitialGenerator(metadata)];
 
     if (metadata.fallback) {
       generators.push(new Fallback(metadata.fallback));

@@ -15,8 +15,8 @@ describe('TemplateParser', () => {
       const result = templateParser.parse(expression);
 
       expect(result).toHaveLength(0);
-      verify(mockTokenFactory.buildStatic(anything())).never();
-      verify(mockTokenFactory.buildDynamic(anything())).never();
+      verify(mockTokenFactory.fixed(anything())).never();
+      verify(mockTokenFactory.flow(anything())).never();
     });
 
     it('should parse static tokens correctly', () => {
@@ -24,7 +24,7 @@ describe('TemplateParser', () => {
       const mockTokenFactory = mock(GeneratorBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
 
-      when(mockTokenFactory.buildStatic(expression)).thenReturn(new MockGenerator(expression));
+      when(mockTokenFactory.fixed(expression)).thenReturn(new MockGenerator(expression));
 
       const result = templateParser.parse(expression);
 
@@ -32,8 +32,8 @@ describe('TemplateParser', () => {
 
       expect((result[0] as MockGenerator).getValue()).toBe(expression);
 
-      verify(mockTokenFactory.buildStatic(expression)).once();
-      verify(mockTokenFactory.buildDynamic(anything())).never();
+      verify(mockTokenFactory.fixed(expression)).once();
+      verify(mockTokenFactory.flow(anything())).never();
     });
 
     it('should parse dynamic tokens correctly', () => {
@@ -41,7 +41,7 @@ describe('TemplateParser', () => {
       const mockTokenFactory = mock(GeneratorBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
 
-      when(mockTokenFactory.buildDynamic(expression)).thenReturn(new MockGenerator(expression));
+      when(mockTokenFactory.flow(expression)).thenReturn(new MockGenerator(expression));
 
       const result = templateParser.parse(expression);
 
@@ -49,8 +49,8 @@ describe('TemplateParser', () => {
 
       expect((result[0] as MockGenerator).getValue()).toBe(expression);
 
-      verify(mockTokenFactory.buildStatic(anything())).never();
-      verify(mockTokenFactory.buildDynamic(expression)).once();
+      verify(mockTokenFactory.fixed(anything())).never();
+      verify(mockTokenFactory.flow(expression)).once();
     });
 
     it('should parse combined tokens correctly (static, dynamic, static)', () => {
@@ -61,9 +61,9 @@ describe('TemplateParser', () => {
       const mockTokenFactory = mock(GeneratorBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
 
-      when(mockTokenFactory.buildStatic(staticTokens[0])).thenReturn(new MockGenerator(staticTokens[0]));
-      when(mockTokenFactory.buildStatic(staticTokens[1])).thenReturn(new MockGenerator(staticTokens[1]));
-      when(mockTokenFactory.buildDynamic(dynamicTokens[0])).thenReturn(new MockGenerator(dynamicTokens[0]));
+      when(mockTokenFactory.fixed(staticTokens[0])).thenReturn(new MockGenerator(staticTokens[0]));
+      when(mockTokenFactory.fixed(staticTokens[1])).thenReturn(new MockGenerator(staticTokens[1]));
+      when(mockTokenFactory.flow(dynamicTokens[0])).thenReturn(new MockGenerator(dynamicTokens[0]));
 
       const result = templateParser.parse(expression);
 
@@ -73,8 +73,8 @@ describe('TemplateParser', () => {
       expect((result[1] as MockGenerator).getValue()).toBe(dynamicTokens[0]);
       expect((result[2] as MockGenerator).getValue()).toBe(staticTokens[1]);
 
-      verify(mockTokenFactory.buildStatic(anything())).twice();
-      verify(mockTokenFactory.buildDynamic(anything())).once();
+      verify(mockTokenFactory.fixed(anything())).twice();
+      verify(mockTokenFactory.flow(anything())).once();
     });
 
     it('should parse combined tokens correctly (dynamic, static, dynamic)', () => {
@@ -85,9 +85,9 @@ describe('TemplateParser', () => {
       const mockTokenFactory = mock(GeneratorBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
 
-      when(mockTokenFactory.buildStatic(staticTokens[0])).thenReturn(new MockGenerator(staticTokens[0]));
-      when(mockTokenFactory.buildDynamic(dynamicTokens[0])).thenReturn(new MockGenerator(dynamicTokens[0]));
-      when(mockTokenFactory.buildDynamic(dynamicTokens[1])).thenReturn(new MockGenerator(dynamicTokens[1]));
+      when(mockTokenFactory.fixed(staticTokens[0])).thenReturn(new MockGenerator(staticTokens[0]));
+      when(mockTokenFactory.flow(dynamicTokens[0])).thenReturn(new MockGenerator(dynamicTokens[0]));
+      when(mockTokenFactory.flow(dynamicTokens[1])).thenReturn(new MockGenerator(dynamicTokens[1]));
 
       const result = templateParser.parse(expression);
 
@@ -97,8 +97,8 @@ describe('TemplateParser', () => {
       expect((result[1] as MockGenerator).getValue()).toBe(staticTokens[0]);
       expect((result[2] as MockGenerator).getValue()).toBe(dynamicTokens[1]);
 
-      verify(mockTokenFactory.buildStatic(anything())).once();
-      verify(mockTokenFactory.buildDynamic(anything())).twice();
+      verify(mockTokenFactory.fixed(anything())).once();
+      verify(mockTokenFactory.flow(anything())).twice();
     });
   });
 });

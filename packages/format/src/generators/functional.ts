@@ -33,4 +33,12 @@ export class Functional<T = any, K = any> extends Generator<T, K> {
   public process(input: T): K {
     return this.generator(input);
   }
+
+  /**
+   * Returns the given generator function.
+   * @returns {function(T):K}
+   */
+  public getGeneratorFunction(): GeneratorFunction<T, K> {
+    return this.generator;
+  }
 }

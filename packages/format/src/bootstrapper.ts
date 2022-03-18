@@ -3,7 +3,7 @@ import { TemplateParser } from './parsers/template-parser';
 import { GeneratorBuilder } from './generators/builder/generator-builder';
 import { TokenParser } from './parsers/token-parser';
 import { GeneratorFactory } from './generators/factory/generator-factory';
-import { asGenerator } from './helpers/generators';
+import { asGenerator } from './generators/generators';
 import { Options } from './parsers/types/options';
 import { extendOptions } from './parsers/options';
 import { CompiledTemplate } from './parsers/compiled-template';

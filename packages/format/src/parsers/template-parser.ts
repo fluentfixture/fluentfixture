@@ -37,14 +37,14 @@ export class TemplateParser {
 
     for (const match of matches) {
       if (match.index > cursor) {
-        generators.push(this.builder.buildStatic(template.slice(cursor, match.index)));
+        generators.push(this.builder.fixed(template.slice(cursor, match.index)));
       }
-      generators.push(this.builder.buildDynamic(match[0]));
+      generators.push(this.builder.flow(match[0]));
       cursor = match.index + match[0].length;
     }
 
     if (cursor < template.length ) {
-      generators.push(this.builder.buildStatic(template.slice(cursor)));
+      generators.push(this.builder.fixed(template.slice(cursor)));
     }
 
     return generators;

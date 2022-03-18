@@ -27,4 +27,13 @@ export class Fixed<T = any> extends Generator<any, T> {
   public process(): T {
     return this.value;
   }
+
+  /**
+   * Returns the given value.
+   * @public
+   * @returns {T}
+   */
+  public getValue(): T {
+    return this.value;
+  }
 }

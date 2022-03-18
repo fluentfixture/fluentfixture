@@ -26,4 +26,13 @@ export class Flow extends Generator {
   public process(input?: any): any {
     return this.generators.reduce((prev, generator) => generator.process(prev), input);
   }
+
+  /**
+   * Returns the given generators.
+   * @public
+   * @returns {Generator[]}
+   */
+  public getGenerators(): ReadonlyArray<Generator> {
+    return this.generators;
+  }
 }
