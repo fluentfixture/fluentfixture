@@ -3,7 +3,7 @@ import { GeneratorBuilder } from '../generators/builder/generator-builder';
 import { Generator } from '../generators/generator';
 
 /**
- * `TemplateParser` accepts a template literal and converts to list of generators.
+ * `TemplateParser` accepts a template and converts into a list of generators.
  * @class
  */
 export class TemplateParser {
@@ -13,16 +13,16 @@ export class TemplateParser {
   /**
    * Creates an instance of `TemplateParser`.
    * @constructor
-   * @param {GeneratorBuilder} [builder] - generator builder
+   * @param {GeneratorBuilder} [builder] - generator builder instance
    */
   public constructor(builder: GeneratorBuilder) {
     this.builder = builder;
   }
 
   /**
-   * Parses the given template literal
+   * Parses the given template.
    * @public
-   * @param {string} [template] - template literal
+   * @param {string} [template] - template
    * @returns {Generator[]}
    */
   public parse(template: string): ReadonlyArray<Generator<any, string>> {

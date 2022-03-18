@@ -2,7 +2,7 @@ import { TypeUtils } from '@fluentfixture/shared';
 import { TokenMetadata } from './types/token-metadata';
 
 /**
- * `TokenParser` accepts a token string and creates a token metadata.
+ * `TokenParser` accepts a token and creates a token metadata.
  * @class
  */
 export class TokenParser {
@@ -10,7 +10,7 @@ export class TokenParser {
   private static readonly FallbackCharacter = ':';
 
   /**
-   * Parses the given token string and creates a token metadata.
+   * Parses the given token and creates a token metadata.
    * @public
    * @param {string} [token] - token as string
    * @returns {TokenMetadata}

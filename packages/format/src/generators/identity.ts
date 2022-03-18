@@ -1,7 +1,7 @@
 import { Generator } from './generator';
 
 /**
- * `Identity` returns the given source object without any modifications.
+ * `Identity` returns the given value without any modifications.
  * @class
  * @template T
  * @extends Generator.<T,T>

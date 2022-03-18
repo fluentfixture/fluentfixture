@@ -1,14 +1,14 @@
-import { Generator } from '../generators/generator';
+import { Generator } from './generators/generator';
 
 /**
- * `CompiledTemplate` pre-compiled template expression.
+ * `CompiledFormatter` is a pre-compiled formatter.
  * @class
  */
-export class CompiledTemplate {
+export class CompiledFormatter {
   private readonly generators: ReadonlyArray<Generator<any, string>>;
 
   /**
-   * Creates an instance of `CompiledTemplate`.
+   * Creates an instance of `CompiledFormatter`.
    * @constructor
    * @param {Generator[]} [generators] - generator list
    */
@@ -17,8 +17,9 @@ export class CompiledTemplate {
   }
 
   /**
-   * Evaluate the result by using the given source object.
-   * @param {*} [source] - source object
+   * Process the result by using the given source.
+   * @public
+   * @param {*} [source] - source
    * @returns {string}
    */
   public format(source: any): string {

@@ -2,7 +2,7 @@ import * as path from 'object-path';
 import { Generator } from './generator';
 
 /**
- * `Extractor` extracts data from the given source with the given path.
+ * `Extractor` extracts data from the given source by using the given path.
  * @class
  * @template T
  * @extends Generator.<*,T>
@@ -21,7 +21,7 @@ export class Extractor<T = any> extends Generator<any, T> {
   }
 
   /**
-   * Extracts data from the given source with the given path.
+   * Extracts data from the given source by using the given path.
    * @public
    * @param {*} [input] - input
    * @returns {T}

@@ -1,9 +1,10 @@
-import { compile, CompiledTemplate } from '@fluentfixture/format';
+import { Formatter, CompiledFormatter } from '@fluentfixture/format';
 
 export class FormatHelper {
+  private static readonly formatter = new Formatter();
 
-  public static compileTemplate(template: string): CompiledTemplate {
-    return compile(template);
+  public static compile(template: string): CompiledFormatter {
+    return FormatHelper.formatter.compile(template);
   }
 }
 

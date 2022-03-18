@@ -2,7 +2,7 @@ import { TypeUtils } from '@fluentfixture/shared';
 import { Generator } from './generator';
 
 /**
- * `Stringifier` converts any input into string.
+ * `Stringifier` converts any input into a string value.
  * @class
  * @template T
  * @extends Generator.<T,string>
@@ -10,7 +10,7 @@ import { Generator } from './generator';
 export class Stringifier<T = any> extends Generator<T, string> {
 
   /**
-   * Converts the given input into string.
+   * Converts the given input into a string value.
    * @public
    * @param {T} [input] - input
    * @returns {string}

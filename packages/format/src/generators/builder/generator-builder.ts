@@ -34,7 +34,8 @@ export class GeneratorBuilder {
   }
 
   /**
-   * Creates a static generator.
+   * Creates a static generator. A static generator creates always the same given value.
+   * @see Fixed
    * @public
    * @param {string} [token] - token
    * @returns {Generator.<*,string>}
@@ -44,7 +45,8 @@ export class GeneratorBuilder {
   }
 
   /**
-   * Creates a generator flow.
+   * Creates a generator flow. A flow works like pipes.
+   * @see Flow
    * @public
    * @param {string} [token] - token
    * @returns {Generator.<*,string>}

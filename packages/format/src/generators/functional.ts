@@ -3,7 +3,7 @@ import { GeneratorFunction } from './types/generator-function';
 import { Generator } from './generator';
 
 /**
- * `Functional` accepts generator function and use while generating the input.
+ * `Functional` accepts generator function and use it while generating a value.
  * @class
  * @template T, K
  * @extends Generator.<T,K>
@@ -32,13 +32,5 @@ export class Functional<T = any, K = any> extends Generator<T, K> {
    */
   public process(input: T): K {
     return this.generator(input);
-  }
-
-  /**
-   * Returns the given generator function.
-   * @returns {function(T):K}
-   */
-  public getGeneratorFunction(): GeneratorFunction<T, K> {
-    return this.generator;
   }
 }

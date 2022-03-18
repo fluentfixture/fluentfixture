@@ -1,7 +1,7 @@
 import { Generator } from './generator';
 
 /**
- * `Flow` combines a set of generators and execute flow.
+ * `Flow` combines the given generators and execute them sequentially.
  * @class
  */
 export class Flow extends Generator {
@@ -18,7 +18,7 @@ export class Flow extends Generator {
   }
 
   /**
-   * Generates a value by using the generator list.
+   * Generates a value by executing the flow created by using the given generators.
    * @public
    * @param {*} [input] - input
    * @returns {*}

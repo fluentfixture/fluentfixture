@@ -2,7 +2,7 @@ import { TypeUtils } from '@fluentfixture/shared';
 import { Generator } from './generator';
 
 /**
- * `Fallback` returns the given fallback when parameter is null or undefined.
+ * `Fallback` returns the given fallback value when the parameter is null or undefined.
  * @class
  * @template T
  * @extends Generator.<T,T>
@@ -21,7 +21,7 @@ export class Fallback<T = any> extends Generator<T> {
   }
 
   /**
-   * Returns the given fallback when parameter is null or undefined.
+   * Returns the given fallback value when the parameter is null or undefined.
    * @public
    * @param {T=} [input] - input
    * @returns {T}

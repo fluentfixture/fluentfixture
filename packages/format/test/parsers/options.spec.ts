@@ -1,9 +1,9 @@
-import { extendOptions } from '../../src/parsers/options';
+import { normalize } from '../../src/parsers/options';
 import { Options } from '../../src/parsers/types/options';
 
 describe('options', () => {
 
-  describe('extendOptions()', () => {
+  describe('normalize()', () => {
 
     const options = [
       [null, { ignoreErrors: true }],
@@ -13,7 +13,7 @@ describe('options', () => {
       [{ ignoreErrors: 0 }, { ignoreErrors: true }],
     ];
     test.each(options)('should extend the options: %p', (option: any, output: Options) => {
-      expect(extendOptions(option)).toStrictEqual(output);
+      expect(normalize(option)).toStrictEqual(output);
     });
   });
 });

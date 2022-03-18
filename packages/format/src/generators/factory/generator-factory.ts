@@ -6,10 +6,18 @@ import { Generator } from '../generator';
  * @class
  */
 export class GeneratorFactory {
-  private readonly generators = new Map<string, Generator>();
+  private readonly generators: Map<string, Generator>;
 
   /**
-   * Registers a generator.
+   * Creates an instance of `GeneratorFactory`.
+   * @constructor
+   */
+  public constructor() {
+    this.generators = new Map<string, Generator>();
+  }
+
+  /**
+   * Registers a generator with the given name.
    * @public
    * @param {string} [name] - generator name
    * @param {Generator} [generator] - generator instance
@@ -29,7 +37,7 @@ export class GeneratorFactory {
   }
 
   /**
-   * Returns a generator with the given.
+   * Returns a generator with the given name.
    * @public
    * @param {string} [name] - generator name
    * @returns {Generator}

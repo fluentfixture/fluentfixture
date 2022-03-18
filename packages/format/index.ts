@@ -1,3 +1,3 @@
-export { register, format, compile } from './src/bootstrapper';
+export { Formatter } from './src/formatter';
 export type { Options } from './src/parsers/types/options';
-export type { CompiledTemplate } from './src/parsers/compiled-template';
+export type { CompiledFormatter } from './src/compiled-formatter';
