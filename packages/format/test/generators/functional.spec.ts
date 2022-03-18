@@ -1,6 +1,6 @@
 import { Functional } from '../../src/generators/functional';
 import { NON_FUNCTION_DATA_SET } from '../data/type-sets';
-import { GeneratorFunction } from '../../src/types/generator-function';
+import { GeneratorFunction } from '../../src/generators/types/generator-function';
 
 describe('Functional', () => {
 

@@ -1,5 +1,5 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { GeneratorFunction } from '../types/generator-function';
+import { GeneratorFunction } from './types/generator-function';
 import { Generator } from './generator';
 
 /**

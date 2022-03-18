@@ -4,12 +4,12 @@ import { NON_NON_BLANK_STRING_DATA_SET, NON_OBJECT_DATA_SET } from '../../data/t
 
 describe('GeneratorFactory', () => {
 
-  describe('.setGenerator()', () => {
+  describe('.set()', () => {
 
     test.each(NON_NON_BLANK_STRING_DATA_SET)('should throw error when name is not non-blank string', (name: string) => {
       const factory = new GeneratorFactory();
 
-      const thrown = () => factory.setGenerator(name, new MockGenerator());
+      const thrown = () => factory.set(name, new MockGenerator());
 
       expect(thrown).toThrowError('Generator name must be a non-blank string!');
     });
@@ -17,7 +17,7 @@ describe('GeneratorFactory', () => {
     test.each(NON_OBJECT_DATA_SET)('should throw error when generator is not an object', (generator: any) => {
       const factory = new GeneratorFactory();
 
-      const thrown = () => factory.setGenerator('generator', generator);
+      const thrown = () => factory.set('generator', generator);
 
       expect(thrown).toThrowError('Generator must be an object!');
     });
@@ -26,20 +26,20 @@ describe('GeneratorFactory', () => {
       const factory = new GeneratorFactory();
       const name = 'generator';
 
-      factory.setGenerator(name, new MockGenerator());
+      factory.set(name, new MockGenerator());
 
-      const thrown = () => factory.setGenerator('generator', new MockGenerator());
+      const thrown = () => factory.set('generator', new MockGenerator());
 
       expect(thrown).toThrowError('Generator with name "generator" already registered!');
     });
   });
 
-  describe('.getGenerator()', () => {
+  describe('.get()', () => {
 
     test.each(NON_NON_BLANK_STRING_DATA_SET)('should throw error when name is not non-blank string', (name: string) => {
       const factory = new GeneratorFactory();
 
-      const thrown = () => factory.getGenerator(name);
+      const thrown = () => factory.get(name);
 
       expect(thrown).toThrowError('Generator name must be a non-blank string!');
     });
@@ -47,7 +47,7 @@ describe('GeneratorFactory', () => {
     it('should throw error when a generator not found with the given name', () => {
       const factory = new GeneratorFactory();
 
-      const thrown = () => factory.getGenerator('generator');
+      const thrown = () => factory.get('generator');
 
       expect(thrown).toThrowError('Generator with name "generator" could not be found!');
     });
@@ -57,9 +57,9 @@ describe('GeneratorFactory', () => {
       const name = 'generator';
       const generator = new MockGenerator();
 
-      factory.setGenerator(name, generator);
+      factory.set(name, generator);
 
-      const result = factory.getGenerator(name);
+      const result = factory.get(name);
 
       expect(result).toBe(generator);
     });

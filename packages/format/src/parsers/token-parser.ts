@@ -1,5 +1,5 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { TokenMetadata } from '../types/token-metadata';
+import { TokenMetadata } from './types/token-metadata';
 
 /**
  * `TokenParser` accepts a token string and creates a token metadata.

@@ -14,7 +14,7 @@ export class GeneratorFactory {
    * @param {string} [name] - generator name
    * @param {Generator} [generator] - generator instance
    */
-  public setGenerator(name: string, generator: Generator): void {
+  public set(name: string, generator: Generator): void {
     if (!TypeUtils.isNonBlankString(name)) {
       throw new Error('Generator name must be a non-blank string!');
     }
@@ -34,7 +34,7 @@ export class GeneratorFactory {
    * @param {string} [name] - generator name
    * @returns {Generator}
    */
-  public getGenerator(name: string): Generator {
+  public get(name: string): Generator {
     if (!TypeUtils.isNonBlankString(name)) {
       throw new Error('Generator name must be a non-blank string!');
     }

@@ -3,34 +3,41 @@ import { TemplateParser } from './parsers/template-parser';
 import { GeneratorBuilder } from './generators/builder/generator-builder';
 import { TokenParser } from './parsers/token-parser';
 import { GeneratorFactory } from './generators/factory/generator-factory';
-import { Stringifier } from './generators/stringifier';
-import { GeneratorFunction } from './types/generator-function';
-import { Generator } from './generators/generator';
-import { asGenerator, combine } from './helpers/generators';
+import { asGenerator } from './helpers/generators';
+import { Options } from './parsers/types/options';
+import { extendOptions } from './parsers/options';
 
-const tokenParser = new TokenParser();
-const generatorFactory = new GeneratorFactory();
-const generatorBuilder = new GeneratorBuilder(tokenParser, generatorFactory);
-const templateParser = new TemplateParser(generatorBuilder);
-const stringifier = new Stringifier();
+const createGeneratorFactory = (): GeneratorFactory => {
+  const generatorFactory = new GeneratorFactory();
 
-const createStringGenerator = (generator: GeneratorFunction<any, string>): Generator<any, string> => {
-  return combine(stringifier, asGenerator(generator));
+  generatorFactory.set('lower-case', asGenerator(StringUtils.lowerCase));
+  generatorFactory.set('upper-case', asGenerator(StringUtils.upperCase));
+  generatorFactory.set('constant-case', asGenerator(StringUtils.constantCase));
+  generatorFactory.set('dot-case', asGenerator(StringUtils.dotCase));
+  generatorFactory.set('header-case', asGenerator(StringUtils.headerCase));
+  generatorFactory.set('param-case', asGenerator(StringUtils.paramCase));
+  generatorFactory.set('pascal-case', asGenerator(StringUtils.pascalCase));
+  generatorFactory.set('snake-case', asGenerator(StringUtils.snakeCase));
+  generatorFactory.set('capital-case', asGenerator(StringUtils.capitalCase));
+  generatorFactory.set('camel-case', asGenerator(StringUtils.camelCase));
+  generatorFactory.set('trim', asGenerator(StringUtils.trim));
+  generatorFactory.set('trim-start', asGenerator(StringUtils.trimStart));
+  generatorFactory.set('trim-end', asGenerator(StringUtils.trimEnd));
+  generatorFactory.set('iso-date', asGenerator((date: Date) => date.toISOString()));
+
+  return generatorFactory;
 };
 
-generatorFactory.setGenerator('lower-case', createStringGenerator(StringUtils.lowerCase));
-generatorFactory.setGenerator('upper-case', createStringGenerator(StringUtils.upperCase));
-generatorFactory.setGenerator('constant-case', createStringGenerator(StringUtils.constantCase));
-generatorFactory.setGenerator('dot-case', createStringGenerator(StringUtils.dotCase));
-generatorFactory.setGenerator('header-case', createStringGenerator(StringUtils.headerCase));
-generatorFactory.setGenerator('param-case', createStringGenerator(StringUtils.paramCase));
-generatorFactory.setGenerator('pascal-case', createStringGenerator(StringUtils.pascalCase));
-generatorFactory.setGenerator('snake-case', createStringGenerator(StringUtils.snakeCase));
-generatorFactory.setGenerator('capital-case', createStringGenerator(StringUtils.capitalCase));
-generatorFactory.setGenerator('camel-case', createStringGenerator(StringUtils.camelCase));
-generatorFactory.setGenerator('trim', createStringGenerator(StringUtils.trim));
-generatorFactory.setGenerator('trim-start', createStringGenerator(StringUtils.trimStart));
-generatorFactory.setGenerator('trim-end', createStringGenerator(StringUtils.trimEnd));
-generatorFactory.setGenerator('iso-date', asGenerator((i: Date) => i.toISOString()));
+const tokenParser = new TokenParser();
+const generatorFactory = createGeneratorFactory();
 
-export const parser = templateParser;
+/**
+ * Creates a `TemplateParser` by using the given options.
+ * @public
+ * @param {Options=} [options] - options
+ * @returns {TemplateParser}
+ */
+export const createParser = (options?: Options): TemplateParser => {
+  return new TemplateParser(new GeneratorBuilder(tokenParser, generatorFactory, extendOptions(options)));
+};
+

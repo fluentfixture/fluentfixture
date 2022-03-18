@@ -15,9 +15,8 @@ describe('compiler', () => {
       ];
 
       test.each(cases)('should render template with given source, %p', (source: any, output: any) => {
-          expect(compiled.format(source)).toBe(output);
-        },
-      );
+        expect(compiled.format(source)).toBe(output);
+      });
     });
 
     describe('nested types', () => {
@@ -29,7 +28,7 @@ describe('compiler', () => {
           currency: 'USD',
         },
         categories: ['fashion', 'book'],
-        updateDate: new Date(1_641_306_927_000)
+        updateDate: new Date(1_641_306_927_000),
       };
 
       const cases = [

@@ -1,7 +1,7 @@
 import { Generator } from '../generators/generator';
 import { Flow } from '../generators/flow';
 import { Functional } from '../generators/functional';
-import { GeneratorFunction } from '../types/generator-function';
+import { GeneratorFunction } from '../generators/types/generator-function';
 
 /**
  * Combines the given generators.

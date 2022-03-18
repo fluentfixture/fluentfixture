@@ -3,7 +3,7 @@
  * Generator is a builder class that may accept a value and generate another value.
  * @class
  * @abstract
- * @template T,K
+ * @template T, K
  */
 export abstract class Generator<T = any, K = any> {
 

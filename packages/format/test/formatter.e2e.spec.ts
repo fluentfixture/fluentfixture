@@ -14,9 +14,8 @@ describe('formatter', () => {
       ];
 
       test.each(cases)('should render template with given source', (source: any, output: any) => {
-          expect(format(template, source)).toBe(output);
-        },
-      );
+        expect(format(template, source)).toBe(output);
+      });
     });
 
     describe('nested types', () => {
