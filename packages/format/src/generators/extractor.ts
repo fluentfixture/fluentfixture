@@ -5,9 +5,9 @@ import { Generator } from './generator';
  * `Extractor` extracts data from the given source with the given path.
  * @class
  * @template T
- * @extends Generator.<object,T>
+ * @extends Generator.<*,T>
  */
-export class Extractor<T = any> extends Generator<object, T> {
+export class Extractor<T = any> extends Generator<any, T> {
   private readonly path: string;
 
   /**
@@ -23,10 +23,10 @@ export class Extractor<T = any> extends Generator<object, T> {
   /**
    * Extracts data from the given source with the given path.
    * @public
-   * @param {object} [input] - input
+   * @param {*} [input] - input
    * @returns {T}
    */
-  public process(input: object): T {
+  public process(input: any): T {
     return path.get(input, this.path);
   }
 }

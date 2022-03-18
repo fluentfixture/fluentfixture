@@ -18,10 +18,10 @@ export class CompiledTemplate {
 
   /**
    * Evaluate the result by using the given source object.
-   * @param {object} [source] - source object
+   * @param {*} [source] - source object
    * @returns {string}
    */
-  public format(source: object): string {
+  public format(source: any): string {
     return this.generators.reduce((prev, generator) => prev + generator.process(source), '');
   }
 }

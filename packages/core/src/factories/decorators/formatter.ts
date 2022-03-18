@@ -5,10 +5,6 @@ import { Factory } from '../factory';
 import { Decorator } from './decorator';
 
 /**
- * @todo: change sign of compiled template
- */
-
-/**
  * `Formatter` decorator decorates a factory with the given template.
  * When the `single()` method is invoked, it generates data using the decorated factory
  * produces a string using the template engine with the given template and the output.
@@ -41,7 +37,7 @@ export class Formatter<T = any> extends Decorator<T, string> {
    * @returns {string}
    */
   public single(): string {
-    return this.compiled.format(this.factory.single() as any);
+    return this.compiled.format(this.factory.single());
   }
 
   /**
