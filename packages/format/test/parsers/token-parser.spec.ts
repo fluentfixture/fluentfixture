@@ -27,12 +27,12 @@ describe('TokenParser', () => {
       ['{token:| }', 'token', '', []],
       ['{token|op: }', 'token', undefined, ['op:']],
     ];
-    test.each(tokens)('should parse expression into token metadata: %p', (expression: string, value: string, fallback: string, generators: string[]) => {
+    test.each(tokens)('should parse expression into token metadata: %p', (expression: string, value: string, fallback: string, pipes: string[]) => {
       const metadata = tokenParser.parse(expression);
 
-      expect(metadata.path).toBe(value);
+      expect(metadata.query).toBe(value);
       expect(metadata.fallback).toBe(fallback);
-      expect(metadata.generators).toStrictEqual(generators);
+      expect(metadata.pipes).toStrictEqual(pipes);
     });
   });
 });

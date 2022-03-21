@@ -1,28 +1,28 @@
-import { Generator } from './generators/generator';
+import { Pipe } from './pipes/pipe';
 
 /**
  * `CompiledFormatter` is a pre-compiled formatter.
  * @class
  */
 export class CompiledFormatter {
-  private readonly generators: ReadonlyArray<Generator<any, string>>;
+  private readonly pipes: ReadonlyArray<Pipe<any, string>>;
 
   /**
    * Creates an instance of `CompiledFormatter`.
    * @constructor
-   * @param {Generator[]} [generators] - generator list
+   * @param {Pipe[]} [pipes] - pipes
    */
-  public constructor(generators: ReadonlyArray<Generator<any, string>>) {
-    this.generators = generators;
+  public constructor(pipes: ReadonlyArray<Pipe<any, string>>) {
+    this.pipes = pipes;
   }
 
   /**
-   * Process the result by using the given source.
+   * Handles the input by using the given pipes.
    * @public
    * @param {*} [source] - source
    * @returns {string}
    */
   public format(source: any): string {
-    return this.generators.reduce((prev, generator) => prev + generator.process(source), '');
+    return this.pipes.reduce((prev, pipe) => prev + pipe.handle(source), '');
   }
 }

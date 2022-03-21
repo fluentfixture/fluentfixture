@@ -1,31 +1,57 @@
 import { TemplateParser } from './parsers/template-parser';
-import { GeneratorBuilder } from './generators/builder/generator-builder';
+import { PipeBuilder } from './pipes/builder/pipe-builder';
 import { TokenParser } from './parsers/token-parser';
-import { GeneratorFactory } from './generators/factory/generator-factory';
-import { Options } from './parsers/types/options';
-import { normalize } from './parsers/options';
+import { PipeFactory } from './pipes/factory/pipe-factory';
+import { Options } from './option/types/options';
 import { CompiledFormatter } from './compiled-formatter';
-import { createGeneratorFactory } from './generators/factory/factory-builder';
-import { Functional } from './generators/functional';
+import { createPipeFactory } from './pipes/factory/factory-builder';
+import { Functional } from './pipes/functional';
+import { OptionsWrapper } from './option/options-wrapper';
+import { PipeFunction } from './pipes/types/pipe-function';
 
 /**
  * `Formatter` is a class that provides a set of method for formatting templates.
  * @class
  */
 export class Formatter {
-  private readonly options: Options;
-  private readonly factory: GeneratorFactory;
+  private readonly factory: PipeFactory;
   private readonly parser: TemplateParser;
 
   /**
    * Creates an instance of `Formatter`.
    * @constructor
-   * @param {Options=} [options] - options
+   * @param {PipeFactory} [factory] - options
+   * @param {TemplateParser} [parser] - options
    */
-  public constructor(options?: Options) {
-    this.options = normalize(options);
-    this.factory = createGeneratorFactory();
-    this.parser = new TemplateParser(new GeneratorBuilder(new TokenParser(), this.factory, this.options));
+  private constructor(factory: PipeFactory, parser: TemplateParser) {
+    this.factory = factory;
+    this.parser = parser;
+  }
+
+  /**
+   * Creates an instance of `Formatter` without any pre-defined pipes.
+   * @public
+   * @static
+   * @param {Options=} [options] - options
+   * @returns {Formatter}
+   */
+  public static empty(options?: Options): Formatter {
+    const factory = new PipeFactory();
+    const parser = new TemplateParser(new PipeBuilder(new TokenParser(), factory, new OptionsWrapper(options)));
+    return new Formatter(factory, parser);
+  }
+
+  /**
+   * Creates an instance of `Formatter` with the pre-defined pipes.
+   * @public
+   * @static
+   * @param {Options=} [options] - options
+   * @returns {Formatter}
+   */
+  public static create(options?: Options): Formatter {
+    const factory = createPipeFactory();
+    const parser = new TemplateParser(new PipeBuilder(new TokenParser(), factory, new OptionsWrapper(options)));
+    return new Formatter(factory, parser);
   }
 
   /**
@@ -50,12 +76,12 @@ export class Formatter {
   }
 
   /**
-   * Registers a new generator by using the given name and function.
+   * Registers a new pipe by using the given name and function.
    * @public
    * @param {string} [name] - name
    * @param {function(*):*} [fn] - function
    */
-  public register(name: string, fn: GeneratorFunction): void {
+  public register(name: string, fn: PipeFunction): void {
     this.factory.set(name, new Functional(fn));
   }
 }

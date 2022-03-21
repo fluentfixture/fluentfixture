@@ -1,21 +1,21 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { GeneratorBuilder } from '../generators/builder/generator-builder';
-import { Generator } from '../generators/generator';
+import { PipeBuilder } from '../pipes/builder/pipe-builder';
+import { Pipe } from '../pipes/pipe';
 
 /**
- * `TemplateParser` accepts a template and converts into a list of generators.
+ * `TemplateParser` accepts a template and converts into a list of pipes.
  * @class
  */
 export class TemplateParser {
   private static readonly InterpolationRegexp = /([{}])\1|{(.*?)(?:!(.+?))?}/g;
-  private readonly builder: GeneratorBuilder;
+  private readonly builder: PipeBuilder;
 
   /**
    * Creates an instance of `TemplateParser`.
    * @constructor
-   * @param {GeneratorBuilder} [builder] - generator builder instance
+   * @param {PipeBuilder} [builder] - pipe builder instance
    */
-  public constructor(builder: GeneratorBuilder) {
+  public constructor(builder: PipeBuilder) {
     this.builder = builder;
   }
 
@@ -23,13 +23,13 @@ export class TemplateParser {
    * Parses the given template.
    * @public
    * @param {string} [template] - template
-   * @returns {Generator[]}
+   * @returns {Pipe[]}
    */
-  public parse(template: string): ReadonlyArray<Generator<any, string>> {
-    const generators = [];
+  public parse(template: string): ReadonlyArray<Pipe<any, string>> {
+    const pipes = [];
 
     if (!TypeUtils.isNonEmptyString(template)) {
-      return generators;
+      return pipes;
     }
 
     let cursor = 0;
@@ -37,16 +37,16 @@ export class TemplateParser {
 
     for (const match of matches) {
       if (match.index > cursor) {
-        generators.push(this.builder.fixed(template.slice(cursor, match.index)));
+        pipes.push(this.builder.constant(template.slice(cursor, match.index)));
       }
-      generators.push(this.builder.flow(match[0]));
+      pipes.push(this.builder.flow(match[0]));
       cursor = match.index + match[0].length;
     }
 
     if (cursor < template.length ) {
-      generators.push(this.builder.fixed(template.slice(cursor)));
+      pipes.push(this.builder.constant(template.slice(cursor)));
     }
 
-    return generators;
+    return pipes;
   }
 }

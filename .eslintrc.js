@@ -28,6 +28,7 @@ module.exports = {
         'unicorn/prefer-type-error': 'off',
         'unicorn/no-array-reduce': 'off',
         'unicorn/prevent-abbreviations': 'off',
+        'unicorn/no-useless-undefined': 'off',
         'import/no-unresolved': 'off',
         'import/order': ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}]
     },

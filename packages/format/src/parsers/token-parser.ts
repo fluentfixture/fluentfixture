@@ -12,7 +12,7 @@ export class TokenParser {
   /**
    * Parses the given token and creates a token metadata.
    * @public
-   * @param {string} [token] - token as string
+   * @param {string} [token] - token
    * @returns {TokenMetadata}
    */
   public parse(token: string): TokenMetadata {
@@ -20,31 +20,31 @@ export class TokenParser {
     const indexOfFallbackCharacter = expression.indexOf(TokenParser.FallbackCharacter);
     const indexOfPipeCharacter = expression.indexOf(TokenParser.PipeCharacter);
     const hasFallback = indexOfFallbackCharacter > -1 && (indexOfPipeCharacter === -1 || indexOfFallbackCharacter < indexOfPipeCharacter);
-    const metadata = {
-      path: undefined,
+    const metadata: TokenMetadata = {
+      query: undefined,
       fallback: undefined,
-      generators: undefined
+      pipes: []
     };
     if (hasFallback) {
       const [path, remaining] = TokenParser.split(expression, indexOfFallbackCharacter);
       const parts = remaining.split(TokenParser.PipeCharacter);
-      metadata.path = TokenParser.getTokenPath(path);
+      metadata.query = TokenParser.getQuery(path);
       metadata.fallback = parts[0];
-      metadata.generators = TokenParser.getTokenGenerators(parts.slice(1));
+      metadata.pipes = TokenParser.getPipes(parts.slice(1));
     } else {
       const parts = expression.split(TokenParser.PipeCharacter);
-      metadata.path = TokenParser.getTokenPath(parts[0]);
-      metadata.generators = TokenParser.getTokenGenerators(parts.slice(1));
+      metadata.query = TokenParser.getQuery(parts[0]);
+      metadata.pipes = TokenParser.getPipes(parts.slice(1));
     }
 
     return metadata;
   }
 
-  private static getTokenPath(expression: string): string | undefined {
+  private static getQuery(expression: string): string | undefined {
     return TypeUtils.isNonBlankString(expression) ? expression.trim() : undefined;
   }
 
-  private static getTokenGenerators(expressions: Array<string>): ReadonlyArray<string> {
+  private static getPipes(expressions: Array<string>): ReadonlyArray<string> {
     return expressions.map(e => e.trim()).filter(e => TypeUtils.isNonBlankString(e));
   }
 

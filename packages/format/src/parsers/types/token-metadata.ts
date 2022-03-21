@@ -4,9 +4,9 @@
  */
 export interface TokenMetadata {
   /**
-   * Path of the token.
+   * Query of the token.
    */
-  path: string | undefined;
+  query: string | undefined;
 
   /**
    * Fallback of the token.
@@ -14,7 +14,7 @@ export interface TokenMetadata {
   fallback: string | undefined;
 
   /**
-   * Generator list of the token.
+   * Pipe list of the token.
    */
-  generators: ReadonlyArray<string>;
+  pipes: ReadonlyArray<string>;
 }
