@@ -1,120 +1,300 @@
-import { MockFactory } from '../mocks/mock-factory';
+import { spy, verify, when } from 'ts-mockito';
+import { StringUtils } from '@fluentfixture/shared';
 import { StringStream } from '../../src/streams/stream-loader';
-import { assertStringStreamDecorator } from '../assertions/string-stream-assertions';
+import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
+import { assertAndGetDecoratedStringOperator } from '../assertions/string-stream';
 
 describe('StringStream', () => {
-  const value = ' Lorem Ipsum ';
-  const stream = new StringStream(new MockFactory(value));
 
   describe('.trim()', () => {
 
     it('should create a stream with function decorator (trim) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.trim(), value, 'Lorem Ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.trim(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.trim());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.trim(str)).once();
     });
   });
 
   describe('.trimStart()', () => {
 
     it('should create a stream with function decorator (trim-start) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.trimStart(), value, 'Lorem Ipsum ');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.trimStart(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.trimStart());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.trimStart(str)).once();
     });
   });
 
   describe('.trimEnd()', () => {
 
     it('should create a stream with function decorator (trim-end) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.trimEnd(), value, ' Lorem Ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.trimEnd(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.trimEnd());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.trimEnd(str)).once();
     });
   });
 
   describe('.padStart()', () => {
 
     it('should create a stream with function decorator (pad-start) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.padStart(20, '*'), value, '******* Lorem Ipsum ');
+      const str = 'string';
+      const output = 'output';
+      const length = 30;
+      const padChar = '*';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.padStart(str, length, padChar)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.padStart(length, padChar));
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.padStart(str, length, padChar)).once();
     });
   });
 
   describe('.padEnd()', () => {
 
     it('should create a stream with function decorator (pad-end) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.padEnd(20, '*'), value, ' Lorem Ipsum *******');
+      const str = 'string';
+      const output = 'output';
+      const length = 30;
+      const padChar = '*';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.padEnd(str, length, padChar)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.padEnd(length, padChar));
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.padEnd(str, length, padChar)).once();
     });
   });
 
   describe('.lowerCase()', () => {
 
     it('should create a stream with function decorator (lower-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.lowerCase(), value, ' lorem ipsum ');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.lowerCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.lowerCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.lowerCase(str)).once();
     });
   });
 
   describe('.upperCase()', () => {
 
     it('should create a stream with function decorator (upper-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.upperCase(), value, ' LOREM IPSUM ');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.upperCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.upperCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.upperCase(str)).once();
     });
   });
 
   describe('.camelCase()', () => {
 
     it('should create a stream with function decorator (camel-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.camelCase(), value, 'loremIpsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.camelCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.camelCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.camelCase(str)).once();
     });
   });
 
   describe('.capitalCase()', () => {
 
     it('should create a stream with function decorator (capital-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.capitalCase(), value, 'Lorem Ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.capitalCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.capitalCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.capitalCase(str)).once();
     });
   });
 
   describe('.constantCase()', () => {
 
     it('should create a stream with function decorator (constant-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.constantCase(), value, 'LOREM_IPSUM');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.constantCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.constantCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.constantCase(str)).once();
     });
   });
 
   describe('.pathCase()', () => {
 
     it('should create a stream with function decorator (path-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.pathCase(), value, 'lorem/ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.pathCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.pathCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.pathCase(str)).once();
     });
   });
 
   describe('.dotCase()', () => {
 
     it('should create a stream with function decorator (dot-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.dotCase(), value, 'lorem.ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.dotCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.dotCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.dotCase(str)).once();
     });
   });
 
   describe('.headerCase()', () => {
 
     it('should create a stream with function decorator (header-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.headerCase(), value, 'Lorem-Ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.headerCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.headerCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.headerCase(str)).once();
     });
   });
 
   describe('.paramCase()', () => {
 
     it('should create a stream with function decorator (param-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.paramCase(), value, 'lorem-ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.paramCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.paramCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.paramCase(str)).once();
     });
   });
 
   describe('.pascalCase()', () => {
 
     it('should create a stream with function decorator (pascal-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.pascalCase(), value, 'LoremIpsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.pascalCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.pascalCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.pascalCase(str)).once();
     });
   });
 
   describe('.snakeCase()', () => {
 
     it('should create a stream with function decorator (snake-case) that wraps itself', () => {
-      assertStringStreamDecorator(stream, stream.snakeCase(), value, 'lorem_ipsum');
+      const str = 'string';
+      const output = 'output';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.snakeCase(str)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperator(stream, stream.snakeCase());
+
+      expect(operator(str)).toBe(output);
+
+      verify(spyStringUtils.snakeCase(str)).once();
     });
   });
 });

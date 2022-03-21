@@ -1,15 +1,18 @@
-import { MockFactory } from '../mocks/mock-factory';
 import { BooleanStream } from '../../src/streams/stream-loader';
-import { assertBooleanStreamDecorator } from '../assertions/boolean-stream-assertions';
+import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
+import { assertAndGetDecoratedBooleanOperator } from '../assertions/boolean-stream';
 
 describe('BooleanStream', () => {
-  const value = true;
-  const stream = new BooleanStream(new MockFactory(value));
 
   describe('.not()', () => {
 
     it('should create a stream with function decorator (not) that wraps itself', () => {
-      assertBooleanStreamDecorator(stream, stream.not(), value, false);
+      const bool = true;
+      const stream = new BooleanStream(new ValueAdapter(bool));
+
+      const operator = assertAndGetDecoratedBooleanOperator(stream, stream.not());
+
+      expect(operator(bool)).toBe(false);
     });
   });
 });

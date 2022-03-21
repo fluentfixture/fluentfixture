@@ -1,7 +1,7 @@
+import { DateUtils } from '@fluentfixture/shared';
 import { Functional } from '../factories/decorators/functional';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { DateFactory } from '../factories/date-factory';
-import { DateHelper } from '../helpers/date-helper';
 import { Factory } from '../factories/factory';
 import { Stream, NumberStream } from './stream-loader';
 
@@ -55,7 +55,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addMilliseconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.addMilliseconds(i, value));
+    return this.apply((i) => DateUtils.addMilliseconds(i, value));
   }
 
   /**
@@ -66,7 +66,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractMilliseconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractMilliseconds(i, value));
+    return this.apply((i) => DateUtils.subtractMilliseconds(i, value));
   }
 
   /**
@@ -77,7 +77,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setMilliseconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.setMilliseconds(i, value));
+    return this.apply((i) => DateUtils.setMilliseconds(i, value));
   }
 
   /**
@@ -88,7 +88,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getMilliseconds(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getMilliseconds(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMilliseconds(i)));
   }
 
   /**
@@ -99,7 +99,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addSeconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.addSeconds(i, value));
+    return this.apply((i) => DateUtils.addSeconds(i, value));
   }
 
   /**
@@ -110,7 +110,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractSeconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractSeconds(i, value));
+    return this.apply((i) => DateUtils.subtractSeconds(i, value));
   }
 
   /**
@@ -121,7 +121,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setSeconds(value: number): DateStream {
-    return this.apply((i) => DateHelper.setSeconds(i, value));
+    return this.apply((i) => DateUtils.setSeconds(i, value));
   }
 
   /**
@@ -132,7 +132,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getSeconds(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getSeconds(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getSeconds(i)));
   }
 
   /**
@@ -143,7 +143,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addMinutes(value: number): DateStream {
-    return this.apply((i) => DateHelper.addMinutes(i, value));
+    return this.apply((i) => DateUtils.addMinutes(i, value));
   }
 
   /**
@@ -154,7 +154,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractMinutes(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractMinutes(i, value));
+    return this.apply((i) => DateUtils.subtractMinutes(i, value));
   }
 
   /**
@@ -165,7 +165,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setMinutes(value: number): DateStream {
-    return this.apply((i) => DateHelper.setMinutes(i, value));
+    return this.apply((i) => DateUtils.setMinutes(i, value));
   }
 
   /**
@@ -176,7 +176,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getMinutes(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getMinutes(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMinutes(i)));
   }
 
   /**
@@ -187,7 +187,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addHours(value: number): DateStream {
-    return this.apply((i) => DateHelper.addHours(i, value));
+    return this.apply((i) => DateUtils.addHours(i, value));
   }
 
   /**
@@ -198,7 +198,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractHours(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractHours(i, value));
+    return this.apply((i) => DateUtils.subtractHours(i, value));
   }
 
   /**
@@ -209,7 +209,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setHours(value: number): DateStream {
-    return this.apply((i) => DateHelper.setHours(i, value));
+    return this.apply((i) => DateUtils.setHours(i, value));
   }
 
   /**
@@ -220,7 +220,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getHours(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getHours(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getHours(i)));
   }
 
   /**
@@ -231,7 +231,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addDays(value: number): DateStream {
-    return this.apply((i) => DateHelper.addDays(i, value));
+    return this.apply((i) => DateUtils.addDays(i, value));
   }
 
   /**
@@ -242,7 +242,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractDays(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractDays(i, value));
+    return this.apply((i) => DateUtils.subtractDays(i, value));
   }
 
   /**
@@ -253,7 +253,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setDaysOfWeek(value: number): DateStream {
-    return this.apply((i) => DateHelper.setDaysOfWeek(i, value));
+    return this.apply((i) => DateUtils.setDaysOfWeek(i, value));
   }
 
   /**
@@ -264,7 +264,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setDaysOfMonth(value: number): DateStream {
-    return this.apply((i) => DateHelper.setDaysOfMonth(i, value));
+    return this.apply((i) => DateUtils.setDaysOfMonth(i, value));
   }
 
   /**
@@ -275,7 +275,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getDaysOfWeek(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getDaysOfWeek(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getDaysOfWeek(i)));
   }
 
   /**
@@ -286,7 +286,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getDaysOfMonth(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getDaysOfMonth(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getDaysOfMonth(i)));
   }
 
   /**
@@ -297,7 +297,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addMonths(value: number): DateStream {
-    return this.apply((i) => DateHelper.addMonths(i, value));
+    return this.apply((i) => DateUtils.addMonths(i, value));
   }
 
   /**
@@ -308,7 +308,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractMonths(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractMonths(i, value));
+    return this.apply((i) => DateUtils.subtractMonths(i, value));
   }
 
   /**
@@ -319,7 +319,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setMonths(value: number): DateStream {
-    return this.apply((i) => DateHelper.setMonths(i, value));
+    return this.apply((i) => DateUtils.setMonths(i, value));
   }
 
   /**
@@ -330,7 +330,7 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getMonths(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getMonths(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getMonths(i)));
   }
 
   /**
@@ -341,7 +341,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public addYears(value: number): DateStream {
-    return this.apply((i) => DateHelper.addYears(i, value));
+    return this.apply((i) => DateUtils.addYears(i, value));
   }
 
   /**
@@ -352,7 +352,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public subtractYears(value: number): DateStream {
-    return this.apply((i) => DateHelper.subtractYears(i, value));
+    return this.apply((i) => DateUtils.subtractYears(i, value));
   }
 
   /**
@@ -363,7 +363,7 @@ export class DateStream extends Stream<Date> {
    * @returns {DateStream}
    */
   public setYears(value: number): DateStream {
-    return this.apply((i) => DateHelper.setYears(i, value));
+    return this.apply((i) => DateUtils.setYears(i, value));
   }
 
   /**
@@ -374,6 +374,6 @@ export class DateStream extends Stream<Date> {
    * @returns {NumberStream}
    */
   public getYears(): NumberStream {
-    return new NumberStream(new Functional(this, (i) => DateHelper.getYears(i)));
+    return new NumberStream(new Functional(this, (i) => DateUtils.getYears(i)));
   }
 }

@@ -1,8 +1,8 @@
+import { DateUtils } from '@fluentfixture/shared';
 import { spy, verify, when } from 'ts-mockito';
 import { date, now, yesterday, tomorrow } from '../../src/generators/generators';
 import { DateStream} from '../../src/streams/stream-loader';
 import { DateFactory } from '../../src/factories/date-factory';
-import { DateHelper } from '../../src/helpers/date-helper';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 
 describe('date', () => {
@@ -26,7 +26,7 @@ describe('date', () => {
     it('should use default max date when max is not provided', () => {
       const min = new Date();
       const max = new Date();
-      const spyDateUtils = spy(DateHelper);
+      const spyDateUtils = spy(DateUtils);
 
       when(spyDateUtils.getTomorrow()).thenReturn(max);
 
@@ -44,7 +44,7 @@ describe('date', () => {
     it('should use default min and max date when min and max are not provided', () => {
       const min = new Date();
       const max = new Date();
-      const spyDateUtils = spy(DateHelper);
+      const spyDateUtils = spy(DateUtils);
 
       when(spyDateUtils.getToday()).thenReturn(min);
       when(spyDateUtils.getTomorrow()).thenReturn(max);
@@ -66,7 +66,7 @@ describe('date', () => {
 
     it('should create a date stream with now', () => {
       const date = new Date();
-      const spyDateUtils = spy(DateHelper);
+      const spyDateUtils = spy(DateUtils);
 
       when(spyDateUtils.now()).thenReturn(date);
 
@@ -85,7 +85,7 @@ describe('date', () => {
 
     it('should create a date stream with yesterday', () => {
       const date = new Date();
-      const spyDateUtils = spy(DateHelper);
+      const spyDateUtils = spy(DateUtils);
 
       when(spyDateUtils.getYesterday()).thenReturn(date);
 
@@ -104,7 +104,7 @@ describe('date', () => {
 
     it('should create a date stream with tomorrow', () => {
       const date = new Date();
-      const spyDateUtils = spy(DateHelper);
+      const spyDateUtils = spy(DateUtils);
 
       when(spyDateUtils.getTomorrow()).thenReturn(date);
 

@@ -1,9 +1,9 @@
 import { Stream, ArrayStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
-import { assertArrayStreamDecorator } from '../assertions/array-stream-assertions';
 import { Picker } from '../../src/factories/decorators/picker';
 import { Sampler } from '../../src/factories/decorators/sampler';
 import { Shuffler } from '../../src/factories/decorators/shuffler';
+import { assertAndGetDecoratedArrayOperator } from '../assertions/array-stream';
 
 describe('ArrayStream', () => {
 
@@ -61,7 +61,9 @@ describe('ArrayStream', () => {
       const value = [1, 2, 3];
       const stream = new ArrayStream(new ValueAdapter(value));
 
-      assertArrayStreamDecorator(stream, stream.map((i) => i * 2), value, [2, 4, 6]);
+      const operator = assertAndGetDecoratedArrayOperator(stream, stream.map((i) => i * 2));
+
+      expect(operator(value)).toStrictEqual([2, 4, 6]);
     });
   });
 
@@ -71,7 +73,9 @@ describe('ArrayStream', () => {
       const value = [1, 2, 3];
       const stream = new ArrayStream(new ValueAdapter(value));
 
-      assertArrayStreamDecorator(stream, stream.filter((i) => i % 2 === 1), value, [1, 3]);
+      const operator = assertAndGetDecoratedArrayOperator(stream, stream.filter((i) => i % 2 === 1));
+
+      expect(operator(value)).toStrictEqual([1, 3]);
     });
   });
 
@@ -81,14 +85,18 @@ describe('ArrayStream', () => {
       const value = [3, 2, 1, 4, 5];
       const stream = new ArrayStream(new ValueAdapter(value));
 
-      assertArrayStreamDecorator(stream, stream.sort((a, b) => b - a), value, [5, 4, 3, 2, 1]);
+      const operator = assertAndGetDecoratedArrayOperator(stream, stream.sort((a, b) => b - a));
+
+      expect(operator(value)).toStrictEqual([5, 4, 3, 2, 1]);
     });
 
     it('should use default sort algorithm when sort function not given', () => {
       const value = [3, 2, 1, 4, 5];
       const stream = new ArrayStream(new ValueAdapter(value));
 
-      assertArrayStreamDecorator(stream, stream.sort(), value, [1, 2, 3, 4, 5]);
+      const operator = assertAndGetDecoratedArrayOperator(stream, stream.sort());
+
+      expect(operator(value)).toStrictEqual([1, 2, 3, 4, 5]);
     });
   });
 });

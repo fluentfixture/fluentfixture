@@ -1,5 +1,5 @@
+import { DateUtils } from '@fluentfixture/shared';
 import { DateStream } from '../streams/stream-loader';
-import { DateHelper } from '../helpers/date-helper';
 
 /**
  * Creates a `DateStream` that generates a date within the given boundary.
@@ -9,7 +9,7 @@ import { DateHelper } from '../helpers/date-helper';
  * @param {Date} [max=tomorrow] - the maximum of the boundary
  * @returns {DateStream}
  */
-export const date = (min: Date = DateHelper.getToday(), max: Date = DateHelper.getTomorrow()) => DateStream.between(min, max);
+export const date = (min: Date = DateUtils.getToday(), max: Date = DateUtils.getTomorrow()) => DateStream.between(min, max);
 
 /**
  * Creates a `DateStream` that generates a date that is the date of now.
@@ -17,7 +17,7 @@ export const date = (min: Date = DateHelper.getToday(), max: Date = DateHelper.g
  * @public
  * @returns {DateStream}
  */
-export const now = (): DateStream => DateStream.fromDate(DateHelper.now());
+export const now = (): DateStream => DateStream.fromDate(DateUtils.now());
 
 /**
  * Creates a `DateStream` that generates a date that is the date of tomorrow.
@@ -25,7 +25,7 @@ export const now = (): DateStream => DateStream.fromDate(DateHelper.now());
  * @public
  * @returns {DateStream}
  */
-export const tomorrow = (): DateStream => DateStream.fromDate(DateHelper.getTomorrow());
+export const tomorrow = (): DateStream => DateStream.fromDate(DateUtils.getTomorrow());
 
 /**
  * Creates a `DateStream` that generates a date that is the date of yesterday.
@@ -33,4 +33,4 @@ export const tomorrow = (): DateStream => DateStream.fromDate(DateHelper.getTomo
  * @public
  * @returns {DateStream}
  */
-export const yesterday = (): DateStream => DateStream.fromDate(DateHelper.getYesterday());
+export const yesterday = (): DateStream => DateStream.fromDate(DateUtils.getYesterday());

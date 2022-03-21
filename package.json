@@ -17,7 +17,6 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "dependency-graph": "./node_modules/.bin/lerna-dependency-graph",
     "depcruise": "./node_modules/.bin/depcruise --config .dependency-cruiser.js packages",
     "changelog": "./node_modules/.bin/lerna-changelog",
     "bootstrap": "./node_modules/.bin/lerna bootstrap",
@@ -44,7 +43,6 @@
     "jest": "27.5.1",
     "lerna": "4.0.0",
     "lerna-changelog": "2.2.0",
-    "lerna-dependency-graph": "1.1.0",
     "prettier": "2.6.0",
     "ts-jest": "27.1.3",
     "ts-mockito": "2.6.1",
