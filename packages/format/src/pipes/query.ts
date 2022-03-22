@@ -1,4 +1,4 @@
-import * as path from 'object-path';
+import { PathFinder } from '../path/path-finder';
 import { Pipe } from './pipe';
 
 /**
@@ -27,7 +27,7 @@ export class Query<T = any, K = any> extends Pipe<T, K> {
    * @returns {K}
    */
   public handle(input: T): K {
-    return path.get<K>(input as any, this.query, undefined);
+    return PathFinder.get(input, this.query) as K;
   }
 
   /**

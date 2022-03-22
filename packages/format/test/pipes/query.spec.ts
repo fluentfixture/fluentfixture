@@ -1,6 +1,6 @@
-import * as path from 'object-path';
 import { spy, verify, when } from 'ts-mockito';
 import { Query } from '../../src/pipes/query';
+import { PathFinder } from '../../src/path/path-finder';
 
 describe('Query', () => {
 
@@ -11,14 +11,14 @@ describe('Query', () => {
       const source = { key: value };
       const query = 'key';
       const pipe = new Query(query);
-      const spyPath = spy(path);
+      const spyPathFinder = spy(PathFinder);
 
-      when(spyPath.get(source, query, undefined)).thenReturn(value);
+      when(spyPathFinder.get(source, query)).thenReturn(value);
 
       const result = pipe.handle(source);
 
       expect(result).toBe(value);
-      verify(spyPath.get(source, query, undefined)).once();
+      verify(spyPathFinder.get(source, query)).once();
     });
   });
 });
