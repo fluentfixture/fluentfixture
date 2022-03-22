@@ -24,6 +24,7 @@ export const createPipeFactory = (): PipeFactory => {
   factory.set('header-case', new Functional(StringUtils.headerCase));
   factory.set('param-case', new Functional(StringUtils.paramCase));
   factory.set('pascal-case', new Functional(StringUtils.pascalCase));
+  factory.set('path-case', new Functional(StringUtils.pathCase));
   factory.set('snake-case', new Functional(StringUtils.snakeCase));
   factory.set('capital-case', new Functional(StringUtils.capitalCase));
   factory.set('camel-case', new Functional(StringUtils.camelCase));

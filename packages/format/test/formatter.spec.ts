@@ -2,7 +2,7 @@ import { Formatter } from '../src/formatter';
 
 describe('Formatter', () => {
 
-  describe('only templates and fallbacks without any pipes', () => {
+  describe('templates and fallbacks without any pipes', () => {
 
     const formatter = Formatter.empty();
 
@@ -13,7 +13,7 @@ describe('Formatter', () => {
         name: 'John',
         surname: 'Doe',
       },
-      types: ['user', 'elite']
+      types: ['user', 'elite'],
     };
 
     const cases = [
@@ -36,6 +36,96 @@ describe('Formatter', () => {
 
     describe('.compile()', () => {
       test.each(cases)('should compile templates correctly: %p', (template, result) => {
+        expect(formatter.compile(template).format(source)).toBe(result);
+      });
+    });
+  });
+
+  describe('templates and string pipes', () => {
+
+    const formatter = Formatter.create();
+
+    const source = {
+      detail: {
+        name: 'john ',
+        surname: ' doe',
+      },
+      type: 'elite user',
+    };
+
+    const cases = [
+      ['User=({detail.name|trim-end|pascal-case} {detail.surname|trim-start|upper-case})',
+        'User=(John DOE)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|lower-case})',
+        'User=(John DOE) TYPE=(elite user)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|upper-case})',
+        'User=(John DOE) TYPE=(ELITE USER)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|constant-case})',
+        'User=(John DOE) TYPE=(ELITE_USER)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|dot-case})',
+        'User=(John DOE) TYPE=(elite.user)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|header-case})',
+        'User=(John DOE) TYPE=(Elite-User)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|param-case})',
+        'User=(John DOE) TYPE=(elite-user)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|pascal-case})',
+        'User=(John DOE) TYPE=(EliteUser)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|path-case})',
+        'User=(John DOE) TYPE=(elite/user)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|snake-case})',
+        'User=(John DOE) TYPE=(elite_user)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|capital-case})',
+        'User=(John DOE) TYPE=(Elite User)'],
+      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|camel-case})',
+        'User=(John DOE) TYPE=(eliteUser)'],
+    ];
+
+    describe('.format()', () => {
+
+      test.each(cases)('should format templates with string pipes correctly: %p', (template, result) => {
+        expect(formatter.format(template, source)).toBe(result);
+      });
+    });
+
+    describe('.compile()', () => {
+      test.each(cases)('should compile templates with string pipes correctly: %p', (template, result) => {
+        expect(formatter.compile(template).format(source)).toBe(result);
+      });
+    });
+  });
+
+  describe('templates and date pipes', () => {
+
+    const formatter = Formatter.create();
+
+    const source = {
+      detail: {
+        name: 'john ',
+        surname: ' doe',
+        birthday: new Date(1_617_258_460_000) // GMT: Thursday, 1 April 2021 06:27:40
+      },
+    };
+
+    const cases = [
+      ['BIRTH_DATE={detail.birthday|DD-MM-YY}', 'BIRTH_DATE=01-04-21'],
+      ['BIRTH_DATE={detail.birthday|DD-MM-YYYY}', 'BIRTH_DATE=01-04-2021'],
+      ['BIRTH_DATE={detail.birthday|MM-DD-YY}', 'BIRTH_DATE=04-01-21'],
+      ['BIRTH_DATE={detail.birthday|MM-DD-YYYY}', 'BIRTH_DATE=04-01-2021'],
+      ['BIRTH_DATE={detail.birthday|DD/MM/YY}', 'BIRTH_DATE=01/04/21'],
+      ['BIRTH_DATE={detail.birthday|DD/MM/YYYY}', 'BIRTH_DATE=01/04/2021'],
+      ['BIRTH_DATE={detail.birthday|MM/DD/YY}', 'BIRTH_DATE=04/01/21'],
+      ['BIRTH_DATE={detail.birthday|MM/DD/YYYY}', 'BIRTH_DATE=04/01/2021'],
+    ];
+
+    describe('.format()', () => {
+
+      test.each(cases)('should format templates with date pipes correctly: %p', (template, result) => {
+        expect(formatter.format(template, source)).toBe(result);
+      });
+    });
+
+    describe('.compile()', () => {
+      test.each(cases)('should compile templates with date pipes correctly: %p', (template, result) => {
         expect(formatter.compile(template).format(source)).toBe(result);
       });
     });
