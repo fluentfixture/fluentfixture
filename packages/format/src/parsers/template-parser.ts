@@ -7,7 +7,7 @@ import { Pipe } from '../pipes/pipe';
  * @class
  */
 export class TemplateParser {
-  private static readonly InterpolationRegexp = /([{}])\1|{(.*?)(?:!(.+?))?}/g;
+  private static readonly InterpolationRegexp = /{(.*?)}/g;
   private readonly builder: PipeBuilder;
 
   /**
