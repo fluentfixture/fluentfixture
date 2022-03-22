@@ -1,0 +1,4 @@
+export const SUPPORTED_DATE_FORMATS = [
+  'DD-MM-YY', 'DD-MM-YYYY', 'MM-DD-YY', 'MM-DD-YYYY',
+  'DD/MM/YY', 'DD/MM/YYYY', 'MM/DD/YY', 'MM/DD/YYYY',
+];

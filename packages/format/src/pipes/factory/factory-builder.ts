@@ -1,6 +1,13 @@
-import { StringUtils } from '@fluentfixture/shared';
+import { StringUtils, DateUtils } from '@fluentfixture/shared';
 import { Functional } from '../functional';
+import { SUPPORTED_DATE_FORMATS } from '../../constants/date-formats';
 import { PipeFactory } from './pipe-factory';
+
+const addDateFormatPipes = (factory: PipeFactory, formats: ReadonlyArray<string>): void => {
+  for (const format of formats) {
+    factory.set(format, new Functional((date: Date) => DateUtils.format(date, format)));
+  }
+};
 
 /**
  * Creates a `PipeFactory` with pre-defined pipes.
@@ -23,7 +30,8 @@ export const createPipeFactory = (): PipeFactory => {
   factory.set('trim', new Functional(StringUtils.trim));
   factory.set('trim-start', new Functional(StringUtils.trimStart));
   factory.set('trim-end', new Functional(StringUtils.trimEnd));
-  factory.set('iso-date', new Functional((date: Date) => date.toISOString()));
+
+  addDateFormatPipes(factory, SUPPORTED_DATE_FORMATS);
 
   return factory;
 };
