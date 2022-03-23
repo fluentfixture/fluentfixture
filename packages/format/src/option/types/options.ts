@@ -1,3 +1,5 @@
+import { Defaults } from './defaults';
+
 /**
  * `Options` of formatter.
  * @interface
@@ -8,4 +10,9 @@ export interface Options {
    * otherwise, ignore errors and use default values. Default is true.
    */
   ignoreErrors?: boolean;
+
+  /**
+   * Default pipe names or pipe functions for each data types.
+   */
+  defaults?: Defaults;
 }

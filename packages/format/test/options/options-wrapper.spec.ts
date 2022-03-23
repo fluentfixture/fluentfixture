@@ -18,4 +18,27 @@ describe('OptionsWrapper', () => {
       expect(wrapper.getIgnoredErrors()).toBe(ignoreErrors);
     });
   });
+
+  describe('.getDefaults()', () => {
+
+    describe('.date', () => {
+
+      const fn = () => '';
+
+      const cases = [
+        [null, null],
+        [undefined, null],
+        [{}, null],
+        [{ defaults: { } }, null],
+        [{ defaults: { date: '' } }, null],
+        [{ defaults: { date: ' ' } }, null],
+        [{ defaults: { date: 'DATE' } }, 'DATE'],
+        [{ defaults: { date: fn } }, fn],
+      ];
+      test.each(cases)('should wrap the given options and return correct value of "defaults.date" option for: %p', (options: any, date: any) => {
+        const wrapper = new OptionsWrapper(options);
+        expect(wrapper.getDefaults().date).toBe(date);
+      });
+    });
+  });
 });
