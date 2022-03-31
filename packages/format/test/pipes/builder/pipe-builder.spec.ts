@@ -121,7 +121,7 @@ describe('PipeBuilder', () => {
 
       when(mockParser.parse(token)).thenReturn({ query: undefined, fallback: undefined, pipes: [pipeName] });
       when(mockFactory.get(pipeName)).thenReturn(mockPipe);
-      when(mockOptions.getIgnoredErrors()).thenReturn(true);
+      when(mockOptions.ignoreErrors()).thenReturn(true);
 
       const pipe = pipeBuilder.flow(token);
 
@@ -135,7 +135,7 @@ describe('PipeBuilder', () => {
       expect(errorBoundary.getPipe()).toBe(mockPipe);
       verify(mockParser.parse(token)).once();
       verify(mockFactory.get(pipeName)).once();
-      verify(mockOptions.getIgnoredErrors()).called();
+      verify(mockOptions.ignoreErrors()).called();
     });
 
     it('should not decorate pipes with the error boundary if options.ignoreErrors is false', () => {
@@ -145,7 +145,7 @@ describe('PipeBuilder', () => {
 
       when(mockParser.parse(token)).thenReturn({ query: undefined, fallback: undefined, pipes: [pipeName] });
       when(mockFactory.get(pipeName)).thenReturn(mockPipe);
-      when(mockOptions.getIgnoredErrors()).thenReturn(false);
+      when(mockOptions.ignoreErrors()).thenReturn(false);
 
       const pipe = pipeBuilder.flow(token);
 
@@ -156,7 +156,7 @@ describe('PipeBuilder', () => {
       expect(newPipe).toBe(mockPipe);
       verify(mockParser.parse(token)).once();
       verify(mockFactory.get(pipeName)).once();
-      verify(mockOptions.getIgnoredErrors()).called();
+      verify(mockOptions.ignoreErrors()).called();
     });
   });
 });

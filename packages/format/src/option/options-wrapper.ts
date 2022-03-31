@@ -23,17 +23,18 @@ export class OptionsWrapper {
    * @public
    * @returns {boolean}
    */
-  public getIgnoredErrors(): boolean {
+  public ignoreErrors(): boolean {
     return this.options.ignoreErrors;
   }
 
   /**
-   * Returns the `defaults` option.
+   * Returns the `default-pipe` for the given data type.
    * @public
-   * @returns {Defaults}
+   * @param {string} [type] - type
+   * @returns {DefaultPipe}
    */
-  public getDefaults(): Readonly<Defaults> {
-    return this.options.defaults;
+  public getDefaultFor(type: keyof Defaults): DefaultPipe {
+    return this.options.defaults[type];
   }
 
   private static defaultOptions(): Options {

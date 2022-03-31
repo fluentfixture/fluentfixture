@@ -69,7 +69,7 @@ export class PipeBuilder {
   }
 
   private decoratePipe(pipe: Pipe): Pipe {
-    return this.options.getIgnoredErrors() ? new ErrorBoundary(pipe) : pipe;
+    return this.options.ignoreErrors() ? new ErrorBoundary(pipe) : pipe;
   }
 
   private static getInitialPipe(metadata: TokenMetadata): Pipe {

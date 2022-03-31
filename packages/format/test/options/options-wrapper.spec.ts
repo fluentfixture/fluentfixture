@@ -2,7 +2,7 @@ import { OptionsWrapper } from '../../src/option/options-wrapper';
 
 describe('OptionsWrapper', () => {
 
-  describe('.getIgnoredErrors()', () => {
+  describe('.ignoreErrors()', () => {
 
     const cases = [
       [null, true],
@@ -15,7 +15,7 @@ describe('OptionsWrapper', () => {
     ];
     test.each(cases)('should wrap the given options and return correct value of "ignoreErrors" option for: %p', (options: any, ignoreErrors: boolean) => {
       const wrapper = new OptionsWrapper(options);
-      expect(wrapper.getIgnoredErrors()).toBe(ignoreErrors);
+      expect(wrapper.ignoreErrors()).toBe(ignoreErrors);
     });
   });
 
@@ -37,7 +37,7 @@ describe('OptionsWrapper', () => {
       ];
       test.each(cases)('should wrap the given options and return correct value of "defaults.date" option for: %p', (options: any, date: any) => {
         const wrapper = new OptionsWrapper(options);
-        expect(wrapper.getDefaults().date).toBe(date);
+        expect(wrapper.getDefaultFor('date')).toBe(date);
       });
     });
   });
