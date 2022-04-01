@@ -1,4 +1,4 @@
-import { Defaults } from './defaults';
+import { Serializers } from './serializers';
 
 /**
  * `Options` of formatter.
@@ -12,7 +12,7 @@ export interface Options {
   ignoreErrors?: boolean;
 
   /**
-   * Default pipe names or pipe functions for each data types.
+   * Serializer pipe names or pipe functions for each data types.
    */
-  defaults?: Defaults;
+  serializers?: Serializers;
 }

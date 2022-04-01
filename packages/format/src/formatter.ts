@@ -10,7 +10,7 @@ import { OptionsWrapper } from './option/options-wrapper';
 import { PipeFunction } from './pipes/types/pipe-function';
 
 /**
- * `Formatter` is a class that provides a set of method for formatting templates.
+ * `Formatter` class that provides a set of method for formatting templates.
  * @class
  */
 export class Formatter {
@@ -55,7 +55,7 @@ export class Formatter {
   }
 
   /**
-   * Compiles the given template for reusing.
+   * Compiles the given template.
    * @public
    * @param {string} [template] - template
    * @returns {CompiledFormatter}
@@ -65,7 +65,7 @@ export class Formatter {
   }
 
   /**
-   * Formats the given template with the given source directly.
+   * Formats the given template with the given source.
    * @public
    * @param {string} [template] - template
    * @param {*} [source] - source
@@ -76,7 +76,7 @@ export class Formatter {
   }
 
   /**
-   * Registers a new pipe by using the given name and function.
+   * Registers a new pipe by using the given name.
    * @public
    * @param {string} [name] - name
    * @param {function(*):*} [fn] - function

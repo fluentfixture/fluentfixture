@@ -63,7 +63,7 @@ export class PipeBuilder {
       pipes.push(this.decoratePipe(this.factory.get(pipe)));
     }
 
-    pipes.push(new Stringifier());
+    pipes.push(new Stringifier(this.factory, this.options.getSerializers()));
 
     return new Flow(pipes);
   }

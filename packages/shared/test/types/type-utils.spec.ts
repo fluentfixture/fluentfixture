@@ -1,12 +1,19 @@
 import { TypeUtils } from '../../src/types/type-utils';
 import {
+  NON_ARRAY_DATA_SET,
   NON_BOOLEAN_DATA_SET,
   NON_DATE_DATA_SET,
-  NON_FUNCTION_DATA_SET, NON_INTEGER_DATA_SET, NON_NON_BLANK_STRING_DATA_SET, NON_NON_EMPTY_STRING_DATA_SET,
+  NON_FUNCTION_DATA_SET,
+  NON_INTEGER_DATA_SET, NON_NON_ASSIGNED_DATA_SET,
+  NON_NON_BLANK_STRING_DATA_SET,
+  NON_NON_EMPTY_STRING_DATA_SET,
+  NON_NULL_DATA_SET,
   NON_NUMBER_DATA_SET,
   NON_OBJECT_DATA_SET,
-  NON_STRING_DATA_SET, NON_SYMBOL_DATA_SET,
+  NON_STRING_DATA_SET,
+  NON_SYMBOL_DATA_SET, NON_UNDEFINED_DATA_SET,
 } from '../data/type-sets';
+import { TypeEnum } from '../../src/types/types/type-enum';
 
 describe('TypeUtils', () => {
 
@@ -120,6 +127,39 @@ describe('TypeUtils', () => {
     });
   });
 
+  describe('.isArray()', () => {
+
+    it('should return true when parameter is an array', () => {
+      expect(TypeUtils.isArray([])).toBe(true);
+    });
+
+    test.each(NON_ARRAY_DATA_SET)('should return false when parameter is not an array, %p', (val: unknown) => {
+      expect(TypeUtils.isArray(val)).toBe(false);
+    });
+  });
+
+  describe('.isNull()', () => {
+
+    it('should return true when parameter is null', () => {
+      expect(TypeUtils.isNull(null)).toBe(true);
+    });
+
+    test.each(NON_NULL_DATA_SET)('should return false when parameter is not null, %p', (val: unknown) => {
+      expect(TypeUtils.isNull(val)).toBe(false);
+    });
+  });
+
+  describe('.isUndefined()', () => {
+
+    it('should return true when parameter is undefined', () => {
+      expect(TypeUtils.isUndefined(undefined)).toBe(true);
+    });
+
+    test.each(NON_UNDEFINED_DATA_SET)('should return false when parameter is not undefined, %p', (val: unknown) => {
+      expect(TypeUtils.isUndefined(val)).toBe(false);
+    });
+  });
+
   describe('.isAssigned()', () => {
 
     it('should return false when parameter is null', () => {
@@ -128,6 +168,10 @@ describe('TypeUtils', () => {
 
     it('should return false when parameter is undefined', () => {
       expect(TypeUtils.isAssigned(undefined)).toBe(false);
+    });
+
+    test.each(NON_NON_ASSIGNED_DATA_SET)('should return true when parameter is not null or undefined, %p', (val: unknown) => {
+      expect(TypeUtils.isAssigned(val)).toBe(true);
     });
   });
 
@@ -139,6 +183,27 @@ describe('TypeUtils', () => {
 
     it('should return false when min value is greater than the max value', () => {
       expect(TypeUtils.isInRange(1, 1.01, 0.99)).toBe(false);
+    });
+  });
+
+  describe('.getTypes()', () => {
+
+    const cases = [
+      [null, TypeEnum.NULL],
+      [undefined, TypeEnum.UNDEFINED],
+      ['', TypeEnum.STRING],
+      [false, TypeEnum.BOOLEAN],
+      [1, TypeEnum.NUMBER],
+      [new Date(), TypeEnum.DATE],
+      [[], TypeEnum.ARRAY],
+      [() => true, TypeEnum.FUNCTION],
+      [Symbol.for(''), TypeEnum.SYMBOL],
+      [{}, TypeEnum.OBJECT],
+      [/[A-Z]/g, TypeEnum.UNKNOWN],
+    ];
+
+    test.each(cases)('should return correct type for the given value: %p', (val: unknown, type: TypeEnum) => {
+      expect(TypeUtils.getType(val)).toBe(type);
     });
   });
 });

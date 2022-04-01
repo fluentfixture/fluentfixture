@@ -8,3 +8,7 @@ export const NON_BOOLEAN_DATA_SET = [null, undefined, [], { }, 1.2, Number.NaN, 
 export const NON_SYMBOL_DATA_SET = [null, undefined, [], { }, 1.2, Number.NaN, '', new Date(), /[A-Z]/, '', true, () => true];
 export const NON_NON_EMPTY_STRING_DATA_SET = [null, undefined, [], { }, 1.2, Number.NaN, '', new Date(), /[A-Z]/, true, () => true, Symbol.for('key')];
 export const NON_NON_BLANK_STRING_DATA_SET = [null, undefined, [], { }, 1.2, Number.NaN, ' ', new Date(), /[A-Z]/, true, () => true, Symbol.for('key')];
+export const NON_NULL_DATA_SET = [undefined, [], { }, 1, Number.NaN, new Date(), /[A-Z]/, '', true, () => true, Symbol.for('key')];
+export const NON_UNDEFINED_DATA_SET = [null, [], { }, 1, Number.NaN, new Date(), /[A-Z]/, '', true, () => true, Symbol.for('key')];
+export const NON_NON_ASSIGNED_DATA_SET = [[], { }, 1, Number.NaN, new Date(), /[A-Z]/, '', true, () => true, Symbol.for('key')];
+export const NON_ARRAY_DATA_SET = [null, undefined, { }, 1, Number.NaN, new Date(), /[A-Z]/, '', true, () => true, Symbol.for('key')];

@@ -130,4 +130,46 @@ describe('Formatter', () => {
       });
     });
   });
+
+  describe('templates and default pipes', () => {
+
+    const formatter = Formatter.create({
+      serializers: {
+        boolean: (val: boolean) => val ? 'TRUE' : 'FALSE',
+        string: 'upper-case',
+        date: 'DD-MM-YYYY',
+        array: (val: Array<any>) => val.join(' and ')
+      }
+    });
+
+    const source = {
+      detail: {
+        name: 'john doe',
+        birthday: new Date(1_617_258_460_000) // GMT: Thursday, 1 April 2021 06:27:40
+      },
+      topics: ['productivity', 'programming'],
+      isAdmin: false,
+      isMember: true
+    };
+
+    const cases = [
+      ['DETAIL={detail.name} / {detail.birthday}', 'DETAIL=JOHN DOE / 01-04-2021'],
+      ['ADMIN={isAdmin}', 'ADMIN=FALSE'],
+      ['MEMBER={isMember}', 'MEMBER=TRUE'],
+      ['TOPICS={topics}', 'TOPICS=productivity and programming'],
+    ];
+
+    describe('.format()', () => {
+
+      test.each(cases)('should format templates with default pipes correctly: %p', (template, result) => {
+        expect(formatter.format(template, source)).toBe(result);
+      });
+    });
+
+    describe('.compile()', () => {
+      test.each(cases)('should compile templates with default pipes correctly: %p', (template, result) => {
+        expect(formatter.compile(template).format(source)).toBe(result);
+      });
+    });
+  });
 });

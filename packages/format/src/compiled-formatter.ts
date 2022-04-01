@@ -17,7 +17,7 @@ export class CompiledFormatter {
   }
 
   /**
-   * Handles the input by using the given pipes.
+   * Formats the input by using the given pipes.
    * @public
    * @param {*} [source] - source
    * @returns {string}
