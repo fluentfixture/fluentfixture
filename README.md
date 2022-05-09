@@ -28,6 +28,3 @@ For this reason, the core of the package focuses on programmability, fluent inte
 
 > The **FluentFixture** does not provide predefined data like FakerJS for now. However, realistic data features will plan after the stable version of the core package, no-code support, and CLI.
 
-## Getting started
-
-To check out the guide, visit our [documentation](https://scokmen.gitbook.io/fluent-fixture/).
