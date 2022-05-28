@@ -9,11 +9,6 @@ const addDateFormatPipes = (factory: PipeFactory, formats: ReadonlyArray<string>
   }
 };
 
-/**
- * Creates a `PipeFactory` with pre-defined pipes.
- * @public
- * @returns {PipeFactory}
- */
 export const createPipeFactory = (): PipeFactory => {
   const factory = new PipeFactory();
 

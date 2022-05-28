@@ -4,34 +4,16 @@ import { Serializers } from '../option/types/serializers';
 import { PipeFactory } from './factory/pipe-factory';
 import { Pipe } from './pipe';
 
-/**
- * `Stringifier` pipe converts any input into string.
- * @class
- * @template T
- * @extends Pipe.<T,string>
- */
 export class Stringifier<T = any> extends Pipe<T, string> {
   private readonly factory: PipeFactory;
   private readonly serializers: Serializers;
 
-  /**
-   * Creates an instance of `Stringifier`.
-   * @constructor
-   * @param {PipeFactory} [factory] - pipe factory
-   * @param {Serializers} [serializers] - serializers
-   */
   public constructor(factory: PipeFactory, serializers: Serializers) {
     super();
     this.factory = factory;
     this.serializers = serializers;
   }
 
-  /**
-   * Converts the given input into string.
-   * @public
-   * @param {T} [input] - input
-   * @returns {string}
-   */
   public handle(input: T): string {
     const type = TypeUtils.getType(input);
 

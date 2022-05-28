@@ -1,20 +1,10 @@
 import { TypeUtils } from '@fluentfixture/shared';
 import { TokenMetadata } from './types/token-metadata';
 
-/**
- * `TokenParser` accepts a token and creates a token metadata.
- * @class
- */
 export class TokenParser {
   private static readonly PipeCharacter = '|';
   private static readonly FallbackCharacter = ':';
 
-  /**
-   * Parses the given token and creates a token metadata.
-   * @public
-   * @param {string} [token] - token
-   * @returns {TokenMetadata}
-   */
   public parse(token: string): TokenMetadata {
     const expression = token.slice(1, -1);
     const indexOfFallbackCharacter = expression.indexOf(TokenParser.FallbackCharacter);

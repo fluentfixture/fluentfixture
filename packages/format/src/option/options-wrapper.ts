@@ -3,35 +3,17 @@ import { Options } from './types/options';
 import { Serializers } from './types/serializers';
 import { Serializer } from './types/serializer';
 
-/**
- * `OptionsWrapper` is a wrapper for options to ensure parameter values.
- */
 export class OptionsWrapper {
   private readonly options: Options;
 
-  /**
-   * Creates an instance of `OptionsWrapper`.
-   * @constructor
-   * @param {Options=} [options] - options
-   */
   public constructor(options?: Options) {
     this.options = OptionsWrapper.normalizeOptions(options);
   }
 
-  /**
-   * Returns the `ignoreErrors` option.
-   * @public
-   * @returns {boolean}
-   */
   public ignoreErrors(): boolean {
     return this.options.ignoreErrors;
   }
 
-  /**
-   * Returns the `serializers` option.
-   * @public
-   * @returns {Serializer}
-   */
   public getSerializers(): Readonly<Serializers> {
     return this.options.serializers;
   }
