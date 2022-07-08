@@ -1,8 +1,10 @@
 {
   "name": "@fluentfixture/format",
   "description": "A flexible tool for generating customizable mock data with fluent interface",
-  "version": "0.0.1",
+  "version": "0.0.0-rc.1",
   "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "homepage": "https://github.com/fluentfixture/fluentfixture",
   "bugs": "https://github.com/fluentfixture/fluentfixture/issues",
   "author": {
@@ -14,14 +16,22 @@
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
   },
+  "scripts": {
+    "tsc": "tsc",
+    "clean": "rimraf ./lib",
+    "build": "npm run clean && npm run tsc"
+  },
   "directories": {
-    "lib": "src",
+    "lib": "lib",
     "test": "test"
   },
   "files": [
-    "src"
+    "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@fluentfixture/shared": "^0.0.1"
+    "@fluentfixture/shared": "^0.0.0-rc.1"
   }
 }

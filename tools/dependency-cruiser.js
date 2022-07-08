@@ -1,32 +1,35 @@
-const { getPackages } = require('./monorepo');
+const FORBIDDEN_ACCESS_LIST = [
+  ['shared', 'core'],
+  ['shared', 'format'],
+  ['format', 'core']
+];
 
-const createPackageAccessRule = (target, packages) => {
-  const rule = {
-    name: `no-package-access-from-${target}`,
-    severity: 'error',
-    from: {
-      path: `^(packages)/${target}`,
-    },
-    to: {
-      path: [],
-      pathNot: [],
-    },
-  };
+const createPackageAccessRule = (forbiddenAccessList) => {
+  const rules = [];
 
-  for (const name of packages) {
-    if (name !== target) {
-      rule.to.path.push(`^(packages)/${name}`);
-      rule.to.pathNot.push(`^(packages)/${name}/index.ts`);
-    }
+  for (const accessList of forbiddenAccessList) {
+    const from = accessList[0];
+    const to = accessList[1];
+
+    const rule = {
+      name: `no-package-access-from-${from}-to-${to}`,
+      severity: 'error',
+      from: {
+        path: `packages/${from}`,
+      },
+      to: {
+        path: [`packages/${to}`]
+      },
+    };
+
+    rules.push(rule);
   }
 
-  return rule;
+  return rules;
 };
 
-const addPackageAccessRules = (root, rules) => {
-  const packages = getPackages(root);
-  const packageAccessRules = packages.map((p) => createPackageAccessRule(p, packages));
-  rules.forbidden = [...rules.forbidden, ...packageAccessRules];
+const addPackageAccessRules = (rules) => {
+  rules.forbidden = [...rules.forbidden, ...createPackageAccessRule(FORBIDDEN_ACCESS_LIST)];
   return rules;
 };
 

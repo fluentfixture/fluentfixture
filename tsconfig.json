@@ -10,15 +10,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es6",
-    "outDir": "dist",
-    "lib": ["es7"],
-    "baseUrl": ".",
-    "paths": {
-      "@fluentfixture/core": ["./packages/core"],
-      "@fluentfixture/format": ["./packages/format"],
-      "@fluentfixture/shared": ["./packages/shared"],
-    }
+    "lib": [
+      "es7"
+    ],
+    "baseUrl": "."
   },
-  "include": ["packages/**/*", "integration/**/*", "sample/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "packages/**/*",
+    "integration/**/*",
+    "sample/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

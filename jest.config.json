@@ -3,7 +3,8 @@
     "collectCoverage": true,
     "coverageReporters": ["lcov", "json"],
     "collectCoverageFrom": [
-        "./packages/**/src/**"
+        "./packages/**/src/**",
+        "!./packages/**/lib/**"
     ],
     "transform": {
         "^.+\\.tsx?$": "ts-jest"

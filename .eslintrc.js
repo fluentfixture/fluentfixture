@@ -37,6 +37,7 @@ module.exports = {
         '.eslintrc.spec.js',
         '.dependency-cruiser.js',
         'commitlint.config.js',
-        'tools/**/*.js'
+        'tools/**/*.js',
+        'packages/**/lib/**'
     ]
 };

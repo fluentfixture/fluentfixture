@@ -166,4 +166,4 @@ const dependencyRules = {
   },
 };
 
-module.exports = addPackageAccessRules(__dirname, dependencyRules);
+module.exports = addPackageAccessRules(dependencyRules);
