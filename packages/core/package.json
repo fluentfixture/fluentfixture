@@ -28,10 +28,14 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@fluentfixture/format": "^0.0.0-rc.2",
     "@fluentfixture/shared": "^0.0.0-rc.2",
     "random-js": "2.1.0",
     "randomstring": "1.2.2"
-  }
+  },
+  "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }
