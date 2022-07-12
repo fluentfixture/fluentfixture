@@ -1,7 +1,7 @@
 {
   "name": "fluentfixture",
   "description": "A flexible tool for generating customizable mock data with fluent interface",
-  "version": "0.0.1",
+  "version": "0.0.0-rc.1",
   "license": "MIT",
   "homepage": "https://github.com/fluentfixture/fluentfixture",
   "bugs": "https://github.com/fluentfixture/fluentfixture/issues",
@@ -17,6 +17,7 @@
   "scripts": {
     "test": "jest",
     "build": "lerna run build",
+    "clean": "lerna run clean",
     "depcruise": "./node_modules/.bin/depcruise --config .dependency-cruiser.js packages",
     "changelog": "./node_modules/.bin/lerna-changelog",
     "bootstrap": "./node_modules/.bin/lerna bootstrap",
