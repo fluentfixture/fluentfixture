@@ -17,8 +17,7 @@
   },
   "include": [
     "packages/**/*",
-    "integration/**/*",
-    "sample/**/*"
+    "sample/**/*",
   ],
   "exclude": [
     "node_modules"

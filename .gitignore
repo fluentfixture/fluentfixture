@@ -10,7 +10,7 @@ node_modules/
 # bundle
 dist
 packages/**/lib
-integration/**/lib
+sample/**/lib
 
 # misc
 .DS_Store
