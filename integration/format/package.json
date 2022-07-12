@@ -1,6 +1,6 @@
 {
-  "name": "basic-integration",
-  "description": "@fluentfixture integration project [basic]",
+  "name": "integration-format",
+  "description": "@fluentfixture integration project [format]",
   "version": "0.0.0-rc.3",
   "license": "MIT",
   "main": "lib/index.js",
@@ -19,9 +19,10 @@
   "scripts": {
     "tsc": "tsc",
     "clean": "rimraf ./lib",
-    "build": "npm run clean && npm run tsc"
+    "build": "npm run clean && npm run tsc",
+    "start": "node ./lib/index.js"
   },
   "dependencies": {
-    "@fluentfixture/core": "^0.0.0-rc.3"
+    "@fluentfixture/format": "^0.0.0-rc.3"
   }
 }

@@ -1,0 +1,28 @@
+{
+  "name": "integration-core",
+  "description": "@fluentfixture integration project [core]",
+  "version": "0.0.0-rc.3",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "homepage": "https://github.com/fluentfixture/fluentfixture",
+  "bugs": "https://github.com/fluentfixture/fluentfixture/issues",
+  "author": {
+    "name": "Soner Çökmen",
+    "email": "sonercokmen@gmail.com",
+    "url": "https://github.com/scokmen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluentfixture/fluentfixture"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "clean": "rimraf ./lib",
+    "build": "npm run clean && npm run tsc",
+    "start": "node ./lib/index.js"
+  },
+  "dependencies": {
+    "@fluentfixture/core": "^0.0.0-rc.3"
+  }
+}

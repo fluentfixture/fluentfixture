@@ -9,8 +9,8 @@ node_modules/
 
 # bundle
 dist
-packages/**/*.d.ts
-packages/**/*.js
+packages/**/lib
+integration/**/lib
 
 # misc
 .DS_Store
