@@ -3,11 +3,9 @@ import { PipeBuilder } from './pipes/builder/pipe-builder';
 import { TokenParser } from './parsers/token-parser';
 import { PipeFactory } from './pipes/factory/pipe-factory';
 import { Options } from './option/types/options';
-import { CompiledFormatter } from './compiled-formatter';
-import { createPipeFactory } from './pipes/factory/factory-builder';
-import { Functional } from './pipes/functional';
+import { Template } from './template';
+import { createPipeFactory } from './bootstrap/factory-builder';
 import { OptionsWrapper } from './option/options-wrapper';
-import { PipeFunction } from './pipes/types/pipe-function';
 
 export class Formatter {
   private readonly factory: PipeFactory;
@@ -30,15 +28,15 @@ export class Formatter {
     return new Formatter(factory, parser);
   }
 
-  public compile(template: string): CompiledFormatter {
-    return new CompiledFormatter(this.parser.parse(template));
+  public compile(template: string): Template {
+    return new Template(this.parser.parse(template));
   }
 
   public format(template: string, source: any): string {
     return this.compile(template).format(source);
   }
 
-  public register(name: string, fn: PipeFunction): void {
-    this.factory.set(name, new Functional(fn));
+  public getPipeFactory(): PipeFactory {
+    return this.factory;
   }
 }

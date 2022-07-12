@@ -1,6 +1,6 @@
 import { Pipe } from './pipes/pipe';
 
-export class CompiledFormatter {
+export class Template {
   private readonly pipes: ReadonlyArray<Pipe<any, string>>;
 
   public constructor(pipes: ReadonlyArray<Pipe<any, string>>) {
