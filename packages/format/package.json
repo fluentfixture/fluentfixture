@@ -1,7 +1,7 @@
 {
   "name": "@fluentfixture/format",
   "description": "A flexible tool for generating customizable mock data with fluent interface",
-  "version": "0.0.0-rc.2",
+  "version": "0.0.0-rc.3",
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -32,7 +32,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@fluentfixture/shared": "^0.0.0-rc.2"
+    "@fluentfixture/shared": "^0.0.0-rc.3"
   },
   "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }
