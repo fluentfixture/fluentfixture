@@ -37,7 +37,7 @@ describe('TemplateParser', () => {
     });
 
     it('should parse dynamic tokens correctly', () => {
-      const expression = '{key:fallback|op}';
+      const expression = '${key:fallback|op}';
       const mockTokenFactory = mock(PipeBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
 
@@ -54,9 +54,9 @@ describe('TemplateParser', () => {
     });
 
     it('should parse combined tokens correctly (static, dynamic, static)', () => {
-      const expression = 'lorem {key:fallback|op} ipsum.';
+      const expression = 'lorem ${key:fallback|op} ipsum.';
       const staticTokens = ['lorem ', ' ipsum.'];
-      const dynamicTokens = ['{key:fallback|op}'];
+      const dynamicTokens = ['${key:fallback|op}'];
 
       const mockTokenFactory = mock(PipeBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));
@@ -78,9 +78,9 @@ describe('TemplateParser', () => {
     });
 
     it('should parse combined tokens correctly (dynamic, static, dynamic)', () => {
-      const expression = '{key.0:fallback|op} lorem {key.1:fallback|op}';
+      const expression = '${key.0:fallback|op} lorem ${key.1:fallback|op}';
       const staticTokens = [' lorem '];
-      const dynamicTokens = ['{key.0:fallback|op}', '{key.1:fallback|op}'];
+      const dynamicTokens = ['${key.0:fallback|op}', '${key.1:fallback|op}'];
 
       const mockTokenFactory = mock(PipeBuilder);
       const templateParser = new TemplateParser(instance(mockTokenFactory));

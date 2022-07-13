@@ -3,7 +3,7 @@ import { PipeBuilder } from '../pipes/builder/pipe-builder';
 import { Pipe } from '../pipes/pipe';
 
 export class TemplateParser {
-  private static readonly InterpolationRegexp = /{(.*?)}/g;
+  private static readonly InterpolationRegexp = /\${(.*?)}/g;
   private readonly builder: PipeBuilder;
 
   public constructor(builder: PipeBuilder) {

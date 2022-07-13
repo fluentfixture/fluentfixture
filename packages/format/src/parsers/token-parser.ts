@@ -6,7 +6,7 @@ export class TokenParser {
   private static readonly FallbackCharacter = ':';
 
   public parse(token: string): TokenMetadata {
-    const expression = token.slice(1, -1);
+    const expression = token.slice(2, -1);
     const indexOfFallbackCharacter = expression.indexOf(TokenParser.FallbackCharacter);
     const indexOfPipeCharacter = expression.indexOf(TokenParser.PipeCharacter);
     const hasFallback = indexOfFallbackCharacter > -1 && (indexOfPipeCharacter === -1 || indexOfFallbackCharacter < indexOfPipeCharacter);

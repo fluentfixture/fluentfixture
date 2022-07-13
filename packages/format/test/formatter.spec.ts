@@ -17,13 +17,13 @@ describe('Formatter', () => {
     };
 
     const cases = [
-      ['User=({detail.name} {detail.surname})',
+      ['User=(${detail.name} ${detail.surname})',
         'User=(John Doe)'],
-      ['User=({detail.first-name:Unknown} {detail.last-name:Unknown})',
+      ['User=(${detail.first-name:Unknown} ${detail.last-name:Unknown})',
         'User=(Unknown Unknown)'],
-      ['ID={id:0}, TYPE={types.0:user}, IS-ADMIN={isAdmin:false}',
+      ['ID=${id:0}, TYPE=${types.0:user}, IS-ADMIN=${isAdmin:false}',
         'ID=123, TYPE=user, IS-ADMIN=true'],
-      ['ID={id:0}, TYPE={types.3:unknown}, IS-ADMIN={is-admin:false}',
+      ['ID=${id:0}, TYPE=${types.3:unknown}, IS-ADMIN=${is-admin:false}',
         'ID=123, TYPE=unknown, IS-ADMIN=false'],
     ];
 
@@ -54,29 +54,29 @@ describe('Formatter', () => {
     };
 
     const cases = [
-      ['User=({detail.name|trim-end|pascal-case} {detail.surname|trim-start|upper-case})',
+      ['User=(${detail.name|trim-end|pascal-case} ${detail.surname|trim-start|upper-case})',
         'User=(John DOE)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|lower-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|lower-case})',
         'User=(John DOE) TYPE=(elite user)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|upper-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|upper-case})',
         'User=(John DOE) TYPE=(ELITE USER)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|constant-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|constant-case})',
         'User=(John DOE) TYPE=(ELITE_USER)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|dot-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|dot-case})',
         'User=(John DOE) TYPE=(elite.user)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|header-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|header-case})',
         'User=(John DOE) TYPE=(Elite-User)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|param-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|param-case})',
         'User=(John DOE) TYPE=(elite-user)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|pascal-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|pascal-case})',
         'User=(John DOE) TYPE=(EliteUser)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|path-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|path-case})',
         'User=(John DOE) TYPE=(elite/user)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|snake-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|snake-case})',
         'User=(John DOE) TYPE=(elite_user)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|capital-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|capital-case})',
         'User=(John DOE) TYPE=(Elite User)'],
-      ['User=({detail.name|trim|pascal-case} {detail.surname|trim|upper-case}) TYPE=({type|camel-case})',
+      ['User=(${detail.name|trim|pascal-case} ${detail.surname|trim|upper-case}) TYPE=(${type|camel-case})',
         'User=(John DOE) TYPE=(eliteUser)'],
     ];
 
@@ -107,14 +107,14 @@ describe('Formatter', () => {
     };
 
     const cases = [
-      ['BIRTH_DATE={detail.birthday|DD-MM-YY}', 'BIRTH_DATE=01-04-21'],
-      ['BIRTH_DATE={detail.birthday|DD-MM-YYYY}', 'BIRTH_DATE=01-04-2021'],
-      ['BIRTH_DATE={detail.birthday|MM-DD-YY}', 'BIRTH_DATE=04-01-21'],
-      ['BIRTH_DATE={detail.birthday|MM-DD-YYYY}', 'BIRTH_DATE=04-01-2021'],
-      ['BIRTH_DATE={detail.birthday|DD/MM/YY}', 'BIRTH_DATE=01/04/21'],
-      ['BIRTH_DATE={detail.birthday|DD/MM/YYYY}', 'BIRTH_DATE=01/04/2021'],
-      ['BIRTH_DATE={detail.birthday|MM/DD/YY}', 'BIRTH_DATE=04/01/21'],
-      ['BIRTH_DATE={detail.birthday|MM/DD/YYYY}', 'BIRTH_DATE=04/01/2021'],
+      ['BIRTH_DATE=${detail.birthday|DD-MM-YY}', 'BIRTH_DATE=01-04-21'],
+      ['BIRTH_DATE=${detail.birthday|DD-MM-YYYY}', 'BIRTH_DATE=01-04-2021'],
+      ['BIRTH_DATE=${detail.birthday|MM-DD-YY}', 'BIRTH_DATE=04-01-21'],
+      ['BIRTH_DATE=${detail.birthday|MM-DD-YYYY}', 'BIRTH_DATE=04-01-2021'],
+      ['BIRTH_DATE=${detail.birthday|DD/MM/YY}', 'BIRTH_DATE=01/04/21'],
+      ['BIRTH_DATE=${detail.birthday|DD/MM/YYYY}', 'BIRTH_DATE=01/04/2021'],
+      ['BIRTH_DATE=${detail.birthday|MM/DD/YY}', 'BIRTH_DATE=04/01/21'],
+      ['BIRTH_DATE=${detail.birthday|MM/DD/YYYY}', 'BIRTH_DATE=04/01/2021'],
     ];
 
     describe('.format()', () => {
@@ -153,10 +153,10 @@ describe('Formatter', () => {
     };
 
     const cases = [
-      ['DETAIL={detail.name} / {detail.birthday}', 'DETAIL=JOHN DOE / 01-04-2021'],
-      ['ADMIN={isAdmin}', 'ADMIN=FALSE'],
-      ['MEMBER={isMember}', 'MEMBER=TRUE'],
-      ['TOPICS={topics}', 'TOPICS=productivity and programming'],
+      ['DETAIL=${detail.name} / ${detail.birthday}', 'DETAIL=JOHN DOE / 01-04-2021'],
+      ['ADMIN=${isAdmin}', 'ADMIN=FALSE'],
+      ['MEMBER=${isMember}', 'MEMBER=TRUE'],
+      ['TOPICS=${topics}', 'TOPICS=productivity and programming'],
     ];
 
     describe('.format()', () => {
