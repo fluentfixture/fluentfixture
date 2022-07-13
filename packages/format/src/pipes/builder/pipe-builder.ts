@@ -2,7 +2,7 @@ import { Noop } from '../noop';
 import { Query } from '../query';
 import { Flow } from '../flow';
 import { Pipe } from '../pipe';
-import { PipeFactory } from '../factory/pipe-factory';
+import { Pipes } from '../factory/pipes';
 import { Stringifier } from '../stringifier';
 import { TokenParser } from '../../parsers/token-parser';
 import { Constant } from '../constant';
@@ -13,12 +13,12 @@ import { OptionsWrapper } from '../../option/options-wrapper';
 
 export class PipeBuilder {
   private readonly parser: TokenParser;
-  private readonly factory: PipeFactory;
+  private readonly pipes: Pipes;
   private readonly options: OptionsWrapper;
 
-  public constructor(parser: TokenParser, factory: PipeFactory, options: OptionsWrapper) {
+  public constructor(parser: TokenParser, pipes: Pipes, options: OptionsWrapper) {
     this.parser = parser;
-    this.factory = factory;
+    this.pipes = pipes;
     this.options = options;
   }
 
@@ -35,10 +35,10 @@ export class PipeBuilder {
     }
 
     for (const pipe of metadata.pipes) {
-      pipes.push(this.decoratePipe(this.factory.get(pipe)));
+      pipes.push(this.decoratePipe(this.pipes.resolve(pipe)));
     }
 
-    pipes.push(new Stringifier(this.factory, this.options.getSerializers()));
+    pipes.push(new Stringifier(this.pipes, this.options.getSerializers()));
 
     return new Flow(pipes);
   }

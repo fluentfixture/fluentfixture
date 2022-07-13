@@ -2,15 +2,26 @@ import { TypeUtils } from '@fluentfixture/shared';
 import { Pipe } from '../pipe';
 import { PipeFunction } from '../types/pipe-function';
 import { Functional } from '../functional';
+import { initializeWithDefaults } from './default-pipes';
 
-export class PipeFactory {
+export class Pipes {
   private readonly pipes: Map<string, Pipe>;
 
-  public constructor() {
+  private constructor() {
     this.pipes = new Map<string, Pipe>();
   }
 
-  public get(name: string): Pipe {
+  public static empty(): Pipes {
+    return new Pipes();
+  }
+
+  public static withDefaults(): Pipes {
+    const pipes = Pipes.empty();
+    initializeWithDefaults(pipes);
+    return pipes;
+  }
+
+  public resolve(name: string): Pipe {
     if (!TypeUtils.isNonBlankString(name)) {
       throw new Error('Pipe name must be a non-blank string!');
     }
@@ -21,35 +32,34 @@ export class PipeFactory {
     return this.pipes.get(pipeName);
   }
 
-  public registerInstance(name: string, pipe: Pipe): void {
+  public register(name: string, pipe: Pipe | PipeFunction): Pipes {
     if (!TypeUtils.isNonBlankString(name)) {
       throw new Error('Pipe name must be a non-blank string!');
-    }
-    if (!TypeUtils.isObject(pipe)) {
-      throw new Error('Pipe must be an object!');
     }
     const pipeName = name.trim();
     if (this.pipes.has(pipeName)) {
       throw new Error(`Pipe with name "${pipeName}" already registered!`);
     }
-    this.pipes.set(pipeName, pipe);
-  }
-
-  public registerFunction(name: string, fn: PipeFunction): void {
-    if (!TypeUtils.isFunction(fn)) {
-      throw new Error('Pipe must be a function!');
+    if (TypeUtils.isFunction(pipe)) {
+      this.pipes.set(pipeName, new Functional(pipe));
     }
-    this.registerInstance(name, new Functional(fn));
-  }
-
-  public unregister(name: string): void {
-    if (!TypeUtils.isNonBlankString(name)) {
-      throw new Error('Pipe name must be a non-blank string!');
+    else if (pipe instanceof Pipe) {
+      this.pipes.set(pipeName, pipe);
+    } else {
+      throw new Error('Pipe must be an instance of Pipe or a function!');
     }
-    this.pipes.delete(name);
+    return this;
   }
 
-  public clearAll(): void {
+  public unregister(name: string): Pipes {
+    if (TypeUtils.isNonBlankString(name)) {
+      this.pipes.delete(name.trim());
+    }
+    return this;
+  }
+
+  public clearAll(): Pipes {
     this.pipes.clear();
+    return this;
   }
 }

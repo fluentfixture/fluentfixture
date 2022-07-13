@@ -1,5 +1,5 @@
 import { anything, instance, mock, reset, verify, when } from 'ts-mockito';
-import { PipeFactory } from '../../src/pipes/factory/pipe-factory';
+import { Pipes } from '../../src/pipes/factory/pipes';
 import { Stringifier } from '../../src/pipes/stringifier';
 import { Pipe } from '../../src/pipes/pipe';
 
@@ -19,7 +19,7 @@ describe('Stringifier', () => {
 
     describe('with string pipes', () => {
 
-      const mockPipeFactory = mock<PipeFactory>();
+      const mockPipes = mock<Pipes>();
       const serializers = {
         null: pipe,
         undefined: pipe,
@@ -34,29 +34,29 @@ describe('Stringifier', () => {
         unknown: pipe
       };
 
-      const stringifier = new Stringifier(instance(mockPipeFactory), serializers);
+      const stringifier = new Stringifier(instance(mockPipes), serializers);
 
       afterEach(() => {
         reset(mockPipe);
-        reset(mockPipeFactory);
+        reset(mockPipes);
       });
 
       test.each(cases)('should use string pipe for the given data type: %p', (input: unknown) => {
 
-        when(mockPipeFactory.get(pipe)).thenReturn(instance(mockPipe));
+        when(mockPipes.resolve(pipe)).thenReturn(instance(mockPipe));
         when(mockPipe.handle(input)).thenReturn(output);
 
         const result = stringifier.handle(input);
 
         expect(result).toBe(output);
-        verify(mockPipeFactory.get(pipe)).once();
+        verify(mockPipes.resolve(pipe)).once();
         verify(mockPipe.handle(input)).once();
       });
     });
 
     describe('with function pipes', () => {
 
-      const mockPipeFactory = mock<PipeFactory>();
+      const mockPipes = mock<Pipes>();
       const serializers = {
         null: pipeFunction,
         undefined: pipeFunction,
@@ -71,11 +71,11 @@ describe('Stringifier', () => {
         unknown: pipeFunction
       };
 
-      const stringifier = new Stringifier(instance(mockPipeFactory), serializers);
+      const stringifier = new Stringifier(instance(mockPipes), serializers);
 
       afterEach(() => {
         reset(mockPipe);
-        reset(mockPipeFactory);
+        reset(mockPipes);
       });
 
       test.each(cases)('should use function pipe for the given data type: %p', (input: unknown) => {
@@ -83,14 +83,14 @@ describe('Stringifier', () => {
         const result = stringifier.handle(input);
 
         expect(result).toBe(output);
-        verify(mockPipeFactory.get(anything())).never();
+        verify(mockPipes.resolve(anything())).never();
         verify(mockPipe.handle(anything())).never();
       });
     });
 
     describe('without pipes', () => {
 
-      const mockPipeFactory = mock<PipeFactory>();
+      const mockPipes = mock<Pipes>();
       const serializers = {
         null: null,
         undefined: null,
@@ -105,11 +105,11 @@ describe('Stringifier', () => {
         unknown: null
       };
 
-      const stringifier = new Stringifier(instance(mockPipeFactory), serializers);
+      const stringifier = new Stringifier(instance(mockPipes), serializers);
 
       afterEach(() => {
         reset(mockPipe);
-        reset(mockPipeFactory);
+        reset(mockPipes);
       });
 
       test.each(cases)('should not use any pipe for the given data type: %p', (input: unknown) => {
@@ -118,7 +118,7 @@ describe('Stringifier', () => {
         const expected = input === undefined || input === null ? '' : input.toString();
 
         expect(result).toBe(expected);
-        verify(mockPipeFactory.get(anything())).never();
+        verify(mockPipes.resolve(anything())).never();
         verify(mockPipe.handle(anything())).never();
       });
     });

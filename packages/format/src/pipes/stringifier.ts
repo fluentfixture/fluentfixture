@@ -1,16 +1,16 @@
 import { TypeEnum, TypeUtils } from '@fluentfixture/shared';
 import { Serializer } from '../option/types/serializer';
 import { Serializers } from '../option/types/serializers';
-import { PipeFactory } from './factory/pipe-factory';
+import { Pipes } from './factory/pipes';
 import { Pipe } from './pipe';
 
 export class Stringifier<T = any> extends Pipe<T, string> {
-  private readonly factory: PipeFactory;
+  private readonly pipes: Pipes;
   private readonly serializers: Serializers;
 
-  public constructor(factory: PipeFactory, serializers: Serializers) {
+  public constructor(pipes: Pipes, serializers: Serializers) {
     super();
-    this.factory = factory;
+    this.pipes = pipes;
     this.serializers = serializers;
   }
 
@@ -47,7 +47,7 @@ export class Stringifier<T = any> extends Pipe<T, string> {
 
   private stringify(input: T, serializer: Serializer): string {
     if (!!serializer) {
-      return TypeUtils.isString(serializer) ? this.factory.get(serializer).handle(input) : serializer(input);
+      return TypeUtils.isString(serializer) ? this.pipes.resolve(serializer).handle(input) : serializer(input);
     }
 
     return TypeUtils.isString(input) ? input : TypeUtils.isAssigned(input) ? input.toString() : '';

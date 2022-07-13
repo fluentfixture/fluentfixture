@@ -1,4 +1,5 @@
 import { Formatter } from '../src/formatter';
+import { Pipes } from '../src/pipes/factory/pipes';
 
 describe('Formatter', () => {
 
@@ -43,7 +44,7 @@ describe('Formatter', () => {
 
   describe('templates and string pipes', () => {
 
-    const formatter = Formatter.create();
+    const formatter = Formatter.create(Pipes.withDefaults());
 
     const source = {
       detail: {
@@ -96,7 +97,7 @@ describe('Formatter', () => {
 
   describe('templates and date pipes', () => {
 
-    const formatter = Formatter.create();
+    const formatter = Formatter.create(Pipes.withDefaults());
 
     const source = {
       detail: {
@@ -133,7 +134,7 @@ describe('Formatter', () => {
 
   describe('templates and default pipes', () => {
 
-    const formatter = Formatter.create({
+    const formatter = Formatter.create(Pipes.withDefaults(), {
       serializers: {
         boolean: (val: boolean) => val ? 'TRUE' : 'FALSE',
         string: 'upper-case',

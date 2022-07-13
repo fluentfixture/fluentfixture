@@ -1,5 +1,5 @@
 import { anything, instance, mock, reset, verify, when } from 'ts-mockito';
-import { PipeFactory } from '../../../src/pipes/factory/pipe-factory';
+import { Pipes } from '../../../src/pipes/factory/pipes';
 import { TokenParser } from '../../../src/parsers/token-parser';
 import { PipeBuilder } from '../../../src/pipes/builder/pipe-builder';
 import { Constant } from '../../../src/pipes/constant';
@@ -13,13 +13,13 @@ import { OptionsWrapper } from '../../../src/option/options-wrapper';
 
 describe('PipeBuilder', () => {
   const mockParser = mock(TokenParser);
-  const mockFactory = mock(PipeFactory);
+  const mockPipes = mock(Pipes);
   const mockOptions = mock<OptionsWrapper>();
-  const pipeBuilder = new PipeBuilder(instance(mockParser), instance(mockFactory), instance(mockOptions));
+  const pipeBuilder = new PipeBuilder(instance(mockParser), instance(mockPipes), instance(mockOptions));
 
   afterEach(() => {
     reset(mockParser);
-    reset(mockFactory);
+    reset(mockPipes);
     reset(mockOptions);
   });
 
@@ -56,7 +56,7 @@ describe('PipeBuilder', () => {
       expect(query).toBeInstanceOf(Query);
       expect(query.getQuery()).toBe(queryValue);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(anything())).never();
+      verify(mockPipes.resolve(anything())).never();
     });
 
     it('should add noop pipe to flow when token has not a path', () => {
@@ -73,7 +73,7 @@ describe('PipeBuilder', () => {
 
       expect(noop).toBeInstanceOf(Noop);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(anything())).never();
+      verify(mockPipes.resolve(anything())).never();
     });
 
     it('should add fallback pipe to flow when token has a fallback', () => {
@@ -95,7 +95,7 @@ describe('PipeBuilder', () => {
       expect(fallback).toBeInstanceOf(Fallback);
       expect(fallback.getFallback()).toBe(value);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(anything())).never();
+      verify(mockPipes.resolve(anything())).never();
     });
 
     it('should not add fallback pipe to flow when token has not a fallback', () => {
@@ -111,7 +111,7 @@ describe('PipeBuilder', () => {
 
       expect(hasFallback).toBe(false);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(anything())).never();
+      verify(mockPipes.resolve(anything())).never();
     });
 
     it('should decorate pipes with the error boundary if options.ignoreErrors is true', () => {
@@ -120,7 +120,7 @@ describe('PipeBuilder', () => {
       const mockPipe = new MockPipe();
 
       when(mockParser.parse(token)).thenReturn({ query: undefined, fallback: undefined, pipes: [pipeName] });
-      when(mockFactory.get(pipeName)).thenReturn(mockPipe);
+      when(mockPipes.resolve(pipeName)).thenReturn(mockPipe);
       when(mockOptions.ignoreErrors()).thenReturn(true);
 
       const pipe = pipeBuilder.flow(token);
@@ -134,7 +134,7 @@ describe('PipeBuilder', () => {
       expect(errorBoundary).toBeInstanceOf(ErrorBoundary);
       expect(errorBoundary.getPipe()).toBe(mockPipe);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(pipeName)).once();
+      verify(mockPipes.resolve(pipeName)).once();
       verify(mockOptions.ignoreErrors()).called();
     });
 
@@ -144,7 +144,7 @@ describe('PipeBuilder', () => {
       const mockPipe = new MockPipe();
 
       when(mockParser.parse(token)).thenReturn({ query: undefined, fallback: undefined, pipes: [pipeName] });
-      when(mockFactory.get(pipeName)).thenReturn(mockPipe);
+      when(mockPipes.resolve(pipeName)).thenReturn(mockPipe);
       when(mockOptions.ignoreErrors()).thenReturn(false);
 
       const pipe = pipeBuilder.flow(token);
@@ -155,7 +155,7 @@ describe('PipeBuilder', () => {
 
       expect(newPipe).toBe(mockPipe);
       verify(mockParser.parse(token)).once();
-      verify(mockFactory.get(pipeName)).once();
+      verify(mockPipes.resolve(pipeName)).once();
       verify(mockOptions.ignoreErrors()).called();
     });
   });
