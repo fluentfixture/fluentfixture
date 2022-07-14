@@ -1,14 +1,16 @@
-# @fluentfixture/format
+<p align="center">
+  <a href="https://github.com/fluentfixture" target="blank"><img src="https://i.imgur.com/qLGGhTh.jpg" width="120" alt="Fluent Fixture Logo" /></a>
+</p>
 
 <p align="center">A flexible string format library that is a part of <a href="https://github.com/fluentfixture">@fluentfixture</a> project.</p>
 
 [![CircleCI](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main.svg?style=svg)](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main)
-[![npm version](https://badge.fury.io/js/@fluentfixture%format.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat)
+[![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat)
 [![Coverage Status](https://coveralls.io/repos/github/fluentfixture/fluentfixture/badge.svg?branch=main)](https://coveralls.io/github/fluentfixture/fluentfixture?branch=main)
 [![Known Vulnerabilities](https://snyk.io/test/github/fluentfixture/fluentfixture/badge.svg)](https://snyk.io/test/github/fluentfixture/fluentfixture)
 [![CodeFactor](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge)](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture)
 
-## Introduction
+## @fluentfixture/format
 
 A flexible string format library that is a part of [@fluentfixture](https://github.com/fluentfixture) project. Provides 
 formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in the [samples](https://github.com/fluentfixture/fluentfixture/tree/main/sample/format) folder.
@@ -128,6 +130,25 @@ formatter.format('ADMIN=${is-admin:false} > MEMBERSHIPS=${memberships}', source)
 > `ADMIN=FALSE AND MEMBERSHIPS=regular&pro` because the key `is-admin` is missing and the fallback is `false`, 
 > but all fallbacks are strings. So the boolean serializer don't work.
 
+### Default Transformations
+
+| Name            | Type   | Description            | Docs                       |
+|-----------------|--------|------------------------|----------------------------|
+| `trim`          | string | Trim string            | [mdn][mdn-string]          |
+| `trim-end`      | string | Trim string from end   | [mdn][mdn-string]          |
+| `trim-start`    | string | Trim string from start | [mdn][mdn-string]          |
+| `lower-case`    | string | To lower case          | [mdn][mdn-string]          |
+| `upper-case`    | string | To upper case          | [mdn][mdn-string]          |
+| `constant-case` | string | To constant case       | [change-case][change-case] |
+| `dot-case`      | string | To dot case            | [change-case][change-case] |
+| `header-case`   | string | To header case         | [change-case][change-case] |
+| `param-case`    | string | To param case          | [change-case][change-case] |
+| `pascal-case`   | string | To pascal case         | [change-case][change-case] |
+| `path-case`     | string | To path case           | [change-case][change-case] |
+| `snake-case`    | string | To snake case          | [change-case][change-case] |
+| `capital-case`  | string | To capital case        | [change-case][change-case] |
+| `camel-case`    | string | To camel case          | [change-case][change-case] |
+
 ### Other Options
 
 | Options              | Description                                                                          |
@@ -141,3 +162,6 @@ formatter.format('ADMIN=${is-admin:false} > MEMBERSHIPS=${memberships}', source)
 ## License
 
 @fluentfixture is [MIT](https://github.com/fluentfixture/fluentfixture/blob/main/LICENSE) licensed.
+
+[change-case]: https://www.npmjs.com/package/change-case
+[mdn-string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String

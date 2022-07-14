@@ -1,4 +1,6 @@
-# @fluentfixture/shared
+<p align="center">
+  <a href="https://github.com/fluentfixture" target="blank"><img src="https://i.imgur.com/qLGGhTh.jpg" width="120" alt="Fluent Fixture Logo" /></a>
+</p>
 
 <p align="center">Shared utils of <a href="https://github.com/fluentfixture">@fluentfixture</a> project. Provides common string, date, and type utilities.</p>
 
@@ -8,7 +10,7 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/fluentfixture/fluentfixture/badge.svg)](https://snyk.io/test/github/fluentfixture/fluentfixture)
 [![CodeFactor](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge)](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture)
 
-## Introduction
+## @fluentfixture/shared
 
 Shared utils of [@fluentfixture](https://github.com/fluentfixture) project. Provides common string, date, and type utilities.
 

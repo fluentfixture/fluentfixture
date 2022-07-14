@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://scokmen.gitbook.io/fluent-fixture/" target="blank"><img src="https://i.imgur.com/qLGGhTh.jpg" width="120" alt="Fluent Fixture Logo" /></a>
+  <a href="https://github.com/fluentfixture" target="blank"><img src="https://i.imgur.com/qLGGhTh.jpg" width="120" alt="Fluent Fixture Logo" /></a>
 </p>
 
 <p align="center">A flexible tool for generating customizable mock data with fluent interface.</p>
