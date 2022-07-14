@@ -1,6 +1,6 @@
 {
   "name": "fluentfixture",
-  "description": "A flexible tool for generating customizable mock data with fluent interface",
+  "description": "A flexible tool for generating customizable mock data with fluent interface.",
   "version": "0.0.0-rc.2",
   "license": "MIT",
   "homepage": "https://github.com/fluentfixture/fluentfixture",
@@ -10,6 +10,7 @@
     "email": "sonercokmen@gmail.com",
     "url": "https://github.com/scokmen"
   },
+  "keywords": ["testing", "mock", "fake", "fixture", "format", "interpolation"],
   "repository": {
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
