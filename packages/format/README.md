@@ -122,7 +122,7 @@ const source = {
 formatter.format('ADMIN=${admin:false} AND MEMBERSHIPS=${memberships}', source);
 // prints "ADMIN=YES AND MEMBERSHIPS=regular&pro"
 
-formatter.format('ADMIN=${is-admin:false} > MEMBERSHIPS=${memberships}', source);
+formatter.format('ADMIN=${is-admin:false} AND MEMBERSHIPS=${memberships}', source);
 // prints "ADMIN=FALSE AND MEMBERSHIPS=regular&pro"
 ```
 
@@ -151,9 +151,9 @@ formatter.format('ADMIN=${is-admin:false} > MEMBERSHIPS=${memberships}', source)
 
 ### Other Options
 
-| Options              | Description                                                                          |
-|----------------------|--------------------------------------------------------------------------------------|
-| options.ignoreErrors | When set to `false`, all transformation errors will be ignored. (default is `false`) |
+| Options              | Description                                                                        |
+|----------------------|------------------------------------------------------------------------------------|
+| options.ignoreErrors | When set to `true`, all transformation errors will be ignored. (default is `true`) |
 
 ## Follow Us!
 
