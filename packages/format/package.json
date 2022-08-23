@@ -12,7 +12,14 @@
     "email": "sonercokmen@gmail.com",
     "url": "https://github.com/scokmen"
   },
-  "keywords": ["testing", "mock", "fake", "fixture", "format", "interpolation"],
+  "keywords": [
+    "testing",
+    "mock",
+    "fake",
+    "fixture",
+    "format",
+    "interpolation"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
@@ -33,7 +40,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@fluentfixture/shared": "^0.0.0-rc.4"
+    "@fluentfixture/shared": "^0.0.0-rc.4",
+    "chevrotain": "^10.1.2"
   },
   "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }

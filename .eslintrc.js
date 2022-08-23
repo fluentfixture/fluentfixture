@@ -30,6 +30,7 @@ module.exports = {
         'unicorn/prevent-abbreviations': 'off',
         'unicorn/no-useless-undefined': 'off',
         'import/no-unresolved': 'off',
+        'unicorn/consistent-function-scoping': 'off',
         'import/order': ["error", {"groups": ["builtin", "external", "parent", "sibling", "index"]}]
     },
     ignorePatterns: [

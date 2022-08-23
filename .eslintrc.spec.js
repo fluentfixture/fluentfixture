@@ -9,7 +9,6 @@ module.exports = {
     rules: {
         ...baseConfig.rules,
         '@typescript-eslint/no-empty-function': 'off',
-        'unicorn/no-array-callback-reference': 'off',
-        'unicorn/consistent-function-scoping': 'off'
+        'unicorn/no-array-callback-reference': 'off'
   }
 };
