@@ -12,8 +12,4 @@ export class Fallback<T = any> extends Pipe<T> {
   public handle(input?: T): T {
     return TypeUtils.isAssigned(input) ? input : this.fallback;
   }
-
-  public getFallback(): T {
-    return this.fallback;
-  }
 }

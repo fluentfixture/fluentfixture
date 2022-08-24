@@ -8,7 +8,7 @@ describe('Functional', () => {
 
     test.each(NON_FUNCTION_DATA_SET)('should throw an error when pipe function is not a function, given: %s', (fn: PipeFunction) => {
 
-      const thrown = () => new Functional(fn);
+      const thrown = () => new Functional({ fn, parameters: [] });
 
       expect(thrown).toThrow('Pipe must be a function!');
     });
@@ -17,11 +17,12 @@ describe('Functional', () => {
   describe('.handle()', () => {
 
     it('should handle the input by using the given pipe function', () => {
-      const input = 1;
-      const output = 2;
-      const pipeFunction = (i: number) => i * 2;
+      const input = 5;
+      const coefficient = 10;
+      const output = 50;
+      const pipeFunction = (i: number, j: number) => i * j;
 
-      const pipe = new Functional(pipeFunction);
+      const pipe = new Functional({ fn: pipeFunction, parameters: [coefficient] });
 
       expect(pipe.handle(input)).toBe(output);
     });

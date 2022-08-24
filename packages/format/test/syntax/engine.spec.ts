@@ -1,13 +1,15 @@
-import { SyntaxEngine } from '../../src/syntax/syntax-engine';
+import { Engine } from '../../src/syntax/engine';
 
-describe('SyntaxEngine', () => {
+describe('Engine', () => {
 
-  const engine = new SyntaxEngine();
+  const engine = Engine.instance();
 
   describe('.parse()', () => {
 
     const validCases = [
-      ['path', { path: 'path', pipes: [] }],
+      ['path', {
+        path: 'path', pipes: [],
+      }],
       ['user.detail.balances.0.currency', {
         path: 'user.detail.balances.0.currency',
         pipes: [],
@@ -21,7 +23,7 @@ describe('SyntaxEngine', () => {
         pipes: [{ name: 'pad', parameters: ['s'] }, { name: 'f', parameters: [[]] }],
       }],
       [':format("yyyy-MM-dd HH:mm:ss", {"id": 1})', {
-        pipes: [{ name: 'format', parameters: ['yyyy-MM-dd HH:mm:ss', { id: 1}] }],
+        pipes: [{ name: 'format', parameters: ['yyyy-MM-dd HH:mm:ss', { id: 1 }] }],
       }],
     ];
     test.each(validCases)('that parse expression successfully: %p', (input: string, output: any) => {

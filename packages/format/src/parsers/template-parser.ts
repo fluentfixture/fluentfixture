@@ -24,7 +24,7 @@ export class TemplateParser {
       if (match.index > cursor) {
         pipes.push(this.builder.constant(template.slice(cursor, match.index)));
       }
-      pipes.push(this.builder.flow(match[0]));
+      pipes.push(this.builder.flow(match[0].slice(2, -1)));
       cursor = match.index + match[0].length;
     }
 

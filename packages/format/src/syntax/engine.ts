@@ -4,15 +4,20 @@ import { FormatterParser } from './parser';
 import { createFormatterVisitor } from './visitor';
 import { SyntaxDefinition } from './types/syntax-definition';
 
-export class SyntaxEngine {
+export class Engine {
+  private static singletonInstance: Engine;
   private readonly lexer: Lexer;
   private readonly parser: FormatterParser;
   private readonly visitor: ICstVisitor<any, any>;
 
-  public constructor() {
+  private constructor() {
     this.lexer = FormatterLexer;
     this.parser = new FormatterParser();
     this.visitor = createFormatterVisitor(this.parser);
+  }
+
+  public static instance(): Engine {
+    return Engine.singletonInstance || (Engine.singletonInstance = new Engine());
   }
 
   public parse(expression: string): SyntaxDefinition {

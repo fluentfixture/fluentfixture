@@ -6,7 +6,7 @@ describe('Noop', () => {
 
     it('should return the given value without any modifications.', () => {
       const value = 'value';
-      const pipe = new Noop();
+      const pipe = Noop.instance();
 
       const result = pipe.handle(value);
 

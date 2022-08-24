@@ -13,7 +13,6 @@ import {
   NON_STRING_DATA_SET,
   NON_SYMBOL_DATA_SET, NON_UNDEFINED_DATA_SET,
 } from '../data/type-sets';
-import { TypeEnum } from '../../src/types/types/type-enum';
 
 describe('TypeUtils', () => {
 
@@ -183,27 +182,6 @@ describe('TypeUtils', () => {
 
     it('should return false when min value is greater than the max value', () => {
       expect(TypeUtils.isInRange(1, 1.01, 0.99)).toBe(false);
-    });
-  });
-
-  describe('.getTypes()', () => {
-
-    const cases = [
-      [null, TypeEnum.NULL],
-      [undefined, TypeEnum.UNDEFINED],
-      ['', TypeEnum.STRING],
-      [false, TypeEnum.BOOLEAN],
-      [1, TypeEnum.NUMBER],
-      [new Date(), TypeEnum.DATE],
-      [[], TypeEnum.ARRAY],
-      [() => true, TypeEnum.FUNCTION],
-      [Symbol.for(''), TypeEnum.SYMBOL],
-      [{}, TypeEnum.OBJECT],
-      [/[A-Z]/g, TypeEnum.UNKNOWN],
-    ];
-
-    test.each(cases)('should return correct type for the given value: %p', (val: unknown, type: TypeEnum) => {
-      expect(TypeUtils.getType(val)).toBe(type);
     });
   });
 });

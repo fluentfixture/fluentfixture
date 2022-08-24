@@ -1,5 +1,3 @@
-import { TypeEnum } from './types/type-enum';
-
 export class TypeUtils {
 
   public static isString(str: unknown): str is string {
@@ -60,35 +58,5 @@ export class TypeUtils {
 
   public static isInRange(val: number, min: number, max: number): boolean {
     return val >= min && val <= max;
-  }
-
-  public static getType(val: unknown): TypeEnum {
-    let type: TypeEnum;
-
-    if (TypeUtils.isNull(val)) {
-      type = TypeEnum.NULL;
-    } else if (TypeUtils.isUndefined(val)) {
-      type = TypeEnum.UNDEFINED;
-    } else if (TypeUtils.isString(val)) {
-      type = TypeEnum.STRING;
-    } else if (TypeUtils.isNumber(val)) {
-      type = TypeEnum.NUMBER;
-    } else if (TypeUtils.isDate(val)) {
-      type = TypeEnum.DATE;
-    } else if (TypeUtils.isSymbol(val)) {
-      type = TypeEnum.SYMBOL;
-    } else if (TypeUtils.isBoolean(val)) {
-      type = TypeEnum.BOOLEAN;
-    } else if (TypeUtils.isArray(val)) {
-      type = TypeEnum.ARRAY;
-    } else if (TypeUtils.isFunction(val)) {
-      type = TypeEnum.FUNCTION;
-    } else if (TypeUtils.isObject(val)) {
-      type = TypeEnum.OBJECT;
-    } else {
-      type = TypeEnum.UNKNOWN
-    }
-
-    return type;
   }
 }

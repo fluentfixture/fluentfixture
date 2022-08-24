@@ -21,10 +21,10 @@ describe('TemplateParser', () => {
 
     it('should parse static tokens correctly', () => {
       const expression = 'lorem ipsum.';
-      const mockPipes = mock(PipeBuilder);
-      const templateParser = new TemplateParser(instance(mockPipes));
+      const mockPipeBuilder = mock(PipeBuilder);
+      const templateParser = new TemplateParser(instance(mockPipeBuilder));
 
-      when(mockPipes.constant(expression)).thenReturn(new MockPipe(expression));
+      when(mockPipeBuilder.constant(expression)).thenReturn(new MockPipe(expression));
 
       const result = templateParser.parse(expression);
 
@@ -32,16 +32,17 @@ describe('TemplateParser', () => {
 
       expect((result[0] as MockPipe).getValue()).toBe(expression);
 
-      verify(mockPipes.constant(expression)).once();
-      verify(mockPipes.flow(anything())).never();
+      verify(mockPipeBuilder.constant(expression)).once();
+      verify(mockPipeBuilder.flow(anything())).never();
     });
 
     it('should parse dynamic tokens correctly', () => {
       const expression = '${key:fallback|op}';
-      const mockPipes = mock(PipeBuilder);
-      const templateParser = new TemplateParser(instance(mockPipes));
+      const rawExpression = 'key:fallback|op';
+      const mockPipeBuilder = mock(PipeBuilder);
+      const templateParser = new TemplateParser(instance(mockPipeBuilder));
 
-      when(mockPipes.flow(expression)).thenReturn(new MockPipe(expression));
+      when(mockPipeBuilder.flow(rawExpression)).thenReturn(new MockPipe(expression));
 
       const result = templateParser.parse(expression);
 
@@ -49,21 +50,21 @@ describe('TemplateParser', () => {
 
       expect((result[0] as MockPipe).getValue()).toBe(expression);
 
-      verify(mockPipes.constant(anything())).never();
-      verify(mockPipes.flow(expression)).once();
+      verify(mockPipeBuilder.constant(anything())).never();
+      verify(mockPipeBuilder.flow(rawExpression)).once();
     });
 
     it('should parse combined tokens correctly (static, dynamic, static)', () => {
       const expression = 'lorem ${key:fallback|op} ipsum.';
       const staticTokens = ['lorem ', ' ipsum.'];
-      const dynamicTokens = ['${key:fallback|op}'];
+      const dynamicTokens = ['key:fallback|op'];
 
-      const mockPipes = mock(PipeBuilder);
-      const templateParser = new TemplateParser(instance(mockPipes));
+      const mockPipeBuilder = mock(PipeBuilder);
+      const templateParser = new TemplateParser(instance(mockPipeBuilder));
 
-      when(mockPipes.constant(staticTokens[0])).thenReturn(new MockPipe(staticTokens[0]));
-      when(mockPipes.constant(staticTokens[1])).thenReturn(new MockPipe(staticTokens[1]));
-      when(mockPipes.flow(dynamicTokens[0])).thenReturn(new MockPipe(dynamicTokens[0]));
+      when(mockPipeBuilder.constant(staticTokens[0])).thenReturn(new MockPipe(staticTokens[0]));
+      when(mockPipeBuilder.constant(staticTokens[1])).thenReturn(new MockPipe(staticTokens[1]));
+      when(mockPipeBuilder.flow(dynamicTokens[0])).thenReturn(new MockPipe(dynamicTokens[0]));
 
       const result = templateParser.parse(expression);
 
@@ -73,14 +74,14 @@ describe('TemplateParser', () => {
       expect((result[1] as MockPipe).getValue()).toBe(dynamicTokens[0]);
       expect((result[2] as MockPipe).getValue()).toBe(staticTokens[1]);
 
-      verify(mockPipes.constant(anything())).twice();
-      verify(mockPipes.flow(anything())).once();
+      verify(mockPipeBuilder.constant(anything())).twice();
+      verify(mockPipeBuilder.flow(dynamicTokens[0])).once();
     });
 
     it('should parse combined tokens correctly (dynamic, static, dynamic)', () => {
       const expression = '${key.0:fallback|op} lorem ${key.1:fallback|op}';
       const staticTokens = [' lorem '];
-      const dynamicTokens = ['${key.0:fallback|op}', '${key.1:fallback|op}'];
+      const dynamicTokens = ['key.0:fallback|op', 'key.1:fallback|op'];
 
       const mockPipes = mock(PipeBuilder);
       const templateParser = new TemplateParser(instance(mockPipes));
@@ -98,7 +99,8 @@ describe('TemplateParser', () => {
       expect((result[2] as MockPipe).getValue()).toBe(dynamicTokens[1]);
 
       verify(mockPipes.constant(anything())).once();
-      verify(mockPipes.flow(anything())).twice();
+      verify(mockPipes.flow(dynamicTokens[0])).once();
+      verify(mockPipes.flow(dynamicTokens[1])).once();
     });
   });
 });
