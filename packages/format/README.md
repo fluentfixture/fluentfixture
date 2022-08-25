@@ -12,8 +12,9 @@
 
 ## @fluentfixture/format
 
-A flexible string format library that is a part of [@fluentfixture](https://github.com/fluentfixture) project. Provides 
-formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in the [samples](https://github.com/fluentfixture/fluentfixture/tree/main/sample/format) folder.
+A flexible string format library that is a part of [@fluentfixture](https://github.com/fluentfixture) project. Provides
+formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in
+the [samples](https://github.com/fluentfixture/fluentfixture/tree/main/sample/format) folder.
 
 ```bash
 > npm install @fluentfixture/format
@@ -23,29 +24,28 @@ formatting and compiling functionalities with extensible transformation capabili
 
 ### Syntax
 
-Formatting syntax consist of three parts:`"${path:fallback|pipe-1|pipe-n}"`
+Formatting syntax consist of two parts:`"${path:pipe-1|pipe-n}"`
+
 - the `path` is the descriptor of the target property. When the `path` is empty, the target is the whole source object.
-- the `fallback` is the default value used when the target property is not defined.
 - the `pipe-1` and `pipe-n` are transformation functions.
 
-| Syntax                                    | Target      | Fallback    | Transformations      |
-|-------------------------------------------|-------------|-------------|----------------------|
-| ${name:no-name&#124;trim&#124;upper-case} | source.name | no-name     | `trim`, `upper-case` |
-| ${name:no-name}                           | source.name | no-name     |                      |
-| ${name&#124;trim&#124;upper-case}         | source.name |             | `trim`, `upper-case` |
-| ${name}                                   | source.name |             |                      |
-| ${:n/a&#124;upper-case}                   | source      | n/a         | `upper-case`         |
-| ${&#124;upper-case}                       | source      |             | `upper-case`         |
+| Syntax                          | Target    | Transformations        |
+|---------------------------------|-----------|------------------------|
+| `${}`                           | obj       |                        |
+| `${key}`                        | obj.key   |                        |
+| `${key:trim()&#124;padLeft(5)}` | obj.key   | `trim()`, `padLeft(5)` |
+| `${:trim()&#124;split(",")}`    | obj       | `trim()`, `split(",")` |
 
 ### Simple Formatting
 
-Format library provides two global methods available with default configurations: `format` and `compile`. The `format` method produces 
+`@fluentfixture/format` provides two global methods and one default instance with default configurations: `format`
+, `compile`, and the `formatter`. The `format` method produces
 the formatted string immediately. Differently, `compile` methods returns a pre-compiled template for reusing.
 
 > Using the `compile` method is extremely fast according to the `format` method for repeating usages.
 
 ```typescript
-import { format, compile } from '@fluentfixture/format';
+import { format, compile, formatter } from '@fluentfixture/format';
 
 const source = {
   name: 'john',
@@ -57,103 +57,64 @@ const source = {
   memberships: ['regular user', 'pro user']
 };
 
-format('${surname}, ${name} <${balance.amount} ${balance.currency}>', source);
-// returns "doe, john <120 USD>"
-
-format('${name|capital-case}.${surname|upper-case} > MEMBERSHIP=${memberships.0|dot-case}', source);
+format('${name|capitalCase()}.${surname|upperCase()} > MEMBERSHIP=${memberships.0|dotCase()}', source);
 // returns "John.DOE > MEMBERSHIP=regular.user"
 
-const template = compile('${surname}, ${name} <${balance.amount} ${balance.currency}>');
+const template = compile('${name|capitalCase()}.${surname|upperCase()} > MEMBERSHIP=${memberships.0|dotCase()}');
 
 template(source);
-// returns "doe, john <120 USD>"
+// returns "John.DOE > MEMBERSHIP=regular.user"
 ```
 
 ### Custom Transformations
 
-Format library supports custom transformation functions. When customization is needed, a new instance can be used.
+`@fluentfixture/format` supports custom transformation functions. When customization is needed, a new instance can be
+used.
 
 ```typescript
 import { Formatter, Pipes } from '@fluentfixture/format';
 
-const reverse = (str: string): string =>
-  [...str].reverse().join('');
-
-const amount = (value: any): string => 
-  `[${value.amount} ${value.currency}]`;
+const source = {
+  balance: {
+    amount: 12, 
+    currency: 'TRY'
+  }
+};
 
 const pipes = Pipes.withDefaults()
-  .register('reverse', reverse)
-  .register('amount', amount);
+  .register('inc', (val: number, arg: number) => val + arg)
+  .register('amount', (val: any) => `[${value.amount} ${value.currency}]`);
 
 const formatter = Formatter.create(pipes);
 
-formatter.format('TEXT=${text:unknown|reverse|upper-case}', { text: 'lorem' });
-// returns "TEXT=MEROL"
+formatter.format('BALANCE=${balance|amount()}', source);
+// returns "BALANCE=12 TRY"
 
-formatter.format('TEXT=${text:unknown|reverse|upper-case}', { });
-// returns "TEXT=NWONKNU"
-
-formatter.format('AMOUNT=${balance|amount}', { balance: { amount: 12, currency: 'TRY' }});
-// returns "AMOUNT=[12 TRY]"
+formatter.format('NEXT AMOUNT=${balance.amount|inc(10)}', source);
+// returns "NEXT AMOUNT="22
 ```
-
-### Serializers
-
-By default, when formatting is completed, the result will be converted to a string using the standard conversions in javascript. In addition, the format library supports custom conversions functions (serializers) for each data type.
-
-```typescript
-import { Formatter } from '@fluentfixture/format';
-
-const formatter = Formatter.empty({
-  serializers: {
-    boolean: (value: boolean) => value ? 'YES' : 'NO',
-    array: (value: Array<any>) => value.join('&')
-  }
-});
-
-const source = {
-  name: 'john',
-  surname: 'doe',
-  admin: true,
-  memberships: ['regular', 'pro']
-};
-
-formatter.format('ADMIN=${admin:false} AND MEMBERSHIPS=${memberships}', source);
-// prints "ADMIN=YES AND MEMBERSHIPS=regular&pro"
-
-formatter.format('ADMIN=${is-admin:false} AND MEMBERSHIPS=${memberships}', source);
-// prints "ADMIN=FALSE AND MEMBERSHIPS=regular&pro"
-```
-
-> Serializer methods invoke at the end of all transformations. The second example above will be 
-> `ADMIN=FALSE AND MEMBERSHIPS=regular&pro` because the key `is-admin` is missing and the fallback is `false`, 
-> but all fallbacks are strings. So the boolean serializer don't work.
 
 ### Default Transformations
 
-| Name            | Type   | Description            | Docs                       |
-|-----------------|--------|------------------------|----------------------------|
-| `trim`          | string | Trim string            | [mdn][mdn-string]          |
-| `trim-end`      | string | Trim string from end   | [mdn][mdn-string]          |
-| `trim-start`    | string | Trim string from start | [mdn][mdn-string]          |
-| `lower-case`    | string | To lower case          | [mdn][mdn-string]          |
-| `upper-case`    | string | To upper case          | [mdn][mdn-string]          |
-| `constant-case` | string | To constant case       | [change-case][change-case] |
-| `dot-case`      | string | To dot case            | [change-case][change-case] |
-| `header-case`   | string | To header case         | [change-case][change-case] |
-| `param-case`    | string | To param case          | [change-case][change-case] |
-| `pascal-case`   | string | To pascal case         | [change-case][change-case] |
-| `path-case`     | string | To path case           | [change-case][change-case] |
-| `snake-case`    | string | To snake case          | [change-case][change-case] |
-| `capital-case`  | string | To capital case        | [change-case][change-case] |
-| `camel-case`    | string | To camel case          | [change-case][change-case] |
+| Name            | Type   | Docs                       | Name             | Type     | Docs                       |
+|-----------------|--------|----------------------------|------------------|----------|----------------------------|
+| `lowerCase()`   | string | [mdn][mdn-string]          | `constantCase()` | string   | [change-case][change-case] |
+| `upperCase()`   | string | [mdn][mdn-string]          | `dotCase()`      | string   | [change-case][change-case] |
+| `trim()`        | string | [mdn][mdn-string]          | `headerCase()`   | string   | [change-case][change-case] |
+| `trimStart()`   | string | [mdn][mdn-string]          | `paramCase()`    | string   | [change-case][change-case] |
+| `trimEnd()`     | string | [mdn][mdn-string]          | `pascalCase()`   | string   | [change-case][change-case] |
+| `padStart()`    | string | [mdn][mdn-string]          | `pathCase()`     | string   | [change-case][change-case] |
+| `padEnd()`      | string | [mdn][mdn-string]          | `snakeCase()`    | string   | [change-case][change-case] |
+| `split()`       | string | [mdn][mdn-string]          | `capitalCase()`  | string   | [change-case][change-case] |
+| `camelCase()`   | string | [change-case][change-case] | `date(FORMAT)`   | date     | [format][day-js]           |
+| `default(VAL)`  | any    | Returns the default value  | `reverse()`      | array    | [mdn][mdn-array]           |
+| `join()`        | array  | [mdn][mdn-array]           | `sort()`         | array    | [mdn][mdn-array]           |
 
-### Other Options
+### Options
 
-| Options              | Description                                                                        |
-|----------------------|------------------------------------------------------------------------------------|
-| options.ignoreErrors | When set to `true`, all transformation errors will be ignored. (default is `true`) |
+| Options              | Description                                                                                                |
+|----------------------|------------------------------------------------------------------------------------------------------------|
+| options.ignoreErrors | When set to `true`, all transformation errors (not the syntax errors) will be ignored. (default is `true`) |
 
 ## Follow Us!
 
@@ -164,4 +125,6 @@ formatter.format('ADMIN=${is-admin:false} AND MEMBERSHIPS=${memberships}', sourc
 @fluentfixture is [MIT](https://github.com/fluentfixture/fluentfixture/blob/main/LICENSE) licensed.
 
 [change-case]: https://www.npmjs.com/package/change-case
+[day-js]: https://day.js.org/docs/en/display/format
 [mdn-string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+[mdn-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array

@@ -10,7 +10,14 @@
     "email": "sonercokmen@gmail.com",
     "url": "https://github.com/scokmen"
   },
-  "keywords": ["testing", "mock", "fake", "fixture", "format", "interpolation"],
+  "keywords": [
+    "testing",
+    "mock",
+    "fake",
+    "fixture",
+    "format",
+    "interpolation"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
@@ -25,6 +32,7 @@
     "lint": "concurrently 'npm run lint:tests' 'npm run lint:packages'",
     "lint:tests": "eslint 'packages/**/**.spec.ts' -c '.eslintrc.spec.js'",
     "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'",
+    "prerelease": "npm run bootstrap && npm run clean && npm run build",
     "prepare": "husky install"
   },
   "devDependencies": {
