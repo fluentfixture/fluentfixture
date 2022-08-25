@@ -1,4 +1,5 @@
 import { ICstVisitor, ILexingResult, Lexer } from 'chevrotain';
+import { TypeUtils } from '@fluentfixture/shared';
 import { FormatterLexer } from './lexer';
 import { FormatterParser } from './parser';
 import { createFormatterVisitor } from './visitor';
@@ -21,15 +22,7 @@ export class Engine {
   }
 
   public parse(expression: string): SyntaxDefinition {
-    const result = this.tokenize(expression);
-    this.parser.reset();
-    this.parser.input = result.tokens;
-    const cst = this.parser.expression();
-    if (!cst || this.parser.errors.length > 0) {
-      throw new Error(`Parsing error: ${this.parser.errors[0].message}`);
-    }
-
-    return this.visitor.visit(cst) as SyntaxDefinition;
+    return TypeUtils.isNonBlankString(expression) ? this.parseExpression(expression) : this.parseEmptyExpression();
   }
 
   private tokenize(expression: string): ILexingResult {
@@ -38,5 +31,22 @@ export class Engine {
       throw new Error(`Parsing error: ${lexingResult.errors[0].message}`);
     }
     return lexingResult;
+  }
+
+  private parseEmptyExpression(): SyntaxDefinition {
+    return {
+      pipes: [],
+    };
+  }
+
+  private parseExpression(expression: string): SyntaxDefinition {
+    const result = this.tokenize(expression);
+    this.parser.reset();
+    this.parser.input = result.tokens;
+    const cst = this.parser.expression();
+    if (!cst || this.parser.errors.length > 0) {
+      throw new Error(`Parsing error: ${this.parser.errors[0].message}`);
+    }
+    return this.visitor.visit(cst) as SyntaxDefinition;
   }
 }

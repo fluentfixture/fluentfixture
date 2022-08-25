@@ -33,8 +33,8 @@ Formatting syntax consist of two parts:`"${path:pipe-1|pipe-n}"`
 |---------------------------------|-----------|------------------------|
 | `${}`                           | obj       |                        |
 | `${key}`                        | obj.key   |                        |
-| `${key:trim()&#124;padLeft(5)}` | obj.key   | `trim()`, `padLeft(5)` |
-| `${:trim()&#124;split(",")}`    | obj       | `trim()`, `split(",")` |
+| `${key:trim()\|padLeft(5)}`     | obj.key   | `trim()`, `padLeft(5)` |
+| `${:trim()\|split(",")}`        | obj       | `trim()`, `split(",")` |
 
 ### Simple Formatting
 
@@ -96,19 +96,19 @@ formatter.format('NEXT AMOUNT=${balance.amount|inc(10)}', source);
 
 ### Default Transformations
 
-| Name            | Type   | Docs                       | Name             | Type     | Docs                       |
-|-----------------|--------|----------------------------|------------------|----------|----------------------------|
-| `lowerCase()`   | string | [mdn][mdn-string]          | `constantCase()` | string   | [change-case][change-case] |
-| `upperCase()`   | string | [mdn][mdn-string]          | `dotCase()`      | string   | [change-case][change-case] |
-| `trim()`        | string | [mdn][mdn-string]          | `headerCase()`   | string   | [change-case][change-case] |
-| `trimStart()`   | string | [mdn][mdn-string]          | `paramCase()`    | string   | [change-case][change-case] |
-| `trimEnd()`     | string | [mdn][mdn-string]          | `pascalCase()`   | string   | [change-case][change-case] |
-| `padStart()`    | string | [mdn][mdn-string]          | `pathCase()`     | string   | [change-case][change-case] |
-| `padEnd()`      | string | [mdn][mdn-string]          | `snakeCase()`    | string   | [change-case][change-case] |
-| `split()`       | string | [mdn][mdn-string]          | `capitalCase()`  | string   | [change-case][change-case] |
-| `camelCase()`   | string | [change-case][change-case] | `date(FORMAT)`   | date     | [format][day-js]           |
-| `default(VAL)`  | any    | Returns the default value  | `reverse()`      | array    | [mdn][mdn-array]           |
-| `join()`        | array  | [mdn][mdn-array]           | `sort()`         | array    | [mdn][mdn-array]           |
+| Name                  | Type   | Docs                       | Name             | Type   | Docs                       |
+|-----------------------|--------|----------------------------|------------------|--------|----------------------------|
+| `lowerCase()`         | String | [mdn][mdn-string]          | `constantCase()` | String | [change-case][change-case] |
+| `upperCase()`         | String | [mdn][mdn-string]          | `dotCase()`      | String | [change-case][change-case] |
+| `trim()`              | String | [mdn][mdn-string]          | `headerCase()`   | String | [change-case][change-case] |
+| `trimStart()`         | String | [mdn][mdn-string]          | `paramCase()`    | String | [change-case][change-case] |
+| `trimEnd()`           | String | [mdn][mdn-string]          | `pascalCase()`   | String | [change-case][change-case] |
+| `padStart(LEN, CH)`   | String | [mdn][mdn-string]          | `pathCase()`     | String | [change-case][change-case] |
+| `padEnd(LEN, CH)`     | String | [mdn][mdn-string]          | `snakeCase()`    | String | [change-case][change-case] |
+| `split(CH)`           | String | [mdn][mdn-string]          | `capitalCase()`  | String | [change-case][change-case] |
+| `camelCase()`         | String | [change-case][change-case] | `date(FORMAT)`   | Date   | [format][day-js]           |
+| `default(VAL)`        | *      | Returns the default value  | `reverse()`      | Array  | [mdn][mdn-array]           |
+| `join(CH)`            | Array  | [mdn][mdn-array]           | `sort()`         | Array  | [mdn][mdn-array]           |
 
 ### Options
 

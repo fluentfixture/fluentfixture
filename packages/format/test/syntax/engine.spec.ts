@@ -7,9 +7,9 @@ describe('Engine', () => {
   describe('.parse()', () => {
 
     const validCases = [
-      ['path', {
-        path: 'path', pipes: [],
-      }],
+      ['', { pipes: [] }],
+      ['  ', { pipes: [] }],
+      ['path', { path: 'path', pipes: [] }],
       ['user.detail.balances.0.currency', {
         path: 'user.detail.balances.0.currency',
         pipes: [],
