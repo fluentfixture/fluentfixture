@@ -1,7 +1,7 @@
 {
-  "name": "integration-format",
-  "description": "@fluentfixture integration project [format]",
-  "version": "0.0.0-rc.4",
+  "name": "format-sample",
+  "description": "@fluentfixture/format samples",
+  "version": "0.0.0-rc.5",
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -12,6 +12,14 @@
     "email": "sonercokmen@gmail.com",
     "url": "https://github.com/scokmen"
   },
+  "keywords": [
+    "testing",
+    "mock",
+    "fake",
+    "fixture",
+    "format",
+    "interpolation"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
@@ -23,6 +31,6 @@
     "start": "node ./lib/index.js"
   },
   "dependencies": {
-    "@fluentfixture/format": "^0.0.0-rc.4"
+    "@fluentfixture/format": "^0.0.0-rc.5"
   }
 }

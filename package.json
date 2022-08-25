@@ -1,7 +1,7 @@
 {
   "name": "fluentfixture",
   "description": "A flexible tool for generating customizable mock data with fluent interface.",
-  "version": "0.0.0-rc.2",
+  "version": "0.0.0-rc.5",
   "license": "MIT",
   "homepage": "https://github.com/fluentfixture/fluentfixture",
   "bugs": "https://github.com/fluentfixture/fluentfixture/issues",

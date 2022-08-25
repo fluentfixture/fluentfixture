@@ -1,5 +1,3 @@
-import './globals/format';
-import './globals/compile';
-import './pipes';
-import './serializers';
+import './format';
+import './compile';
 import './error-handling';
