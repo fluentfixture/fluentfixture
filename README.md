@@ -11,7 +11,7 @@
 
 ## Introduction
 
-The FluentFixture is a flexible tool for generating customizable mock data with a fluent interface.
+The [@fluentfixture][fluentfixture] is a flexible tool for generating customizable mock data with a fluent interface.
 
 ## Philosophy
 
@@ -23,8 +23,26 @@ In software development, generating mock data is a crucial necessity. In most ca
 But when it comes to generating conditional and complex mock data, things get a little more challenging. There are many dummy / mock / fixture data generators in the javascript ecosystem, 
 but most have an unclean interface and limited capabilities. 
 
-The FluentFixture aims to provide a fluent interface and an extensible architecture. 
+The [@fluentfixture][fluentfixture] aims to provide a fluent interface and an extensible architecture. 
 For this reason, the core of the package focuses on programmability, fluent interface, and extensibility.
 
-> The **FluentFixture** does not provide predefined data like FakerJS for now. However, realistic data features will plan after the stable version of the core package, no-code support, and CLI.
+> The [@fluentfixture][fluentfixture] does not provide predefined data like FakerJS for now. However, realistic data features will plan after the stable version of the core package, no-code support, and CLI.
 
+## Packages
+
+| Package                                       | Description                | Status                                                                                                                   |
+|-----------------------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| [@fluentfixture/core][fluentfixture-core]     | Core modules and packages  | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fcore.svg)](https://badge.fury.io/js/@fluentfixture%2Fcore)     |
+| [@fluentfixture/format][fluentfixture-format] | String format library      | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat) |
+
+## Follow Us!
+
+- Project [@fluentfixture](https://github.com/fluentfixture)
+
+## License
+
+@fluentfixture is [MIT](https://github.com/fluentfixture/fluentfixture/blob/main/LICENSE) licensed.
+
+[fluentfixture]: https://github.com/fluentfixture
+[fluentfixture-core]: https://github.com/fluentfixture/fluentfixture/tree/main/packages/core
+[fluentfixture-format]: https://github.com/fluentfixture/fluentfixture/tree/main/packages/format

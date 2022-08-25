@@ -1,9 +1,10 @@
-import { Stream, ArrayStream } from '../../src/streams/stream-loader';
+import { Stream, ArrayStream, StringStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { Picker } from '../../src/factories/decorators/picker';
 import { Sampler } from '../../src/factories/decorators/sampler';
 import { Shuffler } from '../../src/factories/decorators/shuffler';
 import { assertAndGetDecoratedArrayOperator } from '../assertions/array-stream';
+import { Functional } from '../../src/factories/decorators/functional';
 
 describe('ArrayStream', () => {
 
@@ -19,6 +20,27 @@ describe('ArrayStream', () => {
       const picker = result.getFactory() as Picker;
       expect(picker).toBeInstanceOf(Picker);
       expect(picker.getFactory()).toBe(stream);
+    });
+  });
+
+  describe('.join()', () => {
+
+    it('should create a string stream with join decorator that wrap itself', () => {
+      const array = [1, 2, 3];
+      const separator = '+';
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.join(separator);
+
+      expect(result).toBeInstanceOf(StringStream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const joinFn = functional.getFunction();
+
+      expect(joinFn(array)).toBe('1+2+3');
     });
   });
 

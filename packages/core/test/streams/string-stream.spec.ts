@@ -2,7 +2,10 @@ import { spy, verify, when } from 'ts-mockito';
 import { StringUtils } from '@fluentfixture/shared';
 import { StringStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
-import { assertAndGetDecoratedStringOperator } from '../assertions/string-stream';
+import {
+  assertAndGetDecoratedStringOperator,
+  assertAndGetDecoratedStringOperatorFromArray,
+} from '../assertions/string-stream';
 
 describe('StringStream', () => {
 
@@ -115,6 +118,25 @@ describe('StringStream', () => {
       expect(operator(str)).toBe(output);
 
       verify(spyStringUtils.lowerCase(str)).once();
+    });
+  });
+
+  describe('.split()', () => {
+
+    it('should create an array stream with function decorator (split) that wraps itself', () => {
+      const str = 'str1,str2';
+      const output = ['str1', 'str2'];
+      const separator = ',';
+      const stream = new StringStream(new ValueAdapter(str));
+      const spyStringUtils = spy(StringUtils);
+
+      when(spyStringUtils.split(str, separator, null)).thenReturn(output);
+
+      const operator = assertAndGetDecoratedStringOperatorFromArray(stream, stream.split(separator, null));
+
+      expect(operator(str)).toStrictEqual(output);
+
+      verify(spyStringUtils.split(str, separator, null)).once();
     });
   });
 

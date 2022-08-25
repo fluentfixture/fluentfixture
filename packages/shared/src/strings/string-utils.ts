@@ -40,6 +40,10 @@ export class StringUtils {
     return str.padEnd(length, fill);
   }
 
+  public static split(str: string, separator: string | RegExp, limit?: number): string[] {
+    return str.split(separator, limit);
+  }
+
   public static pathCase(str: string): string {
     return pathCase(str);
   }

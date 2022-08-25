@@ -9,7 +9,7 @@ import { Factory } from '../factories/factory';
 import { Picker } from '../factories/decorators/picker';
 import { Sampler } from '../factories/decorators/sampler';
 import { Shuffler } from '../factories/decorators/shuffler';
-import { Stream } from './stream-loader';
+import { Stream, StringStream } from './stream-loader';
 
 export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
 
@@ -27,6 +27,10 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
 
   public pick(): Stream<T> {
     return Stream.from(new Picker(this));
+  }
+
+  public join(separator?: string): StringStream {
+    return new StringStream(new Functional(this, (arr) => arr.join(separator)));
   }
 
   public sample(size: number = DEFAULT_SAMPLE_COUNT): ArrayStream<T> {

@@ -2,7 +2,8 @@ import { StringUtils } from '@fluentfixture/shared';
 import { StringFactory } from '../factories/string-factory';
 import { ValueAdapter } from '../factories/adapters/value-adapter';
 import { Factory } from '../factories/factory';
-import { Stream } from './stream-loader';
+import { Functional } from '../factories/decorators/functional';
+import { ArrayStream, Stream } from './stream-loader';
 
 export class StringStream extends Stream<string> {
 
@@ -36,6 +37,10 @@ export class StringStream extends Stream<string> {
 
   public padEnd(length: number, str?: string): StringStream {
     return this.apply((i) => StringUtils.padEnd(i, length, str));
+  }
+
+  public split(separator: string | RegExp, limit?: number): ArrayStream<string> {
+    return new ArrayStream<string>(new Functional(this, (i) => StringUtils.split(i, separator, limit)));
   }
 
   public lowerCase(): StringStream {

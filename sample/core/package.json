@@ -1,6 +1,6 @@
 {
-  "name": "integration-core",
-  "description": "@fluentfixture integration project [core]",
+  "name": "core-sample",
+  "description": "@fluentfixture/core samples",
   "version": "0.0.0-rc.3",
   "license": "MIT",
   "main": "lib/index.js",
@@ -12,6 +12,14 @@
     "email": "sonercokmen@gmail.com",
     "url": "https://github.com/scokmen"
   },
+  "keywords": [
+    "testing",
+    "mock",
+    "fake",
+    "fixture",
+    "format",
+    "interpolation"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/fluentfixture/fluentfixture"
@@ -23,6 +31,6 @@
     "start": "node ./lib/index.js"
   },
   "dependencies": {
-    "@fluentfixture/core": "^0.0.0-rc.3"
+    "@fluentfixture/core": "^0.0.0-rc.5"
   }
 }
