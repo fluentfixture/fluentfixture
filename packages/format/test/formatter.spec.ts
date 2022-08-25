@@ -50,19 +50,26 @@ describe('Formatter', () => {
       detail: {
         name: 'John',
         surname: 'Doe',
+        nickname: 'john.doe'
       },
-      types: ['user', '  elite  '],
+      types: ['user', 'elite'],
     };
 
     const cases = [
       ['User=(${detail.name:lowerCase()} ${detail.surname:upperCase()})',
         'User=(john DOE)'],
-      ['ID=<${id}=${types.1:trim()}>',
-        'ID=<123=elite>'],
+      ['ID=<${id}=${types.1:upperCase()}>',
+        'ID=<123=ELITE>'],
       ['${detail.name:lowerCase()}.${detail.surname:lowerCase()}@example.com',
         'john.doe@example.com'],
       ['${detail.surname:upperCase()|padStart(7, "#")|padEnd(12, "#")}',
         '####DOE#####'],
+      ['TYPES=${types:reverse()|join("-")|upperCase()}',
+        'TYPES=ELITE-USER'],
+      ['PARTS=${detail.nickname:split(".")|sort()|join("-")}',
+        'PARTS=doe-john'],
+      ['User=(${detail.name:lowerCase()} ${detail.surname:upperCase()}), Age=${detail.age:default("N/A")}',
+        'User=(john DOE), Age=N/A'],
     ];
 
     describe('.format()', () => {
