@@ -58,10 +58,10 @@ const source = {
   memberships: ['regular user', 'pro user']
 };
 
-format('${name|capitalCase()}.${surname|upperCase()} > MEMBERSHIP=${memberships.0|dotCase()}', source);
+format('${name:capitalCase()}.${surname:upperCase()} > MEMBERSHIP=${memberships.0:dotCase()}', source);
 // returns "John.DOE > MEMBERSHIP=regular.user"
 
-const template = compile('${name|capitalCase()}.${surname|upperCase()} > MEMBERSHIP=${memberships.0|dotCase()}');
+const template = compile('${name:capitalCase()}.${surname:upperCase()} > MEMBERSHIP=${memberships.0:dotCase()}');
 
 template(source);
 // returns "John.DOE > MEMBERSHIP=regular.user"
@@ -88,10 +88,10 @@ const pipes = Pipes.withDefaults()
 
 const formatter = Formatter.create(pipes);
 
-formatter.format('BALANCE=${balance|amount()}', source);
+formatter.format('BALANCE=${balance:amount()}', source);
 // returns "BALANCE=12 TRY"
 
-formatter.format('NEXT AMOUNT=${balance.amount|inc(10)}', source);
+formatter.format('NEXT AMOUNT=${balance.amount:inc(10)}', source);
 // returns "NEXT AMOUNT="22
 ```
 
