@@ -33,6 +33,8 @@
     "lint:tests": "eslint 'packages/**/**.spec.ts' -c '.eslintrc.spec.js'",
     "lint:packages": "eslint 'packages/**/**.ts' --ignore-pattern 'packages/**/*.spec.ts'",
     "prerelease": "npm run bootstrap && npm run clean && npm run build",
+    "publish": "npm run prerelease && ./node_modules/.bin/lerna publish -m \"chore(@fluentfixture): [%s] publish release\"",
+    "publish:rc": "npm run prerelease && ./node_modules/.bin/lerna publish --npm-tag=rc -m \"chore(@fluentfixture): [%s] publish release candidate\"",
     "prepare": "husky install"
   },
   "devDependencies": {
