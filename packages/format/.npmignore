@@ -3,4 +3,5 @@ package-lock.json
 tslint.json
 tsconfig.json
 test/
+lib/test
 README.md

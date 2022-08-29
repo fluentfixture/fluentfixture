@@ -31,6 +31,6 @@
     "start": "node ./lib/index.js"
   },
   "dependencies": {
-    "@fluentfixture/format": "^0.0.0-rc.5"
+    "@fluentfixture/format": "^0.0.0-rc.7"
   }
 }
