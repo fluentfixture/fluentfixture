@@ -1,3 +1,6 @@
 [submodule "documentation"]
 	path = documentation
 	url = https://github.com/fluentfixture/documentation.git
+[submodule "samples"]
+	path = samples
+	url = https://github.com/fluentfixture/sandbox.git
