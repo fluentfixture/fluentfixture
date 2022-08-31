@@ -20,19 +20,19 @@ console.log(
 console.log(
   format('${surname:upperCase()}, ${name:capitalCase()} <${balance.amount} ${balance.currency}>', source),
 );
-// "DOE, John <120 USD>"
+// DOE, John <120 USD>
 
 console.log(
   format('${surname:upperCase()}, ${name:capitalCase()} BIRTH_DATE=${birthdate:date("MM-DD-YYYY")}', source),
 );
-// "DOE, John BIRTH_DATE=04-01-2021"
+// DOE, John BIRTH_DATE=04-01-2021
 
 console.log(
   format('${name}.${surname} > MEMBERSHIP=${memberships.0:dotCase()|upperCase()}', source),
 );
-// "john.doe > MEMBERSHIP=REGULAR.USER"
+// john.doe > MEMBERSHIP=REGULAR.USER
 
 console.log(
   format('NICKNAME=${name:padStart(7, "#")|padEnd(10,"#")}', source),
 );
-// "NICKNAME=###john####"
+// NICKNAME=###john####

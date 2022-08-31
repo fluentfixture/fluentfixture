@@ -9,7 +9,7 @@ console.log(
     colors: ['red', 'black']
   })
 );
-// "John, 32 >> red+black"
+// John, 32 >> red+black
 
 console.log(
   template.format({
@@ -17,7 +17,7 @@ console.log(
     surname: 'doe'
   })
 );
-// "John, N/A >> "
+// John, N/A >>
 
 console.log(
   template.format({
@@ -27,4 +27,4 @@ console.log(
     colors: ['blue']
   })
 );
-// "John, 11 >> blue"
+// John, 11 >> blue
