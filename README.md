@@ -35,6 +35,10 @@ For this reason, the core of the package focuses on programmability, fluent inte
 | [@fluentfixture/core][fluentfixture-core]     | Core modules and packages  | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fcore.svg)](https://badge.fury.io/js/@fluentfixture%2Fcore)     |
 | [@fluentfixture/format][fluentfixture-format] | String format library      | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat) |
 
+## Documentation
+
+To check out the guide, visit [https://scokmen.gitbook.io/fluent-fixture/](https://scokmen.gitbook.io/fluent-fixture/)
+
 ## Follow Us!
 
 - Project [@fluentfixture](https://github.com/fluentfixture)

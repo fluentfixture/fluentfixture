@@ -2,7 +2,7 @@
   <a href="https://github.com/fluentfixture" target="blank"><img src="https://i.imgur.com/qLGGhTh.jpg" width="120" alt="Fluent Fixture Logo" /></a>
 </p>
 
-<p align="center">Shared utils of <a href="https://github.com/fluentfixture">@fluentfixture</a> project. Provides common string, date, and type utilities.</p>
+<p align="center">Shared utils of the <a href="https://github.com/fluentfixture">@fluentfixture</a> project. Provides common string, date, and type utilities.</p>
 
 [![CircleCI](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main.svg?style=svg)](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main)
 [![npm version](https://badge.fury.io/js/@fluentfixture%2Fshared.svg)](https://badge.fury.io/js/@fluentfixture%2Fshared)
@@ -13,10 +13,14 @@
 
 ## @fluentfixture/shared
 
-Shared utils of [@fluentfixture](https://github.com/fluentfixture) project. Provides common string, date, and type utilities.
+Shared utils of the [@fluentfixture](https://github.com/fluentfixture) project. Provides common string, date, and type utilities.
 
 > **WARNING**: This project provides shared utils for [@fluentfixture](https://github.comfluentfixture/) monorepo.
 > Therefore, this project can be terminated when deemed necessary. Please do not develop applications dependent on this project.
+
+## Documentation
+
+To check out the guide, visit [https://scokmen.gitbook.io/fluent-fixture/](https://scokmen.gitbook.io/fluent-fixture/)
 
 ## Follow Us!
 

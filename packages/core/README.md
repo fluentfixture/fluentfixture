@@ -11,16 +11,18 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge)](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@fluentfixture/core)](https://bundlephobia.com/package/@fluentfixture/core)
 
-## @fluentfixture/format
+## @fluentfixture/core
 
-A flexible tool for generating customizable mock data with a fluent interface that is a part of [@fluentfixture](https://github.com/fluentfixture) project. 
+A flexible tool for generating customizable mock data with a fluent interface that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. 
 Provides core modules and components for generating mock data. Sample codes can be found in the [samples](https://github.com/fluentfixture/fluentfixture/tree/main/sample/core) folder.
 
 ```bash
 > npm install @fluentfixture/core
 ```
 
-## Usage
+## Documentation
+
+To check out the guide, visit [https://scokmen.gitbook.io/fluent-fixture/](https://scokmen.gitbook.io/fluent-fixture/)
 
 ## Follow Us!
 
