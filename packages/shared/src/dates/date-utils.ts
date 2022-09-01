@@ -1,5 +1,5 @@
 import * as dayjs from 'dayjs';
-import { UnitType } from 'dayjs';
+import { ManipulateType, UnitType } from 'dayjs';
 
 export class DateUtils {
 
@@ -143,11 +143,11 @@ export class DateUtils {
     return DateUtils.getTimeUnit(date, 'y');
   }
 
-  private static addTimeUnit(date: Date, unit: UnitType, value: number): Date {
+  private static addTimeUnit(date: Date, unit: ManipulateType, value: number): Date {
     return dayjs(date).add(value, unit).toDate();
   }
 
-  private static subtractTimeUnit(date: Date, unit: UnitType, value: number): Date {
+  private static subtractTimeUnit(date: Date, unit: ManipulateType, value: number): Date {
     return dayjs(date).subtract(value, unit).toDate();
   }
 
