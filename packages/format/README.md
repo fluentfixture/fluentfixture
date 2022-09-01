@@ -14,10 +14,10 @@
 ## @fluentfixture/format
 
 A flexible string format library that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. Provides
-formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in the [sandbox](https://github.com/fluentfixture/sandbox) project.
+formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in the [sample](https://github.com/fluentfixture/fluentfixture/tree/main/sample/01-format) folder.
 
 ```bash
-> npm install @fluentfixture/format
+npm install @fluentfixture/format
 ```
 
 ## Documentation
@@ -31,8 +31,3 @@ To check out the guide, visit [https://docs.fluentfixture.com/](https://docs.flu
 ## License
 
 @fluentfixture is [MIT](https://github.com/fluentfixture/fluentfixture/blob/main/LICENSE) licensed.
-
-[change-case]: https://www.npmjs.com/package/change-case
-[day-js]: https://day.js.org/docs/en/display/format
-[mdn-string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
-[mdn-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array

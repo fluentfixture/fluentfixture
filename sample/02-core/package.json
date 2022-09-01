@@ -1,0 +1,30 @@
+{
+  "name": "fluentfixture-core-samples",
+  "description": "@fluentfixture/core samples with codesandbox demonstrations.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.ts",
+  "homepage": "https://github.com/fluentfixture/sandbox",
+  "bugs": "https://github.com/fluentfixture/sandbox/issues",
+  "keywords": [
+    "testing",
+    "mock",
+    "fake",
+    "fixture",
+    "format",
+    "interpolation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluentfixture/sandbox"
+  },
+  "scripts": {
+    "start": "npx ts-node index.ts"
+  },
+  "dependencies": {
+    "@fluentfixture/core": "0.0.0-rc.9"
+  },
+  "devDependencies": {
+    "typescript": "4.8.2"
+  }
+}
