@@ -23,7 +23,7 @@ the [samples](https://github.com/fluentfixture/fluentfixture/tree/main/sample/fo
 
 ## Documentation
 
-To check out the guide, visit [https://scokmen.gitbook.io/fluent-fixture/](https://scokmen.gitbook.io/fluent-fixture/)
+To check out the guide, visit [https://docs.fluentfixture.com/](https://docs.fluentfixture.com/)
 
 ## Follow Us!
 

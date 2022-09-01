@@ -20,7 +20,7 @@ Shared utils of the [@fluentfixture](https://github.com/fluentfixture) project. 
 
 ## Documentation
 
-To check out the guide, visit [https://scokmen.gitbook.io/fluent-fixture/](https://scokmen.gitbook.io/fluent-fixture/)
+To check out the guide, visit [https://docs.fluentfixture.com/](https://docs.fluentfixture.com/)
 
 ## Follow Us!
 
