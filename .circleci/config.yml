@@ -77,6 +77,11 @@ jobs:
       - image: circleci/node:16
     <<: *unit-tests-template
 
+  test_node_18:
+    docker:
+      - image: circleci/node:18
+    <<: *unit-tests-template
+
   coverage:
     docker:
       - image: circleci/node:14
@@ -159,8 +164,15 @@ workflows:
             - security
             - lint
             - depcruise
+      - test_node_18:
+          requires:
+            - build
+            - security
+            - lint
+            - depcruise
       - coverage:
           requires:
             - test_node_12
             - test_node_14
             - test_node_16
+            - test_node_18
