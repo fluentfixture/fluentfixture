@@ -19,42 +19,33 @@ describe('string', () => {
       expect(valueAdapter).toBeInstanceOf(ValueAdapter);
       expect(valueAdapter.getValue()).toBe(str);
     });
-
-    it('should use default length when length is not provided', () => {
-      const result = str();
-
-      const stringFactory = result.getFactory() as StringFactory;
-
-      expect(result).toBeInstanceOf(StringStream);
-      expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
-    });
   });
 
   describe('str()', () => {
 
     it('should create a string stream with alphanumeric charset with given length', () => {
       const length = 5;
+      const charset = 'charset';
 
-      const result = str(length);
+      const result = str(charset, length);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getCharset()).toBe(charset);
       expect(stringFactory.getLength()).toBe(length);
     });
 
     it('should use default length when length is not provided', () => {
-      const result = str();
+      const charset = 'charset';
+      const result = str(charset);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getCharset()).toBe(charset);
       expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
     });
   });
