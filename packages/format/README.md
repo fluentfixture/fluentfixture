@@ -14,11 +14,15 @@
 ## @fluentfixture/format
 
 A flexible string format library that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. Provides
-formatting and compiling functionalities with extensible transformation capabilities. Sample codes can be found in the [sample](https://github.com/fluentfixture/fluentfixture/tree/main/sample/01-format) folder.
+formatting and compiling functionalities with extensible transformation capabilities.
 
 ```bash
-npm install @fluentfixture/format
+$ npm install @fluentfixture/format
 ```
+
+## Sample Code & Live Demo
+
+Try this package on [codesandbox](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format), contributions are welcome :)
 
 ## Documentation
 

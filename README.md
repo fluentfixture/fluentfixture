@@ -30,10 +30,10 @@ For this reason, the core of the package focuses on programmability, fluent inte
 
 ## Packages
 
-| Package                                       | Description                | Status                                                                                                                   | Sandbox                                                                                           |
-|-----------------------------------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| [@fluentfixture/core][fluentfixture-core]     | Core modules and packages  | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fcore.svg)](https://badge.fury.io/js/@fluentfixture%2Fcore)     | [Sandbox](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/02-core)   |
-| [@fluentfixture/format][fluentfixture-format] | String format library      | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat) | [Sandbox](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format) |
+| Package                                       | Version                                                                                                                   | Live Demo                                                                                       |
+|-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| [@fluentfixture/core][fluentfixture-core]     | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fcore.svg)](https://badge.fury.io/js/@fluentfixture%2Fcore)      | [Link](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/02-core)    |
+| [@fluentfixture/format][fluentfixture-format] | [![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat)  | [Link](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format)  |
 
 ## Documentation
 

@@ -14,11 +14,15 @@
 ## @fluentfixture/core
 
 A flexible tool for generating customizable mock data with a fluent interface that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. 
-Provides core modules and components for generating mock data. Sample codes can be found in the [sample](https://github.com/fluentfixture/fluentfixture/tree/main/sample/02-core) folder.
+Provides core modules and components for generating mock data.
 
 ```bash
-npm install @fluentfixture/core
+$ npm install @fluentfixture/core
 ```
+
+## Sample Code & Live Demo
+
+Try this package on [codesandbox](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/02-core), contributions are welcome :)
 
 ## Documentation
 
