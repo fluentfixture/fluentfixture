@@ -53,7 +53,7 @@ jobs:
   build:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.0
     steps:
       - checkout
       - *restore-cache
@@ -64,22 +64,27 @@ jobs:
 
   test_node_12:
     docker:
-      - image: circleci/node:12
+      - image: cimg/node:12.0
     <<: *unit-tests-template
 
   test_node_14:
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:14.0
     <<: *unit-tests-template
 
   test_node_16:
     docker:
-      - image: circleci/node:16
+      - image: cimg/node:16.0
+    <<: *unit-tests-template
+
+  test_node_18:
+    docker:
+      - image: cimg/node:18.0
     <<: *unit-tests-template
 
   coverage:
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.0
     steps:
       - checkout
       - *restore-cache
@@ -92,7 +97,7 @@ jobs:
   lint:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.0
     steps:
       - checkout
       - *restore-cache
@@ -103,7 +108,7 @@ jobs:
   depcruise:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.0
     steps:
       - checkout
       - *restore-cache
@@ -114,7 +119,7 @@ jobs:
   security:
     working_directory: ~/fluentfixture
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.0
     steps:
       - checkout
       - *restore-cache
@@ -159,8 +164,15 @@ workflows:
             - security
             - lint
             - depcruise
+      - test_node_18:
+          requires:
+            - build
+            - security
+            - lint
+            - depcruise
       - coverage:
           requires:
             - test_node_12
             - test_node_14
             - test_node_16
+            - test_node_18
