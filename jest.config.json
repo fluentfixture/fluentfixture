@@ -7,7 +7,7 @@
         "!./packages/**/lib/**"
     ],
     "transform": {
-        "^.+\\.tsx?$": "ts-jest"
+        "^.+\\.tsx?$": "@swc/jest"
     },
     "testRegex": "(/tests/.*|(\\.|/)spec)\\.ts$",
     "moduleFileExtensions": [
@@ -17,7 +17,7 @@
         "node"
     ],
     "globals": {
-        "ts-jest": {
+        "@swc/jest": {
             "tsconfig": "tsconfig.json"
         }
     },
