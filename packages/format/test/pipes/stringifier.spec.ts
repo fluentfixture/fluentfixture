@@ -13,7 +13,7 @@ describe('Stringifier', () => {
       ['', ''],
       [true, 'true'],
       [Symbol.for('symbol'), 'Symbol(symbol)'],
-      [() => true, '() => true'],
+      [() => true, '()=>true'],
       [[1,2], '1,2'],
       [{}, '[object Object]'],
       [/[A-Z]/g, '/[A-Z]/g'],
