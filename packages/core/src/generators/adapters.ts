@@ -10,6 +10,8 @@ export const val = <T = any>(value?: T): Stream<T> => Stream.fromValue(value);
 
 export const from = <T = any>(fn: ProducerFunction<T>): Stream<T> => Stream.fromResult(fn);
 
+export const list = <T = any>(array: ReadonlyArray<T>): ArrayStream<T> => ArrayStream.fromList(array);
+
 export const pick = <T = any>(array: ReadonlyArray<T>): Stream<T> => ArrayStream.fromList(array).pick();
 
 export const take = <T = any>(array: ReadonlyArray<T>, count: number = DEFAULT_SAMPLE_COUNT): ArrayStream<T> => ArrayStream.fromList(array).sample(count);

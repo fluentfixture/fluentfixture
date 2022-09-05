@@ -1,4 +1,4 @@
-import { val, nil, undef, from, pick, take, shuffle } from '../../src/generators/generators';
+import { val, nil, undef, from, pick, take, shuffle, list } from '../../src/generators/generators';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { FunctionAdapter } from '../../src/factories/adapters/function-adapter';
 import { ArrayStream, Stream } from '../../src/streams/stream-loader';
@@ -62,6 +62,21 @@ describe('adapters', () => {
       expect(result).toBeInstanceOf(Stream);
       expect(functionAdapter).toBeInstanceOf(FunctionAdapter);
       expect(functionAdapter.getFunction()).toBe(fn);
+    });
+  });
+
+  describe('list()', () => {
+
+    it('should create an array stream with given items', () => {
+      const arr = [1, 2, 3];
+
+      const result = list(arr);
+
+      const adapter = result.getFactory() as ValueAdapter;
+
+      expect(result).toBeInstanceOf(ArrayStream);
+      expect(adapter).toBeInstanceOf(ValueAdapter);
+      expect(adapter.getValue()).toBe(arr);
     });
   });
 
