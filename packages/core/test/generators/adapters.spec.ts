@@ -1,4 +1,4 @@
-import { val, nil, undef, from, pick, take, shuffle, list } from '../../src/generators/generators';
+import { val, nil, undef, from, pick, sample, shuffle, list } from '../../src/generators/generators';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { FunctionAdapter } from '../../src/factories/adapters/function-adapter';
 import { ArrayStream, Stream } from '../../src/streams/stream-loader';
@@ -99,13 +99,13 @@ describe('adapters', () => {
     });
   });
 
-  describe('take()', () => {
+  describe('sample()', () => {
 
     it('should create an array stream with sampler decorator and the given size', () => {
       const arr = [1, 2, 3];
       const size = 2;
 
-      const result = take(arr, size);
+      const result = sample(arr, size);
 
       const sampler = result.getFactory() as Sampler;
       const arrayStream = sampler.getFactory() as ArrayStream;
@@ -122,7 +122,7 @@ describe('adapters', () => {
     it('should use default sample size when size is not provided', () => {
       const arr = [1, 2, 3];
 
-      const result = take(arr);
+      const result = sample(arr);
 
       const sampler = result.getFactory() as Sampler;
       const arrayStream = sampler.getFactory() as ArrayStream;
