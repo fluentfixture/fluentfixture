@@ -22,7 +22,7 @@
     "start": "npx ts-node index.ts"
   },
   "dependencies": {
-    "@fluentfixture/core": "0.0.0-rc.10"
+    "@fluentfixture/core": "1.0.1"
   },
   "devDependencies": {
     "typescript": "4.8.2"
