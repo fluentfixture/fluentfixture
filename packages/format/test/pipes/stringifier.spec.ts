@@ -18,7 +18,7 @@ describe('Stringifier', () => {
       [{}, '[object Object]'],
       [/[A-Z]/g, '/[A-Z]/g'],
     ];
-    test.each(cases)('should convert input to string: %p', (input: unknown, output: string) => {
+    test.each(cases)('should convert input to string: %p', (input: any, output: string) => {
       const result = stringifier.handle(input);
 
       expect(result).toBe(output);

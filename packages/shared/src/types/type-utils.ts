@@ -44,7 +44,7 @@ export class TypeUtils {
     return Array.isArray(arr);
   }
 
-  public static isAssigned(val: unknown): boolean {
+  public static isAssigned<T>(val: T): val is NonNullable<T> {
     return !TypeUtils.isNull(val) && !TypeUtils.isUndefined(val);
   }
 

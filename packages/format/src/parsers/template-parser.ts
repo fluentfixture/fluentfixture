@@ -11,7 +11,7 @@ export class TemplateParser {
   }
 
   public parse(template: string): ReadonlyArray<Pipe<any, string>> {
-    const pipes = [];
+    const pipes: Array<Pipe> = [];
 
     if (!TypeUtils.isNonEmptyString(template)) {
       return pipes;
@@ -21,6 +21,9 @@ export class TemplateParser {
     const matches = template.matchAll(TemplateParser.InterpolationRegexp);
 
     for (const match of matches) {
+      if (!TypeUtils.isAssigned(match?.index)) {
+        continue;
+      }
       if (match.index > cursor) {
         pipes.push(this.builder.constant(template.slice(cursor, match.index)));
       }
@@ -28,7 +31,7 @@ export class TemplateParser {
       cursor = match.index + match[0].length;
     }
 
-    if (cursor < template.length ) {
+    if (cursor < template.length) {
       pipes.push(this.builder.constant(template.slice(cursor)));
     }
 

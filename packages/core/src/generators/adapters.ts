@@ -4,9 +4,9 @@ import { DEFAULT_SAMPLE_COUNT } from '../constants/limits';
 
 export const nil = (): Stream<null> => val(null);
 
-export const undef = (): Stream<undefined> => val();
+export const undef = (): Stream<undefined> => val(undefined);
 
-export const val = <T = any>(value?: T): Stream<T> => Stream.fromValue(value);
+export const val = <T = any>(value: T): Stream<T> => Stream.fromValue(value);
 
 export const from = <T = any>(fn: ProducerFunction<T>): Stream<T> => Stream.fromResult(fn);
 

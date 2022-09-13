@@ -130,13 +130,13 @@ describe('StringStream', () => {
       const stream = new StringStream(new ValueAdapter(str));
       const spyStringUtils = spy(StringUtils);
 
-      when(spyStringUtils.split(str, separator, null)).thenReturn(output);
+      when(spyStringUtils.split(str, separator, undefined)).thenReturn(output);
 
-      const operator = assertAndGetDecoratedStringOperatorFromArray(stream, stream.split(separator, null));
+      const operator = assertAndGetDecoratedStringOperatorFromArray(stream, stream.split(separator, undefined));
 
       expect(operator(str)).toStrictEqual(output);
 
-      verify(spyStringUtils.split(str, separator, null)).once();
+      verify(spyStringUtils.split(str, separator, undefined)).once();
     });
   });
 

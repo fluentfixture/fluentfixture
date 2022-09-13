@@ -23,10 +23,11 @@ export class Pipes {
   public resolve(name: string): PipeFunction {
     Pipes.assertPipeName(name);
     const pipeName = name.trim();
-    if (!this.pipes.has(pipeName)) {
+    const pipe = this.pipes.get(pipeName);
+    if (!TypeUtils.isAssigned(pipe)) {
       throw new Error(`Pipe with name "${pipeName}" could not be found!`);
     }
-    return this.pipes.get(pipeName);
+    return pipe;
   }
 
   public register(name: string, pipe: PipeFunction): Pipes {

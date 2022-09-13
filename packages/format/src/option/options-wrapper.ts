@@ -1,8 +1,9 @@
 import { TypeUtils } from '@fluentfixture/shared';
+import { NormalizedOptions } from './types/normalized-options';
 import { Options } from './types/options';
 
 export class OptionsWrapper {
-  private readonly options: Options;
+  private readonly options: NormalizedOptions;
 
   public constructor(options?: Options) {
     this.options = OptionsWrapper.normalizeOptions(options);
@@ -12,19 +13,13 @@ export class OptionsWrapper {
     return this.options.ignoreErrors;
   }
 
-  private static defaultOptions(): Options {
+  private static normalizeOptions(options?: Options): NormalizedOptions {
     return {
-      ignoreErrors: true
+      ignoreErrors: OptionsWrapper.normalizeBoolean(options?.ignoreErrors, true)
     };
   }
 
-  private static normalizeOptions(options?: Options): Options {
-    const normalizedOptions = options || OptionsWrapper.defaultOptions();
-    normalizedOptions.ignoreErrors = OptionsWrapper.normalizeBoolean(normalizedOptions.ignoreErrors, true);
-    return normalizedOptions;
-  }
-
-  private static normalizeBoolean(value: boolean, defaultValue: boolean): boolean {
+  private static normalizeBoolean(value: boolean | undefined, defaultValue: boolean): boolean {
     return TypeUtils.isBoolean(value) ? value : defaultValue;
   }
 }

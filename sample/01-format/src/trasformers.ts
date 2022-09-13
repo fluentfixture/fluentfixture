@@ -1,6 +1,6 @@
 import { Formatter, Pipes } from '@fluentfixture/format';
 
-const email = (value: any, domain: string = 'example.com'): string => `${value}@${domain}`;
+const email = (value: any, domain = 'example.com'): string => `${value}@${domain}`;
 
 const pipes = Pipes.withDefaults()
   .register('email', email);
