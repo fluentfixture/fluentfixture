@@ -1,17 +1,33 @@
 import { bool, falsy, truthy } from '@fluentfixture/core';
 
-console.log(
-  bool(0.2).single()
-);
+/**
+ * Create a boolean mostly true
+ */
 
-console.log(
-  bool(0.8).many(3)
-);
+const stream1 = bool(0.8);
 
-console.log(
-  truthy().array(3).single()
-);
+console.log(stream1.single());
 
-console.log(
-  falsy().single()
-);
+/**
+ * Create ten boolean mostly false
+ */
+
+const stream2 = bool(0.2);
+
+console.log(stream2.many(10));
+
+/**
+ * Create true
+ */
+
+const stream3 = truthy();
+
+console.log(stream3.single());
+
+/**
+ * Create false
+ */
+
+const stream4 = falsy();
+
+console.log(stream4.single());

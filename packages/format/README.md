@@ -4,33 +4,62 @@
 
 <p align="center">A flexible string format library that is a part of the <a href="https://github.com/fluentfixture">@fluentfixture</a> project.</p>
 
-[![CircleCI](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main.svg?style=svg)](https://circleci.com/gh/fluentfixture/fluentfixture/tree/main)
-[![npm version](https://badge.fury.io/js/@fluentfixture%2Fformat.svg)](https://badge.fury.io/js/@fluentfixture%2Fformat)
-[![Coverage Status](https://coveralls.io/repos/github/fluentfixture/fluentfixture/badge.svg?branch=main)](https://coveralls.io/github/fluentfixture/fluentfixture?branch=main)
-[![Known Vulnerabilities](https://snyk.io/test/github/fluentfixture/fluentfixture/badge.svg)](https://snyk.io/test/github/fluentfixture/fluentfixture)
-[![CodeFactor](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge)](https://www.codefactor.io/repository/github/fluentfixture/fluentfixture)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@fluentfixture/format)](https://bundlephobia.com/package/@fluentfixture/format)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@fluentfixture/format" target="_blank"><img src="https://img.shields.io/npm/v/@fluentfixture/format.svg" alt="NPM Version"/></a>
+  <a href="https://www.npmjs.com/package/@fluentfixture/format" target="_blank"><img src="https://img.shields.io/npm/l/@fluentfixture/format.svg" alt="Package License" /></a>
+  <a href="https://dl.circleci.com/status-badge/redirect/gh/fluentfixture/fluentfixture/tree/main" target="_blank"><img src="https://dl.circleci.com/status-badge/img/gh/fluentfixture/fluentfixture/tree/main.svg?style=svg" alt="CircleCI" /></a>
+  <a href="https://coveralls.io/github/fluentfixture/fluentfixture?branch=main" target="_blank"><img src="https://coveralls.io/repos/github/fluentfixture/fluentfixture/badge.svg?branch=main#9" alt="Coverage" /></a>
+  <a href="https://snyk.io/test/github/fluentfixture/fluentfixture" target="_blank"><img src="https://snyk.io/test/github/fluentfixture/fluentfixture/badge.svg" alt="Known Vulnerabilities"/></a>
+  <a href="https://www.codefactor.io/repository/github/fluentfixture/fluentfixture" target="_blank"><img src="https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge" alt="CodeFactor"/></a>
+  <a href="https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format" target="_blank"><img src="https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox" alt="Open in CodeSandbox"/></a>
+  <a href="https://docs.fluentfixture.com" target="_blank"><img src="https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook" alt="Open in CodeSandbox"/></a>
+</p>
 
-## @fluentfixture/format
+## Introduction
 
 A flexible string format library that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. Provides
 formatting and compiling functionalities with extensible transformation capabilities.
+
+### Installation
 
 ```bash
 $ npm install @fluentfixture/format
 ```
 
-## Sample Code & Live Demo
+### Usage
 
-Try this package on [codesandbox](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format), contributions are welcome :)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format)
+[![Open in GitHub](https://img.shields.io/badge/Open%20in-Github-green?style=flat-square&logo=github)](https://github.com/fluentfixture/fluentfixture/tree/main/sample/01-format)
+[![Open in GitBook](https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook)](https://docs.fluentfixture.com/packages/fluentfixture-format)
 
+```typescript
+import { format } from '@fluentfixture/format';
+
+const source = {
+  name: 'john',
+  surname: 'doe',
+  birthdate: new Date(1_617_258_460_000), // GMT: Thursday, 1 April 2021 06:27:40
+};
+
+// format() returns a formatted string immediately.
+console.log(
+  format('${surname:upperCase()}, ${name:capitalCase()} BIRTH_DATE=${birthdate:date("MM-DD-YYYY")}', source),
+);
+
+// compile() returns a pre-compiled template for reusing.
+const template = compile('${name:capitalCase()}, ${age:default("N/A")} >> ${colors:join("+")}');
+
+console.log(
+  template.format({
+    name: 'john',
+    age: 32,
+    colors: ['red', 'black']
+  })
+);
+```
 ## Documentation
 
 To check out the guide, visit [https://docs.fluentfixture.com/](https://docs.fluentfixture.com/)
-
-## Follow Us!
-
-- Project [@fluentfixture](https://github.com/fluentfixture)
 
 ## License
 

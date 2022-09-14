@@ -1,25 +1,33 @@
-import { alphabetic, alphanumeric, binary, hex, text } from '@fluentfixture/core';
+import { alphabetic, alphanumeric, binary, hex, octal, text } from '@fluentfixture/core';
 
-console.log(
-  alphabetic(10).upperCase().padStart(15, '#').single(),
-);
+/**
+ * Create an alphabetic string with 10 characters and pad from start
+ */
 
-console.log(
-  hex(6).single(),
-);
+const stream1 = alphabetic(10).upperCase().padStart(15, '#');
 
-console.log(
-  binary(8).many(4),
-);
+console.log(stream1.single());
 
-console.log(
-  text('Constant Test').dotCase().upperCase().single(),
-);
+/**
+ * Create an alphanumeric string with 10 characters.
+ */
 
-console.log(
-  text('Constant Test').split(',').map(i => i.toLowerCase()).join('+').single(),
-);
+const stream2 = alphanumeric(10).upperCase();
 
-console.log(
-  alphanumeric(3).single()
-);
+console.log(stream2.single());
+
+/**
+ * Create a http header name from text.
+ */
+
+const stream3 = text('content type').headerCase();
+
+console.log(stream3.single());
+
+/**
+ * Create hex, binary and octal strings with 10 items.
+ */
+
+console.log(hex(10).single());
+console.log(binary(10).single());
+console.log(octal(10).single());

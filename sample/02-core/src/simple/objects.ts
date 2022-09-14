@@ -1,27 +1,28 @@
-import { alphabetic, int, obj, pick } from '@fluentfixture/core';
+import { int, obj, pick } from '@fluentfixture/core';
 
-const balance = obj({
-  price: int(1, 100),
+/**
+ * Create a price object.
+ */
+
+const stream1 = obj({
+  amount: int(1, 100),
   currency: pick(['USD', 'EUR', 'GBP', 'TRY']),
 });
 
-console.log(
-  balance.single(),
-);
+console.log(stream1.single());
 
-const product = obj({
-  name: alphabetic(10).capitalCase(),
-  balance,
-});
+/**
+ * Create ten price and sort by amount.
+ */
 
-console.log(
-  product.array(3).sort((p1, p2) => p1.balance.price - p2.balance.price).single(),
-);
+const stream2 = stream1.array(10).sort((a, b) => a.amount - b.amount);
 
-const extendedProduct = product
-  .static('category', 'FASHION')
-  .dynamic('stock', int(1, 3));
+console.log(stream2.single());
 
-console.log(
-  extendedProduct.single(),
-);
+/**
+ * Add a label field to price by using the created fields.
+ */
+
+const stream3 = stream1.lazy('label', (p) => `[${p.amount} ${p.currency}]`);
+
+console.log(stream3.single());

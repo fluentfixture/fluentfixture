@@ -1,17 +1,21 @@
-import { date, now, tomorrow, yesterday } from '@fluentfixture/core';
+import { date, now } from '@fluentfixture/core';
 
-console.log(
-  date(new Date(), new Date()).single(),
-);
+const today = new Date();
+const tomorrow =  new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
 
-console.log(
-  now().addDays(2).many(3),
-);
+/**
+ * Create five dates between given dates each one's hours is equal to five.
+ */
 
-console.log(
-  tomorrow().addYears(1).single(),
-);
+const stream1 = date(today, tomorrow).setHours(5);
 
-console.log(
-  yesterday().subtractMilliseconds(100).optional().single(),
-);
+console.log(stream1.many(5));
+
+/**
+ * Create date of now but minutes and milliseconds is zero.
+ */
+
+const stream2 = now().setMinutes(0).setMilliseconds(0);
+
+console.log(stream2.single());
