@@ -1,5 +1,9 @@
 import * as randomstring from 'randomstring';
-import { MersenneTwister19937, integer, bool, date, real, picker, sample, shuffle} from 'random-js';
+import {
+  MersenneTwister19937, integer,
+  bool, date, real, picker, sample,
+  shuffle, uuid4, int32, uint32,
+} from 'random-js';
 
 export class Random {
   private static readonly engine = MersenneTwister19937.autoSeed();
@@ -32,6 +36,18 @@ export class Random {
 
   public static integer(min: number, max: number): number {
     return integer(min, max)(Random.engine);
+  }
+
+  public static int32(): number {
+    return int32(this.engine);
+  }
+
+  public static uint32(): number {
+    return uint32(this.engine);
+  }
+
+  public static uuid4(): string {
+    return uuid4(Random.engine);
   }
 
   public static string(charset: string, length: number): string {

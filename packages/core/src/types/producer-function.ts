@@ -1,1 +1,1 @@
-export type ProducerFunction<T = any> = () => T;
+export type ProducerFunction<T = any> = (...args: any[]) => T;

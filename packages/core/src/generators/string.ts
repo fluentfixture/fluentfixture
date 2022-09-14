@@ -1,5 +1,8 @@
 import { DEFAULT_STRING_LENGTH } from '../constants/limits';
 import { StringStream } from '../streams/stream-loader';
+import { Random } from '../engine/random';
+import { asString } from './converters';
+import { from } from './value';
 
 const generateStringStream = (charset: string, length: number): StringStream => StringStream.fromPatternAndLength(charset, length);
 
@@ -18,3 +21,5 @@ export const numeric = (length: number = DEFAULT_STRING_LENGTH): StringStream =>
 export const alphabetic = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphabetic', length);
 
 export const alphanumeric = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphanumeric', length);
+
+export const uuid4 = (): StringStream => asString(from(() => Random.uuid4()));
