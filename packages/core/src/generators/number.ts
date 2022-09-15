@@ -15,7 +15,7 @@ export const zero = (): NumberStream => NumberStream.constant(0);
 
 export const one = (): NumberStream => NumberStream.constant(1);
 
-export const byte = (): NumberStream => NumberStream.between(0, 255);
+export const byte = (): NumberStream => int(0, 255);
 
 export const int32 = (): NumberStream => asNumber(from(() => Random.int32()));
 
