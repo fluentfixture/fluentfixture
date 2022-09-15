@@ -22,4 +22,6 @@ export const alphabetic = (length: number = DEFAULT_STRING_LENGTH): StringStream
 
 export const alphanumeric = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphanumeric', length);
 
-export const uuid4 = (): StringStream => asString(from(() => Random.uuid4()));
+const UUID4 = asString(from(() => Random.uuid4()));
+
+export const uuid4 = (): StringStream => UUID4;

@@ -1,6 +1,6 @@
 import { val } from '../../src/generators/generators';
-import { NumberStream, StringStream } from '../../src/streams/stream-loader';
-import { asNumber, asString } from '../../src/generators/converters';
+import { DateStream, NumberStream, StringStream } from '../../src/streams/stream-loader';
+import { asDate, asNumber, asString } from '../../src/generators/converters';
 
 describe('converters', () => {
 
@@ -25,6 +25,18 @@ describe('converters', () => {
 
       expect(result).toBeInstanceOf(NumberStream);
       expect(result.getFactory()).toBe(num.getFactory());
+    });
+  });
+
+  describe('asDate()', () => {
+
+    it('should convert given date-based stream to date stream', () => {
+      const date = val(new Date());
+
+      const result = asDate(date);
+
+      expect(result).toBeInstanceOf(DateStream);
+      expect(result.getFactory()).toBe(date.getFactory());
     });
   });
 });

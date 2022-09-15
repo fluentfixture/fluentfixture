@@ -1,6 +1,6 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { uuid4, int32, uint32, byte } from '../../src/generators/generators';
-import { NumberStream, StringStream } from '../../src/streams/stream-loader';
+import { uuid4, int32, uint32, byte, now } from '../../src/generators/generators';
+import { DateStream, NumberStream, StringStream } from '../../src/streams/stream-loader';
 
 /**
  * This a simple integration test for the decorated generators with asString, asNumber etc...
@@ -22,5 +22,8 @@ describe('adapted generators', () => {
 
     expect(byte()).toBeInstanceOf(NumberStream);
     expect(TypeUtils.isInteger(byte().single())).toBe(true);
+
+    expect(now()).toBeInstanceOf(DateStream);
+    expect(TypeUtils.isDate(now().single())).toBe(true);
   });
 });

@@ -11,12 +11,14 @@ export const int = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_
 
 export const num = (val: number): NumberStream => NumberStream.constant(val);
 
-export const zero = (): NumberStream => NumberStream.constant(0);
+const ZERO = NumberStream.constant(0);
+const ONE = NumberStream.constant(1);
+const BYTE = new NumberStream(new IntegerFactory(0, 255));
+const INT_32 = asNumber(from(() => Random.int32()));
+const UINT_32 = asNumber(from(() => Random.uint32()));
 
-export const one = (): NumberStream => NumberStream.constant(1);
-
-export const byte = (): NumberStream => int(0, 255);
-
-export const int32 = (): NumberStream => asNumber(from(() => Random.int32()));
-
-export const uint32 = (): NumberStream => asNumber(from(() => Random.uint32()));
+export const zero = (): NumberStream => ZERO;
+export const one = (): NumberStream => ONE;
+export const byte = (): NumberStream => BYTE;
+export const int32 = (): NumberStream => INT_32;
+export const uint32 = (): NumberStream => UINT_32;

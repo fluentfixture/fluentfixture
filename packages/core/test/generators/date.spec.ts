@@ -1,6 +1,6 @@
 import { DateUtils } from '@fluentfixture/shared';
 import { spy, verify, when } from 'ts-mockito';
-import { date, now, yesterday, tomorrow } from '../../src/generators/generators';
+import { date, yesterday, tomorrow } from '../../src/generators/generators';
 import { DateStream} from '../../src/streams/stream-loader';
 import { DateFactory } from '../../src/factories/date-factory';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
@@ -59,25 +59,6 @@ describe('date', () => {
       expect(dateFactory.getMax()).toBe(max);
       verify(spyDateUtils.getToday()).once();
       verify(spyDateUtils.getTomorrow()).once();
-    });
-  });
-
-  describe('now()', () => {
-
-    it('should create a date stream with now', () => {
-      const date = new Date();
-      const spyDateUtils = spy(DateUtils);
-
-      when(spyDateUtils.now()).thenReturn(date);
-
-      const result = now();
-
-      const valueAdapter = result.getFactory() as ValueAdapter;
-
-      expect(result).toBeInstanceOf(DateStream);
-      expect(valueAdapter).toBeInstanceOf(ValueAdapter);
-      expect(valueAdapter.getValue()).toBe(date);
-      verify(spyDateUtils.now()).once();
     });
   });
 
