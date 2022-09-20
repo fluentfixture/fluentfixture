@@ -1,9 +1,8 @@
 import { DateUtils } from '@fluentfixture/shared';
 import { spy, verify, when } from 'ts-mockito';
-import { date, yesterday, tomorrow } from '../../src/generators/generators';
+import { date } from '../../src/generators/generators';
 import { DateStream} from '../../src/streams/stream-loader';
 import { DateFactory } from '../../src/factories/date-factory';
-import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 
 describe('date', () => {
 
@@ -58,44 +57,6 @@ describe('date', () => {
       expect(dateFactory.getMin()).toBe(min);
       expect(dateFactory.getMax()).toBe(max);
       verify(spyDateUtils.getToday()).once();
-      verify(spyDateUtils.getTomorrow()).once();
-    });
-  });
-
-  describe('yesterday()', () => {
-
-    it('should create a date stream with yesterday', () => {
-      const date = new Date();
-      const spyDateUtils = spy(DateUtils);
-
-      when(spyDateUtils.getYesterday()).thenReturn(date);
-
-      const result = yesterday();
-
-      const valueAdapter = result.getFactory() as ValueAdapter;
-
-      expect(result).toBeInstanceOf(DateStream);
-      expect(valueAdapter).toBeInstanceOf(ValueAdapter);
-      expect(valueAdapter.getValue()).toBe(date);
-      verify(spyDateUtils.getYesterday()).once();
-    });
-  });
-
-  describe('tomorrow()', () => {
-
-    it('should create a date stream with tomorrow', () => {
-      const date = new Date();
-      const spyDateUtils = spy(DateUtils);
-
-      when(spyDateUtils.getTomorrow()).thenReturn(date);
-
-      const result = tomorrow();
-
-      const valueAdapter = result.getFactory() as ValueAdapter;
-
-      expect(result).toBeInstanceOf(DateStream);
-      expect(valueAdapter).toBeInstanceOf(ValueAdapter);
-      expect(valueAdapter.getValue()).toBe(date);
       verify(spyDateUtils.getTomorrow()).once();
     });
   });

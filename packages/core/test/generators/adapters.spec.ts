@@ -1,5 +1,5 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { uuid4, int32, uint32, byte, now } from '../../src/generators/generators';
+import { uuid4, int32, uint32, byte, now, tomorrow, yesterday } from '../../src/generators/generators';
 import { DateStream, NumberStream, StringStream } from '../../src/streams/stream-loader';
 
 /**
@@ -25,5 +25,11 @@ describe('adapted generators', () => {
 
     expect(now()).toBeInstanceOf(DateStream);
     expect(TypeUtils.isDate(now().single())).toBe(true);
+
+    expect(tomorrow()).toBeInstanceOf(DateStream);
+    expect(TypeUtils.isDate(tomorrow().single())).toBe(true);
+
+    expect(yesterday()).toBeInstanceOf(DateStream);
+    expect(TypeUtils.isDate(yesterday().single())).toBe(true);
   });
 });

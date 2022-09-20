@@ -5,10 +5,10 @@ import { from } from './value';
 
 export const date = (min: Date = DateUtils.getToday(), max: Date = DateUtils.getTomorrow()) => DateStream.between(min, max);
 
-export const tomorrow = (): DateStream => DateStream.fromDate(DateUtils.getTomorrow());
-
-export const yesterday = (): DateStream => DateStream.fromDate(DateUtils.getYesterday());
-
-const NOW = asDate(from(() => DateUtils.now()))
+const NOW = asDate(from(() => DateUtils.now()));
+const TOMORROW = asDate(from(() => DateUtils.getTomorrow()));
+const YESTERDAY = asDate(from(() => DateUtils.getYesterday()));
 
 export const now = (): DateStream => NOW;
+export const tomorrow = (): DateStream => TOMORROW;
+export const yesterday = (): DateStream => YESTERDAY;
