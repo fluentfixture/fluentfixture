@@ -1,26 +1,45 @@
+import { TypeUtils } from '@fluentfixture/shared';
 import { DEFAULT_STRING_LENGTH } from '../constants/limits';
 import { StringStream } from '../streams/stream-loader';
 import { Random } from '../engine/random';
 import { asString } from './converters';
 import { from } from './value';
 
-const generateStringStream = (charset: string, length: number): StringStream => StringStream.fromPatternAndLength(charset, length);
+const getRange = (minLength: number, maxLength?: number): [number, number] => {
+  if (TypeUtils.isAssigned(maxLength)) {
+    return minLength <= maxLength ? [minLength, maxLength] : [maxLength, minLength]
+  }
+  return [minLength, minLength];
+};
 
-export const text = (str: string): StringStream => StringStream.fromText(str);
+const createStream = (charset: string, minLength: number, maxLength?: number): StringStream => {
+  const range = getRange(minLength, maxLength);
+  return StringStream.fromPatternAndLength(charset, range[0], range[1]);
+};
 
-export const str = (charset: string, length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream(charset, length);
+export const text = (str: string): StringStream =>
+  StringStream.fromText(str);
 
-export const hex = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('hex', length);
+export const str = (charset: string, minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream(charset, minLength, maxLength);
 
-export const binary = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('binary', length);
+export const hex = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('hex', minLength, maxLength);
 
-export const octal = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('octal', length);
+export const binary = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('binary', minLength, maxLength);
 
-export const numeric = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('numeric', length);
+export const octal = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('octal', minLength, maxLength);
 
-export const alphabetic = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphabetic', length);
+export const numeric = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('numeric', minLength, maxLength);
 
-export const alphanumeric = (length: number = DEFAULT_STRING_LENGTH): StringStream => generateStringStream('alphanumeric', length);
+export const alphabetic = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('alphabetic', minLength, maxLength);
+
+export const alphanumeric = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
+  createStream('alphanumeric', minLength, maxLength);
 
 const UUID4 = asString(from(() => Random.uuid4()));
 

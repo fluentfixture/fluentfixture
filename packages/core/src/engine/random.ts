@@ -50,7 +50,11 @@ export class Random {
     return uuid4(Random.engine);
   }
 
-  public static string(charset: string, length: number): string {
+  public static string(charset: string, minLength: number, maxLength: number): string {
+    const length = (minLength === maxLength)
+      ? minLength
+      : Random.integer(minLength, maxLength);
+
     return randomstring.generate({ length, charset });
   }
 }

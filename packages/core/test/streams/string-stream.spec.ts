@@ -5,7 +5,7 @@ import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import {
   assertAndGetDecoratedStringOperator,
   assertAndGetDecoratedStringOperatorFromArray,
-} from '../assertions/string-stream';
+} from './assertions/string-stream';
 
 describe('StringStream', () => {
 

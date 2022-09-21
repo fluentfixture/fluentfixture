@@ -1,6 +1,6 @@
-import { NumberStream, DateStream } from '../../src/streams/stream-loader';
-import { ConvertFunction } from '../../src/types/convert-function';
-import { Functional } from '../../src/factories/decorators/functional';
+import { NumberStream, DateStream } from '../../../src/streams/stream-loader';
+import { ConvertFunction } from '../../../src/types/convert-function';
+import { Functional } from '../../../src/factories/decorators/functional';
 
 export const assertAndGetDecoratedDateOperator = (stream: DateStream, result: DateStream): ConvertFunction => {
   const functional = result.getFactory() as Functional;

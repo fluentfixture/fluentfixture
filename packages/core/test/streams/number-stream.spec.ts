@@ -1,6 +1,6 @@
 import { NumberStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
-import { assertAndGetDecoratedNumberOperator } from '../assertions/number-stream';
+import { assertAndGetDecoratedNumberOperator } from './assertions/number-stream';
 
 describe('NumberStream', () => {
 

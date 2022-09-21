@@ -23,7 +23,20 @@ describe('string', () => {
 
   describe('str()', () => {
 
-    it('should create a string stream with alphanumeric charset with given length', () => {
+    it('should create a string stream and use default length when length is not provided', () => {
+      const charset = 'charset';
+      const result = str(charset);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe(charset);
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create a string stream and use the given min length', () => {
       const length = 5;
       const charset = 'charset';
 
@@ -34,25 +47,42 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe(charset);
-      expect(stringFactory.getLength()).toBe(length);
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
     });
 
-    it('should use default length when length is not provided', () => {
+    it('should create a string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
       const charset = 'charset';
-      const result = str(charset);
+
+      const result = str(charset, minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe(charset);
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
   });
 
   describe('hex()', () => {
 
-    it('should create a string stream with hex charset with given length', () => {
+    it('should create a hex string stream and use default length when length is not provided', () => {
+      const result = hex();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('hex');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create a hex string stream and use the given min length', () => {
       const length = 5;
 
       const result = hex(length);
@@ -62,51 +92,41 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('hex');
-      expect(stringFactory.getLength()).toBe(length);
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
     });
 
-    it('should use default length when length is not provided', () => {
-      const result = hex();
+    it('should create a hex string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = hex(minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('hex');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
-    });
-  });
-
-  describe('binary()', () => {
-
-    it('should create a string stream with binary charset with given length', () => {
-      const length = 5;
-
-      const result = binary(length);
-
-      const stringFactory = result.getFactory() as StringFactory;
-
-      expect(result).toBeInstanceOf(StringStream);
-      expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('binary');
-      expect(stringFactory.getLength()).toBe(length);
-    });
-
-    it('should use default length when length is not provided', () => {
-      const result = binary();
-
-      const stringFactory = result.getFactory() as StringFactory;
-
-      expect(result).toBeInstanceOf(StringStream);
-      expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('binary');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
   });
 
   describe('octal()', () => {
 
-    it('should create a string stream with octal charset with given length', () => {
+    it('should create an octal string stream and use default length when length is not provided', () => {
+      const result = octal();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('octal');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create an octal string stream and use the given min length', () => {
       const length = 5;
 
       const result = octal(length);
@@ -116,24 +136,85 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('octal');
-      expect(stringFactory.getLength()).toBe(length);
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
     });
 
-    it('should use default length when length is not provided', () => {
-      const result = octal();
+    it('should create an octal string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = octal(minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('octal');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
+    });
+  });
+
+  describe('binary()', () => {
+
+    it('should create a binary string stream and use default length when length is not provided', () => {
+      const result = binary();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create a binary string stream and use the given min length', () => {
+      const length = 5;
+
+      const result = binary(length);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
+    });
+
+    it('should create a binary string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = binary(minLength, maxLength);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
   });
 
   describe('numeric()', () => {
 
-    it('should create a string stream with numeric charset with given length', () => {
+    it('should create a numeric string stream and use default length when length is not provided', () => {
+      const result = numeric();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('numeric');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create a numeric string stream and use the given min length', () => {
       const length = 5;
 
       const result = numeric(length);
@@ -143,51 +224,41 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('numeric');
-      expect(stringFactory.getLength()).toBe(length);
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
     });
 
-    it('should use default length when length is not provided', () => {
-      const result = numeric();
+    it('should create a numeric string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = numeric(minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('numeric');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
-    });
-  });
-
-  describe('alphanumeric()', () => {
-
-    it('should create a string stream with alphanumeric charset with given length', () => {
-      const length = 5;
-
-      const result = alphanumeric(length);
-
-      const stringFactory = result.getFactory() as StringFactory;
-
-      expect(result).toBeInstanceOf(StringStream);
-      expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
-      expect(stringFactory.getLength()).toBe(length);
-    });
-
-    it('should use default length when length is not provided', () => {
-      const result = alphanumeric();
-
-      const stringFactory = result.getFactory() as StringFactory;
-
-      expect(result).toBeInstanceOf(StringStream);
-      expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
   });
 
   describe('alphabetic()', () => {
 
-    it('should create a string stream with alphabetic charset with given length', () => {
+    it('should create an alphabetic string stream and use default length when length is not provided', () => {
+      const result = alphabetic();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('alphabetic');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create an alphabetic string stream and use the given min length', () => {
       const length = 5;
 
       const result = alphabetic(length);
@@ -197,18 +268,67 @@ describe('string', () => {
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('alphabetic');
-      expect(stringFactory.getLength()).toBe(length);
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
     });
 
-    it('should use default length when length is not provided', () => {
-      const result = alphabetic();
+    it('should create an alphabetic string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = alphabetic(minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
       expect(stringFactory.getCharset()).toBe('alphabetic');
-      expect(stringFactory.getLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
+    });
+  });
+
+  describe('alphanumeric()', () => {
+
+    it('should create an alphanumeric string stream and use default length when length is not provided', () => {
+      const result = alphanumeric();
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
+      expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
+    });
+
+    it('should create an alphanumeric string stream and use the given min length', () => {
+      const length = 5;
+
+      const result = alphanumeric(length);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getMinLength()).toBe(length);
+      expect(stringFactory.getMaxLength()).toBe(length);
+    });
+
+    it('should create an alphanumeric string stream and use the given min length and max length', () => {
+      const minLength = 5;
+      const maxLength = 10;
+
+      const result = alphanumeric(minLength, maxLength);
+
+      const stringFactory = result.getFactory() as StringFactory;
+
+      expect(result).toBeInstanceOf(StringStream);
+      expect(stringFactory).toBeInstanceOf(StringFactory);
+      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getMinLength()).toBe(minLength);
+      expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
   });
 });

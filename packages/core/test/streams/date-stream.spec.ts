@@ -4,7 +4,7 @@ import { DateStream } from '../../src/streams/stream-loader';
 import {
   assertAndGetDecoratedDateOperator,
   assertAndGetDecoratedNumberOperator,
-} from '../assertions/date-stream';
+} from './assertions/date-stream';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 
 describe('DateStream', () => {

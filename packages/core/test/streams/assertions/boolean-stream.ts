@@ -1,6 +1,6 @@
-import { BooleanStream } from '../../src/streams/stream-loader';
-import { ConvertFunction } from '../../src/types/convert-function';
-import { Functional } from '../../src/factories/decorators/functional';
+import { BooleanStream } from '../../../src/streams/stream-loader';
+import { ConvertFunction } from '../../../src/types/convert-function';
+import { Functional } from '../../../src/factories/decorators/functional';
 
 export const assertAndGetDecoratedBooleanOperator = (stream: BooleanStream, result: BooleanStream): ConvertFunction => {
   const functional = result.getFactory() as Functional;

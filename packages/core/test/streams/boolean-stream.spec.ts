@@ -1,6 +1,6 @@
 import { BooleanStream } from '../../src/streams/stream-loader';
 import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
-import { assertAndGetDecoratedBooleanOperator } from '../assertions/boolean-stream';
+import { assertAndGetDecoratedBooleanOperator } from './assertions/boolean-stream';
 
 describe('BooleanStream', () => {
 
