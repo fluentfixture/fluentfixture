@@ -3,8 +3,8 @@ import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import { Picker } from '../../src/factories/decorators/picker';
 import { Sampler } from '../../src/factories/decorators/sampler';
 import { Shuffler } from '../../src/factories/decorators/shuffler';
-import { assertAndGetDecoratedArrayOperator } from './assertions/array-stream';
 import { Functional } from '../../src/factories/decorators/functional';
+import { assertAndGetDecoratedArrayOperator } from './assertions/array-stream';
 
 describe('ArrayStream', () => {
 

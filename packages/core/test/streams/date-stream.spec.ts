@@ -1,11 +1,11 @@
 import { spy, verify, when } from 'ts-mockito';
 import { DateUtils } from '@fluentfixture/shared';
 import { DateStream } from '../../src/streams/stream-loader';
+import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 import {
   assertAndGetDecoratedDateOperator,
   assertAndGetDecoratedNumberOperator,
 } from './assertions/date-stream';
-import { ValueAdapter } from '../../src/factories/adapters/value-adapter';
 
 describe('DateStream', () => {
 
