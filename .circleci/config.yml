@@ -79,7 +79,7 @@ jobs:
 
   test_node_18:
     docker:
-      - image: cimg/node:18.0
+      - image: cimg/node:18.12
     <<: *unit-tests-template
 
   coverage:
