@@ -1,7 +1,7 @@
-import { FormatterLexer } from '../../../src/interpolation/syntax/lexer';
-import { FormatterParser } from '../../../src/interpolation/syntax/parser';
-import { createFormatterVisitor } from '../../../src/interpolation/syntax/visitor';
-import { SyntaxDefinition } from '../../../src/interpolation/syntax/types/syntax-definition';
+import { FormatterLexer } from '../../../src/formatter/syntax/lexer';
+import { FormatterParser } from '../../../src/formatter/syntax/parser';
+import { createFormatterVisitor } from '../../../src/formatter/syntax/visitor';
+import { SyntaxDefinition } from '../../../src/formatter/syntax/types/syntax-definition';
 
 describe('FormatterVisitor', () => {
 

@@ -1,6 +1,6 @@
 import { instance, mock, verify, when } from 'ts-mockito';
-import { Template } from '../../src/interpolation/template';
-import { Pipe } from '../../src/interpolation/pipes/pipe';
+import { Template } from '../../src/formatter/template';
+import { Pipe } from '../../src/formatter/pipes/pipe';
 
 describe('Template', () => {
 

@@ -1,4 +1,4 @@
-import { PathFinder } from '../../../src/interpolation/path/path-finder';
+import { PathFinder } from '../../../src/formatter/path/path-finder';
 import { NON_STRING_DATA_SET } from '../data/type-sets';
 
 describe('PathFinder', () => {

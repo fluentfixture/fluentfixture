@@ -1,4 +1,4 @@
-import { Engine } from '../../../src/interpolation/syntax/engine';
+import { Engine } from '../../../src/formatter/syntax/engine';
 
 describe('Engine', () => {
 

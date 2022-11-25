@@ -1,4 +1,4 @@
-import { Constant } from '../../../src/interpolation/pipes/constant';
+import { Constant } from '../../../src/formatter/pipes/constant';
 
 describe('Constant', () => {
 

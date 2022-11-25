@@ -1,5 +1,5 @@
-import { FormatterLexer } from '../../../src/interpolation/syntax/lexer';
-import { FormatterParser } from '../../../src/interpolation/syntax/parser';
+import { FormatterLexer } from '../../../src/formatter/syntax/lexer';
+import { FormatterParser } from '../../../src/formatter/syntax/parser';
 
 describe('FormatterParser', () => {
 

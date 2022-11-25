@@ -1,4 +1,4 @@
-import { Noop } from '../../../src/interpolation/pipes/noop';
+import { Noop } from '../../../src/formatter/pipes/noop';
 
 describe('Noop', () => {
 
