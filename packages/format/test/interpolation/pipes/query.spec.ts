@@ -1,6 +1,6 @@
 import { spy, verify, when } from 'ts-mockito';
-import { Query } from '../../src/pipes/query';
-import { PathFinder } from '../../src/path/path-finder';
+import { Query } from '../../../src/interpolation/pipes/query';
+import { PathFinder } from '../../../src/interpolation/path/path-finder';
 
 describe('Query', () => {
 

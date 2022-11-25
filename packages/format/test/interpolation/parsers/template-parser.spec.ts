@@ -1,6 +1,6 @@
 import { anything, instance, mock, verify, when } from 'ts-mockito';
-import { PipeBuilder } from '../../src/pipes/builder/pipe-builder';
-import { TemplateParser } from '../../src/parsers/template-parser';
+import { PipeBuilder } from '../../../src/interpolation/pipes/builder/pipe-builder';
+import { TemplateParser } from '../../../src/interpolation/parsers/template-parser';
 import { NON_NON_EMPTY_STRING_DATA_SET } from '../data/type-sets';
 import { MockPipe } from '../mocks/mock-pipe';
 

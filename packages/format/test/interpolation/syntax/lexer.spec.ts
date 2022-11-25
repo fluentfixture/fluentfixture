@@ -1,4 +1,4 @@
-import { FormatterLexer } from '../../src/syntax/lexer';
+import { FormatterLexer } from '../../../src/interpolation/syntax/lexer';
 
 describe('FormatterLexer', () => {
 

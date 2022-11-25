@@ -1,4 +1,4 @@
-import { Stringifier } from '../../src/pipes/stringifier';
+import { Stringifier } from '../../../src/interpolation/pipes/stringifier';
 
 describe('Stringifier', () => {
 

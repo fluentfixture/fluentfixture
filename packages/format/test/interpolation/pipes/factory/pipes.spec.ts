@@ -1,4 +1,4 @@
-import { Pipes } from '../../../src/pipes/factory/pipes';
+import { Pipes } from '../../../../src/interpolation/pipes/factory/pipes';
 import {
   INVALID_FUNCTION_NAME_DATA_SET,
   NON_FUNCTION_DATA_SET,

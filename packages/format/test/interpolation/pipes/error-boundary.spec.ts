@@ -1,6 +1,6 @@
 import { instance, mock, verify, when } from 'ts-mockito';
-import { Pipe } from '../../src/pipes/pipe';
-import { ErrorBoundary } from '../../src/pipes/error-boundary';
+import { Pipe } from '../../../src/interpolation/pipes/pipe';
+import { ErrorBoundary } from '../../../src/interpolation/pipes/error-boundary';
 
 describe('ErrorBoundary', () => {
 

@@ -1,6 +1,6 @@
-import { Functional } from '../../src/pipes/functional';
+import { Functional } from '../../../src/interpolation/pipes/functional';
 import { NON_FUNCTION_DATA_SET } from '../data/type-sets';
-import { PipeFunction } from '../../src/pipes/types/pipe-function';
+import { PipeFunction } from '../../../src/interpolation/pipes/types/pipe-function';
 
 describe('Functional', () => {
 

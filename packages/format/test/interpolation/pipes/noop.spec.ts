@@ -1,4 +1,4 @@
-import { Noop } from '../../src/pipes/noop';
+import { Noop } from '../../../src/interpolation/pipes/noop';
 
 describe('Noop', () => {
 

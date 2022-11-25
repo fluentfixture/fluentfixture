@@ -1,5 +1,5 @@
-import { Formatter } from '../src/formatter';
-import { Pipes } from '../src/pipes/factory/pipes';
+import { Formatter } from '../../src/interpolation/formatter';
+import { Pipes } from '../../src/interpolation/pipes/factory/pipes';
 
 describe('Formatter', () => {
 

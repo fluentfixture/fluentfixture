@@ -1,14 +1,14 @@
 import { anything, instance, mock, reset, verify, when } from 'ts-mockito';
-import { Pipes } from '../../../src/pipes/factory/pipes';
-import { PipeBuilder } from '../../../src/pipes/builder/pipe-builder';
-import { Constant } from '../../../src/pipes/constant';
-import { Flow } from '../../../src/pipes/flow';
-import { Query } from '../../../src/pipes/query';
-import { Noop } from '../../../src/pipes/noop';
-import { ErrorBoundary } from '../../../src/pipes/error-boundary';
-import { OptionsWrapper } from '../../../src/option/options-wrapper';
-import { Engine } from '../../../src/syntax/engine';
-import { Functional } from '../../../src/pipes/functional';
+import { Pipes } from '../../../../src/interpolation/pipes/factory/pipes';
+import { PipeBuilder } from '../../../../src/interpolation/pipes/builder/pipe-builder';
+import { Constant } from '../../../../src/interpolation/pipes/constant';
+import { Flow } from '../../../../src/interpolation/pipes/flow';
+import { Query } from '../../../../src/interpolation/pipes/query';
+import { Noop } from '../../../../src/interpolation/pipes/noop';
+import { ErrorBoundary } from '../../../../src/interpolation/pipes/error-boundary';
+import { OptionsWrapper } from '../../../../src/interpolation/option/options-wrapper';
+import { Engine } from '../../../../src/interpolation/syntax/engine';
+import { Functional } from '../../../../src/interpolation/pipes/functional';
 
 describe('PipeBuilder', () => {
   const mockEngine = mock(Engine);

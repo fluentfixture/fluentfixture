@@ -1,4 +1,4 @@
-import { OptionsWrapper } from '../../src/option/options-wrapper';
+import { OptionsWrapper } from '../../../src/interpolation/option/options-wrapper';
 
 describe('OptionsWrapper', () => {
 

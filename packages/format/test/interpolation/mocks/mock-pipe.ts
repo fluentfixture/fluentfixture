@@ -1,4 +1,4 @@
-import { Pipe } from '../../src/pipes/pipe';
+import { Pipe } from '../../../src/interpolation/pipes/pipe';
 
 export class MockPipe extends Pipe {
   private readonly value?: any;

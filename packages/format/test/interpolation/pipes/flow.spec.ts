@@ -1,6 +1,6 @@
 import { instance, mock, verify, when } from 'ts-mockito';
-import { Pipe } from '../../src/pipes/pipe'
-import { Flow } from '../../src/pipes/flow';
+import { Pipe } from '../../../src/interpolation/pipes/pipe'
+import { Flow } from '../../../src/interpolation/pipes/flow';
 
 describe('Flow', () => {
 

@@ -1,4 +1,4 @@
-import { Constant } from '../../src/pipes/constant';
+import { Constant } from '../../../src/interpolation/pipes/constant';
 
 describe('Constant', () => {
 
