@@ -20,17 +20,17 @@
 A flexible tool for generating customizable mock data with a fluent interface that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. 
 Provides core modules and components for generating mock data.
 
-### Installation
+## Installation
 
 ```bash
 $ npm install @fluentfixture/core
 ```
 
-### Usage
+## Usage
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/02-core)
-[![Open in GitHub](https://img.shields.io/badge/Open%20in-Github-green?style=flat-square&logo=github)](https://github.com/fluentfixture/fluentfixture/tree/main/sample/02-core)
-[![Open in GitBook](https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook)](https://docs.fluentfixture.com/packages/fluentfixture-core)
+The @fluentfixture/core provides many kinds of generators for different use cases. The example below demonstrates a simple e-commerce scenario.
+
+> The internals of the package and other utilities can be found on [Streams](https://docs.fluentfixture.com/packages/fluentfixture-core/streams) and [Generators](https://docs.fluentfixture.com/packages/fluentfixture-core/generators) sections.
 
 ```typescript
 import { alphabetic, bool, hex, int, obj, pick } from '@fluentfixture/core';

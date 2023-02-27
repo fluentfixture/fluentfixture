@@ -30,12 +30,12 @@ For this reason, the core of the package focuses on programmability, fluent inte
 
 > The [@fluentfixture][fluentfixture] does not provide predefined data like FakerJS for now. However, realistic data features will plan after the stable version of the core package, no-code support, and CLI.
 
-## 🚀Packages
+## Packages
 
-- [@fluentfixture/core](#-core-fluentfixturecore)
-- [@fluentfixture/format](#-format-fluentfixtureformat)
+- [@fluentfixture/core](https://github.com/fluentfixture/fluentfixture/tree/main/packages/core)
+- [@fluentfixture/format](https://github.com/fluentfixture/fluentfixture/tree/main/packages/format)
 
-## 🔥Core (@fluentfixture/core)
+## Core (@fluentfixture/core)
 
 [@fluentfixture/core][fluentfixture-core] provides core modules and components for generating mock data.
 
@@ -87,7 +87,7 @@ const products = productWithCode
 console.log(products.single());
 ```
 
-## 💎Format (@fluentfixture/format)
+## Format (@fluentfixture/format)
 
 [@fluentfixture/format][fluentfixture-format] provides formatting and compiling functionalities with extensible transformation capabilities.
 

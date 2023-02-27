@@ -20,17 +20,17 @@
 A flexible string format library that is a part of the [@fluentfixture](https://github.com/fluentfixture) project. Provides
 formatting and compiling functionalities with extensible transformation capabilities.
 
-### Installation
+## Installation
 
 ```bash
 $ npm install @fluentfixture/format
 ```
 
-### Usage
+## Usage
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox)](https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/01-format)
-[![Open in GitHub](https://img.shields.io/badge/Open%20in-Github-green?style=flat-square&logo=github)](https://github.com/fluentfixture/fluentfixture/tree/main/sample/01-format)
-[![Open in GitBook](https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook)](https://docs.fluentfixture.com/packages/fluentfixture-format)
+The @fluentfixture/format utilities can be used with global `format` and `compile` methods or a new `Formatter` instance. The following code snippet shows an example usage of global `compile` method.
+
+> The more example can be found on [How To Use](https://docs.fluentfixture.com/packages/fluentfixture-format/how-to-use) section.
 
 ```typescript
 import { format } from '@fluentfixture/format';
