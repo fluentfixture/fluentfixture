@@ -9,6 +9,7 @@ import { ErrorBoundary } from '../../../../src/formatter/pipes/error-boundary';
 import { OptionsWrapper } from '../../../../src/formatter/option/options-wrapper';
 import { Engine } from '../../../../src/formatter/syntax/engine';
 import { Functional } from '../../../../src/formatter/pipes/functional';
+import { PathDefinition } from '../../../../src/formatter/syntax/types/path-definition';
 
 describe('PipeBuilder', () => {
   const mockEngine = mock(Engine);
@@ -40,7 +41,7 @@ describe('PipeBuilder', () => {
 
     it('should add query pipe to flow when token has a path', () => {
       const token = 'token';
-      const path = 'path';
+      const path: PathDefinition = { type: 'PROPERTY', value: 'path', parameters: [] };
 
       when(mockEngine.parse(token)).thenReturn({ path, pipes: [] });
 

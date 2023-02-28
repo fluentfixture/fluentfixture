@@ -31,8 +31,17 @@ export class FormatterParser extends CstParser {
     ));
   });
 
-  private expressionWithPath = this.RULE('expressionWithPath', () => {
+  private path = this.RULE('path', () => {
     this.CONSUME(Path);
+    this.OPTION({
+      DEF: () => {
+        this.SUBRULE(this.functionBody);
+      }
+    });
+  });
+
+  private expressionWithPath = this.RULE('expressionWithPath', () => {
+    this.SUBRULE(this.path);
     this.OPTION({
       DEF: () => {
         this.SUBRULE(this.pipes);
@@ -51,6 +60,10 @@ export class FormatterParser extends CstParser {
 
   private pipe = this.RULE('pipe', () => {
     this.CONSUME(FunctionLiteral);
+    this.SUBRULE(this.functionBody);
+  });
+
+  private functionBody = this.RULE('functionBody', () => {
     this.CONSUME(LeftParenthesis);
     this.SUBRULE(this.parameters);
     this.CONSUME(RightParenthesis);

@@ -1,6 +1,7 @@
 import { PipeDefinition } from './pipe-definition';
+import { PathDefinition } from './path-definition';
 
 export interface SyntaxDefinition {
-  path?: string;
-  pipes: ReadonlyArray<PipeDefinition>
+  path?: PathDefinition;
+  pipes: ReadonlyArray<PipeDefinition>;
 }

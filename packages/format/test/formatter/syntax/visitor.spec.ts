@@ -15,25 +15,68 @@ describe('FormatterVisitor', () => {
 
   describe('.visit()', () => {
 
-    const cases = [
-      ['path', { path: 'path', pipes: [] }],
+    const cases: Array<[string, SyntaxDefinition]> = [
+      ['path', {
+        path: {
+          type: 'PROPERTY',
+          value: 'path',
+          parameters: [],
+        },
+        pipes: [],
+      }],
       ['user.detail.balances.0.currency', {
-        path: 'user.detail.balances.0.currency',
+        path: {
+          type: 'PROPERTY',
+          value: 'user.detail.balances.0.currency',
+          parameters: [],
+        },
         pipes: [],
       }],
       ['user.name:padStart(4)', {
-        path: 'user.name',
+        path: {
+          type: 'PROPERTY',
+          value: 'user.name',
+          parameters: [],
+        },
         pipes: [{ name: 'padStart', parameters: [4] }],
       }],
       ['user.name:pad("s")|f([])', {
-        path: 'user.name',
+        path: {
+          type: 'PROPERTY',
+          value: 'user.name',
+          parameters: [],
+        },
         pipes: [{ name: 'pad', parameters: ['s'] }, { name: 'f', parameters: [[]] }],
       }],
       [':format("yyyy-MM-dd HH:mm:ss", {"id": 1})', {
-        pipes: [{ name: 'format', parameters: ['yyyy-MM-dd HH:mm:ss', { id: 1}] }],
+        pipes: [{ name: 'format', parameters: ['yyyy-MM-dd HH:mm:ss', { id: 1 }] }],
+      }],
+      ['user.summary()', {
+        path: {
+          type: 'FUNCTION',
+          value: 'user.summary',
+          parameters: [],
+        },
+        pipes: [],
+      }],
+      ['user.summary(true, [])', {
+        path: {
+          type: 'FUNCTION',
+          value: 'user.summary',
+          parameters: [true, []],
+        },
+        pipes: [],
+      }],
+      ['user.summary(true, []):pad(10)', {
+        path: {
+          type: 'FUNCTION',
+          value: 'user.summary',
+          parameters: [true, []],
+        },
+        pipes: [{ name: 'pad', parameters: [10]}],
       }],
     ];
-    test.each(cases)('that parse expression successfully: %p', (input: string, output: any) => {
+    test.each(cases)('that parse expression successfully: %p', (input: string, output: SyntaxDefinition) => {
       const lexingResult = lexer.tokenize(input);
       parser.input = lexingResult.tokens;
       const cst = parser.expression();

@@ -4,6 +4,7 @@ import { False, Null, NumberLiteral, StringLiteral, True } from './lexer';
 import { PipeDefinition } from './types/pipe-definition';
 import { KeyValuePair } from './types/key-value-pair';
 import { SyntaxDefinition } from './types/syntax-definition';
+import { PathDefinition } from './types/path-definition';
 
 export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any, any> => {
   const BaseFormatterCstVisitor = parser.getBaseCstVisitorConstructorWithDefaults();
@@ -24,12 +25,27 @@ export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any
     }
 
     public expressionWithPath(cst: any): SyntaxDefinition {
-      const path = cst.Path[0].image;
+      const path = this.visit(cst.path[0]);
       const pipes = cst.pipes ? this.visit(cst.pipes[0]) : [];
       return {
         path,
         pipes,
       };
+    }
+
+    public path(cst: any): PathDefinition {
+      const definition: PathDefinition = {
+        type: 'PROPERTY',
+        value: cst.Path[0].image,
+        parameters: [],
+      };
+
+      if (cst.functionBody) {
+        definition.type = 'FUNCTION';
+        definition.parameters = this.visit(cst.functionBody[0])
+      }
+
+      return definition;
     }
 
     public pipes(cst: any): ReadonlyArray<PipeDefinition> {
@@ -38,11 +54,15 @@ export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any
 
     public pipe(cst: any): PipeDefinition {
       const name = cst.FunctionLiteral[0].image;
-      const parameters = this.visit(cst.parameters[0]);
+      const parameters = this.visit(cst.functionBody[0]);
       return {
         name,
         parameters,
       };
+    }
+
+    public functionBody(cst: any): ReadonlyArray<any> {
+      return this.visit(cst.parameters[0]);
     }
 
     public parameters(cst: any): ReadonlyArray<any> {

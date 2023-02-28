@@ -86,6 +86,46 @@ describe('Formatter', () => {
     });
   });
 
+  describe('function invocation', () => {
+
+    const formatter = Formatter.create(Pipes.withDefaults());
+
+    const source = {
+      detail: {
+        name: 'John',
+        surname: 'Doe',
+        summary: () => 'John Doe',
+        getMail: (domain: string) => `john.doe@${domain}`,
+      },
+      orders: {
+        items: [1, 2, 3, 4],
+        getPrice: (count) => count * 2
+      }
+    };
+
+    const cases = [
+      ['User=(${detail.summary():upperCase()})',
+        'User=(JOHN DOE)'],
+      ['PRICE=${orders.getPrice(100)}',
+        'PRICE=200'],
+      ['MAIL=${detail.getMail("example.com")}',
+        'MAIL=john.doe@example.com'],
+    ];
+
+    describe('.format()', () => {
+
+      test.each(cases)('should format templates correctly: %p', (template, result) => {
+        expect(formatter.format(template, source)).toBe(result);
+      });
+    });
+
+    describe('.compile()', () => {
+      test.each(cases)('should compile templates correctly: %p', (template, result) => {
+        expect(formatter.compile(template).format(source)).toBe(result);
+      });
+    });
+  });
+
   describe('custom pipes', () => {
 
     const pipes = Pipes.withDefaults()

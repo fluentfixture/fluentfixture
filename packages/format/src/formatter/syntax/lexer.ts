@@ -135,6 +135,7 @@ export const MultiModeLexerDefinition = {
       Path,
       Colon,
       WhiteSpace,
+      LeftParenthesis,
     ],
     pipe_mode: [
       WhiteSpace,

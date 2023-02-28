@@ -1,19 +1,20 @@
 import { PathFinder } from '../path/path-finder';
+import { PathDefinition } from '../syntax/types/path-definition';
 import { Pipe } from './pipe';
 
 export class Query<T = any, K = any> extends Pipe<T, K> {
-  private readonly query: string;
+  private readonly path: PathDefinition;
 
-  public constructor(query: string) {
+  public constructor(path: PathDefinition) {
     super();
-    this.query = query;
+    this.path = path;
   }
 
   public handle(input: T): K {
-    return PathFinder.get(input, this.query) as K;
+    return PathFinder.get(input, this.path) as K;
   }
 
-  public getQuery(): string {
-    return this.query;
+  public getQuery(): PathDefinition {
+    return this.path;
   }
 }

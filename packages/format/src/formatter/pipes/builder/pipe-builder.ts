@@ -47,6 +47,6 @@ export class PipeBuilder {
   }
 
   private static getInitialPipe(definition: SyntaxDefinition): Pipe {
-    return TypeUtils.isNonBlankString(definition.path) ? new Query(definition.path) : Noop.instance();
+    return TypeUtils.isAssigned(definition.path) ? new Query(definition.path) : Noop.instance();
   }
 }
