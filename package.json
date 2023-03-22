@@ -51,7 +51,7 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-import-resolver-typescript": "3.5.2",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-unicorn": "43.0.2",
+    "eslint-plugin-unicorn": "46.0.0",
     "husky": "8.0.3",
     "jest": "27.5.1",
     "lerna": "5.5.2",
