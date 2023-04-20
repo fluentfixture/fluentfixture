@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   snyk: snyk/snyk@1.4.0
-  coveralls: coveralls/coveralls@2.1.0
+  coveralls: coveralls/coveralls@2.1.1
   commitlint: conventional-changelog/commitlint@1.0.0
 
 aliases:
