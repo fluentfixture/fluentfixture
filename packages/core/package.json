@@ -43,7 +43,7 @@
     "@fluentfixture/format": "^1.0.5",
     "@fluentfixture/shared": "^1.0.5",
     "random-js": "2.1.0",
-    "randomstring": "1.2.3"
+    "randomstring": "1.3.0"
   },
   "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }
