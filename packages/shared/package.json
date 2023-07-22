@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "change-case": "4.1.2",
-    "dayjs": "1.11.7"
+    "dayjs": "1.11.9"
   },
   "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }
