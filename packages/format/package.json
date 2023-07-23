@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@fluentfixture/shared": "^1.0.5",
-    "chevrotain": "^10.1.2"
+    "chevrotain": "^11.0.0"
   },
   "gitHead": "b4ce0e4e9765b3369b5f4f0a8cca48dce30113ab"
 }
