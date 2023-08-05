@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "concurrently": "7.6.0",
-    "dependency-cruiser": "12.10.0",
+    "dependency-cruiser": "13.1.2",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-import-resolver-typescript": "3.5.2",
