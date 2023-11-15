@@ -53,7 +53,7 @@ jobs:
   build:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     steps:
       - checkout
       - *restore-cache
@@ -64,27 +64,27 @@ jobs:
 
   test_node_12:
     docker:
-      - image: cimg/node:12.22
+      - image: cimg/node:21.2
     <<: *unit-tests-template
 
   test_node_14:
     docker:
-      - image: cimg/node:14.21
+      - image: cimg/node:21.2
     <<: *unit-tests-template
 
   test_node_16:
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     <<: *unit-tests-template
 
   test_node_18:
     docker:
-      - image: cimg/node:18.12
+      - image: cimg/node:21.2
     <<: *unit-tests-template
 
   coverage:
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     steps:
       - checkout
       - *restore-cache
@@ -97,7 +97,7 @@ jobs:
   lint:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     steps:
       - checkout
       - *restore-cache
@@ -108,7 +108,7 @@ jobs:
   depcruise:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     steps:
       - checkout
       - *restore-cache
@@ -119,7 +119,7 @@ jobs:
   security:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:21.2
     steps:
       - checkout
       - *restore-cache
