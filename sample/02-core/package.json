@@ -25,6 +25,6 @@
     "@fluentfixture/core": "1.0.4"
   },
   "devDependencies": {
-    "typescript": "4.9.5"
+    "typescript": "5.5.4"
   }
 }
