@@ -134,7 +134,7 @@ workflows:
     jobs:
       - commitlint/lint:
           max-count: 2
-          node-version: 18.12
+          node-version: "18.12"
       - build:
           requires:
             - commitlint/lint
