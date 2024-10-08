@@ -1,23 +1,13 @@
-import {
-  capitalCase,
-  camelCase,
-  constantCase,
-  dotCase,
-  headerCase,
-  paramCase,
-  pascalCase,
-  snakeCase,
-  pathCase,
-} from 'change-case';
+import { Case } from 'change-case-all';
 
 export class StringUtils {
 
   public static upperCase(str: string): string {
-    return str.toUpperCase();
+    return Case.upper(str);
   }
 
   public static lowerCase(str: string): string {
-    return str.toLowerCase();
+    return Case.lower(str);
   }
 
   public static trim(str: string): string {
@@ -45,38 +35,38 @@ export class StringUtils {
   }
 
   public static pathCase(str: string): string {
-    return pathCase(str);
+    return Case.path(str);
   }
 
   public static headerCase(str: string): string {
-    return headerCase(str);
+    return Case.train(str);
   }
 
   public static paramCase(str: string): string {
-    return paramCase(str);
+    return Case.kebab(str);
   }
 
   public static snakeCase(str: string): string {
-    return snakeCase(str);
+    return Case.snake(str);
   }
 
   public static pascalCase(str: string): string {
-    return pascalCase(str);
+    return Case.pascal(str);
   }
 
   public static capitalCase(str: string): string {
-    return capitalCase(str);
+    return Case.capital(str);
   }
 
   public static camelCase(str: string): string {
-    return camelCase(str);
+    return Case.camel(str);
   }
 
   public static constantCase(str: string): string {
-    return constantCase(str);
+    return Case.constant(str);
   }
 
   public static dotCase(str: string): string {
-    return dotCase(str);
+    return Case.dot(str);
   }
 }

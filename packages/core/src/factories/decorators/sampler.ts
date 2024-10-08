@@ -1,5 +1,5 @@
+import { Random } from '@fluentfixture/shared';
 import { Factory } from '../factory';
-import { Random } from '../../engine/random';
 import { Assert } from '../../assertions/assert';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../constants/limits';
 import { Decorator } from './decorator';

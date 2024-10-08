@@ -1,4 +1,4 @@
-import { Random } from '../engine/random';
+import { Random } from '@fluentfixture/shared';
 import { Assert } from '../assertions/assert';
 import { MAX_INTEGER, MIN_INTEGER } from '../constants/limits';
 import { Factory } from './factory';

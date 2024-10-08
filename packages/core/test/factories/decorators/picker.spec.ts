@@ -1,6 +1,6 @@
 import { spy, verify, when } from 'ts-mockito';
+import { Random } from '@fluentfixture/shared';
 import { Picker } from '../../../src/factories/decorators/picker';
-import { Random } from '../../../src/engine/random';
 import { MockFactory } from '../../mocks/mock-factory';
 
 describe('Picker', () => {

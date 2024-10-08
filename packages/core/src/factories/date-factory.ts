@@ -1,5 +1,5 @@
+import { Random } from '@fluentfixture/shared';
 import { Assert } from '../assertions/assert';
-import { Random } from '../engine/random';
 import { Factory } from './factory';
 
 export class DateFactory extends Factory<Date> {

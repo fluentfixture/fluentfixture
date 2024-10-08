@@ -1,5 +1,5 @@
 import { Engine } from '../../../src/formatter/syntax/engine';
-import { SyntaxDefinition } from '../../../src/formatter/syntax/types/syntax-definition';
+import { Expression } from '../../../src/formatter/syntax/types/expression';
 
 describe('Engine', () => {
 
@@ -7,7 +7,7 @@ describe('Engine', () => {
 
   describe('.parse()', () => {
 
-    const validCases: Array<[string, SyntaxDefinition]> = [
+    const validCases: Array<[string, Expression]> = [
       ['path', {
         path: {
           type: 'PROPERTY',
@@ -67,6 +67,14 @@ describe('Engine', () => {
         },
         pipes: [{ name: 'pad', parameters: [10]}],
       }],
+      ['user.summary(true, []):pad(10)|pick(1)', {
+        path: {
+          type: 'FUNCTION',
+          value: 'user.summary',
+          parameters: [true, []],
+        },
+        pipes: [{ name: 'pad', parameters: [10]}, { name: 'pick', parameters: [1]}],
+      }],
     ];
     test.each(validCases)('that parse expression successfully: %p', (input: string, output: any) => {
       const result = engine.parse(input);
@@ -75,14 +83,24 @@ describe('Engine', () => {
     });
 
     const invalidCases = [
-      'balance.',             // invalid path
-      'balance..amount',      // invalid path
-      'format:()',            // missing pipe name
-      'format(:()',           // missing left parenthesis
-      'format):()',           // missing right parenthesis
-      ':format(yyyy)',        // invalid parameter
-      'format("yyyy"',        // missing parenthesis
-      'path:format("yyyy")|', // invalid pipes
+      '.',
+      '..',
+      '.x',
+      'x.',
+      '.x.',
+      'x..y',
+      'x:()',
+      'x(:()',
+      'x):()',
+      ':x(y)',
+      'x("y"',
+      'x:y("z")|',
+      'x:y("z")()|',
+      'x:y("z")|()',
+      'x.y().z',
+      'x.y()()',
+      'x.y().()',
+      'x.y():z',
     ];
     test.each(invalidCases)('that returns error when input is invalid: %p', (input: string) => {
       const thrown = () => engine.parse(input);

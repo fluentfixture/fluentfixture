@@ -1,8 +1,8 @@
 import { spy, verify, when } from 'ts-mockito';
+import { Random } from '@fluentfixture/shared';
 import { NON_INTEGER_DATA_SET } from '../data/type-sets';
 import { MAX_INTEGER, MIN_INTEGER } from '../../src/constants/limits';
 import { IntegerFactory } from '../../src/factories/integer-factory';
-import { Random } from '../../src/engine/random';
 
 describe('IntegerFactory', () => {
 

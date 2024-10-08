@@ -18,6 +18,7 @@ module.exports = {
     },
     rules: {
         quotes: ['error', 'single'],
+        '@typescript-eslint/no-unsafe-function-type': 'off',
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-explicit-any': 'off',

@@ -24,7 +24,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isString('')).toBe(true);
     });
 
-    test.each(NON_STRING_DATA_SET)('should return false when parameter is not a string, %p', (str: string) => {
+    test.each(NON_STRING_DATA_SET)('should return false when parameter is not a string: %p', (str: string) => {
       expect(TypeUtils.isString(str)).toBe(false);
     });
   });
@@ -35,7 +35,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isDate(new Date())).toBe(true);
     });
 
-    test.each(NON_DATE_DATA_SET)('should return false when parameter is not a date, %p', (date: Date) => {
+    test.each(NON_DATE_DATA_SET)('should return false when parameter is not a date: %p', (date: Date) => {
       expect(TypeUtils.isDate(date)).toBe(false);
     });
   });
@@ -46,7 +46,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isObject({})).toBe(true);
     });
 
-    test.each(NON_OBJECT_DATA_SET)('should return false when parameter is not an object, %p', (date: Date) => {
+    test.each(NON_OBJECT_DATA_SET)('should return false when parameter is not an object: %p', (date: Date) => {
       expect(TypeUtils.isObject(date)).toBe(false);
     });
   });
@@ -57,7 +57,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isNumber(1)).toBe(true);
     });
 
-    test.each(NON_NUMBER_DATA_SET)('should return false when parameter is not a number, %p', (num: number) => {
+    test.each(NON_NUMBER_DATA_SET)('should return false when parameter is not a number: %p', (num: number) => {
       expect(TypeUtils.isNumber(num)).toBe(false);
     });
   });
@@ -68,7 +68,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isFunction(() => true)).toBe(true);
     });
 
-    test.each(NON_FUNCTION_DATA_SET)('should return false when parameter is not a function, %p', (fn: Function) => {
+    test.each(NON_FUNCTION_DATA_SET)('should return false when parameter is not a function: %p', (fn: Function) => {
       expect(TypeUtils.isFunction(fn)).toBe(false);
     });
   });
@@ -79,7 +79,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isBoolean(true)).toBe(true);
     });
 
-    test.each(NON_BOOLEAN_DATA_SET)('should return false when parameter is not a boolean, %p', (bool: boolean) => {
+    test.each(NON_BOOLEAN_DATA_SET)('should return false when parameter is not a boolean: %p', (bool: boolean) => {
       expect(TypeUtils.isBoolean(bool)).toBe(false);
     });
   });
@@ -90,7 +90,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isSymbol(Symbol.for('key'))).toBe(true);
     });
 
-    test.each(NON_SYMBOL_DATA_SET)('should return false when parameter is not a symbol, %p', (sym: Symbol) => {
+    test.each(NON_SYMBOL_DATA_SET)('should return false when parameter is not a symbol: %p', (sym: symbol) => {
       expect(TypeUtils.isSymbol(sym)).toBe(false);
     });
   });
@@ -101,7 +101,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isNonEmptyString('str')).toBe(true);
     });
 
-    test.each(NON_NON_EMPTY_STRING_DATA_SET)('should return false when parameter is not a non-empty string, %p', (str: string) => {
+    test.each(NON_NON_EMPTY_STRING_DATA_SET)('should return false when parameter is not a non-empty string: %p', (str: string) => {
       expect(TypeUtils.isNonEmptyString(str)).toBe(false);
     });
   });
@@ -112,7 +112,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isNonBlankString('str')).toBe(true);
     });
 
-    test.each(NON_NON_BLANK_STRING_DATA_SET)('should return false when parameter is not a non-blank string, %p', (str: string) => {
+    test.each(NON_NON_BLANK_STRING_DATA_SET)('should return false when parameter is not a non-blank string: %p', (str: string) => {
       expect(TypeUtils.isNonBlankString(str)).toBe(false);
     });
   });
@@ -123,7 +123,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isInteger(1)).toBe(true);
     });
 
-    test.each(NON_INTEGER_DATA_SET)('should return false when parameter is not an integer, %p', (int: number) => {
+    test.each(NON_INTEGER_DATA_SET)('should return false when parameter is not an integer: %p', (int: number) => {
       expect(TypeUtils.isInteger(int)).toBe(false);
     });
   });
@@ -134,7 +134,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isArray([])).toBe(true);
     });
 
-    test.each(NON_ARRAY_DATA_SET)('should return false when parameter is not an array, %p', (val: unknown) => {
+    test.each(NON_ARRAY_DATA_SET)('should return false when parameter is not an array: %p', (val: unknown) => {
       expect(TypeUtils.isArray(val)).toBe(false);
     });
   });
@@ -145,7 +145,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isNull(null)).toBe(true);
     });
 
-    test.each(NON_NULL_DATA_SET)('should return false when parameter is not null, %p', (val: unknown) => {
+    test.each(NON_NULL_DATA_SET)('should return false when parameter is not null: %p', (val: unknown) => {
       expect(TypeUtils.isNull(val)).toBe(false);
     });
   });
@@ -156,7 +156,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isUndefined(undefined)).toBe(true);
     });
 
-    test.each(NON_UNDEFINED_DATA_SET)('should return false when parameter is not undefined, %p', (val: unknown) => {
+    test.each(NON_UNDEFINED_DATA_SET)('should return false when parameter is not undefined: %p', (val: unknown) => {
       expect(TypeUtils.isUndefined(val)).toBe(false);
     });
   });
@@ -171,7 +171,7 @@ describe('TypeUtils', () => {
       expect(TypeUtils.isAssigned(undefined)).toBe(false);
     });
 
-    test.each(NON_NON_ASSIGNED_DATA_SET)('should return true when parameter is not null or undefined, %p', (val: unknown) => {
+    test.each(NON_NON_ASSIGNED_DATA_SET)('should return true when parameter is not null or undefined: %p', (val: unknown) => {
       expect(TypeUtils.isAssigned(val)).toBe(true);
     });
   });

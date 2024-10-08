@@ -1,7 +1,7 @@
 import { spy, verify, when } from 'ts-mockito';
+import { Random } from '@fluentfixture/shared';
 import { NON_NUMBER_DATA_SET } from '../data/type-sets';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../src/constants/limits';
-import { Random } from '../../src/engine/random';
 import { BooleanFactory } from '../../src/factories/boolean-factory';
 
 describe('BooleanFactory', () => {

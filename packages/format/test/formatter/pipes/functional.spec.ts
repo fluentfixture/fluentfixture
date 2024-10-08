@@ -1,18 +1,6 @@
 import { Functional } from '../../../src/formatter/pipes/functional';
-import { NON_FUNCTION_DATA_SET } from '../data/type-sets';
-import { PipeFunction } from '../../../src/formatter/pipes/types/pipe-function';
 
 describe('Functional', () => {
-
-  describe('.constructor()', () => {
-
-    test.each(NON_FUNCTION_DATA_SET)('should throw an error when pipe function is not a function, given: %s', (fn: PipeFunction) => {
-
-      const thrown = () => new Functional({ fn, parameters: [] });
-
-      expect(thrown).toThrow('Pipe must be a function!');
-    });
-  });
 
   describe('.handle()', () => {
 

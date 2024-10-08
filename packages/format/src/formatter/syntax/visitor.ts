@@ -3,7 +3,7 @@ import { FormatterParser } from './parser';
 import { False, Null, NumberLiteral, StringLiteral, True } from './lexer';
 import { PipeDefinition } from './types/pipe-definition';
 import { KeyValuePair } from './types/key-value-pair';
-import { SyntaxDefinition } from './types/syntax-definition';
+import { Expression } from './types/expression';
 import { PathDefinition } from './types/path-definition';
 
 export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any, any> => {
@@ -15,7 +15,7 @@ export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any
       this.validateVisitor();
     }
 
-    public expression(cst: any): SyntaxDefinition {
+    public expression(cst: any): Expression {
       if (cst.expressionWithPath) {
         return this.visit(cst.expressionWithPath[0]);
       }
@@ -24,7 +24,7 @@ export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any
       };
     }
 
-    public expressionWithPath(cst: any): SyntaxDefinition {
+    public expressionWithPath(cst: any): Expression {
       const path = this.visit(cst.path[0]);
       const pipes = cst.pipes ? this.visit(cst.pipes[0]) : [];
       return {
@@ -93,7 +93,7 @@ export const createFormatterVisitor = (parser: FormatterParser): ICstVisitor<any
         : [];
     }
 
-    public object(cst: any): Object {
+    public object(cst: any): object {
       const result = {};
       if (!Array.isArray(cst.objectEntity)) {
         return result;

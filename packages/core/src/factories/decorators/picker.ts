@@ -1,5 +1,5 @@
+import { Random } from '@fluentfixture/shared';
 import { Factory } from '../factory';
-import { Random } from '../../engine/random';
 import { Decorator } from './decorator';
 
 export class Picker<T = any> extends Decorator<ReadonlyArray<T>, T> {

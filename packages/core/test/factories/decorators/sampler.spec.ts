@@ -1,5 +1,5 @@
 import { spy, verify, when } from 'ts-mockito';
-import { Random } from '../../../src/engine/random';
+import { Random } from '@fluentfixture/shared';
 import { MockFactory } from '../../mocks/mock-factory';
 import { NON_INTEGER_DATA_SET } from '../../data/type-sets';
 import { MAX_ARRAY_SIZE, MIN_ARRAY_SIZE } from '../../../src/constants/limits';

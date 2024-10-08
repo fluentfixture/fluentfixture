@@ -51,7 +51,7 @@ export class Assert {
   }
 
   public static isKey(context: string, name: string, value: keyof any): void {
-    if (!TypeUtils.isNonEmptyString(value as string) && !TypeUtils.isNumber(value as number) && !TypeUtils.isSymbol(value as Symbol)) {
+    if (!TypeUtils.isNonEmptyString(value as string) && !TypeUtils.isNumber(value as number) && !TypeUtils.isSymbol(value as symbol)) {
       Assert.throwError(context, name, 'Parameter must be a string, number or symbol!');
     }
   }

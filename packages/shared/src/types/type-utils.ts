@@ -8,7 +8,7 @@ export class TypeUtils {
     return date instanceof Date && TypeUtils.isInteger(date.getTime());
   }
 
-  public static isObject(obj: unknown): obj is Object {
+  public static isObject(obj: unknown): obj is object {
     return Object.prototype.toString.call(obj) === '[object Object]';
   }
 
@@ -24,7 +24,7 @@ export class TypeUtils {
     return typeof bool === 'boolean';
   }
 
-  public static isSymbol(symbol: unknown): symbol is Symbol {
+  public static isSymbol(symbol: unknown): symbol is symbol {
     return typeof symbol === 'symbol' || (typeof symbol === 'object' && Object.prototype.toString.call(symbol) === '[object Symbol]');
   }
 
@@ -37,7 +37,7 @@ export class TypeUtils {
   }
 
   public static isUndefined(val: unknown): val is undefined {
-    return typeof val === 'undefined';
+    return val === undefined;
   }
 
   public static isArray(arr: unknown): arr is Array<any> {

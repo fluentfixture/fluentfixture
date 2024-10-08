@@ -4,7 +4,7 @@ describe('Noop', () => {
 
   describe('.handle()', () => {
 
-    it('should return the given value without any modifications.', () => {
+    it('should return the given value without any modifications', () => {
       const value = 'value';
       const pipe = Noop.instance();
 

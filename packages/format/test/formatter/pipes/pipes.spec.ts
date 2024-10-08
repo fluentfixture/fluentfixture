@@ -1,29 +1,13 @@
-import { Pipes } from '../../../../src/formatter/pipes/factory/pipes';
+import { Pipes } from '../../../src/formatter/pipes/pipes';
 import {
   INVALID_FUNCTION_NAME_DATA_SET,
   NON_FUNCTION_DATA_SET,
   NON_NON_BLANK_STRING_DATA_SET,
-} from '../../data/type-sets';
+} from '../data/type-sets';
 
 describe('Pipes', () => {
 
   describe('.resolve()', () => {
-
-    test.each(NON_NON_BLANK_STRING_DATA_SET)('should throw error when name is not non-blank string', (name: string) => {
-      const pipes = Pipes.empty();
-
-      const thrown = () => pipes.resolve(name);
-
-      expect(thrown).toThrowError('Pipe name must be a non-blank string!');
-    });
-
-    test.each(INVALID_FUNCTION_NAME_DATA_SET)('should throw error when name is not a valid function name', (name: string) => {
-      const pipes = Pipes.empty();
-
-      const thrown = () => pipes.resolve(name);
-
-      expect(thrown).toThrowError('Pipe name must be a valid function name!');
-    });
 
     it('should throw error when a pipe not found with the given name', () => {
       const pipes = Pipes.empty();
@@ -59,8 +43,9 @@ describe('Pipes', () => {
 
     test.each(INVALID_FUNCTION_NAME_DATA_SET)('should throw error when name is not a valid function name', (name: string) => {
       const pipes = Pipes.empty();
+      const pipe = () => true;
 
-      const thrown = () => pipes.resolve(name);
+      const thrown = () => pipes.register(name, pipe);
 
       expect(thrown).toThrowError('Pipe name must be a valid function name!');
     });
@@ -70,7 +55,7 @@ describe('Pipes', () => {
 
       const thrown = () => pipes.register('pipe', pipe);
 
-      expect(thrown).toThrowError('Pipe name must be a function!');
+      expect(thrown).toThrowError('Pipe must be a function!');
     });
 
     it('should register pipe with the given name', () => {
@@ -87,23 +72,7 @@ describe('Pipes', () => {
   });
 
   describe('.unregister()', () => {
-
-    test.each(NON_NON_BLANK_STRING_DATA_SET)('should not throw error when name is not non-blank string', (name: string) => {
-      const pipes = Pipes.empty();
-
-      const thrown = () => pipes.unregister(name);
-
-      expect(thrown).toThrowError('Pipe name must be a non-blank string!');
-    });
-
-    test.each(INVALID_FUNCTION_NAME_DATA_SET)('should throw error when name is not a valid function name', (name: string) => {
-      const pipes = Pipes.empty();
-
-      const thrown = () => pipes.resolve(name);
-
-      expect(thrown).toThrowError('Pipe name must be a valid function name!');
-    });
-
+    
     it('should not throw error when given pipe is not registered before', () => {
       const pipes = Pipes.empty();
       const name = 'pipe';

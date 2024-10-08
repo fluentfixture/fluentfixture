@@ -1,7 +1,6 @@
-import { TypeUtils } from '@fluentfixture/shared';
+import { Random, TypeUtils } from '@fluentfixture/shared';
 import { DEFAULT_STRING_LENGTH } from '../constants/limits';
 import { StringStream } from '../streams/stream-loader';
-import { Random } from '../engine/random';
 import { asString } from './converters';
 import { from } from './value';
 

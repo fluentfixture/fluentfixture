@@ -4,7 +4,7 @@ describe('Constant', () => {
 
   describe('.handle()', () => {
 
-    it('should return always the same given value', () => {
+    it('should return always the given value', () => {
       const value = 'value';
       const pipe = new Constant(value);
 

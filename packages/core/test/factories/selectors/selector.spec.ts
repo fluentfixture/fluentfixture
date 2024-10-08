@@ -1,9 +1,9 @@
 import { instance, mock, spy, verify, when } from 'ts-mockito';
+import { Random } from '@fluentfixture/shared';
 import { NON_NUMBER_DATA_SET } from '../../data/type-sets';
 import { MockFactory } from '../../mocks/mock-factory';
 import { Selector } from '../../../src/factories/selectors/selector';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../../../src/constants/limits';
-import { Random } from '../../../src/engine/random';
 import { Factory } from '../../../src/factories/factory';
 
 describe('Selector', () => {

@@ -1,6 +1,6 @@
+import { Random } from '@fluentfixture/shared';
 import { Assert } from '../assertions/assert';
 import { MAX_STRING_LENGTH, MIN_STRING_LENGTH } from '../constants/limits';
-import { Random } from '../engine/random';
 import { Factory } from './factory';
 
 export class StringFactory extends Factory<string> {

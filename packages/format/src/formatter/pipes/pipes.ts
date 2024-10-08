@@ -1,6 +1,6 @@
 import { TypeUtils } from '@fluentfixture/shared';
-import { PipeFunction } from '../types/pipe-function';
-import { initializeWithDefaults } from './default-pipes';
+import { PipeFunction } from './types/pipe-function';
+import { initializeWithDefaults } from './defaults';
 
 export class Pipes {
   private static readonly PipeNameRegexp = /^[$_a-z][\w$]*$/i;
@@ -21,26 +21,28 @@ export class Pipes {
   }
 
   public resolve(name: string): PipeFunction {
-    Pipes.assertPipeName(name);
-    const pipeName = name.trim();
-    const pipe = this.pipes.get(pipeName);
+    const pipe = this.pipes.get(name);
     if (!TypeUtils.isAssigned(pipe)) {
-      throw new Error(`Pipe with name "${pipeName}" could not be found!`);
+      throw new Error(`Pipe with name "${name}" could not be found!`);
     }
     return pipe;
   }
 
   public register(name: string, pipe: PipeFunction): Pipes {
-    Pipes.assertPipeName(name);
+    if (!TypeUtils.isNonBlankString(name)) {
+      throw new Error('Pipe name must be a non-blank string!');
+    }
+    if (!Pipes.PipeNameRegexp.test(name.trim())) {
+      throw new Error('Pipe name must be a valid function name!');
+    }
     if (!TypeUtils.isFunction(pipe)) {
-      throw new Error('Pipe name must be a function!');
+      throw new Error('Pipe must be a function!');
     }
     this.pipes.set(name.trim(), pipe);
     return this;
   }
 
   public unregister(name: string): Pipes {
-    Pipes.assertPipeName(name);
     this.pipes.delete(name.trim());
     return this;
   }
@@ -48,15 +50,5 @@ export class Pipes {
   public clearAll(): Pipes {
     this.pipes.clear();
     return this;
-  }
-
-  private static assertPipeName(name: string): void {
-    if (!TypeUtils.isNonBlankString(name)) {
-      throw new Error('Pipe name must be a non-blank string!');
-    }
-
-    if (!Pipes.PipeNameRegexp.test(name.trim())) {
-      throw new Error('Pipe name must be a valid function name!');
-    }
   }
 }

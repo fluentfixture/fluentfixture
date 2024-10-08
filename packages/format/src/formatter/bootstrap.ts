@@ -1,5 +1,5 @@
 import { Formatter } from './formatter';
-import { Pipes } from './pipes/factory/pipes';
+import { Pipes } from './pipes/pipes';
 import { Template } from './template';
 
 export const formatter = Formatter.create(Pipes.withDefaults());

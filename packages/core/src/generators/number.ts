@@ -1,7 +1,7 @@
+import { Random } from '@fluentfixture/shared';
 import { DEFAULT_MAX_NUMBER, DEFAULT_MIN_NUMBER } from '../constants/limits';
 import { NumberStream } from '../streams/stream-loader';
 import { IntegerFactory } from '../factories/integer-factory';
-import { Random } from '../engine/random';
 import { asNumber } from './converters';
 import { from } from './value';
 

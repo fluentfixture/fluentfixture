@@ -1,7 +1,7 @@
 import { Formatter } from '../../src/formatter/formatter';
-import { Pipes } from '../../src/formatter/pipes/factory/pipes';
+import { Pipes } from '../../src/formatter/pipes/pipes';
 
-describe('Formatter', () => {
+describe('Formatter (E2E)', () => {
 
   describe('simple templates', () => {
 
@@ -24,6 +24,39 @@ describe('Formatter', () => {
         'ID=<123=elite>'],
       ['${detail.name}.${detail.surname}@example.com',
         'John.Doe@example.com'],
+    ];
+
+    describe('.format()', () => {
+
+      test.each(cases)('should format templates correctly: %p', (template, result) => {
+        expect(formatter.format(template, source)).toBe(result);
+      });
+    });
+
+    describe('.compile()', () => {
+      test.each(cases)('should compile templates correctly: %p', (template, result) => {
+        expect(formatter.compile(template).format(source)).toBe(result);
+      });
+    });
+  });
+
+  describe('exceptional templates', () => {
+
+    const formatter = Formatter.empty();
+
+    const source = {
+      x: 'x',
+      y: 'y',
+      z: 'z',
+    };
+
+    const cases = [
+      ['', ''],
+      ['a${x}${y}${z}b', 'axyzb'],
+      ['a${x}.${y}.${z}b', 'ax.y.zb'],
+      ['${x}.${y}.${z}', 'x.y.z'],
+      [' ${x}.${y}.${z} ', ' x.y.z '],
+      ['$${x}.${y}.${z}}', '$x.y.z}'],
     ];
 
     describe('.format()', () => {
@@ -149,14 +182,12 @@ describe('Formatter', () => {
 
     describe('.compile()', () => {
       test.each(cases)('should compile templates correctly: %p', (template, result) => {
-        expect(formatter.getPipes()).toBe(pipes);
         expect(formatter.compile(template).format(source)).toBe(result);
       });
     });
 
     describe('.format()', () => {
       test.each(cases)('should format templates correctly: %p', (template, result) => {
-        expect(formatter.getPipes()).toBe(pipes);
         expect(formatter.format(template, source)).toBe(result);
       });
     });

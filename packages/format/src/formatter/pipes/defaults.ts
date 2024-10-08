@@ -21,17 +21,17 @@ const registerStringPipes = (pipes: Pipes): void => {
   pipes.register('split', (str: string, ch: string) => str.split(ch));
 };
 
-export const registerDatePipes = (pipes: Pipes): void => {
+const registerDatePipes = (pipes: Pipes): void => {
   pipes.register('date', DateUtils.format);
 };
 
-export const registerArrayPipes = (pipes: Pipes): void => {
+const registerArrayPipes = (pipes: Pipes): void => {
   pipes.register('reverse', (arr: Array<any>) => [...arr].reverse());
   pipes.register('join', (arr: Array<any>, ch: string) => arr.join(ch));
   pipes.register('sort', (arr: Array<any>) => [...arr].sort());
 };
 
-export const registerUtilityPipes = (pipes: Pipes): void => {
+const registerUtilityPipes = (pipes: Pipes): void => {
   pipes.register('default', (val: any, fallback: any) => val || fallback);
 };
 

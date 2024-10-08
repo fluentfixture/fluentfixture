@@ -3,7 +3,7 @@ import { TypeUtils } from '@fluentfixture/shared';
 import { FormatterLexer } from './lexer';
 import { FormatterParser } from './parser';
 import { createFormatterVisitor } from './visitor';
-import { SyntaxDefinition } from './types/syntax-definition';
+import { Expression } from './types/expression';
 
 export class Engine {
   private static singletonInstance: Engine;
@@ -21,32 +21,32 @@ export class Engine {
     return Engine.singletonInstance || (Engine.singletonInstance = new Engine());
   }
 
-  public parse(expression: string): SyntaxDefinition {
-    return TypeUtils.isNonBlankString(expression) ? this.parseExpression(expression) : this.parseEmptyExpression();
+  public parse(token: string): Expression {
+    return TypeUtils.isNonBlankString(token) ? this.parseExpression(token) : this.parseEmptyExpression();
   }
 
-  private tokenize(expression: string): ILexingResult {
-    const lexingResult = this.lexer.tokenize(expression);
+  private tokenize(token: string): ILexingResult {
+    const lexingResult = this.lexer.tokenize(token);
     if (lexingResult.errors.length > 0) {
-      throw new Error(`Parsing error: ${lexingResult.errors[0].message}`);
+      throw new Error(`Cannot parse statement '${token}': ${lexingResult.errors[0].message}`);
     }
     return lexingResult;
   }
 
-  private parseEmptyExpression(): SyntaxDefinition {
+  private parseEmptyExpression(): Expression {
     return {
       pipes: [],
     };
   }
 
-  private parseExpression(expression: string): SyntaxDefinition {
-    const result = this.tokenize(expression);
+  private parseExpression(token: string): Expression {
+    const result = this.tokenize(token);
     this.parser.reset();
     this.parser.input = result.tokens;
     const cst = this.parser.expression();
     if (!cst || this.parser.errors.length > 0) {
-      throw new Error(`Parsing error: ${this.parser.errors[0].message}`);
+      throw new Error(`Cannot parse statement '${token}': ${this.parser.errors[0].message}`);
     }
-    return this.visitor.visit(cst) as SyntaxDefinition;
+    return this.visitor.visit(cst) as Expression;
   }
 }

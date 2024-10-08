@@ -2,4 +2,4 @@
 
 ## Reporting a Vulnerability
 
-Please report security issues to `support@fluentfixture.com`.
+Please report security issues to `sonercokmen@gmail.com`.

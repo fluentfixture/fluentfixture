@@ -1,6 +1,6 @@
+import { Random } from '@fluentfixture/shared';
 import { Assert } from '../assertions/assert';
 import { MAX_PERCENTAGE, MIN_PERCENTAGE } from '../constants/limits';
-import { Random } from '../engine/random';
 import { Factory } from './factory';
 
 export class BooleanFactory extends Factory<boolean> {
