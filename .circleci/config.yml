@@ -6,115 +6,60 @@ orbs:
   commitlint: conventional-changelog/commitlint@1.0.0
 
 aliases:
-  - &restore-cache
-    restore_cache:
-      key: dependency-cache-{{ checksum "package.json" }}
-  - &save-cache
-    save_cache:
-      key: dependency-cache-{{ checksum "package.json" }}
-      paths:
-        - ./node_modules
   - &install-deps
     run:
-      name: Install dependencies
-      command: npm ci
+      name: Install Dependencies
+      command: HUSKY_DISABLED=1 npm ci
   - &lerna-bootstrap
     run:
-      name: Lerna bootstrap
+      name: Lerna Bootstrap
       command: npm run bootstrap
   - &build-packages
     run:
-      name: Build
+      name: Build Packages
       command: npm run build
   - &run-unit-tests
     run:
-      name: Test
+      name: Unit Tests
       command: npm run test
   - &run-lint
     run:
-      name: Lint
+      name: Linters
       command: npm run lint
   - &run-depcruise
     run:
-      name: Depcruise
+      name: Depencency Checks
       command: npm run depcruise
 
-unit-tests-template: &unit-tests-template
+build-template: &build-template
   working_directory: ~/fluentfixture
   steps:
     - checkout
-    - *restore-cache
     - *install-deps
     - *lerna-bootstrap
     - *build-packages
     - *run-unit-tests
 
 jobs:
-  build:
-    working_directory: ~/fluentfixture
-    docker:
-      - image: cimg/node:18.20.4
-    steps:
-      - checkout
-      - *restore-cache
-      - *install-deps
-      - *lerna-bootstrap
-      - *save-cache
-      - *build-packages
-
   test_node_12:
     docker:
       - image: cimg/node:12.22
-    <<: *unit-tests-template
+    <<: *build-template
 
   test_node_14:
     docker:
       - image: cimg/node:14.21
-    <<: *unit-tests-template
+    <<: *build-template
 
   test_node_16:
     docker:
       - image: cimg/node:16.18
-    <<: *unit-tests-template
+    <<: *build-template
 
   test_node_18:
     docker:
       - image: cimg/node:18.20.4
-    <<: *unit-tests-template
-
-  coverage:
-    docker:
-      - image: cimg/node:18.20.4
-    steps:
-      - checkout
-      - *restore-cache
-      - *install-deps
-      - *lerna-bootstrap
-      - *build-packages
-      - *run-unit-tests
-      - coveralls/upload
-
-  lint:
-    working_directory: ~/fluentfixture
-    docker:
-      - image: cimg/node:18.20.4
-    steps:
-      - checkout
-      - *restore-cache
-      - *install-deps
-      - *lerna-bootstrap
-      - *run-lint
-
-  depcruise:
-    working_directory: ~/fluentfixture
-    docker:
-      - image: cimg/node:18.20.4
-    steps:
-      - checkout
-      - *restore-cache
-      - *install-deps
-      - *lerna-bootstrap
-      - *run-depcruise
+    <<: *build-template
 
   security:
     working_directory: ~/fluentfixture
@@ -122,11 +67,24 @@ jobs:
       - image: cimg/node:18.20.4
     steps:
       - checkout
-      - *restore-cache
       - *install-deps
       - *lerna-bootstrap
       - snyk/scan:
           additional-arguments: --all-projects --strict-out-of-sync=false
+
+  quality:
+    working_directory: ~/fluentfixture
+    docker:
+      - image: cimg/node:18.20.4
+    steps:
+      - checkout
+      - *install-deps
+      - *lerna-bootstrap
+      - *build-packages
+      - *run-lint
+      - *run-depcruise
+      - *run-unit-tests
+      - coveralls/upload
 
 workflows:
   version: 2
@@ -135,43 +93,22 @@ workflows:
       - commitlint/lint:
           max-count: 2
           node-version: "18.20.4"
-      - build:
-          requires:
-            - commitlint/lint
       - security:
-          requires:
-            - commitlint/lint
-      - lint:
-          requires:
-            - commitlint/lint
-      - depcruise:
           requires:
             - commitlint/lint
       - test_node_12:
           requires:
-            - build
             - security
-            - lint
-            - depcruise
       - test_node_14:
           requires:
-            - build
             - security
-            - lint
-            - depcruise
       - test_node_16:
           requires:
-            - build
             - security
-            - lint
-            - depcruise
       - test_node_18:
           requires:
-            - build
             - security
-            - lint
-            - depcruise
-      - coverage:
+      - quality:
           requires:
             - test_node_12
             - test_node_14

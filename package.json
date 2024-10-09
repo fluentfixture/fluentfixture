@@ -35,7 +35,7 @@
     "prerelease": "npm run bootstrap && npm run clean && npm run build",
     "release": "npm run prerelease && ./node_modules/.bin/lerna publish --force-publish -m \"chore(@fluentfixture): [%s] publish release\"",
     "release:rc": "npm run prerelease && ./node_modules/.bin/lerna publish --force-publish --npm-tag=rc -m \"chore(@fluentfixture): [%s] publish release candidate\"",
-    "prepare": "husky install"
+    "prepare": "if [ -z \"$HUSKY_DISABLED\" ]; then husky; fi"
   },
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
