@@ -1,7 +1,7 @@
 {
   "name": "@fluentfixture/shared",
   "description": "Shared utils of @fluentfixture project. Contains common string, date ,and type utilities.",
-  "version": "1.0.6-alpha.1",
+  "version": "1.0.6-alpha.2",
   "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
