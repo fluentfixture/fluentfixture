@@ -5,18 +5,15 @@ import { IntegerFactory } from '../factories/integer-factory';
 import { asNumber } from './converters';
 import { from } from './value';
 
-export const real = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_NUMBER): NumberStream => NumberStream.between(min, max);
-
-export const int = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_NUMBER): NumberStream => new NumberStream(new IntegerFactory(min, max));
-
-export const num = (val: number): NumberStream => NumberStream.constant(val);
-
 const ZERO = NumberStream.constant(0);
 const ONE = NumberStream.constant(1);
 const BYTE = new NumberStream(new IntegerFactory(0, 255));
 const INT_32 = asNumber(from(() => Random.int32()));
 const UINT_32 = asNumber(from(() => Random.uint32()));
 
+export const real = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_NUMBER): NumberStream => NumberStream.between(min, max);
+export const int = (min: number = DEFAULT_MIN_NUMBER, max: number = DEFAULT_MAX_NUMBER): NumberStream => new NumberStream(new IntegerFactory(min, max));
+export const num = (val: number): NumberStream => NumberStream.constant(val);
 export const zero = (): NumberStream => ZERO;
 export const one = (): NumberStream => ONE;
 export const byte = (): NumberStream => BYTE;

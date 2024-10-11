@@ -1,4 +1,4 @@
-import { str, hex, octal, numeric, alphanumeric, alphabetic, text, binary } from '../../src/generators/generators';
+import { str, hex, octal, numeric, alphanumeric, alphabetic, text, binary } from '../../src/generators/string';
 import { StringStream } from '../../src/streams/stream-loader';
 import { StringFactory } from '../../src/factories/string-factory';
 import { DEFAULT_STRING_LENGTH } from '../../src/constants/limits';
@@ -24,29 +24,29 @@ describe('string', () => {
   describe('str()', () => {
 
     it('should create a string stream and use default length when length is not provided', () => {
-      const charset = 'charset';
-      const result = str(charset);
+      const pool = 'chars';
+      const result = str(pool);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe(charset);
+      expect(stringFactory.getPool()).toBe(pool);
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
 
     it('should create a string stream and use the given min length', () => {
       const length = 5;
-      const charset = 'charset';
+      const pool = 'chars';
 
-      const result = str(charset, length);
+      const result = str(pool, length);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe(charset);
+      expect(stringFactory.getPool()).toBe(pool);
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -54,15 +54,15 @@ describe('string', () => {
     it('should create a string stream and use the given min length and max length', () => {
       const minLength = 5;
       const maxLength = 10;
-      const charset = 'charset';
+      const pool = 'chars';
 
-      const result = str(charset, minLength, maxLength);
+      const result = str(pool, minLength, maxLength);
 
       const stringFactory = result.getFactory() as StringFactory;
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe(charset);
+      expect(stringFactory.getPool()).toBe(pool);
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -77,7 +77,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('hex');
+      expect(stringFactory.getPool()).toBe('abcdef0123456789');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -91,7 +91,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('hex');
+      expect(stringFactory.getPool()).toBe('abcdef0123456789');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -106,7 +106,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('hex');
+      expect(stringFactory.getPool()).toBe('abcdef0123456789');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -121,7 +121,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('octal');
+      expect(stringFactory.getPool()).toBe('01234567');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -135,7 +135,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('octal');
+      expect(stringFactory.getPool()).toBe('01234567');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -150,7 +150,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('octal');
+      expect(stringFactory.getPool()).toBe('01234567');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -165,7 +165,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getPool()).toBe('01');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -179,7 +179,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getPool()).toBe('01');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -194,7 +194,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('binary');
+      expect(stringFactory.getPool()).toBe('01');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -209,7 +209,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('numeric');
+      expect(stringFactory.getPool()).toBe('0123456789');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -223,7 +223,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('numeric');
+      expect(stringFactory.getPool()).toBe('0123456789');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -238,7 +238,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('numeric');
+      expect(stringFactory.getPool()).toBe('0123456789');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -253,7 +253,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphabetic');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -267,7 +267,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphabetic');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -282,7 +282,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphabetic');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });
@@ -297,7 +297,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
       expect(stringFactory.getMinLength()).toBe(DEFAULT_STRING_LENGTH);
       expect(stringFactory.getMaxLength()).toBe(DEFAULT_STRING_LENGTH);
     });
@@ -311,7 +311,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
       expect(stringFactory.getMinLength()).toBe(length);
       expect(stringFactory.getMaxLength()).toBe(length);
     });
@@ -326,7 +326,7 @@ describe('string', () => {
 
       expect(result).toBeInstanceOf(StringStream);
       expect(stringFactory).toBeInstanceOf(StringFactory);
-      expect(stringFactory.getCharset()).toBe('alphanumeric');
+      expect(stringFactory.getPool()).toBe('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
       expect(stringFactory.getMinLength()).toBe(minLength);
       expect(stringFactory.getMaxLength()).toBe(maxLength);
     });

@@ -4,6 +4,16 @@ import { StringStream } from '../streams/stream-loader';
 import { asString } from './converters';
 import { from } from './value';
 
+const ALPHABET: string = 'abcdefghijklmnopqrstuvwxyz';
+const BINARY_CHAR_POOL: string = '01';
+const OCTAL_CHAR_POOL: string = '01234567';
+const NUMERIC_CHAR_POOL: string = '0123456789';
+const ALPHABETIC_CHAR_POOL: string = ALPHABET + ALPHABET.toUpperCase();
+const ALPHA_NUMERIC_CHAR_POOL: string = ALPHABETIC_CHAR_POOL + NUMERIC_CHAR_POOL;
+const HEX_CHAR_POOL: string = 'abcdef' + NUMERIC_CHAR_POOL;
+
+const UUID4 = asString(from(() => Random.uuid4()));
+
 const getRange = (minLength: number, maxLength?: number): [number, number] => {
   if (TypeUtils.isAssigned(maxLength)) {
     return minLength <= maxLength ? [minLength, maxLength] : [maxLength, minLength]
@@ -23,23 +33,21 @@ export const str = (charset: string, minLength: number = DEFAULT_STRING_LENGTH, 
   createStream(charset, minLength, maxLength);
 
 export const hex = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('hex', minLength, maxLength);
+  createStream(HEX_CHAR_POOL, minLength, maxLength);
 
 export const binary = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('binary', minLength, maxLength);
+  createStream(BINARY_CHAR_POOL, minLength, maxLength);
 
 export const octal = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('octal', minLength, maxLength);
+  createStream(OCTAL_CHAR_POOL, minLength, maxLength);
 
 export const numeric = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('numeric', minLength, maxLength);
+  createStream(NUMERIC_CHAR_POOL, minLength, maxLength);
 
 export const alphabetic = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('alphabetic', minLength, maxLength);
+  createStream(ALPHABETIC_CHAR_POOL, minLength, maxLength);
 
 export const alphanumeric = (minLength: number = DEFAULT_STRING_LENGTH, maxLength?: number): StringStream =>
-  createStream('alphanumeric', minLength, maxLength);
-
-const UUID4 = asString(from(() => Random.uuid4()));
+  createStream(ALPHA_NUMERIC_CHAR_POOL, minLength, maxLength);
 
 export const uuid4 = (): StringStream => UUID4;

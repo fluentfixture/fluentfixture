@@ -1,8 +1,7 @@
-import * as randomstring from 'randomstring';
 import {
   MersenneTwister19937, integer,
   bool, date, real, picker, sample,
-  shuffle, uuid4, int32, uint32,
+  shuffle, uuid4, int32, uint32, string
 } from 'random-js';
 
 export class Random {
@@ -50,11 +49,11 @@ export class Random {
     return uuid4(Random.engine);
   }
 
-  public static string(charset: string, minLength: number, maxLength: number): string {
+  public static string(pool: string, minLength: number, maxLength: number): string {
     const length = (minLength === maxLength)
       ? minLength
       : Random.integer(minLength, maxLength);
 
-    return randomstring.generate({ length, charset });
+    return string(pool)(this.engine, length);
   }
 }

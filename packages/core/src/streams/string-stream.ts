@@ -15,8 +15,8 @@ export class StringStream extends Stream<string> {
     return new StringStream(new ValueAdapter(str));
   }
 
-  public static fromPatternAndLength(pattern: string, minLength: number, maxLength: number): StringStream {
-    return new StringStream(new StringFactory(pattern, minLength, maxLength));
+  public static fromPatternAndLength(pool: string, minLength: number, maxLength: number): StringStream {
+    return new StringStream(new StringFactory(pool, minLength, maxLength));
   }
 
   public trim(): StringStream {

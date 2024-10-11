@@ -8,13 +8,13 @@ describe('StringFactory', () => {
 
   describe('.constructor()', () => {
 
-    describe('parameter assertions (charset)', () => {
+    describe('parameter assertions (pool)', () => {
 
-      test.each(NON_NON_EMPTY_STRING_DATA_SET)('should throw an error when charset is not a non-empty string, given: %s', (charset: any) => {
+      test.each(NON_NON_EMPTY_STRING_DATA_SET)('should throw an error when pool is not a non-empty string, given: %s', (pool: any) => {
 
-        const thrown = () => new StringFactory(charset, 1, 2);
+        const thrown = () => new StringFactory(pool, 1, 2);
 
-        expect(thrown).toThrow('[StringFactory.constructor(charset, minLength, maxLength)].[charset]: Parameter must be a non-empty string!');
+        expect(thrown).toThrow('[StringFactory.constructor(pool, minLength, maxLength)].[pool]: Parameter must be a non-empty string!');
       });
     });
 
@@ -24,21 +24,21 @@ describe('StringFactory', () => {
 
         const thrown = () => new StringFactory('hex', minLength, 1);
 
-        expect(thrown).toThrow('[StringFactory.constructor(charset, minLength, maxLength)].[minLength]: Parameter must be an integer!');
+        expect(thrown).toThrow('[StringFactory.constructor(pool, minLength, maxLength)].[minLength]: Parameter must be an integer!');
       });
 
       it('should throw an error when min length is less than the minimum string length', () => {
 
         const thrown = () => new StringFactory('hex', MIN_STRING_LENGTH - 1, 5);
 
-        expect(thrown).toThrow(`[StringFactory.constructor(charset, minLength, maxLength)].[minLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
+        expect(thrown).toThrow(`[StringFactory.constructor(pool, minLength, maxLength)].[minLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
 
       it('should throw an error when min length is greater than the maximum string length', () => {
 
         const thrown = () => new StringFactory('hex', MAX_STRING_LENGTH + 1, 1);
 
-        expect(thrown).toThrow(`[StringFactory.constructor(charset, minLength, maxLength)].[minLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
+        expect(thrown).toThrow(`[StringFactory.constructor(pool, minLength, maxLength)].[minLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
     });
 
@@ -48,21 +48,21 @@ describe('StringFactory', () => {
 
         const thrown = () => new StringFactory('hex', 1, maxLength);
 
-        expect(thrown).toThrow('[StringFactory.constructor(charset, minLength, maxLength)].[maxLength]: Parameter must be an integer!');
+        expect(thrown).toThrow('[StringFactory.constructor(pool, minLength, maxLength)].[maxLength]: Parameter must be an integer!');
       });
 
       it('should throw an error when max length is less than the minimum string length', () => {
 
         const thrown = () => new StringFactory('hex', 1, MIN_STRING_LENGTH - 1);
 
-        expect(thrown).toThrow(`[StringFactory.constructor(charset, minLength, maxLength)].[maxLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
+        expect(thrown).toThrow(`[StringFactory.constructor(pool, minLength, maxLength)].[maxLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
 
       it('should throw an error when max length is greater than the maximum string length', () => {
 
         const thrown = () => new StringFactory('hex', 1, MAX_STRING_LENGTH + 1);
 
-        expect(thrown).toThrow(`[StringFactory.constructor(charset, minLength, maxLength)].[maxLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
+        expect(thrown).toThrow(`[StringFactory.constructor(pool, minLength, maxLength)].[maxLength]: Parameter must be between ${MIN_STRING_LENGTH} and ${MAX_STRING_LENGTH}!`);
       });
     });
   });
@@ -73,16 +73,16 @@ describe('StringFactory', () => {
       const spyEngine = spy(Random);
       const minLength = 5;
       const maxLength = 10;
-      const charset = 'hex';
+      const pool = 'hex';
       const out = 'ABCDE';
-      const factory = new StringFactory(charset, minLength, maxLength);
+      const factory = new StringFactory(pool, minLength, maxLength);
 
-      when(spyEngine.string(charset, minLength, maxLength)).thenReturn(out);
+      when(spyEngine.string(pool, minLength, maxLength)).thenReturn(out);
 
       const result = factory.single();
 
       expect(result).toBe(out);
-      verify(spyEngine.string(charset, minLength, maxLength)).once();
+      verify(spyEngine.string(pool, minLength, maxLength)).once();
     });
   });
 });
