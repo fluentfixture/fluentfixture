@@ -29,6 +29,18 @@ export class ArrayStream<T = any> extends Stream<ReadonlyArray<T>> {
     return Stream.from(new Picker(this));
   }
 
+  public take(index: number): Stream<T | undefined> {
+    return Stream.from(new Functional(this, (arr) => arr.at(index)));
+  }
+
+  public first(): Stream<T | undefined> {
+    return Stream.from(new Functional(this, (arr) => arr.at(0)));
+  }
+
+  public last(): Stream<T | undefined> {
+    return Stream.from(new Functional(this, (arr) => arr.at(-1)));
+  }
+
   public join(separator?: string): StringStream {
     return new StringStream(new Functional(this, (arr) => arr.join(separator)));
   }
