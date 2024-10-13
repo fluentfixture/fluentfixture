@@ -128,7 +128,6 @@ The following is the list of supported scopes:
 - **core**: for changes made on `packages/core` directory
 - **shared**: for changes made on `packages/shared` directory
 - **format**: for changes made on `packages/format` directory
-- **01** or **02**: for changes made on `sample/01-*` or `sample/02-*` directory.
 
 If your change affect more than one package, separate the scopes with a comma (e.g. `common,core`).
 

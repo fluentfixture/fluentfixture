@@ -8,23 +8,17 @@ const pipes = Pipes.withDefaults()
 
 const formatter = Formatter.create(pipes);
 
-/**
- * Working example
- */
+// Working example.
 console.log(
   formatter.format('BALANCE=${balance:amount(true)}', { balance: { amount: 10, currency: 'usd' } })
 );
 
-/**
- * `balance` is null.
- */
+// `balance` is null.
 console.log(
   formatter.format('BALANCE=${balance:amount(true)}', { balance: null})
 );
 
-/**
- * Syntax error.
- */
+// Syntax error.
 try {
   formatter.format('BALANCE=${balance:amount}', { balance: null});
 } catch (error) {

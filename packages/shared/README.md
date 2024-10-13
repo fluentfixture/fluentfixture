@@ -11,8 +11,8 @@
   <a href="https://coveralls.io/github/fluentfixture/fluentfixture?branch=main" target="_blank"><img src="https://coveralls.io/repos/github/fluentfixture/fluentfixture/badge.svg?branch=main#9" alt="Coverage" /></a>
   <a href="https://snyk.io/test/github/fluentfixture/fluentfixture" target="_blank"><img src="https://snyk.io/test/github/fluentfixture/fluentfixture/badge.svg" alt="Known Vulnerabilities"/></a>
   <a href="https://www.codefactor.io/repository/github/fluentfixture/fluentfixture" target="_blank"><img src="https://www.codefactor.io/repository/github/fluentfixture/fluentfixture/badge" alt="CodeFactor"/></a>
-  <a href="https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/02-core" target="_blank"><img src="https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox" alt="Open in CodeSandbox"/></a>
-  <a href="https://docs.fluentfixture.com" target="_blank"><img src="https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook" alt="Open in CodeSandbox"/></a>
+  <a href="https://codesandbox.io/s/github/fluentfixture/fluentfixture/tree/main/sample/core" target="_blank"><img src="https://img.shields.io/badge/Open%20in-CodeSandbox-blue?style=flat-square&logo=codesandbox" alt="Open in CodeSandbox"/></a>
+  <a href="https://docs.fluentfixture.com" target="_blank"><img src="https://img.shields.io/badge/Open%20in-GitBook-yellow?style=flat-square&logo=gitbook" alt="Open in GotBook"/></a>
 </p>
 
 ## Philosophy
@@ -47,7 +47,7 @@ $ npm install @fluentfixture/core
 **Example**
 
 Let us consider the following requirements. We need;
-- 100 products that are ordered by their prices.
+- One hundred products that are ordered by their prices.
 - Each product has a code field with the "id-color" format calculated using generated values.
 - Each product has the same category with "id" is 5.
 - Half of them have stock.
@@ -94,8 +94,7 @@ console.log(products.single());
 
 ### Format (@fluentfixture/format)
 
-The [@fluentfixture/format][fluentfixture-format] is a flexible string format library.
-Provides formatting and compiling functionalities with extensible transformation capabilities.
+The [@fluentfixture/format][fluentfixture-format] is a flexible string format library that provides formatting functionality with an extensible transformation capabilities.
 
 **Installation**
 
