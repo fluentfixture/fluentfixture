@@ -23,6 +23,117 @@ describe('ArrayStream', () => {
     });
   });
 
+  describe('.take()', () => {
+
+    it('should create a stream with factory decorator that returns an item at the given index', () => {
+      const array = [1, 2, 3];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.take(1);
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const takeFn = functional.getFunction();
+
+      expect(takeFn(array)).toBe(2);
+    });
+
+    it('should return undefined if the given index cannot be found', () => {
+      const array = [1, 2, 3];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.take(4);
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const takeFn = functional.getFunction();
+
+      expect(takeFn(array)).toBeUndefined();
+    });
+  });
+
+  describe('.first()', () => {
+
+    it('should create a stream with factory decorator that returns the first item', () => {
+      const array = [1, 2, 3];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.first();
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const firstFn = functional.getFunction();
+
+      expect(firstFn(array)).toBe(1);
+    });
+
+    it('should return undefined if the array has no items', () => {
+      const array = [];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.first();
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const firstFn = functional.getFunction();
+
+      expect(firstFn(array)).toBeUndefined();
+    });
+  });
+
+  describe('.last()', () => {
+
+    it('should create a stream with factory decorator that returns the last item', () => {
+      const array = [1, 2, 3];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.last();
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const lastFn = functional.getFunction();
+
+      expect(lastFn(array)).toBe(3);
+    });
+
+    it('should return undefined if the array has no items', () => {
+      const array = [];
+      const stream = ArrayStream.fromList(array);
+
+      const result = stream.last();
+
+      expect(result).toBeInstanceOf(Stream);
+
+      const functional = result.getFactory() as Functional;
+      expect(functional).toBeInstanceOf(Functional);
+      expect(functional.getFactory()).toBe(stream);
+
+      const lastFn = functional.getFunction();
+
+      expect(lastFn(array)).toBeUndefined();
+    });
+  });
+
   describe('.join()', () => {
 
     it('should create a string stream with join decorator that wrap itself', () => {
