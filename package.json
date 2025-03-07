@@ -38,8 +38,8 @@
     "prepare": "if [ -z \"$HUSKY_DISABLED\" ]; then husky; fi"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.5.0",
-    "@commitlint/config-conventional": "19.5.0",
+    "@commitlint/cli": "19.8.0",
+    "@commitlint/config-conventional": "19.8.0",
     "@swc/core": "1.9.3",
     "@swc/jest": "0.2.37",
     "@types/jest": "29.5.14",
