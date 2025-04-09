@@ -58,13 +58,13 @@ jobs:
 
   test_node_18:
     docker:
-      - image: cimg/node:18.20.4
+      - image: cimg/node:18.20.8
     <<: *build-template
 
   security:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:18.20.4
+      - image: cimg/node:18.20.8
     steps:
       - checkout
       - *install-deps
@@ -75,7 +75,7 @@ jobs:
   quality:
     working_directory: ~/fluentfixture
     docker:
-      - image: cimg/node:18.20.4
+      - image: cimg/node:18.20.8
     steps:
       - checkout
       - *install-deps
